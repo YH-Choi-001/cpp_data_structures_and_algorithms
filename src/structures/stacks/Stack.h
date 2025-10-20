@@ -36,13 +36,13 @@ namespace yh {
 
                     /**
                      * @brief Pushes a data to the top of the stack.
-                     * @param data The data being pushed to the top of the stack.
+                     * @param data The data to be pushed to the top of the stack.
                      */
                     virtual void push(T *const data) = 0;
 
                     /**
                      * @brief Pops (removes) a data from the top of the stack.
-                     * @return The data being poped from the top of the stack, or nullptr if the stack is empty.
+                     * @return The data to be popped from the top of the stack, or nullptr if the stack is empty.
                      */
                     virtual T *pop() = 0;
 
