@@ -34,7 +34,7 @@ int main() {
             std::cout << " passed." << std::endl; \
         } else { \
             ++failed_testcase_count; \
-            std::cout << "Testcase #" << testcase_index << " failed: "; \
+            std::cout << " failed: "; \
             std::cout << "Expected: "; \
             for (size_t i = 0; i < len; i++) { \
                 std::cout << results[i] << "\t"; \
