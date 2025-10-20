@@ -78,7 +78,6 @@ namespace yh {
                     ++sorted_ptr;
                 }
             }
-
         }
     }
 }

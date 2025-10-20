@@ -62,7 +62,6 @@ namespace yh {
                 quick_sort(elements, start, j_position);
                 quick_sort(elements, j_position + 1, end);
             }
-
         }
     }
 }
