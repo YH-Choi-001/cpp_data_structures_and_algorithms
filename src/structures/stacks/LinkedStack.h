@@ -25,7 +25,6 @@ namespace yh {
                     struct Node {
                         T *const data;
                         Node *const next;
-                        Node(T *const data) : data(data), next(nullptr) {}
                         Node(T *const data, Node *const next) : data(data), next(next) {}
                     };
 
