@@ -492,6 +492,32 @@ int main() {
         ++testcase_index;
     }
 
+    {
+        LinkedStack<int> stack;
+        int x = 35;
+        int y = -12;
+        int z = 0;
+        int a = -4;
+        stack.push(&x);
+        stack.push(&y);
+        stack.push(&z);
+        std::cout << "Testcase #" << testcase_index;
+        int *data = stack.pop();
+        stack.push(&a);
+        int *data2 = stack.pop();
+        int *data3 = stack.pop();
+        int *data4 = stack.pop();
+        const bool isEmpty = stack.isEmpty();
+        if (isEmpty) {
+            std::cout << " passed.";
+        } else {
+            std::cout << " failed: stack.isEmpty() returns " << isEmpty << " but all elements are popped after pushed to a stack.";
+            ++failed_testcase_count;
+        }
+        std::cout << std::endl;
+        ++testcase_index;
+    }
+
     if (failed_testcase_count == 0) {
         std::cout << "All passed: " << __FILE__ << std::endl;
     } else {
