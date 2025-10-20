@@ -53,8 +53,8 @@ namespace yh {
                     virtual T *peek() = 0;
 
                     /**
-                     * @brief Gets the size of the stack.
-                     * @return The size of the stack.
+                     * @brief Gets the number of elements in the stack.
+                     * @return The number of elements in the stack.
                      */
                     virtual size_t size() = 0;
 

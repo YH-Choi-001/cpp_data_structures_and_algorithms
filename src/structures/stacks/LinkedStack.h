@@ -1,5 +1,5 @@
 /**
- * @file Stack.h The stack interface in C++.
+ * @file LinkedStack.h The linked stack implementation in C++.
  * 
  * @copyright Copyright (c) 2025 YH Choi.
  */
