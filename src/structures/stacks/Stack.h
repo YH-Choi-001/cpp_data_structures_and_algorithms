@@ -19,6 +19,7 @@ namespace yh {
             /**
              * @brief The interface of a stack.
              * @param T The data type to be held by the stack.
+             * @warning This class borrows elements but do not own them: The user should be responsible for deleting them.
              */
             template<typename T>
             class Stack {

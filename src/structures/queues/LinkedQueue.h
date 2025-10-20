@@ -15,6 +15,7 @@ namespace yh {
             /**
              * @brief A queue implemented by singly-linked list.
              * @param T The data type to be held by the queue.
+             * @warning This class borrows elements but do not own them: The user should be responsible for deleting them.
              */
             template<typename T>
             class LinkedQueue : public yh::structures::queues::Queue<T> {
