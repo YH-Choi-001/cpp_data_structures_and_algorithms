@@ -41,8 +41,8 @@ namespace yh {
                 T *const pivot = elements + end - 1;
 
 
-                T *i = elements;
-                T *j = elements - 1;
+                T *i = elements + start;
+                T *j = i - 1;
 
                 while (i < pivot) {
                     if ((*i) < (*pivot)) {
