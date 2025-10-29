@@ -534,10 +534,23 @@ int main() {
         int *data2 = heap.removeMin();
         int *data3 = heap.removeMin();
         int *data4 = heap.removeMin();
-        if (data == &y && data2 == &a && data3 == &z && data4 == &x) {
+        bool passed = true;
+        if (data != &y || data2 != &a || data3 != &z || data4 != &x) {
+            std::cout << " failed: heap.removeMin() returns wrong addresses or in wrong order.";
+            passed = false;
+        }
+        const bool isEmpty = heap.isEmpty();
+        if (!isEmpty) {
+            std::cout << " failed: heap.isEmpty() returns false for a heap that is removed till empty.";
+            passed = false;
+        }
+        const size_t size = heap.size();
+        if (size != 0) {
+            std::cout << " failed: heap.size() returns " << size << " instead of 0 for a heap that is removed till empty.";
+        }
+        if (passed) {
             std::cout << " passed.";
         } else {
-            std::cout << " failed: heap.removeMin() returns wrong addresses or in wrong order.";
             ++failed_testcase_count;
         }
         std::cout << std::endl;

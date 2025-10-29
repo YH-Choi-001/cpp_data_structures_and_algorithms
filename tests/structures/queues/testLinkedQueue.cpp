@@ -533,10 +533,23 @@ int main() {
         int *data2 = queue.dequeue();
         int *data3 = queue.dequeue();
         int *data4 = queue.dequeue();
-        if (data == &x && data2 == &y && data3 == &z && data4 == &a) {
+        bool passed = true;
+        if (data != &x || data2 != &y || data3 != &z || data4 != &a) {
+            std::cout << " failed: queue.pop() returns wrong addresses or in wrong order.";
+            passed = false;
+        }
+        const bool isEmpty = queue.isEmpty();
+        if (!isEmpty) {
+            std::cout << " failed: queue.isEmpty() returns false for a queue that is dequeued till empty.";
+            passed = false;
+        }
+        const size_t size = queue.size();
+        if (size != 0) {
+            std::cout << " failed: queue.size() returns " << size << " instead of 0 for a queue that is dequeued till empty.";
+        }
+        if (passed) {
             std::cout << " passed.";
         } else {
-            std::cout << " failed: queue.dequeue() returns wrong addresses or in wrong order.";
             ++failed_testcase_count;
         }
         std::cout << std::endl;

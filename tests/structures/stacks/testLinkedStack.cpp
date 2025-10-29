@@ -533,10 +533,23 @@ int main() {
         int *data2 = stack.pop();
         int *data3 = stack.pop();
         int *data4 = stack.pop();
-        if (data == &z && data2 == &a && data3 == &y && data4 == &x) {
+        bool passed = true;
+        if (data != &z || data2 != &a || data3 != &y || data4 != &x) {
+            std::cout << " failed: stack.pop() returns wrong addresses or in wrong order.";
+            passed = false;
+        }
+        const bool isEmpty = stack.isEmpty();
+        if (!isEmpty) {
+            std::cout << " failed: stack.isEmpty() returns false for a stack that is popped till empty.";
+            passed = false;
+        }
+        const size_t size = stack.size();
+        if (size != 0) {
+            std::cout << " failed: stack.size() returns " << size << " instead of 0 for a stack that is popped till empty.";
+        }
+        if (passed) {
             std::cout << " passed.";
         } else {
-            std::cout << " failed: stack.pop() returns wrong addresses or in wrong order.";
             ++failed_testcase_count;
         }
         std::cout << std::endl;
