@@ -167,7 +167,7 @@ namespace yh {
 
                         elementsCount--;
 
-                        if (elementsCount * 2 < capacity) {
+                        if (elementsCount * 2 < capacity && elementsCount > DEFAULT_INIT_CAPACITY) {
                             // shrink capacity
                             const size_t newCapacity = capacity / 2;
                             // create a new array
