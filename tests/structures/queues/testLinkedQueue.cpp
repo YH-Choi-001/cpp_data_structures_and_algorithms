@@ -11,7 +11,7 @@ int main() {
 
     {
         LinkedQueue<int> queue;
-        std::cout << "Testcase #" << testcase_index;
+        std::cout << "Testcase #" << testcase_index << " at line " << __LINE__;
         if (queue.isEmpty()) {
             std::cout << " passed.";
         } else {
@@ -26,7 +26,7 @@ int main() {
         LinkedQueue<int> queue;
         int x = 35;
         queue.enqueue(&x);
-        std::cout << "Testcase #" << testcase_index;
+        std::cout << "Testcase #" << testcase_index << " at line " << __LINE__;
         if (!queue.isEmpty()) {
             std::cout << " passed.";
         } else {
@@ -43,7 +43,7 @@ int main() {
         int y = -12;
         queue.enqueue(&x);
         queue.enqueue(&y);
-        std::cout << "Testcase #" << testcase_index;
+        std::cout << "Testcase #" << testcase_index << " at line " << __LINE__;
         if (!queue.isEmpty()) {
             std::cout << " passed.";
         } else {
@@ -56,7 +56,7 @@ int main() {
 
     {
         LinkedQueue<int> queue;
-        std::cout << "Testcase #" << testcase_index;
+        std::cout << "Testcase #" << testcase_index << " at line " << __LINE__;
         const size_t size = queue.size();
         if (size == 0) {
             std::cout << " passed.";
@@ -72,7 +72,7 @@ int main() {
         LinkedQueue<int> queue;
         int x = 35;
         queue.enqueue(&x);
-        std::cout << "Testcase #" << testcase_index;
+        std::cout << "Testcase #" << testcase_index << " at line " << __LINE__;
         const size_t size = queue.size();
         if (size == 1) {
             std::cout << " passed.";
@@ -90,7 +90,7 @@ int main() {
         int y = -12;
         queue.enqueue(&x);
         queue.enqueue(&y);
-        std::cout << "Testcase #" << testcase_index;
+        std::cout << "Testcase #" << testcase_index << " at line " << __LINE__;
         const size_t size = queue.size();
         if (size == 2) {
             std::cout << " passed.";
@@ -110,7 +110,7 @@ int main() {
         queue.enqueue(&x);
         queue.enqueue(&y);
         queue.enqueue(&z);
-        std::cout << "Testcase #" << testcase_index;
+        std::cout << "Testcase #" << testcase_index << " at line " << __LINE__;
         const size_t size = queue.size();
         if (size == 3) {
             std::cout << " passed.";
@@ -132,7 +132,7 @@ int main() {
         queue.enqueue(&y);
         queue.enqueue(&z);
         queue.enqueue(&a);
-        std::cout << "Testcase #" << testcase_index;
+        std::cout << "Testcase #" << testcase_index << " at line " << __LINE__;
         const size_t size = queue.size();
         if (size == 4) {
             std::cout << " passed.";
@@ -146,7 +146,7 @@ int main() {
 
     {
         LinkedQueue<int> queue;
-        std::cout << "Testcase #" << testcase_index;
+        std::cout << "Testcase #" << testcase_index << " at line " << __LINE__;
         int *data = queue.peek();
         if (data == nullptr) {
             std::cout << " passed.";
@@ -162,7 +162,7 @@ int main() {
         LinkedQueue<int> queue;
         int x = 35;
         queue.enqueue(&x);
-        std::cout << "Testcase #" << testcase_index;
+        std::cout << "Testcase #" << testcase_index << " at line " << __LINE__;
         int *data = queue.peek();
         if (data == &x) {
             std::cout << " passed.";
@@ -180,7 +180,7 @@ int main() {
         int y = -12;
         queue.enqueue(&x);
         queue.enqueue(&y);
-        std::cout << "Testcase #" << testcase_index;
+        std::cout << "Testcase #" << testcase_index << " at line " << __LINE__;
         int *data = queue.peek();
         if (data == &x) {
             std::cout << " passed.";
@@ -200,7 +200,7 @@ int main() {
         queue.enqueue(&x);
         queue.enqueue(&y);
         queue.enqueue(&z);
-        std::cout << "Testcase #" << testcase_index;
+        std::cout << "Testcase #" << testcase_index << " at line " << __LINE__;
         int *data = queue.peek();
         if (data == &x) {
             std::cout << " passed.";
@@ -214,7 +214,7 @@ int main() {
 
     {
         LinkedQueue<int> queue;
-        std::cout << "Testcase #" << testcase_index;
+        std::cout << "Testcase #" << testcase_index << " at line " << __LINE__;
         int *data = queue.dequeue();
         if (data == nullptr) {
             std::cout << " passed.";
@@ -230,7 +230,7 @@ int main() {
         LinkedQueue<int> queue;
         int x = 35;
         queue.enqueue(&x);
-        std::cout << "Testcase #" << testcase_index;
+        std::cout << "Testcase #" << testcase_index << " at line " << __LINE__;
         int *data = queue.dequeue();
         if (data == &x) {
             std::cout << " passed.";
@@ -248,7 +248,7 @@ int main() {
         int y = -12;
         queue.enqueue(&x);
         queue.enqueue(&y);
-        std::cout << "Testcase #" << testcase_index;
+        std::cout << "Testcase #" << testcase_index << " at line " << __LINE__;
         int *data = queue.dequeue();
         if (data == &x) {
             std::cout << " passed.";
@@ -268,7 +268,7 @@ int main() {
         queue.enqueue(&x);
         queue.enqueue(&y);
         queue.enqueue(&z);
-        std::cout << "Testcase #" << testcase_index;
+        std::cout << "Testcase #" << testcase_index << " at line " << __LINE__;
         int *data = queue.dequeue();
         if (data == &x) {
             std::cout << " passed.";
@@ -288,7 +288,7 @@ int main() {
         queue.enqueue(&x);
         queue.enqueue(&y);
         queue.enqueue(&z);
-        std::cout << "Testcase #" << testcase_index;
+        std::cout << "Testcase #" << testcase_index << " at line " << __LINE__;
         int *data = queue.dequeue();
         int *data2 = queue.dequeue();
         if (data == &x && data2 == &y) {
@@ -308,7 +308,7 @@ int main() {
 
     {
         LinkedQueue<int> queue;
-        std::cout << "Testcase #" << testcase_index;
+        std::cout << "Testcase #" << testcase_index << " at line " << __LINE__;
         int *data = queue.dequeue();
         const size_t size = queue.size();
         if (size == 0) {
@@ -325,7 +325,7 @@ int main() {
         LinkedQueue<int> queue;
         int x = 35;
         queue.enqueue(&x);
-        std::cout << "Testcase #" << testcase_index;
+        std::cout << "Testcase #" << testcase_index << " at line " << __LINE__;
         int *data = queue.dequeue();
         const size_t size = queue.size();
         if (size == 0) {
@@ -344,7 +344,7 @@ int main() {
         int y = -12;
         queue.enqueue(&x);
         queue.enqueue(&y);
-        std::cout << "Testcase #" << testcase_index;
+        std::cout << "Testcase #" << testcase_index << " at line " << __LINE__;
         int *data = queue.dequeue();
         const size_t size = queue.size();
         if (size == 1) {
@@ -365,7 +365,7 @@ int main() {
         queue.enqueue(&x);
         queue.enqueue(&y);
         queue.enqueue(&z);
-        std::cout << "Testcase #" << testcase_index;
+        std::cout << "Testcase #" << testcase_index << " at line " << __LINE__;
         int *data = queue.dequeue();
         const size_t size = queue.size();
         if (size == 2) {
@@ -386,7 +386,7 @@ int main() {
         queue.enqueue(&x);
         queue.enqueue(&y);
         queue.enqueue(&z);
-        std::cout << "Testcase #" << testcase_index;
+        std::cout << "Testcase #" << testcase_index << " at line " << __LINE__;
         int *data = queue.dequeue();
         int *data2 = queue.dequeue();
         const size_t size = queue.size();
@@ -409,7 +409,7 @@ int main() {
         queue.enqueue(&x);
         queue.enqueue(&y);
         queue.enqueue(&z);
-        std::cout << "Testcase #" << testcase_index;
+        std::cout << "Testcase #" << testcase_index << " at line " << __LINE__;
         int *data = queue.dequeue();
         queue.enqueue(&a);
         const bool isEmpty = queue.isEmpty();
@@ -432,7 +432,7 @@ int main() {
         queue.enqueue(&x);
         queue.enqueue(&y);
         queue.enqueue(&z);
-        std::cout << "Testcase #" << testcase_index;
+        std::cout << "Testcase #" << testcase_index << " at line " << __LINE__;
         int *data = queue.dequeue();
         queue.enqueue(&a);
         const size_t size = queue.size();
@@ -455,7 +455,7 @@ int main() {
         queue.enqueue(&x);
         queue.enqueue(&y);
         queue.enqueue(&z);
-        std::cout << "Testcase #" << testcase_index;
+        std::cout << "Testcase #" << testcase_index << " at line " << __LINE__;
         int *data = queue.dequeue();
         queue.enqueue(&a);
         int *data2 = queue.peek();
@@ -478,7 +478,7 @@ int main() {
         queue.enqueue(&x);
         queue.enqueue(&y);
         queue.enqueue(&z);
-        std::cout << "Testcase #" << testcase_index;
+        std::cout << "Testcase #" << testcase_index << " at line " << __LINE__;
         int *data = queue.dequeue();
         queue.enqueue(&a);
         int *data2 = queue.dequeue();
@@ -501,7 +501,7 @@ int main() {
         queue.enqueue(&x);
         queue.enqueue(&y);
         queue.enqueue(&z);
-        std::cout << "Testcase #" << testcase_index;
+        std::cout << "Testcase #" << testcase_index << " at line " << __LINE__;
         int *data = queue.dequeue();
         queue.enqueue(&a);
         int *data2 = queue.dequeue();
@@ -527,7 +527,7 @@ int main() {
         queue.enqueue(&x);
         queue.enqueue(&y);
         queue.enqueue(&z);
-        std::cout << "Testcase #" << testcase_index;
+        std::cout << "Testcase #" << testcase_index << " at line " << __LINE__;
         int *data = queue.dequeue();
         queue.enqueue(&a);
         int *data2 = queue.dequeue();

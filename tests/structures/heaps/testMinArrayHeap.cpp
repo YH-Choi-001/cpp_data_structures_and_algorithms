@@ -11,7 +11,7 @@ int main() {
 
     {
         MinArrayHeap<int> heap(4);
-        std::cout << "Testcase #" << testcase_index;
+        std::cout << "Testcase #" << testcase_index << " at line " << __LINE__;
         if (heap.isEmpty()) {
             std::cout << " passed.";
         } else {
@@ -26,7 +26,7 @@ int main() {
         MinArrayHeap<int> heap(4);
         int x = 35;
         heap.insert(&x);
-        std::cout << "Testcase #" << testcase_index;
+        std::cout << "Testcase #" << testcase_index << " at line " << __LINE__;
         if (!heap.isEmpty()) {
             std::cout << " passed.";
         } else {
@@ -43,7 +43,7 @@ int main() {
         int y = -12;
         heap.insert(&x);
         heap.insert(&y);
-        std::cout << "Testcase #" << testcase_index;
+        std::cout << "Testcase #" << testcase_index << " at line " << __LINE__;
         if (!heap.isEmpty()) {
             std::cout << " passed.";
         } else {
@@ -56,7 +56,7 @@ int main() {
 
     {
         MinArrayHeap<int> heap(4);
-        std::cout << "Testcase #" << testcase_index;
+        std::cout << "Testcase #" << testcase_index << " at line " << __LINE__;
         const size_t size = heap.size();
         if (size == 0) {
             std::cout << " passed.";
@@ -72,7 +72,7 @@ int main() {
         MinArrayHeap<int> heap(4);
         int x = 35;
         heap.insert(&x);
-        std::cout << "Testcase #" << testcase_index;
+        std::cout << "Testcase #" << testcase_index << " at line " << __LINE__;
         const size_t size = heap.size();
         if (size == 1) {
             std::cout << " passed.";
@@ -90,7 +90,7 @@ int main() {
         int y = -12;
         heap.insert(&x);
         heap.insert(&y);
-        std::cout << "Testcase #" << testcase_index;
+        std::cout << "Testcase #" << testcase_index << " at line " << __LINE__;
         const size_t size = heap.size();
         if (size == 2) {
             std::cout << " passed.";
@@ -110,7 +110,7 @@ int main() {
         heap.insert(&x);
         heap.insert(&y);
         heap.insert(&z);
-        std::cout << "Testcase #" << testcase_index;
+        std::cout << "Testcase #" << testcase_index << " at line " << __LINE__;
         const size_t size = heap.size();
         if (size == 3) {
             std::cout << " passed.";
@@ -132,7 +132,7 @@ int main() {
         heap.insert(&y);
         heap.insert(&z);
         heap.insert(&a);
-        std::cout << "Testcase #" << testcase_index;
+        std::cout << "Testcase #" << testcase_index << " at line " << __LINE__;
         const size_t size = heap.size();
         if (size == 4) {
             std::cout << " passed.";
@@ -146,7 +146,7 @@ int main() {
 
     {
         MinArrayHeap<int> heap(4);
-        std::cout << "Testcase #" << testcase_index;
+        std::cout << "Testcase #" << testcase_index << " at line " << __LINE__;
         int *data = heap.peekMin();
         if (data == nullptr) {
             std::cout << " passed.";
@@ -162,7 +162,7 @@ int main() {
         MinArrayHeap<int> heap(4);
         int x = 35;
         heap.insert(&x);
-        std::cout << "Testcase #" << testcase_index;
+        std::cout << "Testcase #" << testcase_index << " at line " << __LINE__;
         int *data = heap.peekMin();
         if (data == &x) {
             std::cout << " passed.";
@@ -180,7 +180,7 @@ int main() {
         int y = -12;
         heap.insert(&x);
         heap.insert(&y);
-        std::cout << "Testcase #" << testcase_index;
+        std::cout << "Testcase #" << testcase_index << " at line " << __LINE__;
         int *data = heap.peekMin();
         if (data == &y) {
             std::cout << " passed.";
@@ -200,7 +200,7 @@ int main() {
         heap.insert(&x);
         heap.insert(&y);
         heap.insert(&z);
-        std::cout << "Testcase #" << testcase_index;
+        std::cout << "Testcase #" << testcase_index << " at line " << __LINE__;
         int *data = heap.peekMin();
         if (data == &y) {
             std::cout << " passed.";
@@ -214,7 +214,7 @@ int main() {
 
     {
         MinArrayHeap<int> heap(4);
-        std::cout << "Testcase #" << testcase_index;
+        std::cout << "Testcase #" << testcase_index << " at line " << __LINE__;
         int *data = heap.removeMin();
         if (data == nullptr) {
             std::cout << " passed.";
@@ -230,7 +230,7 @@ int main() {
         MinArrayHeap<int> heap(4);
         int x = 35;
         heap.insert(&x);
-        std::cout << "Testcase #" << testcase_index;
+        std::cout << "Testcase #" << testcase_index << " at line " << __LINE__;
         int *data = heap.removeMin();
         if (data == &x) {
             std::cout << " passed.";
@@ -248,7 +248,7 @@ int main() {
         int y = -12;
         heap.insert(&x);
         heap.insert(&y);
-        std::cout << "Testcase #" << testcase_index;
+        std::cout << "Testcase #" << testcase_index << " at line " << __LINE__;
         int *data = heap.removeMin();
         if (data == &y) {
             std::cout << " passed.";
@@ -268,7 +268,7 @@ int main() {
         heap.insert(&x);
         heap.insert(&y);
         heap.insert(&z);
-        std::cout << "Testcase #" << testcase_index;
+        std::cout << "Testcase #" << testcase_index << " at line " << __LINE__;
         int *data = heap.removeMin();
         if (data == &y) {
             std::cout << " passed.";
@@ -288,7 +288,7 @@ int main() {
         heap.insert(&x);
         heap.insert(&y);
         heap.insert(&z);
-        std::cout << "Testcase #" << testcase_index;
+        std::cout << "Testcase #" << testcase_index << " at line " << __LINE__;
         int *data = heap.removeMin();
         int *data2 = heap.removeMin();
         if (data == &y && data2 == &z) {
@@ -308,7 +308,7 @@ int main() {
 
     {
         MinArrayHeap<int> heap(4);
-        std::cout << "Testcase #" << testcase_index;
+        std::cout << "Testcase #" << testcase_index << " at line " << __LINE__;
         int *data = heap.removeMin();
         const size_t size = heap.size();
         if (size == 0) {
@@ -325,7 +325,7 @@ int main() {
         MinArrayHeap<int> heap(4);
         int x = 35;
         heap.insert(&x);
-        std::cout << "Testcase #" << testcase_index;
+        std::cout << "Testcase #" << testcase_index << " at line " << __LINE__;
         int *data = heap.removeMin();
         const size_t size = heap.size();
         if (size == 0) {
@@ -344,7 +344,7 @@ int main() {
         int y = -12;
         heap.insert(&x);
         heap.insert(&y);
-        std::cout << "Testcase #" << testcase_index;
+        std::cout << "Testcase #" << testcase_index << " at line " << __LINE__;
         int *data = heap.removeMin();
         const size_t size = heap.size();
         if (size == 1) {
@@ -365,7 +365,7 @@ int main() {
         heap.insert(&x);
         heap.insert(&y);
         heap.insert(&z);
-        std::cout << "Testcase #" << testcase_index;
+        std::cout << "Testcase #" << testcase_index << " at line " << __LINE__;
         int *data = heap.removeMin();
         const size_t size = heap.size();
         if (size == 2) {
@@ -386,7 +386,7 @@ int main() {
         heap.insert(&x);
         heap.insert(&y);
         heap.insert(&z);
-        std::cout << "Testcase #" << testcase_index;
+        std::cout << "Testcase #" << testcase_index << " at line " << __LINE__;
         int *data = heap.removeMin();
         int *data2 = heap.removeMin();
         const size_t size = heap.size();
@@ -410,7 +410,7 @@ int main() {
         heap.insert(&x);
         heap.insert(&y);
         heap.insert(&z);
-        std::cout << "Testcase #" << testcase_index;
+        std::cout << "Testcase #" << testcase_index << " at line " << __LINE__;
         int *data = heap.removeMin();
         heap.insert(&a);
         const bool isEmpty = heap.isEmpty();
@@ -433,7 +433,7 @@ int main() {
         heap.insert(&x);
         heap.insert(&y);
         heap.insert(&z);
-        std::cout << "Testcase #" << testcase_index;
+        std::cout << "Testcase #" << testcase_index << " at line " << __LINE__;
         int *data = heap.removeMin();
         heap.insert(&a);
         const size_t size = heap.size();
@@ -456,7 +456,7 @@ int main() {
         heap.insert(&x);
         heap.insert(&y);
         heap.insert(&z);
-        std::cout << "Testcase #" << testcase_index;
+        std::cout << "Testcase #" << testcase_index << " at line " << __LINE__;
         int *data = heap.removeMin();
         heap.insert(&a);
         int *data2 = heap.peekMin();
@@ -479,7 +479,7 @@ int main() {
         heap.insert(&x);
         heap.insert(&y);
         heap.insert(&z);
-        std::cout << "Testcase #" << testcase_index;
+        std::cout << "Testcase #" << testcase_index << " at line " << __LINE__;
         int *data = heap.removeMin();
         heap.insert(&a);
         int *data2 = heap.removeMin();
@@ -502,7 +502,7 @@ int main() {
         heap.insert(&x);
         heap.insert(&y);
         heap.insert(&z);
-        std::cout << "Testcase #" << testcase_index;
+        std::cout << "Testcase #" << testcase_index << " at line " << __LINE__;
         int *data = heap.removeMin();
         heap.insert(&a);
         int *data2 = heap.removeMin();
@@ -528,7 +528,7 @@ int main() {
         heap.insert(&x);
         heap.insert(&y);
         heap.insert(&z);
-        std::cout << "Testcase #" << testcase_index;
+        std::cout << "Testcase #" << testcase_index << " at line " << __LINE__;
         int *data = heap.removeMin();
         heap.insert(&a);
         int *data2 = heap.removeMin();
@@ -560,7 +560,7 @@ int main() {
 
     {
         MinArrayHeap<int> heap(4);
-        std::cout << "Testcase #" << testcase_index;
+        std::cout << "Testcase #" << testcase_index << " at line " << __LINE__;
         if (!heap.isFull()) {
             std::cout << " passed.";
         } else {
@@ -575,7 +575,7 @@ int main() {
         MinArrayHeap<int> heap(4);
         int x = 35;
         heap.insert(&x);
-        std::cout << "Testcase #" << testcase_index;
+        std::cout << "Testcase #" << testcase_index << " at line " << __LINE__;
         if (!heap.isFull()) {
             std::cout << " passed.";
         } else {
@@ -592,7 +592,7 @@ int main() {
         int y = -12;
         heap.insert(&x);
         heap.insert(&y);
-        std::cout << "Testcase #" << testcase_index;
+        std::cout << "Testcase #" << testcase_index << " at line " << __LINE__;
         if (!heap.isFull()) {
             std::cout << " passed.";
         } else {
@@ -611,7 +611,7 @@ int main() {
         heap.insert(&x);
         heap.insert(&y);
         heap.insert(&z);
-        std::cout << "Testcase #" << testcase_index;
+        std::cout << "Testcase #" << testcase_index << " at line " << __LINE__;
         if (!heap.isFull()) {
             std::cout << " passed.";
         } else {
@@ -632,7 +632,7 @@ int main() {
         heap.insert(&y);
         heap.insert(&z);
         heap.insert(&a);
-        std::cout << "Testcase #" << testcase_index;
+        std::cout << "Testcase #" << testcase_index << " at line " << __LINE__;
         if (heap.isFull()) {
             std::cout << " passed.";
         } else {

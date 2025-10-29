@@ -11,7 +11,7 @@ int main() {
 
     {
         LinkedStack<int> stack;
-        std::cout << "Testcase #" << testcase_index;
+        std::cout << "Testcase #" << testcase_index << " at line " << __LINE__;
         if (stack.isEmpty()) {
             std::cout << " passed.";
         } else {
@@ -26,7 +26,7 @@ int main() {
         LinkedStack<int> stack;
         int x = 35;
         stack.push(&x);
-        std::cout << "Testcase #" << testcase_index;
+        std::cout << "Testcase #" << testcase_index << " at line " << __LINE__;
         if (!stack.isEmpty()) {
             std::cout << " passed.";
         } else {
@@ -43,7 +43,7 @@ int main() {
         int y = -12;
         stack.push(&x);
         stack.push(&y);
-        std::cout << "Testcase #" << testcase_index;
+        std::cout << "Testcase #" << testcase_index << " at line " << __LINE__;
         if (!stack.isEmpty()) {
             std::cout << " passed.";
         } else {
@@ -56,7 +56,7 @@ int main() {
 
     {
         LinkedStack<int> stack;
-        std::cout << "Testcase #" << testcase_index;
+        std::cout << "Testcase #" << testcase_index << " at line " << __LINE__;
         const size_t size = stack.size();
         if (size == 0) {
             std::cout << " passed.";
@@ -72,7 +72,7 @@ int main() {
         LinkedStack<int> stack;
         int x = 35;
         stack.push(&x);
-        std::cout << "Testcase #" << testcase_index;
+        std::cout << "Testcase #" << testcase_index << " at line " << __LINE__;
         const size_t size = stack.size();
         if (size == 1) {
             std::cout << " passed.";
@@ -90,7 +90,7 @@ int main() {
         int y = -12;
         stack.push(&x);
         stack.push(&y);
-        std::cout << "Testcase #" << testcase_index;
+        std::cout << "Testcase #" << testcase_index << " at line " << __LINE__;
         const size_t size = stack.size();
         if (size == 2) {
             std::cout << " passed.";
@@ -110,7 +110,7 @@ int main() {
         stack.push(&x);
         stack.push(&y);
         stack.push(&z);
-        std::cout << "Testcase #" << testcase_index;
+        std::cout << "Testcase #" << testcase_index << " at line " << __LINE__;
         const size_t size = stack.size();
         if (size == 3) {
             std::cout << " passed.";
@@ -132,7 +132,7 @@ int main() {
         stack.push(&y);
         stack.push(&z);
         stack.push(&a);
-        std::cout << "Testcase #" << testcase_index;
+        std::cout << "Testcase #" << testcase_index << " at line " << __LINE__;
         const size_t size = stack.size();
         if (size == 4) {
             std::cout << " passed.";
@@ -146,7 +146,7 @@ int main() {
 
     {
         LinkedStack<int> stack;
-        std::cout << "Testcase #" << testcase_index;
+        std::cout << "Testcase #" << testcase_index << " at line " << __LINE__;
         int *data = stack.peek();
         if (data == nullptr) {
             std::cout << " passed.";
@@ -162,7 +162,7 @@ int main() {
         LinkedStack<int> stack;
         int x = 35;
         stack.push(&x);
-        std::cout << "Testcase #" << testcase_index;
+        std::cout << "Testcase #" << testcase_index << " at line " << __LINE__;
         int *data = stack.peek();
         if (data == &x) {
             std::cout << " passed.";
@@ -180,7 +180,7 @@ int main() {
         int y = -12;
         stack.push(&x);
         stack.push(&y);
-        std::cout << "Testcase #" << testcase_index;
+        std::cout << "Testcase #" << testcase_index << " at line " << __LINE__;
         int *data = stack.peek();
         if (data == &y) {
             std::cout << " passed.";
@@ -200,7 +200,7 @@ int main() {
         stack.push(&x);
         stack.push(&y);
         stack.push(&z);
-        std::cout << "Testcase #" << testcase_index;
+        std::cout << "Testcase #" << testcase_index << " at line " << __LINE__;
         int *data = stack.peek();
         if (data == &z) {
             std::cout << " passed.";
@@ -214,7 +214,7 @@ int main() {
 
     {
         LinkedStack<int> stack;
-        std::cout << "Testcase #" << testcase_index;
+        std::cout << "Testcase #" << testcase_index << " at line " << __LINE__;
         int *data = stack.pop();
         if (data == nullptr) {
             std::cout << " passed.";
@@ -230,7 +230,7 @@ int main() {
         LinkedStack<int> stack;
         int x = 35;
         stack.push(&x);
-        std::cout << "Testcase #" << testcase_index;
+        std::cout << "Testcase #" << testcase_index << " at line " << __LINE__;
         int *data = stack.pop();
         if (data == &x) {
             std::cout << " passed.";
@@ -248,7 +248,7 @@ int main() {
         int y = -12;
         stack.push(&x);
         stack.push(&y);
-        std::cout << "Testcase #" << testcase_index;
+        std::cout << "Testcase #" << testcase_index << " at line " << __LINE__;
         int *data = stack.pop();
         if (data == &y) {
             std::cout << " passed.";
@@ -268,7 +268,7 @@ int main() {
         stack.push(&x);
         stack.push(&y);
         stack.push(&z);
-        std::cout << "Testcase #" << testcase_index;
+        std::cout << "Testcase #" << testcase_index << " at line " << __LINE__;
         int *data = stack.pop();
         if (data == &z) {
             std::cout << " passed.";
@@ -288,7 +288,7 @@ int main() {
         stack.push(&x);
         stack.push(&y);
         stack.push(&z);
-        std::cout << "Testcase #" << testcase_index;
+        std::cout << "Testcase #" << testcase_index << " at line " << __LINE__;
         int *data = stack.pop();
         int *data2 = stack.pop();
         if (data == &z && data2 == &y) {
@@ -308,7 +308,7 @@ int main() {
 
     {
         LinkedStack<int> stack;
-        std::cout << "Testcase #" << testcase_index;
+        std::cout << "Testcase #" << testcase_index << " at line " << __LINE__;
         int *data = stack.pop();
         const size_t size = stack.size();
         if (size == 0) {
@@ -325,7 +325,7 @@ int main() {
         LinkedStack<int> stack;
         int x = 35;
         stack.push(&x);
-        std::cout << "Testcase #" << testcase_index;
+        std::cout << "Testcase #" << testcase_index << " at line " << __LINE__;
         int *data = stack.pop();
         const size_t size = stack.size();
         if (size == 0) {
@@ -344,7 +344,7 @@ int main() {
         int y = -12;
         stack.push(&x);
         stack.push(&y);
-        std::cout << "Testcase #" << testcase_index;
+        std::cout << "Testcase #" << testcase_index << " at line " << __LINE__;
         int *data = stack.pop();
         const size_t size = stack.size();
         if (size == 1) {
@@ -365,7 +365,7 @@ int main() {
         stack.push(&x);
         stack.push(&y);
         stack.push(&z);
-        std::cout << "Testcase #" << testcase_index;
+        std::cout << "Testcase #" << testcase_index << " at line " << __LINE__;
         int *data = stack.pop();
         const size_t size = stack.size();
         if (size == 2) {
@@ -386,7 +386,7 @@ int main() {
         stack.push(&x);
         stack.push(&y);
         stack.push(&z);
-        std::cout << "Testcase #" << testcase_index;
+        std::cout << "Testcase #" << testcase_index << " at line " << __LINE__;
         int *data = stack.pop();
         int *data2 = stack.pop();
         const size_t size = stack.size();
@@ -409,7 +409,7 @@ int main() {
         stack.push(&x);
         stack.push(&y);
         stack.push(&z);
-        std::cout << "Testcase #" << testcase_index;
+        std::cout << "Testcase #" << testcase_index << " at line " << __LINE__;
         int *data = stack.pop();
         stack.push(&a);
         const bool isEmpty = stack.isEmpty();
@@ -432,7 +432,7 @@ int main() {
         stack.push(&x);
         stack.push(&y);
         stack.push(&z);
-        std::cout << "Testcase #" << testcase_index;
+        std::cout << "Testcase #" << testcase_index << " at line " << __LINE__;
         int *data = stack.pop();
         stack.push(&a);
         const size_t size = stack.size();
@@ -455,7 +455,7 @@ int main() {
         stack.push(&x);
         stack.push(&y);
         stack.push(&z);
-        std::cout << "Testcase #" << testcase_index;
+        std::cout << "Testcase #" << testcase_index << " at line " << __LINE__;
         int *data = stack.pop();
         stack.push(&a);
         int *data2 = stack.peek();
@@ -478,7 +478,7 @@ int main() {
         stack.push(&x);
         stack.push(&y);
         stack.push(&z);
-        std::cout << "Testcase #" << testcase_index;
+        std::cout << "Testcase #" << testcase_index << " at line " << __LINE__;
         int *data = stack.pop();
         stack.push(&a);
         int *data2 = stack.pop();
@@ -501,7 +501,7 @@ int main() {
         stack.push(&x);
         stack.push(&y);
         stack.push(&z);
-        std::cout << "Testcase #" << testcase_index;
+        std::cout << "Testcase #" << testcase_index << " at line " << __LINE__;
         int *data = stack.pop();
         stack.push(&a);
         int *data2 = stack.pop();
@@ -527,7 +527,7 @@ int main() {
         stack.push(&x);
         stack.push(&y);
         stack.push(&z);
-        std::cout << "Testcase #" << testcase_index;
+        std::cout << "Testcase #" << testcase_index << " at line " << __LINE__;
         int *data = stack.pop();
         stack.push(&a);
         int *data2 = stack.pop();
