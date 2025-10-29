@@ -546,6 +546,7 @@ int main() {
         const size_t size = stack.size();
         if (size != 0) {
             std::cout << " failed: stack.size() returns " << size << " instead of 0 for a stack that is popped till empty.";
+            passed = false;
         }
         if (passed) {
             std::cout << " passed.";

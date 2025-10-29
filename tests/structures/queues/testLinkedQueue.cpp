@@ -546,6 +546,7 @@ int main() {
         const size_t size = queue.size();
         if (size != 0) {
             std::cout << " failed: queue.size() returns " << size << " instead of 0 for a queue that is dequeued till empty.";
+            passed = false;
         }
         if (passed) {
             std::cout << " passed.";

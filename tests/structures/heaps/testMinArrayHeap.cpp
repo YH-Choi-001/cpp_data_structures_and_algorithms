@@ -547,6 +547,7 @@ int main() {
         const size_t size = heap.size();
         if (size != 0) {
             std::cout << " failed: heap.size() returns " << size << " instead of 0 for a heap that is removed till empty.";
+            passed = false;
         }
         if (passed) {
             std::cout << " passed.";
