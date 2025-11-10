@@ -29,565 +29,614 @@
  * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
+#include "../../test.h"
 #include "../../../src/structures/stacks/LinkedStack.h"
 
 #include <iostream>
+#include <string>
+#include <sstream>
 
 using yh::structures::stacks::LinkedStack;
 
+TEST_BEGIN(stack_is_empty_for_empty_stack)
+{
+    LinkedStack<int> stack;
+    if (stack.isEmpty()) {
+        result.passed = true;
+    } else {
+        result.passed = false;
+        result.reason = "stack.isEmpty() returns false for an empty stack.";
+    }
+}
+TEST_END()
+
+TEST_BEGIN(stack_is_not_empty_for_1_element_stack)
+{
+    LinkedStack<int> stack;
+    int x = 35;
+    stack.push(&x);
+    if (!stack.isEmpty()) {
+        result.passed = true;
+    } else {
+        result.passed = false;
+        result.reason = "stack.isEmpty() returns true for a stack with 1 element.";
+    }
+}
+TEST_END()
+
+TEST_BEGIN(stack_is_not_empty_for_2_element_stack)
+{
+    LinkedStack<int> stack;
+    int x = 35;
+    int y = -12;
+    stack.push(&x);
+    stack.push(&y);
+    if (!stack.isEmpty()) {
+        result.passed = true;
+    } else {
+        result.passed = false;
+        result.reason = "stack.isEmpty() returns true for a stack with 2 elements.";
+    }
+}
+TEST_END()
+
+TEST_BEGIN(stack_size_is_0_for_empty_stack)
+{
+    LinkedStack<int> stack;
+    const size_t size = stack.size();
+    if (size == 0) {
+        result.passed = true;
+    } else {
+        result.passed = false;
+        std::stringstream ss;
+        ss << "stack.size() returns " << size << " for an empty stack.";
+        result.reason = ss.str();
+    }
+}
+TEST_END()
+
+TEST_BEGIN(stack_size_is_1_for_1_element_stack)
+{
+    LinkedStack<int> stack;
+    int x = 35;
+    stack.push(&x);
+    const size_t size = stack.size();
+    if (size == 1) {
+        result.passed = true;
+    } else {
+        result.passed = false;
+        std::stringstream ss;
+        ss << "stack.size() returns " << size << " for a stack with 1 element.";
+        result.reason = ss.str();
+    }
+}
+TEST_END()
+
+TEST_BEGIN(stack_size_is_2_for_2_element_stack)
+{
+    LinkedStack<int> stack;
+    int x = 35;
+    int y = -12;
+    stack.push(&x);
+    stack.push(&y);
+    const size_t size = stack.size();
+    if (size == 2) {
+        result.passed = true;
+    } else {
+        result.passed = false;
+        std::stringstream ss;
+        ss << "stack.size() returns " << size << " for a stack with 2 elements.";
+        result.reason = ss.str();
+    }
+}
+TEST_END()
+
+TEST_BEGIN(stack_size_is_3_for_3_element_stack)
+{
+    LinkedStack<int> stack;
+    int x = 35;
+    int y = -12;
+    int z = 0;
+    stack.push(&x);
+    stack.push(&y);
+    stack.push(&z);
+    const size_t size = stack.size();
+    if (size == 3) {
+        result.passed = true;
+    } else {
+        result.passed = false;
+        std::stringstream ss;
+        ss << "stack.size() returns " << size << " for a stack with 3 elements.";
+        result.reason = ss.str();
+    }
+}
+TEST_END()
+
+TEST_BEGIN(stack_size_is_4_for_4_element_stack)
+{
+    LinkedStack<int> stack;
+    int x = 35;
+    int y = -12;
+    int z = 0;
+    int a = -4;
+    stack.push(&x);
+    stack.push(&y);
+    stack.push(&z);
+    stack.push(&a);
+    const size_t size = stack.size();
+    if (size == 4) {
+        result.passed = true;
+    } else {
+        result.passed = false;
+        std::stringstream ss;
+        ss << "stack.size() returns " << size << " for a stack with 4 elements.";
+        result.reason = ss.str();
+    }
+}
+TEST_END()
+
+TEST_BEGIN(stack_peeking_gives_nullptr_for_empty_stack)
+{
+    LinkedStack<int> stack;
+    int *data = stack.peek();
+    if (data == nullptr) {
+        result.passed = true;
+    } else {
+        result.passed = false;
+        std::stringstream ss;
+        ss << "stack.peeks() returns " << data << " for an empty stack.";
+        result.reason = ss.str();
+    }
+}
+TEST_END()
+
+TEST_BEGIN(stack_peeking_gives_top_element_for_1_element_stack)
+{
+    LinkedStack<int> stack;
+    int x = 35;
+    stack.push(&x);
+    int *data = stack.peek();
+    if (data == &x) {
+        result.passed = true;
+    } else {
+        result.passed = false;
+        std::stringstream ss;
+        ss << "stack.peeks() returns " << data << " but not &x ( = " << &x << ") for a stack with 1 element.";
+        result.reason = ss.str();
+    }
+}
+TEST_END()
+
+TEST_BEGIN(stack_peeking_gives_top_element_for_2_element_stack)
+{
+    LinkedStack<int> stack;
+    int x = 35;
+    int y = -12;
+    stack.push(&x);
+    stack.push(&y);
+    int *data = stack.peek();
+    if (data == &y) {
+        result.passed = true;
+    } else {
+        result.passed = false;
+        std::stringstream ss;
+        ss << "stack.peeks() returns " << data << " but not &y ( = " << &y << ") for a stack with 2 elements.";
+        result.reason = ss.str();
+    }
+}
+TEST_END()
+
+TEST_BEGIN(stack_peeking_gives_top_element_for_3_element_stack)
+{
+    LinkedStack<int> stack;
+    int x = 35;
+    int y = -12;
+    int z = 0;
+    stack.push(&x);
+    stack.push(&y);
+    stack.push(&z);
+    int *data = stack.peek();
+    if (data == &z) {
+        result.passed = true;
+    } else {
+        result.passed = false;
+        std::stringstream ss;
+        ss << "stack.peeks() returns " << data << " but not &z ( = " << &z << ") for a stack with 3 elements.";
+        result.reason = ss.str();
+    }
+}
+TEST_END()
+
+TEST_BEGIN(stack_popping_gives_nullptr_for_empty_stack)
+{
+    LinkedStack<int> stack;
+    int *data = stack.pop();
+    if (data == nullptr) {
+        result.passed = true;
+    } else {
+        result.passed = false;
+        std::stringstream ss;
+        ss << "stack.pop() returns " << data << " for an empty stack.";
+        result.reason = ss.str();
+    }
+}
+TEST_END()
+
+TEST_BEGIN(stack_popping_gives_top_element_for_1_element_stack)
+{
+    LinkedStack<int> stack;
+    int x = 35;
+    stack.push(&x);
+    int *data = stack.pop();
+    if (data == &x) {
+        result.passed = true;
+    } else {
+        result.passed = false;
+        std::stringstream ss;
+        ss << "stack.pop() returns " << data << " but not &x ( = " << &x << ") for a stack with 1 element.";
+        result.reason = ss.str();
+    }
+}
+TEST_END()
+
+TEST_BEGIN(stack_popping_gives_top_element_for_2_element_stack)
+{
+    LinkedStack<int> stack;
+    int x = 35;
+    int y = -12;
+    stack.push(&x);
+    stack.push(&y);
+    int *data = stack.pop();
+    if (data == &y) {
+        result.passed = true;
+    } else {
+        result.passed = false;
+        std::stringstream ss;
+        ss << "stack.pop() returns " << data << " but not &y ( = " << &y << ") for a stack with 2 elements.";
+        result.reason = ss.str();
+    }
+}
+TEST_END()
+
+TEST_BEGIN(stack_popping_gives_top_element_for_3_element_stack)
+{
+    LinkedStack<int> stack;
+    int x = 35;
+    int y = -12;
+    int z = 0;
+    stack.push(&x);
+    stack.push(&y);
+    stack.push(&z);
+    int *data = stack.pop();
+    if (data == &z) {
+        result.passed = true;
+    } else {
+        result.passed = false;
+        std::stringstream ss;
+        ss << "stack.pop() returns " << data << " but not &z ( = " << &z << ") for a stack with 3 elements.";
+        result.reason = ss.str();
+    }
+}
+TEST_END()
+
+TEST_BEGIN(stack_popping_twice_gives_top_element_for_3_element_stack)
+{
+    LinkedStack<int> stack;
+    int x = 35;
+    int y = -12;
+    int z = 0;
+    stack.push(&x);
+    stack.push(&y);
+    stack.push(&z);
+    int *data = stack.pop();
+    int *data2 = stack.pop();
+    if (data == &z && data2 == &y) {
+        result.passed = true;
+    } else {
+        result.passed = false;
+        std::stringstream ss;
+        if (data != &z) {
+            ss << "stack.pop() returns " << data << " but not &z ( = " << &z << ") for a stack with 3 elements.";
+        }
+        if (data2 != &y) {
+            ss << "stack.pop() returns " << data << " but not &y ( = " << &y << ") for a stack with 2 elements.";
+        }
+        result.reason = ss.str();
+    }
+}
+TEST_END()
+
+TEST_BEGIN(stack_size_is_0_after_popping_from_empty_stack)
+{
+    LinkedStack<int> stack;
+    int *data = stack.pop();
+    const size_t size = stack.size();
+    if (size == 0) {
+        result.passed = true;
+    } else {
+        result.passed = false;
+        std::stringstream ss;
+        ss << "stack.size() returns " << size << " after popping an empty stack.";
+        result.reason = ss.str();
+    }
+}
+TEST_END()
+
+TEST_BEGIN(stack_size_is_0_after_popping_from_1_element_stack)
+{
+    LinkedStack<int> stack;
+    int x = 35;
+    stack.push(&x);
+    int *data = stack.pop();
+    const size_t size = stack.size();
+    if (size == 0) {
+        result.passed = true;
+    } else {
+        result.passed = false;
+        std::stringstream ss;
+        ss << "stack.size() returns " << size << " after popping a stack with 1 element.";
+        result.reason = ss.str();
+    }
+}
+TEST_END()
+
+TEST_BEGIN(stack_size_is_1_after_popping_from_2_element_stack)
+{
+    LinkedStack<int> stack;
+    int x = 35;
+    int y = -12;
+    stack.push(&x);
+    stack.push(&y);
+    int *data = stack.pop();
+    const size_t size = stack.size();
+    if (size == 1) {
+        result.passed = true;
+    } else {
+        result.passed = false;
+        std::stringstream ss;
+        ss << "stack.size() returns " << size << " after popping a stack with 2 elements.";
+        result.reason = ss.str();
+    }
+}
+TEST_END()
+
+TEST_BEGIN(stack_size_is_2_after_popping_from_3_element_stack)
+{
+    LinkedStack<int> stack;
+    int x = 35;
+    int y = -12;
+    int z = 0;
+    stack.push(&x);
+    stack.push(&y);
+    stack.push(&z);
+    int *data = stack.pop();
+    const size_t size = stack.size();
+    if (size == 2) {
+        result.passed = true;
+    } else {
+        result.passed = false;
+        std::stringstream ss;
+        ss << "stack.size() returns " << size << " after popping a stack with 3 elements.";
+        result.reason = ss.str();
+    }
+}
+TEST_END()
+
+TEST_BEGIN(stack_size_is_1_after_popping_twice_from_3_element_stack)
+{
+    LinkedStack<int> stack;
+    int x = 35;
+    int y = -12;
+    int z = 0;
+    stack.push(&x);
+    stack.push(&y);
+    stack.push(&z);
+    int *data = stack.pop();
+    int *data2 = stack.pop();
+    const size_t size = stack.size();
+    if (size == 1) {
+        result.passed = true;
+    } else {
+        result.passed = false;
+        std::stringstream ss;
+        ss << "stack.size() returns " << size << " after popping a stack with 3 elements twice.";
+        result.reason = ss.str();
+    }
+}
+TEST_END()
+
+TEST_BEGIN(stack_is_not_empty_for_3_element_stack_popped_and_pushed)
+{
+    LinkedStack<int> stack;
+    int x = 35;
+    int y = -12;
+    int z = 0;
+    int a = -4;
+    stack.push(&x);
+    stack.push(&y);
+    stack.push(&z);
+    int *data = stack.pop();
+    stack.push(&a);
+    const bool isEmpty = stack.isEmpty();
+    if (!isEmpty) {
+        result.passed = true;
+    } else {
+        result.passed = false;
+        std::stringstream ss;
+        ss << "stack.isEmpty() returns " << isEmpty << " after a stack with 3 elements is popped then pushed.";
+        result.reason = ss.str();
+    }
+}
+TEST_END()
+
+TEST_BEGIN(stack_size_is_3_for_3_element_stack_popped_and_pushed)
+{
+    LinkedStack<int> stack;
+    int x = 35;
+    int y = -12;
+    int z = 0;
+    int a = -4;
+    stack.push(&x);
+    stack.push(&y);
+    stack.push(&z);
+    int *data = stack.pop();
+    stack.push(&a);
+    const size_t size = stack.size();
+    if (size == 3) {
+        result.passed = true;
+    } else {
+        result.passed = false;
+        std::stringstream ss;
+        ss << "stack.size() returns " << size << " after a stack with 3 elements is popped then pushed.";
+        result.reason = ss.str();
+    }
+}
+TEST_END()
+
+TEST_BEGIN(stack_peeking_gives_top_element_for_3_element_stack_popped_and_pushed)
+{
+    LinkedStack<int> stack;
+    int x = 35;
+    int y = -12;
+    int z = 0;
+    int a = -4;
+    stack.push(&x);
+    stack.push(&y);
+    stack.push(&z);
+    int *data = stack.pop();
+    stack.push(&a);
+    int *data2 = stack.peek();
+    if (data2 == &a) {
+        result.passed = true;
+    } else {
+        result.passed = false;
+        std::stringstream ss;
+        ss << "stack.peek() returns " << data << " but not &a ( = " << &a << ") after a stack with 3 elements is popped then pushed.";
+        result.reason = ss.str();
+    }
+}
+TEST_END()
+
+TEST_BEGIN(stack_popping_gives_top_element_for_3_element_stack_popped_and_pushed)
+{
+    LinkedStack<int> stack;
+    int x = 35;
+    int y = -12;
+    int z = 0;
+    int a = -4;
+    stack.push(&x);
+    stack.push(&y);
+    stack.push(&z);
+    int *data = stack.pop();
+    stack.push(&a);
+    int *data2 = stack.pop();
+    if (data2 == &a) {
+        result.passed = true;
+    } else {
+        result.passed = false;
+        std::stringstream ss;
+        ss << "stack.peek() returns " << data << " but not &a ( = " << &a << ") after a stack with 3 elements is popped then pushed.";
+        result.reason = ss.str();
+    }
+}
+TEST_END()
+
+TEST_BEGIN(stack_is_empty_for_4_element_stack_popped_and_pushed)
+{
+    LinkedStack<int> stack;
+    int x = 35;
+    int y = -12;
+    int z = 0;
+    int a = -4;
+    stack.push(&x);
+    stack.push(&y);
+    stack.push(&z);
+    int *data = stack.pop();
+    stack.push(&a);
+    int *data2 = stack.pop();
+    if (data2 == &a) {
+        result.passed = true;
+    } else {
+        result.passed = false;
+        std::stringstream ss;
+        ss << "stack.peek() returns " << data << " but not &a ( = " << &a << ") after a stack with 3 elements is popped then pushed.";
+        result.reason = ss.str();
+    }
+}
+TEST_END()
+
+TEST_BEGIN(stack_order_for_4_element_stack)
+{
+    LinkedStack<int> stack;
+    int x = 35;
+    int y = -12;
+    int z = 0;
+    int a = -4;
+    stack.push(&x);
+    stack.push(&y);
+    stack.push(&z);
+    int *data = stack.pop();
+    stack.push(&a);
+    int *data2 = stack.pop();
+    int *data3 = stack.pop();
+    int *data4 = stack.pop();
+    result.passed = true;
+    if (data != &z || data2 != &a || data3 != &y || data4 != &x) {
+        result.passed = false;
+        result.reason = "stack.pop() returns wrong addresses or in wrong order.";
+    }
+    const bool isEmpty = stack.isEmpty();
+    if (!isEmpty) {
+        result.passed = false;
+        result.reason = "stack.isEmpty() returns false for a stack that is popped till empty.";
+    }
+    const size_t size = stack.size();
+    if (size != 0) {
+        result.passed = false;
+        std::stringstream ss;
+        ss << " failed: stack.size() returns " << size << " instead of 0 for a stack that is popped till empty.";
+        result.reason = ss.str();
+    }
+}
+TEST_END()
+
+const testfunc_t functions [] = {
+    test_stack_is_empty_for_empty_stack,
+    test_stack_is_not_empty_for_1_element_stack,
+    test_stack_is_not_empty_for_2_element_stack,
+    test_stack_size_is_0_for_empty_stack,
+    test_stack_size_is_1_for_1_element_stack,
+    test_stack_size_is_2_for_2_element_stack,
+    test_stack_size_is_3_for_3_element_stack,
+    test_stack_size_is_4_for_4_element_stack,
+    test_stack_peeking_gives_nullptr_for_empty_stack,
+    test_stack_peeking_gives_top_element_for_1_element_stack,
+    test_stack_peeking_gives_top_element_for_2_element_stack,
+    test_stack_peeking_gives_top_element_for_3_element_stack,
+    test_stack_popping_gives_nullptr_for_empty_stack,
+    test_stack_popping_gives_top_element_for_1_element_stack,
+    test_stack_popping_gives_top_element_for_2_element_stack,
+    test_stack_popping_gives_top_element_for_3_element_stack,
+    test_stack_popping_twice_gives_top_element_for_3_element_stack,
+    test_stack_size_is_0_after_popping_from_empty_stack,
+    test_stack_size_is_0_after_popping_from_1_element_stack,
+    test_stack_size_is_1_after_popping_from_2_element_stack,
+    test_stack_size_is_2_after_popping_from_3_element_stack,
+    test_stack_size_is_1_after_popping_twice_from_3_element_stack,
+    test_stack_is_not_empty_for_3_element_stack_popped_and_pushed,
+    test_stack_size_is_3_for_3_element_stack_popped_and_pushed,
+    test_stack_peeking_gives_top_element_for_3_element_stack_popped_and_pushed,
+    test_stack_popping_gives_top_element_for_3_element_stack_popped_and_pushed,
+    test_stack_is_empty_for_4_element_stack_popped_and_pushed,
+    test_stack_order_for_4_element_stack,
+};
+
 int main() {
     std::cout << "Testing " << __FILE__ << std::endl;
-    unsigned int failed_testcase_count = 0;
-    size_t testcase_index = 0;
-
-    {
-        LinkedStack<int> stack;
-        std::cout << "Testcase #" << testcase_index << " at line " << __LINE__;
-        if (stack.isEmpty()) {
-            std::cout << " passed.";
-        } else {
-            std::cout << " failed: stack.isEmpty() returns false for an empty stack.";
-            ++failed_testcase_count;
-        }
-        std::cout << std::endl;
-        ++testcase_index;
+    for (testfunc_t func : functions) {
+        test(func);
     }
-
-    {
-        LinkedStack<int> stack;
-        int x = 35;
-        stack.push(&x);
-        std::cout << "Testcase #" << testcase_index << " at line " << __LINE__;
-        if (!stack.isEmpty()) {
-            std::cout << " passed.";
-        } else {
-            std::cout << " failed: stack.isEmpty() returns true for a stack with 1 element.";
-            ++failed_testcase_count;
-        }
-        std::cout << std::endl;
-        ++testcase_index;
-    }
-
-    {
-        LinkedStack<int> stack;
-        int x = 35;
-        int y = -12;
-        stack.push(&x);
-        stack.push(&y);
-        std::cout << "Testcase #" << testcase_index << " at line " << __LINE__;
-        if (!stack.isEmpty()) {
-            std::cout << " passed.";
-        } else {
-            std::cout << " failed: stack.isEmpty() returns true for a stack with 2 elements.";
-            ++failed_testcase_count;
-        }
-        std::cout << std::endl;
-        ++testcase_index;
-    }
-
-    {
-        LinkedStack<int> stack;
-        std::cout << "Testcase #" << testcase_index << " at line " << __LINE__;
-        const size_t size = stack.size();
-        if (size == 0) {
-            std::cout << " passed.";
-        } else {
-            std::cout << " failed: stack.size() returns " << size << " for an empty stack.";
-            ++failed_testcase_count;
-        }
-        std::cout << std::endl;
-        ++testcase_index;
-    }
-
-    {
-        LinkedStack<int> stack;
-        int x = 35;
-        stack.push(&x);
-        std::cout << "Testcase #" << testcase_index << " at line " << __LINE__;
-        const size_t size = stack.size();
-        if (size == 1) {
-            std::cout << " passed.";
-        } else {
-            std::cout << " failed: stack.size() returns " << size << " for a stack with 1 element.";
-            ++failed_testcase_count;
-        }
-        std::cout << std::endl;
-        ++testcase_index;
-    }
-
-    {
-        LinkedStack<int> stack;
-        int x = 35;
-        int y = -12;
-        stack.push(&x);
-        stack.push(&y);
-        std::cout << "Testcase #" << testcase_index << " at line " << __LINE__;
-        const size_t size = stack.size();
-        if (size == 2) {
-            std::cout << " passed.";
-        } else {
-            std::cout << " failed: stack.size() returns " << size << " for a stack with 2 elements.";
-            ++failed_testcase_count;
-        }
-        std::cout << std::endl;
-        ++testcase_index;
-    }
-
-    {
-        LinkedStack<int> stack;
-        int x = 35;
-        int y = -12;
-        int z = 0;
-        stack.push(&x);
-        stack.push(&y);
-        stack.push(&z);
-        std::cout << "Testcase #" << testcase_index << " at line " << __LINE__;
-        const size_t size = stack.size();
-        if (size == 3) {
-            std::cout << " passed.";
-        } else {
-            std::cout << " failed: stack.size() returns " << size << " for a stack with 3 elements.";
-            ++failed_testcase_count;
-        }
-        std::cout << std::endl;
-        ++testcase_index;
-    }
-
-    {
-        LinkedStack<int> stack;
-        int x = 35;
-        int y = -12;
-        int z = 0;
-        int a = -4;
-        stack.push(&x);
-        stack.push(&y);
-        stack.push(&z);
-        stack.push(&a);
-        std::cout << "Testcase #" << testcase_index << " at line " << __LINE__;
-        const size_t size = stack.size();
-        if (size == 4) {
-            std::cout << " passed.";
-        } else {
-            std::cout << " failed: stack.size() returns " << size << " for a stack with 4 elements.";
-            ++failed_testcase_count;
-        }
-        std::cout << std::endl;
-        ++testcase_index;
-    }
-
-    {
-        LinkedStack<int> stack;
-        std::cout << "Testcase #" << testcase_index << " at line " << __LINE__;
-        int *data = stack.peek();
-        if (data == nullptr) {
-            std::cout << " passed.";
-        } else {
-            std::cout << " failed: stack.peek() returns " << data << " for an empty stack.";
-            ++failed_testcase_count;
-        }
-        std::cout << std::endl;
-        ++testcase_index;
-    }
-
-    {
-        LinkedStack<int> stack;
-        int x = 35;
-        stack.push(&x);
-        std::cout << "Testcase #" << testcase_index << " at line " << __LINE__;
-        int *data = stack.peek();
-        if (data == &x) {
-            std::cout << " passed.";
-        } else {
-            std::cout << " failed: stack.peek() returns " << data << " but not &x ( = " << &x << ") for a stack with 1 element.";
-            ++failed_testcase_count;
-        }
-        std::cout << std::endl;
-        ++testcase_index;
-    }
-
-    {
-        LinkedStack<int> stack;
-        int x = 35;
-        int y = -12;
-        stack.push(&x);
-        stack.push(&y);
-        std::cout << "Testcase #" << testcase_index << " at line " << __LINE__;
-        int *data = stack.peek();
-        if (data == &y) {
-            std::cout << " passed.";
-        } else {
-            std::cout << " failed: stack.peek() returns " << data << " but not &y ( = " << &y << ") for a stack with 2 elements.";
-            ++failed_testcase_count;
-        }
-        std::cout << std::endl;
-        ++testcase_index;
-    }
-
-    {
-        LinkedStack<int> stack;
-        int x = 35;
-        int y = -12;
-        int z = 0;
-        stack.push(&x);
-        stack.push(&y);
-        stack.push(&z);
-        std::cout << "Testcase #" << testcase_index << " at line " << __LINE__;
-        int *data = stack.peek();
-        if (data == &z) {
-            std::cout << " passed.";
-        } else {
-            std::cout << " failed: stack.peek() returns " << data << " but not &z ( = " << &z << ") for a stack with 3 elements.";
-            ++failed_testcase_count;
-        }
-        std::cout << std::endl;
-        ++testcase_index;
-    }
-
-    {
-        LinkedStack<int> stack;
-        std::cout << "Testcase #" << testcase_index << " at line " << __LINE__;
-        int *data = stack.pop();
-        if (data == nullptr) {
-            std::cout << " passed.";
-        } else {
-            std::cout << " failed: stack.pop() returns " << data << " for an empty stack.";
-            ++failed_testcase_count;
-        }
-        std::cout << std::endl;
-        ++testcase_index;
-    }
-
-    {
-        LinkedStack<int> stack;
-        int x = 35;
-        stack.push(&x);
-        std::cout << "Testcase #" << testcase_index << " at line " << __LINE__;
-        int *data = stack.pop();
-        if (data == &x) {
-            std::cout << " passed.";
-        } else {
-            std::cout << " failed: stack.pop() returns " << data << " but not &x ( = " << &x << ") for a stack with 1 element.";
-            ++failed_testcase_count;
-        }
-        std::cout << std::endl;
-        ++testcase_index;
-    }
-
-    {
-        LinkedStack<int> stack;
-        int x = 35;
-        int y = -12;
-        stack.push(&x);
-        stack.push(&y);
-        std::cout << "Testcase #" << testcase_index << " at line " << __LINE__;
-        int *data = stack.pop();
-        if (data == &y) {
-            std::cout << " passed.";
-        } else {
-            std::cout << " failed: stack.pop() returns " << data << " but not &y ( = " << &y << ") for a stack with 2 elements.";
-            ++failed_testcase_count;
-        }
-        std::cout << std::endl;
-        ++testcase_index;
-    }
-
-    {
-        LinkedStack<int> stack;
-        int x = 35;
-        int y = -12;
-        int z = 0;
-        stack.push(&x);
-        stack.push(&y);
-        stack.push(&z);
-        std::cout << "Testcase #" << testcase_index << " at line " << __LINE__;
-        int *data = stack.pop();
-        if (data == &z) {
-            std::cout << " passed.";
-        } else {
-            std::cout << " failed: stack.pop() returns " << data << " but not &z ( = " << &z << ") for a stack with 3 elements.";
-            ++failed_testcase_count;
-        }
-        std::cout << std::endl;
-        ++testcase_index;
-    }
-
-    {
-        LinkedStack<int> stack;
-        int x = 35;
-        int y = -12;
-        int z = 0;
-        stack.push(&x);
-        stack.push(&y);
-        stack.push(&z);
-        std::cout << "Testcase #" << testcase_index << " at line " << __LINE__;
-        int *data = stack.pop();
-        int *data2 = stack.pop();
-        if (data == &z && data2 == &y) {
-            std::cout << " passed.";
-        } else {
-            if (data != &z) {
-                std::cout << " failed: stack.pop() returns " << data << " but not &z ( = " << &z << ") for a stack with 3 elements.";
-            }
-            if (data2 != &y) {
-                std::cout << " failed: stack.pop() returns " << data << " but not &y ( = " << &y << ") for a stack with 2 elements.";
-            }
-            ++failed_testcase_count;
-        }
-        std::cout << std::endl;
-        ++testcase_index;
-    }
-
-    {
-        LinkedStack<int> stack;
-        std::cout << "Testcase #" << testcase_index << " at line " << __LINE__;
-        int *data = stack.pop();
-        const size_t size = stack.size();
-        if (size == 0) {
-            std::cout << " passed.";
-        } else {
-            std::cout << " failed: stack.size() returns " << size << " after popping an empty stack.";
-            ++failed_testcase_count;
-        }
-        std::cout << std::endl;
-        ++testcase_index;
-    }
-
-    {
-        LinkedStack<int> stack;
-        int x = 35;
-        stack.push(&x);
-        std::cout << "Testcase #" << testcase_index << " at line " << __LINE__;
-        int *data = stack.pop();
-        const size_t size = stack.size();
-        if (size == 0) {
-            std::cout << " passed.";
-        } else {
-            std::cout << " failed: stack.size() returns " << size << " after popping a stack with 1 element.";
-            ++failed_testcase_count;
-        }
-        std::cout << std::endl;
-        ++testcase_index;
-    }
-
-    {
-        LinkedStack<int> stack;
-        int x = 35;
-        int y = -12;
-        stack.push(&x);
-        stack.push(&y);
-        std::cout << "Testcase #" << testcase_index << " at line " << __LINE__;
-        int *data = stack.pop();
-        const size_t size = stack.size();
-        if (size == 1) {
-            std::cout << " passed.";
-        } else {
-            std::cout << " failed: stack.size() returns " << size << " after popping a stack with 2 elements.";
-            ++failed_testcase_count;
-        }
-        std::cout << std::endl;
-        ++testcase_index;
-    }
-
-    {
-        LinkedStack<int> stack;
-        int x = 35;
-        int y = -12;
-        int z = 0;
-        stack.push(&x);
-        stack.push(&y);
-        stack.push(&z);
-        std::cout << "Testcase #" << testcase_index << " at line " << __LINE__;
-        int *data = stack.pop();
-        const size_t size = stack.size();
-        if (size == 2) {
-            std::cout << " passed.";
-        } else {
-            std::cout << " failed: stack.size() returns " << size << " after popping a stack with 3 elements.";
-            ++failed_testcase_count;
-        }
-        std::cout << std::endl;
-        ++testcase_index;
-    }
-
-    {
-        LinkedStack<int> stack;
-        int x = 35;
-        int y = -12;
-        int z = 0;
-        stack.push(&x);
-        stack.push(&y);
-        stack.push(&z);
-        std::cout << "Testcase #" << testcase_index << " at line " << __LINE__;
-        int *data = stack.pop();
-        int *data2 = stack.pop();
-        const size_t size = stack.size();
-        if (size == 1) {
-            std::cout << " passed.";
-        } else {
-            std::cout << " failed: stack.size() returns " << size << " after popping a stack with 3 elements twice.";
-            ++failed_testcase_count;
-        }
-        std::cout << std::endl;
-        ++testcase_index;
-    }
-
-    {
-        LinkedStack<int> stack;
-        int x = 35;
-        int y = -12;
-        int z = 0;
-        int a = -4;
-        stack.push(&x);
-        stack.push(&y);
-        stack.push(&z);
-        std::cout << "Testcase #" << testcase_index << " at line " << __LINE__;
-        int *data = stack.pop();
-        stack.push(&a);
-        const bool isEmpty = stack.isEmpty();
-        if (!isEmpty) {
-            std::cout << " passed.";
-        } else {
-            std::cout << " failed: stack.isEmpty() returns " << isEmpty << " after a stack with 3 elements is popped then pushed.";
-            ++failed_testcase_count;
-        }
-        std::cout << std::endl;
-        ++testcase_index;
-    }
-
-    {
-        LinkedStack<int> stack;
-        int x = 35;
-        int y = -12;
-        int z = 0;
-        int a = -4;
-        stack.push(&x);
-        stack.push(&y);
-        stack.push(&z);
-        std::cout << "Testcase #" << testcase_index << " at line " << __LINE__;
-        int *data = stack.pop();
-        stack.push(&a);
-        const size_t size = stack.size();
-        if (size == 3) {
-            std::cout << " passed.";
-        } else {
-            std::cout << " failed: stack.size() returns " << size << " after a stack with 3 elements is popped then pushed.";
-            ++failed_testcase_count;
-        }
-        std::cout << std::endl;
-        ++testcase_index;
-    }
-
-    {
-        LinkedStack<int> stack;
-        int x = 35;
-        int y = -12;
-        int z = 0;
-        int a = -4;
-        stack.push(&x);
-        stack.push(&y);
-        stack.push(&z);
-        std::cout << "Testcase #" << testcase_index << " at line " << __LINE__;
-        int *data = stack.pop();
-        stack.push(&a);
-        int *data2 = stack.peek();
-        if (data2 == &a) {
-            std::cout << " passed.";
-        } else {
-            std::cout << " failed: stack.peek() returns " << data << " but not &a ( = " << &a << ") after a stack with 3 elements is popped then pushed.";
-            ++failed_testcase_count;
-        }
-        std::cout << std::endl;
-        ++testcase_index;
-    }
-
-    {
-        LinkedStack<int> stack;
-        int x = 35;
-        int y = -12;
-        int z = 0;
-        int a = -4;
-        stack.push(&x);
-        stack.push(&y);
-        stack.push(&z);
-        std::cout << "Testcase #" << testcase_index << " at line " << __LINE__;
-        int *data = stack.pop();
-        stack.push(&a);
-        int *data2 = stack.pop();
-        if (data2 == &a) {
-            std::cout << " passed.";
-        } else {
-            std::cout << " failed: stack.pop() returns " << data << " but not &a ( = " << &a << ") after a stack with 3 elements is popped then pushed.";
-            ++failed_testcase_count;
-        }
-        std::cout << std::endl;
-        ++testcase_index;
-    }
-
-    {
-        LinkedStack<int> stack;
-        int x = 35;
-        int y = -12;
-        int z = 0;
-        int a = -4;
-        stack.push(&x);
-        stack.push(&y);
-        stack.push(&z);
-        std::cout << "Testcase #" << testcase_index << " at line " << __LINE__;
-        int *data = stack.pop();
-        stack.push(&a);
-        int *data2 = stack.pop();
-        int *data3 = stack.pop();
-        int *data4 = stack.pop();
-        const bool isEmpty = stack.isEmpty();
-        if (isEmpty) {
-            std::cout << " passed.";
-        } else {
-            std::cout << " failed: stack.isEmpty() returns " << isEmpty << " but all elements are popped after pushed to a stack.";
-            ++failed_testcase_count;
-        }
-        std::cout << std::endl;
-        ++testcase_index;
-    }
-
-    {
-        LinkedStack<int> stack;
-        int x = 35;
-        int y = -12;
-        int z = 0;
-        int a = -4;
-        stack.push(&x);
-        stack.push(&y);
-        stack.push(&z);
-        std::cout << "Testcase #" << testcase_index << " at line " << __LINE__;
-        int *data = stack.pop();
-        stack.push(&a);
-        int *data2 = stack.pop();
-        int *data3 = stack.pop();
-        int *data4 = stack.pop();
-        bool passed = true;
-        if (data != &z || data2 != &a || data3 != &y || data4 != &x) {
-            std::cout << " failed: stack.pop() returns wrong addresses or in wrong order.";
-            passed = false;
-        }
-        const bool isEmpty = stack.isEmpty();
-        if (!isEmpty) {
-            std::cout << " failed: stack.isEmpty() returns false for a stack that is popped till empty.";
-            passed = false;
-        }
-        const size_t size = stack.size();
-        if (size != 0) {
-            std::cout << " failed: stack.size() returns " << size << " instead of 0 for a stack that is popped till empty.";
-            passed = false;
-        }
-        if (passed) {
-            std::cout << " passed.";
-        } else {
-            ++failed_testcase_count;
-        }
-        std::cout << std::endl;
-        ++testcase_index;
-    }
-
+    const unsigned int failed_testcase_count = get_failed_testcase_count();
     if (failed_testcase_count == 0) {
         std::cout << "All passed: " << __FILE__ << std::endl;
     } else {
