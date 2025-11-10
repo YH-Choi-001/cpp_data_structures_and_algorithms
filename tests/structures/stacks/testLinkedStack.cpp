@@ -184,7 +184,7 @@ TEST_BEGIN(stack_peeking_gives_nullptr_for_empty_stack)
     } else {
         result.passed = false;
         std::stringstream ss;
-        ss << "stack.peeks() returns " << data << " for an empty stack.";
+        ss << "stack.peek() returns " << data << " for an empty stack.";
         result.reason = ss.str();
     }
 }
@@ -201,7 +201,7 @@ TEST_BEGIN(stack_peeking_gives_top_element_for_1_element_stack)
     } else {
         result.passed = false;
         std::stringstream ss;
-        ss << "stack.peeks() returns " << data << " but not &x ( = " << &x << ") for a stack with 1 element.";
+        ss << "stack.peek() returns " << data << " but not &x ( = " << &x << ") for a stack with 1 element.";
         result.reason = ss.str();
     }
 }
@@ -220,7 +220,7 @@ TEST_BEGIN(stack_peeking_gives_top_element_for_2_element_stack)
     } else {
         result.passed = false;
         std::stringstream ss;
-        ss << "stack.peeks() returns " << data << " but not &y ( = " << &y << ") for a stack with 2 elements.";
+        ss << "stack.peek() returns " << data << " but not &y ( = " << &y << ") for a stack with 2 elements.";
         result.reason = ss.str();
     }
 }
@@ -241,7 +241,7 @@ TEST_BEGIN(stack_peeking_gives_top_element_for_3_element_stack)
     } else {
         result.passed = false;
         std::stringstream ss;
-        ss << "stack.peeks() returns " << data << " but not &z ( = " << &z << ") for a stack with 3 elements.";
+        ss << "stack.peek() returns " << data << " but not &z ( = " << &z << ") for a stack with 3 elements.";
         result.reason = ss.str();
     }
 }
@@ -535,7 +535,7 @@ TEST_BEGIN(stack_popping_gives_top_element_for_3_element_stack_popped_and_pushed
     } else {
         result.passed = false;
         std::stringstream ss;
-        ss << "stack.peek() returns " << data << " but not &a ( = " << &a << ") after a stack with 3 elements is popped then pushed.";
+        ss << "stack.pop() returns " << data << " but not &a ( = " << &a << ") after a stack with 3 elements is popped then pushed.";
         result.reason = ss.str();
     }
 }
@@ -554,13 +554,14 @@ TEST_BEGIN(stack_is_empty_for_4_element_stack_popped_and_pushed)
     int *data = stack.pop();
     stack.push(&a);
     int *data2 = stack.pop();
-    if (data2 == &a) {
+    int *data3 = stack.pop();
+    int *data4 = stack.pop();
+    const bool isEmpty = stack.isEmpty();
+    if (isEmpty) {
         result.passed = true;
     } else {
         result.passed = false;
-        std::stringstream ss;
-        ss << "stack.peek() returns " << data << " but not &a ( = " << &a << ") after a stack with 3 elements is popped then pushed.";
-        result.reason = ss.str();
+        result.reason = "stack.isEmpty() returns false after a stack with 4 elements is pushed then popped.";
     }
 }
 TEST_END()
