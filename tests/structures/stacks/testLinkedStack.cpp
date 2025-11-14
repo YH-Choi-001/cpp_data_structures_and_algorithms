@@ -541,7 +541,7 @@ TEST_BEGIN(stack_popping_gives_top_element_for_3_element_stack_popped_and_pushed
 }
 TEST_END()
 
-TEST_BEGIN(stack_is_empty_for_4_element_stack_popped_and_pushed)
+TEST_BEGIN(stack_is_empty_for_4_element_stack_pushed_and_popped)
 {
     LinkedStack<int> stack;
     int x = 35;
@@ -628,7 +628,7 @@ const testfunc_t functions [] = {
     test_stack_size_is_3_for_3_element_stack_popped_and_pushed,
     test_stack_peeking_gives_top_element_for_3_element_stack_popped_and_pushed,
     test_stack_popping_gives_top_element_for_3_element_stack_popped_and_pushed,
-    test_stack_is_empty_for_4_element_stack_popped_and_pushed,
+    test_stack_is_empty_for_4_element_stack_pushed_and_popped,
     test_stack_order_for_4_element_stack,
 };
 

@@ -541,7 +541,7 @@ TEST_BEGIN(queue_dequeueing_gives_first_element_for_3_element_queue_dequeued_and
 }
 TEST_END()
 
-TEST_BEGIN(queue_is_empty_for_4_element_queue_dequeued_and_enqueued)
+TEST_BEGIN(queue_is_empty_for_4_element_queue_enqueued_and_dequeued)
 {
     LinkedQueue<int> queue;
     int x = 35;
@@ -628,7 +628,7 @@ const testfunc_t functions [] = {
     test_queue_size_is_3_for_3_element_queue_dequeued_and_enqueued,
     test_queue_peeking_gives_first_element_for_3_element_queue_dequeued_and_enqueued,
     test_queue_dequeueing_gives_first_element_for_3_element_queue_dequeued_and_enqueued,
-    test_queue_is_empty_for_4_element_queue_dequeued_and_enqueued,
+    test_queue_is_empty_for_4_element_queue_enqueued_and_dequeued,
     test_queue_order_for_4_element_queue,
 };
 
