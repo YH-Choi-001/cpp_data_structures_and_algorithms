@@ -635,7 +635,6 @@ const testfunc_t functions [] = {
 int main() {
     std::cout << "Testing " << __FILE__ << std::endl;
     for (testfunc_t func : functions) {
-        sizeof(functions)/sizeof(functions[0]);
         test(func);
     }
     const unsigned int failed_testcase_count = get_failed_testcase_count();
