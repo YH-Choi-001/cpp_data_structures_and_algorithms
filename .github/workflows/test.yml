@@ -17,7 +17,9 @@ jobs:
     steps:
       - name: Checkout Repo
         uses: actions/checkout@v4
-      - name: Give Execute Permission to test shell script
-        run: chmod u+x ${{ github.workspace }}/tests/test_all.sh
-      - name: Run Tests
-        run: ${{ github.workspace }}/tests/test_all.sh
+      - name: Change directory to tests
+        run: cd ${{ github.workspace }}/tests/
+      - name: Compile Test Files
+        run: make compile
+      - name: Run Test Cases
+        run: make test
