@@ -13,3 +13,7 @@ The best way to learn is by implementing it on your own once.
 It's the same as doing chemistry practicals / labs.  
 
 If you need array lists for general computing, use std::vector instead.  
+  
+If you have any problems, please raise an issue in the [GitHub repo](https://github.com/YH-Choi-001/cpp_data_structures_and_algorithms).  
+  
+**This software and/or API reference are maintained by YH Choi.**  
