@@ -38,6 +38,19 @@
 
 using yh::structures::stacks::LinkedStack;
 
+TEST_BEGIN(empty_testcase)
+{
+    result.passed = true;
+}
+TEST_END()
+
+TEST_BEGIN(linkedstack_created_testcase)
+{
+    LinkedStack<int> stack;
+    result.passed = true;
+}
+TEST_END()
+
 TEST_BEGIN(stack_is_empty_for_empty_stack)
 {
     LinkedStack<int> stack;
@@ -602,6 +615,8 @@ TEST_BEGIN(stack_order_for_4_element_stack)
 TEST_END()
 
 const testfunc_t functions [] = {
+    test_empty_testcase,
+    test_linkedstack_created_testcase,
     test_stack_is_empty_for_empty_stack,
     test_stack_is_not_empty_for_1_element_stack,
     test_stack_is_not_empty_for_2_element_stack,
