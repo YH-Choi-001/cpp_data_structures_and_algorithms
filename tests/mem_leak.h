@@ -5,7 +5,7 @@
 #include <cstdlib>
 
 #ifndef MEM_LEAK_DEBUG_LEVEL
-#define MEM_LEAK_DEBUG_LEVEL 2
+#define MEM_LEAK_DEBUG_LEVEL 1
 #endif
 
 namespace tests {
