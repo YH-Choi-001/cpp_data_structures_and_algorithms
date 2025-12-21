@@ -20,7 +20,7 @@ jobs:
       - name: Merge Updates on Main into Docs
         run: git merge main
       - name: Build Doxygen Documentation
-        uses: mattnotmitt/doxygen-action@v1.9.5
+        uses: mattnotmitt/doxygen-action@edge
         with:
           working-directory: '${{ github.workspace }}'
           doxyfile-path: 'docs/doxygen/Doxyfile'
