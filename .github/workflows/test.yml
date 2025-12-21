@@ -3,7 +3,7 @@ on:
   push:
     branches: [ "main" ]
   pull_request:
-    branches: [ "main" ]
+    branches: [ "**" ]
 
 env:
   build-number: ${GITHUB_RUN_NUMBER}
@@ -17,13 +17,8 @@ jobs:
     steps:
       - name: Checkout Repo
         uses: actions/checkout@v4
-      - name: Change directory to tests
-        run: cd ${{ github.workspace }}/tests/
-      - name: Print Working Directory
-        run: pwd
-      - name: Print Makefile
-        run: cat Makefile
-      - name: Compile Test Files
-        run: make compile
-      - name: Run Test Cases
-        run: make test
+      - name: Tests
+        run: |
+          cd ${{ github.workspace }}/tests/
+          make compile
+          make test
