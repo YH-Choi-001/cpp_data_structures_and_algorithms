@@ -5,7 +5,7 @@
 #include <cstdlib>
 
 #ifndef MEM_LEAK_DEBUG_LEVEL
-#define MEM_LEAK_DEBUG_LEVEL 1
+#define MEM_LEAK_DEBUG_LEVEL 2
 #endif
 
 void reset_malloc_count();
