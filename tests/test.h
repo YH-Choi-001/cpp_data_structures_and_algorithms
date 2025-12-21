@@ -3,6 +3,7 @@
 
 #include <iostream>
 #include <string>
+#include <sstream>
 
 #include "mem_leak.h"
 
@@ -18,21 +19,23 @@ static size_t testcase_number = 1;
 static size_t failed_testcase_count = 0;
 
 void test(testfunc_t func) {
+    testcase_result_t result;
     reset_malloc_count();
-    std::cout << "Testcase #" << testcase_number;
-    testcase_result_t result = func();
-    std::cout << " at line " << result.line << ": ";
-    if (has_memory_leaked()) {
+    result = func();
+    const bool is_memory_leaked = has_memory_leaked();
+    std::stringstream sstream;
+    sstream << "Testcase #" << testcase_number << " at line " << result.line << ": ";
+    if (is_memory_leaked) {
         result.passed = false;
         result.reason += "; !!! MEMORY LEAK !!!";
     }
     if (result.passed) {
-        std::cout << "passed.";
+        sstream << "passed.";
     } else {
-        std::cout << "failed: " << result.reason;
+        sstream << "failed: " << result.reason;
         failed_testcase_count++;
     }
-    std::cout << std::endl;
+    std::cout << sstream.str() << std::endl;
     testcase_number++;
 }
 
