@@ -13,15 +13,15 @@ struct testcase_result_t {
     std::string reason;
 };
 
-typedef testcase_result_t (*testfunc_t)();
+typedef void (*testfunc_t)(testcase_result_t &);
 
 static size_t testcase_number = 1;
 static size_t failed_testcase_count = 0;
 
 void test(testfunc_t func) {
-    testcase_result_t result;
+    testcase_result_t result {false, 0, "no reason provided"};
     tests::mem_leak::reset_malloc_count();
-    result = func();
+    func(result);
     const size_t malloc_count = tests::mem_leak::get_malloc_count();
     const bool is_memory_leaked = tests::mem_leak::has_memory_leaked();
     std::stringstream sstream;
@@ -52,11 +52,10 @@ size_t get_failed_testcase_count() {
 }
 
 #define TEST_BEGIN(testcase_name) \
-testcase_result_t test_##testcase_name() { \
-    testcase_result_t result {false, __LINE__, "no reason provided"};
+void test_##testcase_name(testcase_result_t &result) { \
+    result.line = __LINE__;
 
 #define TEST_END() \
-    return result; \
 }
 
 #endif // #ifndef TEST_H

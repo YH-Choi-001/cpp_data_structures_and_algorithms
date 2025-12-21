@@ -1,7 +1,7 @@
 all: test
 
 .compiled_tests:
-	find ./ -name "test*.cpp" -exec g++ {} -o {}.out \;
+	find ./ -name "test*.cpp" -exec g++ -std=c++11 {} -o {}.out \;
 	mkdir -p .compiled_tests
 
 compile: .compiled_tests
