@@ -20,14 +20,22 @@ static size_t failed_testcase_count = 0;
 
 void test(testfunc_t func) {
     testcase_result_t result;
-    reset_malloc_count();
+    tests::mem_leak::reset_malloc_count();
     result = func();
-    const bool is_memory_leaked = has_memory_leaked();
+    const size_t malloc_count = tests::mem_leak::get_malloc_count();
+    const bool is_memory_leaked = tests::mem_leak::has_memory_leaked();
     std::stringstream sstream;
     sstream << "Testcase #" << testcase_number << " at line " << result.line << ": ";
     if (is_memory_leaked) {
-        result.passed = false;
-        result.reason += "; !!! MEMORY LEAK !!!";
+        std::stringstream reasonstream;
+        reasonstream << "Memory leak! You forgot " << malloc_count << " delete(s).";
+        const std::string reasonstring = reasonstream.str();
+        if (result.passed) {
+            result.passed = false;
+            result.reason = reasonstring;
+        } else {
+            result.reason += "; " + reasonstring;
+        }
     }
     if (result.passed) {
         sstream << "passed.";

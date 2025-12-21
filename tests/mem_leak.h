@@ -8,11 +8,17 @@
 #define MEM_LEAK_DEBUG_LEVEL 2
 #endif
 
-void reset_malloc_count();
+namespace tests {
+    namespace mem_leak {
+        static size_t malloc_count = 0;
 
-size_t get_malloc_count();
+        void reset_malloc_count();
 
-bool has_memory_leaked();
+        size_t get_malloc_count();
+
+        bool has_memory_leaked();
+    }
+}
 
 #if (MEM_LEAK_DEBUG_LEVEL == 0)
 // use the default implementation
@@ -29,88 +35,84 @@ bool has_memory_leaked();
 //     free(ptr);
 // }
 
-void reset_malloc_count() {
+void tests::mem_leak::reset_malloc_count() {
     //
 }
 
-size_t get_malloc_count() {
+size_t tests::mem_leak::get_malloc_count() {
     return 0;
 }
 
-bool has_memory_leaked() {
+bool tests::mem_leak::has_memory_leaked() {
     return false;
 }
 #elif (MEM_LEAK_DEBUG_LEVEL == 1)
 
-static size_t malloc_count = 0;
-
 void *operator new(const size_t size) {
-    malloc_count++;
+    tests::mem_leak::malloc_count++;
     return malloc(size);
 }
 void *operator new[](const size_t size) {
-    malloc_count++;
+    tests::mem_leak::malloc_count++;
     return malloc(size);
 }
 void operator delete(void *const ptr) {
-    malloc_count--;
+    tests::mem_leak::malloc_count--;
     free(ptr);
 }
 void operator delete[](void *const ptr) {
-    malloc_count--;
+    tests::mem_leak::malloc_count--;
     free(ptr);
 }
 
-void reset_malloc_count() {
-    malloc_count = 0;
+void tests::mem_leak::reset_malloc_count() {
+    tests::mem_leak::malloc_count = 0;
 }
 
-size_t get_malloc_count() {
-    return malloc_count;
+size_t tests::mem_leak::get_malloc_count() {
+    return tests::mem_leak::malloc_count;
 }
 
-bool has_memory_leaked() {
-    return malloc_count != 0;
+bool tests::mem_leak::has_memory_leaked() {
+    return tests::mem_leak::malloc_count != 0;
 }
 #elif (MEM_LEAK_DEBUG_LEVEL == 2)
 #include <iostream>
 
-static size_t malloc_count = 0;
-
 void *operator new(const size_t size) {
-    malloc_count++;
+    tests::mem_leak::malloc_count++;
     void *const ptr = malloc(size);
     std::cout << "new @ " << ptr << " (len = " << size << " )" << std::endl;
     return ptr;
 }
 void *operator new[](const size_t size) {
-    malloc_count++;
+    tests::mem_leak::malloc_count++;
     void *const ptr = malloc(size);
     std::cout << "new @ " << ptr << " (len = " << size << " )" << std::endl;
     return ptr;
 }
 void operator delete(void *const ptr) {
-    malloc_count--;
+    tests::mem_leak::malloc_count--;
     std::cout << "del @ " << ptr << std::endl;
     free(ptr);
 }
 void operator delete[](void *const ptr) {
-    malloc_count--;
+    tests::mem_leak::malloc_count--;
     std::cout << "del @ " << ptr << std::endl;
     free(ptr);
 }
 
-void reset_malloc_count() {
-    malloc_count = 0;
-    std::cout << "malloc_count resetted" << std::endl;
+void tests::mem_leak::reset_malloc_count() {
+    tests::mem_leak::malloc_count = 0;
+    std::cout << "tests::mem_leak::malloc_count resetted" << std::endl;
 }
 
-size_t get_malloc_count() {
-    return malloc_count;
+size_t tests::mem_leak::get_malloc_count() {
+    return tests::mem_leak::malloc_count;
 }
 
-bool has_memory_leaked() {
-    return malloc_count != 0;
+bool tests::mem_leak::has_memory_leaked() {
+    return tests::mem_leak::malloc_count != 0;
 }
 #endif
 
