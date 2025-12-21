@@ -16,4 +16,5 @@ jobs:
           branch: docs
           folder: docs/html
           config_file: docs/doxygen/Doxyfile
+          target_folder: docs/html
           doxygen_version: 1.13.2
