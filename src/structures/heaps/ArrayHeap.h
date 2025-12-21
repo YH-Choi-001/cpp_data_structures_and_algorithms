@@ -34,8 +34,6 @@
 
 #include "Heap.h"
 
-#include <iostream>
-
 namespace yh {
     namespace structures {
         namespace heaps {
