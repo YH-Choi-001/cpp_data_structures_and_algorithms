@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['reminder_0',['Reminder',['../index.html#autotoc_md4',1,'']]],
+  ['reminder_0',['Reminder',['../index.html#autotoc_md5',1,'']]],
   ['remove_1',['remove',['../classyh_1_1structures_1_1lists_1_1ArrayList.html#a887aac5bba26c26a551a24cbdd848637',1,'yh::structures::lists::ArrayList::remove()'],['../classyh_1_1structures_1_1lists_1_1DoublyLinkedList.html#a76fd05fa4aa1f64705a5a7e1257e47fc',1,'yh::structures::lists::DoublyLinkedList::remove()'],['../classyh_1_1structures_1_1lists_1_1List.html#a2555917acb779758ba2f6bdcbf9c1a14',1,'yh::structures::lists::List::remove()'],['../classyh_1_1structures_1_1lists_1_1SinglyLinkedList.html#a6a85915d45acdb87ff1cf47d51a0070d',1,'yh::structures::lists::SinglyLinkedList::remove()']]],
   ['removehead_2',['removeHead',['../classyh_1_1structures_1_1lists_1_1DoublyLinkedList.html#a227db9a2b633eff76bec4bb6a90ef48a',1,'yh::structures::lists::DoublyLinkedList::removeHead()'],['../classyh_1_1structures_1_1lists_1_1List.html#a692735d3df197b12a7d4cdf3c703f839',1,'yh::structures::lists::List::removeHead()'],['../classyh_1_1structures_1_1lists_1_1SinglyLinkedList.html#a770dfaa878bc0a25f8caea71b414f3a5',1,'yh::structures::lists::SinglyLinkedList::removeHead()']]],
   ['removemax_3',['removeMax',['../classyh_1_1structures_1_1heaps_1_1MaxArrayHeap.html#afbc423db11a0dcfe7bb696402d45a0c8',1,'yh::structures::heaps::MaxArrayHeap']]],
