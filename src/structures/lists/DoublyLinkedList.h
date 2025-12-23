@@ -389,6 +389,59 @@ namespace yh {
                         delete removedTail;
                         return data;
                     }
+
+                    /**
+                     * @brief Processes each element with a function.
+                     * @param func The function to process the elements. param: T* Pointer to the element.
+                     * @note Do not add or remove elements in the list within the given function.
+                     */
+                    virtual void foreach(void (*func)(T *)) override {
+                        if (func == nullptr) {
+                            return;
+                        }
+                        Node *node = head;
+                        while (node != nullptr) {
+                            func(node->data);
+                            node = node->next;
+                        }
+                    }
+
+                    /**
+                     * @brief Processes each element with a predicate function.
+                     * @param func The function to process the elements. param: T* Pointer to the element. return: True to remove the element.
+                     * @note Do not add or remove elements in the list within the given function.
+                     */
+                    virtual void removeIf(bool (*func)(T *)) override {
+                        if (func == nullptr) {
+                            return;
+                        }
+                        Node *node = head;
+                        while (node != nullptr) {
+                            const bool needToRemove = func(node->data);
+                            if (needToRemove) {
+                                elementsCount--;
+
+                                Node *const prevNode = node->prev;
+                                Node *const nextNode = node->next;
+                                if (node == head) {
+                                    head = nextNode;
+                                }
+                                if (node == tail) {
+                                    tail = prevNode;
+                                }
+                                if (prevNode != nullptr) {
+                                    prevNode->next = nextNode;
+                                }
+                                if (nextNode != nullptr) {
+                                    nextNode->prev = prevNode;
+                                }
+                                delete node;
+                                node = nextNode;
+                            } else {
+                                node = node->next;
+                            }
+                        }
+                    }
             };
         }
     }
