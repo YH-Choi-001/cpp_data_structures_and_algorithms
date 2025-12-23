@@ -1287,6 +1287,67 @@ TEST_BEGIN(list_set_operations_4)
 }
 TEST_END()
 
+TEST_BEGIN(list_foreach)
+{
+    LIST_TYPE<int> list;
+    int x = 35;
+    int y = -12;
+    int z = 0;
+    int a = -4;
+    list.addTail(&x);
+    list.addTail(&y);
+    list.addTail(&z);
+    list.addTail(&a);
+    static int *pointers [4];
+    pointers[0] = &x;
+    pointers[1] = &y;
+    pointers[2] = &z;
+    pointers[3] = &a;
+    static int i;
+    i = 0;
+    static bool passed;
+    passed = true;
+    static std::string reason;
+    reason = result.reason;
+    list.foreach([](int *const ptr) {
+        if (ptr != pointers[i]) {
+            passed = false;
+            reason = "list.foreach() gives incorrect pointer.";
+        }
+        i++;
+    });
+    result.passed = passed;
+    if (i != 4) {
+        result.passed = false;
+        result.reason = "list.foreach() doesn't run on every element.";
+    }
+}
+TEST_END()
+
+TEST_BEGIN(list_removeIf)
+{
+    LIST_TYPE<int> list;
+    int x = 35;
+    int y = -12;
+    int z = 0;
+    int a = -4;
+    list.addTail(&x);
+    list.addTail(&y);
+    list.addTail(&z);
+    list.addTail(&a);
+    list.removeIf([](int *const ptr) { return (*ptr) % 4 == 0; });
+    result.passed = true;
+    if (list.size() != 1) {
+        result.passed = false;
+        result.reason = "list.size() does not match expectations after list.removeIf().";
+    }
+    if (list.get(0) != &x) {
+        result.passed = false;
+        result.reason = "list.removeIf() does not remove the appropriate elements.";
+    }
+}
+TEST_END()
+
 const testfunc_t functions [] = {
     test_list_is_empty_for_empty_list,
     test_list_is_not_empty_for_1_element_list_add_head,
@@ -1337,7 +1398,9 @@ const testfunc_t functions [] = {
     test_list_set_operations_1,
     test_list_set_operations_2,
     test_list_set_operations_3,
-    test_list_set_operations_4
+    test_list_set_operations_4,
+    test_list_foreach,
+    test_list_removeIf
 };
 
 int main() {
