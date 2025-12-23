@@ -359,6 +359,51 @@ namespace yh {
                         elementsCount--;
                         return data;
                     }
+
+                    /**
+                     * @brief Processes each element with a function.
+                     * @param func The function to process the elements. param: T* Pointer to the element.
+                     * @note Do not add or remove elements in the list within the given function.
+                     */
+                    virtual void foreach(void (*func)(T *)) override {
+                        Node *node = head;
+                        while (node != nullptr) {
+                            func(node->data);
+                            node = node->next;
+                        }
+                    }
+
+                    /**
+                     * @brief Processes each element with a predicate function.
+                     * @param func The function to process the elements. param: T* Pointer to the element. return: True to remove the element.
+                     * @note Do not add or remove elements in the list within the given function.
+                     */
+                    virtual void removeIf(bool (*func)(T *)) override {
+                        Node *prevNode = nullptr;
+                        Node *node = head;
+                        while (node != nullptr) {
+                            const bool needToRemove = func(node->data);
+                            if (needToRemove) {
+                                // TODO: remove the node
+                                elementsCount--;
+
+                                Node *const nextNode = node->next;
+                                if (node == head) {
+                                    head = nextNode;
+                                } else if (node == tail) {
+                                    tail = prevNode;
+                                }
+                                if (prevNode != nullptr) {
+                                    prevNode->next = nextNode;
+                                }
+                                delete node;
+                                node = nextNode;
+                            } else {
+                                prevNode = node;
+                                node = node->next;
+                            }
+                        }
+                    }
             };
         }
     }

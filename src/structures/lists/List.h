@@ -187,6 +187,34 @@ namespace yh {
                     virtual T *removeTail() {
                         return remove(size() - 1);
                     }
+
+                    /**
+                     * @brief Processes each element with a function.
+                     * @param func The function to process the elements. param: T* Pointer to the element.
+                     * @note Do not add or remove elements in the list within the given function.
+                     */
+                    virtual void foreach(void (*func)(T *)) {
+                        const size_t len = size();
+                        for (size_t i = 0; i < len; i++) {
+                            func(get(i));
+                        }
+                    }
+
+                    /**
+                     * @brief Processes each element with a predicate function.
+                     * @param func The function to process the elements. param: T* Pointer to the element. return: True to remove the element.
+                     * @note Do not add or remove elements in the list within the given function.
+                     */
+                    virtual void removeIf(bool (*func)(T *)) {
+                        for (size_t i = 0; i < size();) {
+                            const bool needToRemove = func(get(i));
+                            if (needToRemove) {
+                                remove(i);
+                            } else {
+                                i++;
+                            }
+                        }
+                    }
             };
         }
     }
