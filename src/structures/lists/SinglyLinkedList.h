@@ -366,6 +366,9 @@ namespace yh {
                      * @note Do not add or remove elements in the list within the given function.
                      */
                     virtual void foreach(void (*func)(T *)) override {
+                        if (func == nullptr) {
+                            return;
+                        }
                         Node *node = head;
                         while (node != nullptr) {
                             func(node->data);
@@ -379,18 +382,21 @@ namespace yh {
                      * @note Do not add or remove elements in the list within the given function.
                      */
                     virtual void removeIf(bool (*func)(T *)) override {
+                        if (func == nullptr) {
+                            return;
+                        }
                         Node *prevNode = nullptr;
                         Node *node = head;
                         while (node != nullptr) {
                             const bool needToRemove = func(node->data);
                             if (needToRemove) {
-                                // TODO: remove the node
                                 elementsCount--;
 
                                 Node *const nextNode = node->next;
                                 if (node == head) {
                                     head = nextNode;
-                                } else if (node == tail) {
+                                }
+                                if (node == tail) {
                                     tail = prevNode;
                                 }
                                 if (prevNode != nullptr) {

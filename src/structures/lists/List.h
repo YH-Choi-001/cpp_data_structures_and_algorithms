@@ -194,6 +194,9 @@ namespace yh {
                      * @note Do not add or remove elements in the list within the given function.
                      */
                     virtual void foreach(void (*func)(T *)) {
+                        if (func == nullptr) {
+                            return;
+                        }
                         const size_t len = size();
                         for (size_t i = 0; i < len; i++) {
                             func(get(i));
@@ -206,6 +209,9 @@ namespace yh {
                      * @note Do not add or remove elements in the list within the given function.
                      */
                     virtual void removeIf(bool (*func)(T *)) {
+                        if (func == nullptr) {
+                            return;
+                        }
                         for (size_t i = 0; i < size();) {
                             const bool needToRemove = func(get(i));
                             if (needToRemove) {
