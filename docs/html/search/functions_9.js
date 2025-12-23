@@ -1,5 +1,9 @@
 var searchData=
 [
-  ['queue_0',['Queue',['../classyh_1_1structures_1_1queues_1_1Queue.html#a393ecb2d35921464b1e49eba23fb32f4',1,'yh::structures::queues::Queue']]],
-  ['quick_5fsort_1',['quick_sort',['../quick__sort_8h.html#ac89dc496d0c23006915ca49fd40481f4',1,'yh::algo::sort']]]
+  ['peek_0',['peek',['../classyh_1_1structures_1_1queues_1_1LinkedQueue.html#a0be738b62914f0a197ce5ca80aa57929',1,'yh::structures::queues::LinkedQueue::peek()'],['../classyh_1_1structures_1_1queues_1_1Queue.html#a9b115b18cb5ab677c9592547ee98898a',1,'yh::structures::queues::Queue::peek()'],['../classyh_1_1structures_1_1stacks_1_1LinkedStack.html#a618f794c76aa71b926006e772a9f1f64',1,'yh::structures::stacks::LinkedStack::peek()'],['../classyh_1_1structures_1_1stacks_1_1Stack.html#a50fbfb74a831cbbfe2080157795d8177',1,'yh::structures::stacks::Stack::peek()']]],
+  ['peekmax_1',['peekMax',['../classyh_1_1structures_1_1heaps_1_1MaxArrayHeap.html#a74288b764ca0ce7f84a862ec863efb9f',1,'yh::structures::heaps::MaxArrayHeap']]],
+  ['peekmin_2',['peekMin',['../classyh_1_1structures_1_1heaps_1_1MinArrayHeap.html#a0f29e8cd0c7d6301031204195e142590',1,'yh::structures::heaps::MinArrayHeap']]],
+  ['peekroot_3',['peekRoot',['../classyh_1_1structures_1_1heaps_1_1ArrayHeap.html#a1f93122542a4a1b7390c536edc033915',1,'yh::structures::heaps::ArrayHeap::peekRoot()'],['../classyh_1_1structures_1_1heaps_1_1Heap.html#af057da7209e1ecd7bc087361af6004b1',1,'yh::structures::heaps::Heap::peekRoot()']]],
+  ['pop_4',['pop',['../classyh_1_1structures_1_1stacks_1_1LinkedStack.html#a7ba34cab8a6c31f56e796c33552fc892',1,'yh::structures::stacks::LinkedStack::pop()'],['../classyh_1_1structures_1_1stacks_1_1Stack.html#a9627bbabcc804b7f4bd610db3056a39a',1,'yh::structures::stacks::Stack::pop()']]],
+  ['push_5',['push',['../classyh_1_1structures_1_1stacks_1_1LinkedStack.html#a1cd17bfba538f812f5a520ede20dcfab',1,'yh::structures::stacks::LinkedStack::push()'],['../classyh_1_1structures_1_1stacks_1_1Stack.html#a2ef94fb4b9e8ccb7bb49d1a18b44289b',1,'yh::structures::stacks::Stack::push()']]]
 ];

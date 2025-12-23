@@ -195,6 +195,12 @@ virtual&#160;</td><td class="memItemRight" valign="bottom"><b>~List</b> ()</td><
 <tr class="memitem:a3be8948798364ff9088c761f2dc03ea7" id="r_a3be8948798364ff9088c761f2dc03ea7"><td class="memItemLeft" align="right" valign="top">virtual T *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3be8948798364ff9088c761f2dc03ea7">removeTail</a> ()</td></tr>
 <tr class="memdesc:a3be8948798364ff9088c761f2dc03ea7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Removes the element at the tail of the list.  <br /></td></tr>
 <tr class="separator:a3be8948798364ff9088c761f2dc03ea7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a94da6fdd1609a139b328107d5726de59" id="r_a94da6fdd1609a139b328107d5726de59"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a94da6fdd1609a139b328107d5726de59">foreach</a> (void(*func)(T *))</td></tr>
+<tr class="memdesc:a94da6fdd1609a139b328107d5726de59"><td class="mdescLeft">&#160;</td><td class="mdescRight">Processes each element with a function.  <br /></td></tr>
+<tr class="separator:a94da6fdd1609a139b328107d5726de59"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a11dc5e0c309f1248181762e6eeee77f7" id="r_a11dc5e0c309f1248181762e6eeee77f7"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a11dc5e0c309f1248181762e6eeee77f7">removeIf</a> (bool(*func)(T *))</td></tr>
+<tr class="memdesc:a11dc5e0c309f1248181762e6eeee77f7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Processes each element with a predicate function.  <br /></td></tr>
+<tr class="separator:a11dc5e0c309f1248181762e6eeee77f7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pro-methods" name="pro-methods"></a>
 Protected Member Functions</h2></td></tr>
@@ -287,6 +293,44 @@ template&lt;typename T&gt; </div>
 <dl class="section see"><dt>See also</dt><dd><a class="el" href="#a615639c9bb668b2d0a4cefd167aabf1c" title="Inserts an element at a specific index.">insert()</a> </dd></dl>
 
 <p>Reimplemented in <a class="el" href="classyh_1_1structures_1_1lists_1_1DoublyLinkedList.html#a3628328cfa0a5a6d48f4a94d7cd6c08a">yh::structures::lists::DoublyLinkedList&lt; T &gt;</a>, and <a class="el" href="classyh_1_1structures_1_1lists_1_1SinglyLinkedList.html#afa595e631e55447a3973658c47588609">yh::structures::lists::SinglyLinkedList&lt; T &gt;</a>.</p>
+
+</div>
+</div>
+<a id="a94da6fdd1609a139b328107d5726de59" name="a94da6fdd1609a139b328107d5726de59"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a94da6fdd1609a139b328107d5726de59">&#9670;&#160;</a></span>foreach()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual void <a class="el" href="classyh_1_1structures_1_1lists_1_1List.html">yh::structures::lists::List</a>&lt; T &gt;::foreach </td>
+          <td>(</td>
+          <td class="paramtype">void(*</td>          <td class="paramname"><span class="paramname"><em>func&#160;</em></span>)(T *)</td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel inline">inline</span><span class="mlabel virtual">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Processes each element with a function. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">func</td><td>The function to process the elements. param: T* Pointer to the element. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section note"><dt>Note</dt><dd>Do not add or remove elements in the list within the given function. </dd></dl>
+
+<p>Reimplemented in <a class="el" href="classyh_1_1structures_1_1lists_1_1DoublyLinkedList.html#aeb5495984417625564dc7c3f5645b324">yh::structures::lists::DoublyLinkedList&lt; T &gt;</a>, and <a class="el" href="classyh_1_1structures_1_1lists_1_1SinglyLinkedList.html#a5f3e9ff2b949b02b0281e772187183bf">yh::structures::lists::SinglyLinkedList&lt; T &gt;</a>.</p>
 
 </div>
 </div>
@@ -534,6 +578,44 @@ template&lt;typename T&gt; </div>
 <dl class="section see"><dt>See also</dt><dd><a class="el" href="#a2555917acb779758ba2f6bdcbf9c1a14" title="Removes an element from a specific index.">remove()</a> </dd></dl>
 
 <p>Reimplemented in <a class="el" href="classyh_1_1structures_1_1lists_1_1DoublyLinkedList.html#a227db9a2b633eff76bec4bb6a90ef48a">yh::structures::lists::DoublyLinkedList&lt; T &gt;</a>, and <a class="el" href="classyh_1_1structures_1_1lists_1_1SinglyLinkedList.html#a770dfaa878bc0a25f8caea71b414f3a5">yh::structures::lists::SinglyLinkedList&lt; T &gt;</a>.</p>
+
+</div>
+</div>
+<a id="a11dc5e0c309f1248181762e6eeee77f7" name="a11dc5e0c309f1248181762e6eeee77f7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a11dc5e0c309f1248181762e6eeee77f7">&#9670;&#160;</a></span>removeIf()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual void <a class="el" href="classyh_1_1structures_1_1lists_1_1List.html">yh::structures::lists::List</a>&lt; T &gt;::removeIf </td>
+          <td>(</td>
+          <td class="paramtype">bool(*</td>          <td class="paramname"><span class="paramname"><em>func&#160;</em></span>)(T *)</td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel inline">inline</span><span class="mlabel virtual">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Processes each element with a predicate function. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">func</td><td>The function to process the elements. param: T* Pointer to the element. return: True to remove the element. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section note"><dt>Note</dt><dd>Do not add or remove elements in the list within the given function. </dd></dl>
+
+<p>Reimplemented in <a class="el" href="classyh_1_1structures_1_1lists_1_1DoublyLinkedList.html#a7405a15fd1832f95cea9eddd89205cd2">yh::structures::lists::DoublyLinkedList&lt; T &gt;</a>, and <a class="el" href="classyh_1_1structures_1_1lists_1_1SinglyLinkedList.html#a62b4fce2c6035049af0e7bc44054d8f4">yh::structures::lists::SinglyLinkedList&lt; T &gt;</a>.</p>
 
 </div>
 </div>

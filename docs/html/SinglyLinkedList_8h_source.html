@@ -359,18 +359,64 @@ $(function(){initNavTree('SinglyLinkedList_8h_source.html',''); initResizable(tr
 <div class="line"><a id="l00360" name="l00360"></a><span class="lineno">  360</span>                        <span class="keywordflow">return</span> data;</div>
 <div class="line"><a id="l00361" name="l00361"></a><span class="lineno">  361</span>                    }</div>
 </div>
-<div class="line"><a id="l00362" name="l00362"></a><span class="lineno">  362</span>            };</div>
+<div class="line"><a id="l00362" name="l00362"></a><span class="lineno">  362</span></div>
+<div class="foldopen" id="foldopen00368" data-start="{" data-end="}">
+<div class="line"><a id="l00368" name="l00368"></a><span class="lineno"><a class="line" href="classyh_1_1structures_1_1lists_1_1SinglyLinkedList.html#a5f3e9ff2b949b02b0281e772187183bf">  368</a></span>                    <span class="keyword">virtual</span> <span class="keywordtype">void</span> <span class="keywordflow">foreach</span>(<span class="keywordtype">void</span> (*func)(T *)) <span class="keyword">override</span> {</div>
+<div class="line"><a id="l00369" name="l00369"></a><span class="lineno">  369</span>                        <span class="keywordflow">if</span> (func == <span class="keyword">nullptr</span>) {</div>
+<div class="line"><a id="l00370" name="l00370"></a><span class="lineno">  370</span>                            <span class="keywordflow">return</span>;</div>
+<div class="line"><a id="l00371" name="l00371"></a><span class="lineno">  371</span>                        }</div>
+<div class="line"><a id="l00372" name="l00372"></a><span class="lineno">  372</span>                        Node *node = head;</div>
+<div class="line"><a id="l00373" name="l00373"></a><span class="lineno">  373</span>                        <span class="keywordflow">while</span> (node != <span class="keyword">nullptr</span>) {</div>
+<div class="line"><a id="l00374" name="l00374"></a><span class="lineno">  374</span>                            func(node-&gt;data);</div>
+<div class="line"><a id="l00375" name="l00375"></a><span class="lineno">  375</span>                            node = node-&gt;next;</div>
+<div class="line"><a id="l00376" name="l00376"></a><span class="lineno">  376</span>                        }</div>
+<div class="line"><a id="l00377" name="l00377"></a><span class="lineno">  377</span>                    }</div>
 </div>
-<div class="line"><a id="l00363" name="l00363"></a><span class="lineno">  363</span>        }</div>
-<div class="line"><a id="l00364" name="l00364"></a><span class="lineno">  364</span>    }</div>
-<div class="line"><a id="l00365" name="l00365"></a><span class="lineno">  365</span>}</div>
-<div class="line"><a id="l00366" name="l00366"></a><span class="lineno">  366</span> </div>
-<div class="line"><a id="l00367" name="l00367"></a><span class="lineno">  367</span><span class="preprocessor">#endif </span><span class="comment">// #ifndef YH_STRUCTURES_LISTS_SINGLYLINKEDLIST_H</span></div>
+<div class="line"><a id="l00378" name="l00378"></a><span class="lineno">  378</span></div>
+<div class="foldopen" id="foldopen00384" data-start="{" data-end="}">
+<div class="line"><a id="l00384" name="l00384"></a><span class="lineno"><a class="line" href="classyh_1_1structures_1_1lists_1_1SinglyLinkedList.html#a62b4fce2c6035049af0e7bc44054d8f4">  384</a></span>                    <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code hl_function" href="classyh_1_1structures_1_1lists_1_1SinglyLinkedList.html#a62b4fce2c6035049af0e7bc44054d8f4">removeIf</a>(<span class="keywordtype">bool</span> (*func)(T *))<span class="keyword"> override </span>{</div>
+<div class="line"><a id="l00385" name="l00385"></a><span class="lineno">  385</span>                        <span class="keywordflow">if</span> (func == <span class="keyword">nullptr</span>) {</div>
+<div class="line"><a id="l00386" name="l00386"></a><span class="lineno">  386</span>                            <span class="keywordflow">return</span>;</div>
+<div class="line"><a id="l00387" name="l00387"></a><span class="lineno">  387</span>                        }</div>
+<div class="line"><a id="l00388" name="l00388"></a><span class="lineno">  388</span>                        Node *prevNode = <span class="keyword">nullptr</span>;</div>
+<div class="line"><a id="l00389" name="l00389"></a><span class="lineno">  389</span>                        Node *node = head;</div>
+<div class="line"><a id="l00390" name="l00390"></a><span class="lineno">  390</span>                        <span class="keywordflow">while</span> (node != <span class="keyword">nullptr</span>) {</div>
+<div class="line"><a id="l00391" name="l00391"></a><span class="lineno">  391</span>                            <span class="keyword">const</span> <span class="keywordtype">bool</span> needToRemove = func(node-&gt;data);</div>
+<div class="line"><a id="l00392" name="l00392"></a><span class="lineno">  392</span>                            <span class="keywordflow">if</span> (needToRemove) {</div>
+<div class="line"><a id="l00393" name="l00393"></a><span class="lineno">  393</span>                                elementsCount--;</div>
+<div class="line"><a id="l00394" name="l00394"></a><span class="lineno">  394</span> </div>
+<div class="line"><a id="l00395" name="l00395"></a><span class="lineno">  395</span>                                Node *<span class="keyword">const</span> nextNode = node-&gt;next;</div>
+<div class="line"><a id="l00396" name="l00396"></a><span class="lineno">  396</span>                                <span class="keywordflow">if</span> (node == head) {</div>
+<div class="line"><a id="l00397" name="l00397"></a><span class="lineno">  397</span>                                    head = nextNode;</div>
+<div class="line"><a id="l00398" name="l00398"></a><span class="lineno">  398</span>                                }</div>
+<div class="line"><a id="l00399" name="l00399"></a><span class="lineno">  399</span>                                <span class="keywordflow">if</span> (node == tail) {</div>
+<div class="line"><a id="l00400" name="l00400"></a><span class="lineno">  400</span>                                    tail = prevNode;</div>
+<div class="line"><a id="l00401" name="l00401"></a><span class="lineno">  401</span>                                }</div>
+<div class="line"><a id="l00402" name="l00402"></a><span class="lineno">  402</span>                                <span class="keywordflow">if</span> (prevNode != <span class="keyword">nullptr</span>) {</div>
+<div class="line"><a id="l00403" name="l00403"></a><span class="lineno">  403</span>                                    prevNode-&gt;next = nextNode;</div>
+<div class="line"><a id="l00404" name="l00404"></a><span class="lineno">  404</span>                                }</div>
+<div class="line"><a id="l00405" name="l00405"></a><span class="lineno">  405</span>                                <span class="keyword">delete</span> node;</div>
+<div class="line"><a id="l00406" name="l00406"></a><span class="lineno">  406</span>                                node = nextNode;</div>
+<div class="line"><a id="l00407" name="l00407"></a><span class="lineno">  407</span>                            } <span class="keywordflow">else</span> {</div>
+<div class="line"><a id="l00408" name="l00408"></a><span class="lineno">  408</span>                                prevNode = node;</div>
+<div class="line"><a id="l00409" name="l00409"></a><span class="lineno">  409</span>                                node = node-&gt;next;</div>
+<div class="line"><a id="l00410" name="l00410"></a><span class="lineno">  410</span>                            }</div>
+<div class="line"><a id="l00411" name="l00411"></a><span class="lineno">  411</span>                        }</div>
+<div class="line"><a id="l00412" name="l00412"></a><span class="lineno">  412</span>                    }</div>
+</div>
+<div class="line"><a id="l00413" name="l00413"></a><span class="lineno">  413</span>            };</div>
+</div>
+<div class="line"><a id="l00414" name="l00414"></a><span class="lineno">  414</span>        }</div>
+<div class="line"><a id="l00415" name="l00415"></a><span class="lineno">  415</span>    }</div>
+<div class="line"><a id="l00416" name="l00416"></a><span class="lineno">  416</span>}</div>
+<div class="line"><a id="l00417" name="l00417"></a><span class="lineno">  417</span> </div>
+<div class="line"><a id="l00418" name="l00418"></a><span class="lineno">  418</span><span class="preprocessor">#endif </span><span class="comment">// #ifndef YH_STRUCTURES_LISTS_SINGLYLINKEDLIST_H</span></div>
 <div class="ttc" id="aList_8h_html"><div class="ttname"><a href="List_8h.html">List.h</a></div></div>
 <div class="ttc" id="aclassyh_1_1structures_1_1lists_1_1List_html"><div class="ttname"><a href="classyh_1_1structures_1_1lists_1_1List.html">yh::structures::lists::List</a></div><div class="ttdoc">The interface of a list.</div><div class="ttdef"><b>Definition</b> List.h:50</div></div>
 <div class="ttc" id="aclassyh_1_1structures_1_1lists_1_1SinglyLinkedList_html_a0238855f53cb374543dca433ebd34509"><div class="ttname"><a href="classyh_1_1structures_1_1lists_1_1SinglyLinkedList.html#a0238855f53cb374543dca433ebd34509">yh::structures::lists::SinglyLinkedList::insert</a></div><div class="ttdeci">virtual void insert(const size_t index, T *element) override</div><div class="ttdoc">Inserts an element at a specific index.</div><div class="ttdef"><b>Definition</b> SinglyLinkedList.h:151</div></div>
 <div class="ttc" id="aclassyh_1_1structures_1_1lists_1_1SinglyLinkedList_html_a37e86d5aa9fda27c56b6c428059b0c32"><div class="ttname"><a href="classyh_1_1structures_1_1lists_1_1SinglyLinkedList.html#a37e86d5aa9fda27c56b6c428059b0c32">yh::structures::lists::SinglyLinkedList::~SinglyLinkedList</a></div><div class="ttdeci">virtual ~SinglyLinkedList()</div><div class="ttdoc">Destroys the singly linked list.</div><div class="ttdef"><b>Definition</b> SinglyLinkedList.h:126</div></div>
 <div class="ttc" id="aclassyh_1_1structures_1_1lists_1_1SinglyLinkedList_html_a5e6a76d12cef3fa3bdd268468df5ca65"><div class="ttname"><a href="classyh_1_1structures_1_1lists_1_1SinglyLinkedList.html#a5e6a76d12cef3fa3bdd268468df5ca65">yh::structures::lists::SinglyLinkedList::size</a></div><div class="ttdeci">virtual size_t size() override</div><div class="ttdoc">Gets the number of elements in the list.</div><div class="ttdef"><b>Definition</b> SinglyLinkedList.h:139</div></div>
+<div class="ttc" id="aclassyh_1_1structures_1_1lists_1_1SinglyLinkedList_html_a62b4fce2c6035049af0e7bc44054d8f4"><div class="ttname"><a href="classyh_1_1structures_1_1lists_1_1SinglyLinkedList.html#a62b4fce2c6035049af0e7bc44054d8f4">yh::structures::lists::SinglyLinkedList::removeIf</a></div><div class="ttdeci">virtual void removeIf(bool(*func)(T *)) override</div><div class="ttdoc">Processes each element with a predicate function.</div><div class="ttdef"><b>Definition</b> SinglyLinkedList.h:384</div></div>
 <div class="ttc" id="aclassyh_1_1structures_1_1lists_1_1SinglyLinkedList_html_a6a85915d45acdb87ff1cf47d51a0070d"><div class="ttname"><a href="classyh_1_1structures_1_1lists_1_1SinglyLinkedList.html#a6a85915d45acdb87ff1cf47d51a0070d">yh::structures::lists::SinglyLinkedList::remove</a></div><div class="ttdeci">virtual T * remove(const size_t index) override</div><div class="ttdoc">Removes an element from a specific index.</div><div class="ttdef"><b>Definition</b> SinglyLinkedList.h:215</div></div>
 <div class="ttc" id="aclassyh_1_1structures_1_1lists_1_1SinglyLinkedList_html_a770dfaa878bc0a25f8caea71b414f3a5"><div class="ttname"><a href="classyh_1_1structures_1_1lists_1_1SinglyLinkedList.html#a770dfaa878bc0a25f8caea71b414f3a5">yh::structures::lists::SinglyLinkedList::removeHead</a></div><div class="ttdeci">virtual T * removeHead() override</div><div class="ttdoc">Removes the element at the head of the list.</div><div class="ttdef"><b>Definition</b> SinglyLinkedList.h:323</div></div>
 <div class="ttc" id="aclassyh_1_1structures_1_1lists_1_1SinglyLinkedList_html_a7d28d19f47d98a28dc12edc808f02a1e"><div class="ttname"><a href="classyh_1_1structures_1_1lists_1_1SinglyLinkedList.html#a7d28d19f47d98a28dc12edc808f02a1e">yh::structures::lists::SinglyLinkedList::removeTail</a></div><div class="ttdeci">virtual T * removeTail() override</div><div class="ttdoc">Removes the element at the tail of the list.</div><div class="ttdef"><b>Definition</b> SinglyLinkedList.h:346</div></div>

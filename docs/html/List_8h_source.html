@@ -212,13 +212,42 @@ $(function(){initNavTree('List_8h_source.html',''); initResizable(true); });
 <div class="line"><a id="l00188" name="l00188"></a><span class="lineno">  188</span>                        <span class="keywordflow">return</span> <a class="code hl_function" href="classyh_1_1structures_1_1lists_1_1List.html#a2555917acb779758ba2f6bdcbf9c1a14">remove</a>(<a class="code hl_function" href="classyh_1_1structures_1_1lists_1_1List.html#a6166a49e21f8edb648f999f5f1be9d9f">size</a>() - 1);</div>
 <div class="line"><a id="l00189" name="l00189"></a><span class="lineno">  189</span>                    }</div>
 </div>
-<div class="line"><a id="l00190" name="l00190"></a><span class="lineno">  190</span>            };</div>
+<div class="line"><a id="l00190" name="l00190"></a><span class="lineno">  190</span></div>
+<div class="foldopen" id="foldopen00196" data-start="{" data-end="}">
+<div class="line"><a id="l00196" name="l00196"></a><span class="lineno"><a class="line" href="classyh_1_1structures_1_1lists_1_1List.html#a94da6fdd1609a139b328107d5726de59">  196</a></span>                    <span class="keyword">virtual</span> <span class="keywordtype">void</span> <span class="keywordflow">foreach</span>(<span class="keywordtype">void</span> (*func)(T *)) {</div>
+<div class="line"><a id="l00197" name="l00197"></a><span class="lineno">  197</span>                        <span class="keywordflow">if</span> (func == <span class="keyword">nullptr</span>) {</div>
+<div class="line"><a id="l00198" name="l00198"></a><span class="lineno">  198</span>                            <span class="keywordflow">return</span>;</div>
+<div class="line"><a id="l00199" name="l00199"></a><span class="lineno">  199</span>                        }</div>
+<div class="line"><a id="l00200" name="l00200"></a><span class="lineno">  200</span>                        <span class="keyword">const</span> <span class="keywordtype">size_t</span> len = <a class="code hl_function" href="classyh_1_1structures_1_1lists_1_1List.html#a6166a49e21f8edb648f999f5f1be9d9f">size</a>();</div>
+<div class="line"><a id="l00201" name="l00201"></a><span class="lineno">  201</span>                        <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> i = 0; i &lt; len; i++) {</div>
+<div class="line"><a id="l00202" name="l00202"></a><span class="lineno">  202</span>                            func(<a class="code hl_function" href="classyh_1_1structures_1_1lists_1_1List.html#a33dea7a356dd21460972ce7e79569273">get</a>(i));</div>
+<div class="line"><a id="l00203" name="l00203"></a><span class="lineno">  203</span>                        }</div>
+<div class="line"><a id="l00204" name="l00204"></a><span class="lineno">  204</span>                    }</div>
 </div>
-<div class="line"><a id="l00191" name="l00191"></a><span class="lineno">  191</span>        }</div>
-<div class="line"><a id="l00192" name="l00192"></a><span class="lineno">  192</span>    }</div>
-<div class="line"><a id="l00193" name="l00193"></a><span class="lineno">  193</span>}</div>
-<div class="line"><a id="l00194" name="l00194"></a><span class="lineno">  194</span> </div>
-<div class="line"><a id="l00195" name="l00195"></a><span class="lineno">  195</span><span class="preprocessor">#endif </span><span class="comment">// #ifndef YH_STRUCTURES_LISTS_LIST_H</span></div>
+<div class="line"><a id="l00205" name="l00205"></a><span class="lineno">  205</span></div>
+<div class="foldopen" id="foldopen00211" data-start="{" data-end="}">
+<div class="line"><a id="l00211" name="l00211"></a><span class="lineno"><a class="line" href="classyh_1_1structures_1_1lists_1_1List.html#a11dc5e0c309f1248181762e6eeee77f7">  211</a></span>                    <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code hl_function" href="classyh_1_1structures_1_1lists_1_1List.html#a11dc5e0c309f1248181762e6eeee77f7">removeIf</a>(<span class="keywordtype">bool</span> (*func)(T *)) {</div>
+<div class="line"><a id="l00212" name="l00212"></a><span class="lineno">  212</span>                        <span class="keywordflow">if</span> (func == <span class="keyword">nullptr</span>) {</div>
+<div class="line"><a id="l00213" name="l00213"></a><span class="lineno">  213</span>                            <span class="keywordflow">return</span>;</div>
+<div class="line"><a id="l00214" name="l00214"></a><span class="lineno">  214</span>                        }</div>
+<div class="line"><a id="l00215" name="l00215"></a><span class="lineno">  215</span>                        <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> i = 0; i &lt; <a class="code hl_function" href="classyh_1_1structures_1_1lists_1_1List.html#a6166a49e21f8edb648f999f5f1be9d9f">size</a>();) {</div>
+<div class="line"><a id="l00216" name="l00216"></a><span class="lineno">  216</span>                            <span class="keyword">const</span> <span class="keywordtype">bool</span> needToRemove = func(<a class="code hl_function" href="classyh_1_1structures_1_1lists_1_1List.html#a33dea7a356dd21460972ce7e79569273">get</a>(i));</div>
+<div class="line"><a id="l00217" name="l00217"></a><span class="lineno">  217</span>                            <span class="keywordflow">if</span> (needToRemove) {</div>
+<div class="line"><a id="l00218" name="l00218"></a><span class="lineno">  218</span>                                <a class="code hl_function" href="classyh_1_1structures_1_1lists_1_1List.html#a2555917acb779758ba2f6bdcbf9c1a14">remove</a>(i);</div>
+<div class="line"><a id="l00219" name="l00219"></a><span class="lineno">  219</span>                            } <span class="keywordflow">else</span> {</div>
+<div class="line"><a id="l00220" name="l00220"></a><span class="lineno">  220</span>                                i++;</div>
+<div class="line"><a id="l00221" name="l00221"></a><span class="lineno">  221</span>                            }</div>
+<div class="line"><a id="l00222" name="l00222"></a><span class="lineno">  222</span>                        }</div>
+<div class="line"><a id="l00223" name="l00223"></a><span class="lineno">  223</span>                    }</div>
+</div>
+<div class="line"><a id="l00224" name="l00224"></a><span class="lineno">  224</span>            };</div>
+</div>
+<div class="line"><a id="l00225" name="l00225"></a><span class="lineno">  225</span>        }</div>
+<div class="line"><a id="l00226" name="l00226"></a><span class="lineno">  226</span>    }</div>
+<div class="line"><a id="l00227" name="l00227"></a><span class="lineno">  227</span>}</div>
+<div class="line"><a id="l00228" name="l00228"></a><span class="lineno">  228</span> </div>
+<div class="line"><a id="l00229" name="l00229"></a><span class="lineno">  229</span><span class="preprocessor">#endif </span><span class="comment">// #ifndef YH_STRUCTURES_LISTS_LIST_H</span></div>
+<div class="ttc" id="aclassyh_1_1structures_1_1lists_1_1List_html_a11dc5e0c309f1248181762e6eeee77f7"><div class="ttname"><a href="classyh_1_1structures_1_1lists_1_1List.html#a11dc5e0c309f1248181762e6eeee77f7">yh::structures::lists::List::removeIf</a></div><div class="ttdeci">virtual void removeIf(bool(*func)(T *))</div><div class="ttdoc">Processes each element with a predicate function.</div><div class="ttdef"><b>Definition</b> List.h:211</div></div>
 <div class="ttc" id="aclassyh_1_1structures_1_1lists_1_1List_html_a14cf85e0121d8ed9c98650093ce96e1a"><div class="ttname"><a href="classyh_1_1structures_1_1lists_1_1List.html#a14cf85e0121d8ed9c98650093ce96e1a">yh::structures::lists::List::~List</a></div><div class="ttdeci">virtual ~List()</div><div class="ttdoc">Destroys the list.</div><div class="ttdef"><b>Definition</b> List.h:61</div></div>
 <div class="ttc" id="aclassyh_1_1structures_1_1lists_1_1List_html_a1b24a2b7e0c92aff64a73ecb29991393"><div class="ttname"><a href="classyh_1_1structures_1_1lists_1_1List.html#a1b24a2b7e0c92aff64a73ecb29991393">yh::structures::lists::List::set</a></div><div class="ttdeci">virtual T * set(const size_t index, T *element)=0</div><div class="ttdoc">Sets an element at a specific index.</div></div>
 <div class="ttc" id="aclassyh_1_1structures_1_1lists_1_1List_html_a1f5f77113928bc992037c32950db7900"><div class="ttname"><a href="classyh_1_1structures_1_1lists_1_1List.html#a1f5f77113928bc992037c32950db7900">yh::structures::lists::List::addHead</a></div><div class="ttdeci">virtual void addHead(T *element)</div><div class="ttdoc">Adds an element to the head of the list.</div><div class="ttdef"><b>Definition</b> List.h:115</div></div>

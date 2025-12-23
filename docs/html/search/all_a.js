@@ -1,10 +1,7 @@
 var searchData=
 [
-  ['reminder_0',['Reminder',['../index.html#autotoc_md5',1,'']]],
-  ['remove_1',['remove',['../classyh_1_1structures_1_1lists_1_1ArrayList.html#a887aac5bba26c26a551a24cbdd848637',1,'yh::structures::lists::ArrayList::remove()'],['../classyh_1_1structures_1_1lists_1_1DoublyLinkedList.html#a76fd05fa4aa1f64705a5a7e1257e47fc',1,'yh::structures::lists::DoublyLinkedList::remove()'],['../classyh_1_1structures_1_1lists_1_1List.html#a2555917acb779758ba2f6bdcbf9c1a14',1,'yh::structures::lists::List::remove()'],['../classyh_1_1structures_1_1lists_1_1SinglyLinkedList.html#a6a85915d45acdb87ff1cf47d51a0070d',1,'yh::structures::lists::SinglyLinkedList::remove()']]],
-  ['removehead_2',['removeHead',['../classyh_1_1structures_1_1lists_1_1DoublyLinkedList.html#a227db9a2b633eff76bec4bb6a90ef48a',1,'yh::structures::lists::DoublyLinkedList::removeHead()'],['../classyh_1_1structures_1_1lists_1_1List.html#a692735d3df197b12a7d4cdf3c703f839',1,'yh::structures::lists::List::removeHead()'],['../classyh_1_1structures_1_1lists_1_1SinglyLinkedList.html#a770dfaa878bc0a25f8caea71b414f3a5',1,'yh::structures::lists::SinglyLinkedList::removeHead()']]],
-  ['removemax_3',['removeMax',['../classyh_1_1structures_1_1heaps_1_1MaxArrayHeap.html#afbc423db11a0dcfe7bb696402d45a0c8',1,'yh::structures::heaps::MaxArrayHeap']]],
-  ['removemin_4',['removeMin',['../classyh_1_1structures_1_1heaps_1_1MinArrayHeap.html#a399d6c5a11bea310770a4a58deb0a4b5',1,'yh::structures::heaps::MinArrayHeap']]],
-  ['removeroot_5',['removeRoot',['../classyh_1_1structures_1_1heaps_1_1ArrayHeap.html#a808f23b5ed0edecec2dbea43860f428e',1,'yh::structures::heaps::ArrayHeap::removeRoot()'],['../classyh_1_1structures_1_1heaps_1_1Heap.html#ae951ed3e2bbf241fc65ed4b6ae83c251',1,'yh::structures::heaps::Heap::removeRoot()']]],
-  ['removetail_6',['removeTail',['../classyh_1_1structures_1_1lists_1_1DoublyLinkedList.html#ac341a06a3f3f46f70e76f6fed9a90c3b',1,'yh::structures::lists::DoublyLinkedList::removeTail()'],['../classyh_1_1structures_1_1lists_1_1List.html#a3be8948798364ff9088c761f2dc03ea7',1,'yh::structures::lists::List::removeTail()'],['../classyh_1_1structures_1_1lists_1_1SinglyLinkedList.html#a7d28d19f47d98a28dc12edc808f02a1e',1,'yh::structures::lists::SinglyLinkedList::removeTail()']]]
+  ['queue_0',['Queue',['../classyh_1_1structures_1_1queues_1_1Queue.html',1,'yh::structures::queues::Queue&lt; T &gt;'],['../classyh_1_1structures_1_1queues_1_1Queue.html#a393ecb2d35921464b1e49eba23fb32f4',1,'yh::structures::queues::Queue::Queue()']]],
+  ['queue_2eh_1',['Queue.h',['../Queue_8h.html',1,'']]],
+  ['quick_5fsort_2',['quick_sort',['../quick__sort_8h.html#ac89dc496d0c23006915ca49fd40481f4',1,'yh::algo::sort']]],
+  ['quick_5fsort_2eh_3',['quick_sort.h',['../quick__sort_8h.html',1,'']]]
 ];

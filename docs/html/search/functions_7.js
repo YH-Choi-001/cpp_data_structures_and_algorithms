@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['maxarrayheap_0',['MaxArrayHeap',['../classyh_1_1structures_1_1heaps_1_1MaxArrayHeap.html#a70178547f5b5b7943efb239e1dc7c632',1,'yh::structures::heaps::MaxArrayHeap']]],
-  ['merge_5fsort_1',['merge_sort',['../merge__sort_8h.html#a7b19a581999f4731e883621fabbd0886',1,'yh::algo::sort']]],
-  ['minarrayheap_2',['MinArrayHeap',['../classyh_1_1structures_1_1heaps_1_1MinArrayHeap.html#aa5a262a3a3ff0fec39ce0a4f6abebae3',1,'yh::structures::heaps::MinArrayHeap']]]
+  ['linkedqueue_0',['LinkedQueue',['../classyh_1_1structures_1_1queues_1_1LinkedQueue.html#a1778a4f6660ec735155931ab8b1182a7',1,'yh::structures::queues::LinkedQueue']]],
+  ['linkedstack_1',['LinkedStack',['../classyh_1_1structures_1_1stacks_1_1LinkedStack.html#ae2bced29aaef79579399f54ec3f0e20f',1,'yh::structures::stacks::LinkedStack']]],
+  ['list_2',['List',['../classyh_1_1structures_1_1lists_1_1List.html#adb22fc711617330d968c87cfe7f3b510',1,'yh::structures::lists::List']]]
 ];

@@ -1,9 +1,10 @@
 var searchData=
 [
-  ['maxarrayheap_0',['MaxArrayHeap',['../classyh_1_1structures_1_1heaps_1_1MaxArrayHeap.html',1,'yh::structures::heaps::MaxArrayHeap&lt; T &gt;'],['../classyh_1_1structures_1_1heaps_1_1MaxArrayHeap.html#a70178547f5b5b7943efb239e1dc7c632',1,'yh::structures::heaps::MaxArrayHeap::MaxArrayHeap()']]],
-  ['maxarrayheap_2eh_1',['MaxArrayHeap.h',['../MaxArrayHeap_8h.html',1,'']]],
-  ['merge_5fsort_2',['merge_sort',['../merge__sort_8h.html#a7b19a581999f4731e883621fabbd0886',1,'yh::algo::sort']]],
-  ['merge_5fsort_2eh_3',['merge_sort.h',['../merge__sort_8h.html',1,'']]],
-  ['minarrayheap_4',['MinArrayHeap',['../classyh_1_1structures_1_1heaps_1_1MinArrayHeap.html',1,'yh::structures::heaps::MinArrayHeap&lt; T &gt;'],['../classyh_1_1structures_1_1heaps_1_1MinArrayHeap.html#aa5a262a3a3ff0fec39ce0a4f6abebae3',1,'yh::structures::heaps::MinArrayHeap::MinArrayHeap()']]],
-  ['minarrayheap_2eh_5',['MinArrayHeap.h',['../MinArrayHeap_8h.html',1,'']]]
+  ['licenses_0',['Licenses',['../index.html#autotoc_md4',1,'']]],
+  ['linkedqueue_1',['LinkedQueue',['../classyh_1_1structures_1_1queues_1_1LinkedQueue.html',1,'yh::structures::queues::LinkedQueue&lt; T &gt;'],['../classyh_1_1structures_1_1queues_1_1LinkedQueue.html#a1778a4f6660ec735155931ab8b1182a7',1,'yh::structures::queues::LinkedQueue::LinkedQueue()']]],
+  ['linkedqueue_2eh_2',['LinkedQueue.h',['../LinkedQueue_8h.html',1,'']]],
+  ['linkedstack_3',['LinkedStack',['../classyh_1_1structures_1_1stacks_1_1LinkedStack.html',1,'yh::structures::stacks::LinkedStack&lt; T &gt;'],['../classyh_1_1structures_1_1stacks_1_1LinkedStack.html#ae2bced29aaef79579399f54ec3f0e20f',1,'yh::structures::stacks::LinkedStack::LinkedStack()']]],
+  ['linkedstack_2eh_4',['LinkedStack.h',['../LinkedStack_8h.html',1,'']]],
+  ['list_5',['List',['../classyh_1_1structures_1_1lists_1_1List.html',1,'yh::structures::lists::List&lt; T &gt;'],['../classyh_1_1structures_1_1lists_1_1List.html#adb22fc711617330d968c87cfe7f3b510',1,'yh::structures::lists::List::List()']]],
+  ['list_2eh_6',['List.h',['../List_8h.html',1,'']]]
 ];

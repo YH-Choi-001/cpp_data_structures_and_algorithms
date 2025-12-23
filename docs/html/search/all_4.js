@@ -1,7 +1,6 @@
 var searchData=
 [
-  ['heap_0',['Heap',['../classyh_1_1structures_1_1heaps_1_1Heap.html',1,'yh::structures::heaps::Heap&lt; T &gt;'],['../classyh_1_1structures_1_1heaps_1_1Heap.html#a52dac078c346bd2e006116718be291bd',1,'yh::structures::heaps::Heap::Heap()']]],
-  ['heap_2eh_1',['Heap.h',['../Heap_8h.html',1,'']]],
-  ['heap_5fsort_2',['heap_sort',['../heap__sort_8h.html#ae55913c5fd2272613f9e08552f105b8d',1,'yh::algo::sort']]],
-  ['heap_5fsort_2eh_3',['heap_sort.h',['../heap__sort_8h.html',1,'']]]
+  ['get_0',['get',['../classyh_1_1structures_1_1lists_1_1ArrayList.html#ad5145f39111d1fa51aae47020f8d5139',1,'yh::structures::lists::ArrayList::get()'],['../classyh_1_1structures_1_1lists_1_1DoublyLinkedList.html#af96e08b1d37f11da64ecdcc8065a4feb',1,'yh::structures::lists::DoublyLinkedList::get()'],['../classyh_1_1structures_1_1lists_1_1List.html#a33dea7a356dd21460972ce7e79569273',1,'yh::structures::lists::List::get()'],['../classyh_1_1structures_1_1lists_1_1SinglyLinkedList.html#ab6a4d4f6b58c236b119436916a12562d',1,'yh::structures::lists::SinglyLinkedList::get()']]],
+  ['gethead_1',['getHead',['../classyh_1_1structures_1_1lists_1_1DoublyLinkedList.html#a5cc65151d8adfb1833d9375e43a21ffd',1,'yh::structures::lists::DoublyLinkedList::getHead()'],['../classyh_1_1structures_1_1lists_1_1List.html#a63e78f82dc311525826da877c179ea4f',1,'yh::structures::lists::List::getHead()'],['../classyh_1_1structures_1_1lists_1_1SinglyLinkedList.html#af4bbd9d4891e04fc3b30c583a46971d9',1,'yh::structures::lists::SinglyLinkedList::getHead()']]],
+  ['gettail_2',['getTail',['../classyh_1_1structures_1_1lists_1_1DoublyLinkedList.html#aaf8d4264bfd1d2ee8c87c13818c5f2f4',1,'yh::structures::lists::DoublyLinkedList::getTail()'],['../classyh_1_1structures_1_1lists_1_1List.html#a98bc4b8ddb2eb5124967db02da96e592',1,'yh::structures::lists::List::getTail()'],['../classyh_1_1structures_1_1lists_1_1SinglyLinkedList.html#a8cb4106bb4b0f2b5ef6122efd637bd3a',1,'yh::structures::lists::SinglyLinkedList::getTail()']]]
 ];
