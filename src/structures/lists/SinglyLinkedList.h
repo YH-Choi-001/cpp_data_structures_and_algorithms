@@ -362,33 +362,27 @@ namespace yh {
 
                     /**
                      * @brief Processes each element with a function.
-                     * @param func The function to process the elements. param: T* Pointer to the element.
+                     * @param visitor The visitor to visit each element.
                      * @note Do not add or remove elements in the list within the given function.
                      */
-                    virtual void foreach(void (*func)(T *)) override {
-                        if (func == nullptr) {
-                            return;
-                        }
+                    virtual void foreach(typename List<T>::Visitor &visitor) override {
                         Node *node = head;
                         while (node != nullptr) {
-                            func(node->data);
+                            visitor.visit(node->data);
                             node = node->next;
                         }
                     }
 
                     /**
                      * @brief Processes each element with a predicate function.
-                     * @param func The function to process the elements. param: T* Pointer to the element. return: True to remove the element.
+                     * @param visitor The visitor to visit each element. Return true to remove the element, false otherwise.
                      * @note Do not add or remove elements in the list within the given function.
                      */
-                    virtual void removeIf(bool (*func)(T *)) override {
-                        if (func == nullptr) {
-                            return;
-                        }
+                    virtual void removeIf(typename List<T>::PredicateVisitor &visitor) override {
                         Node *prevNode = nullptr;
                         Node *node = head;
                         while (node != nullptr) {
-                            const bool needToRemove = func(node->data);
+                            const bool needToRemove = visitor.visit(node->data);
                             if (needToRemove) {
                                 elementsCount--;
 
@@ -409,6 +403,24 @@ namespace yh {
                                 node = node->next;
                             }
                         }
+                    }
+
+                    /**
+                     * @brief Processes each element with a function.
+                     * @param func The function to process the elements. param: T* Pointer to the element.
+                     * @note Do not add or remove elements in the list within the given function.
+                     */
+                    virtual void foreach(void (*func)(T *)) override {
+                        List<T>::foreach(func);
+                    }
+
+                    /**
+                     * @brief Processes each element with a predicate function.
+                     * @param func The function to process the elements. param: T* Pointer to the element. return: True to remove the element.
+                     * @note Do not add or remove elements in the list within the given function.
+                     */
+                    virtual void removeIf(bool (*func)(T *)) override {
+                        List<T>::removeIf(func);
                     }
             };
         }

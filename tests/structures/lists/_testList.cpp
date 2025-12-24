@@ -1404,15 +1404,15 @@ const testfunc_t functions [] = {
 };
 
 int main() {
-    std::cout << "Testing " << __FILE__ << std::endl;
+    std::cout << "Testing " << __BASE_FILE__ << std::endl;
     for (testfunc_t func : functions) {
         test(func);
     }
     const unsigned int failed_testcase_count = get_failed_testcase_count();
     if (failed_testcase_count == 0) {
-        std::cout << "All passed: " << __FILE__ << std::endl;
+        std::cout << "All passed: " << __BASE_FILE__ << std::endl;
     } else {
-        std::cout << failed_testcase_count << " failed: " << __FILE__ << std::endl;
+        std::cout << failed_testcase_count << " failed: " << __BASE_FILE__ << std::endl;
     }
     return failed_testcase_count;
 }

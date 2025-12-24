@@ -188,6 +188,9 @@ namespace yh {
                         return remove(size() - 1);
                     }
 
+                    /**
+                     * @brief A visitor used to visit elements of a list.
+                     */
                     class Visitor {
                         protected:
                             /**
@@ -220,6 +223,9 @@ namespace yh {
                         }
                     }
 
+                    /**
+                     * @brief A visitor used to visit elements of a list, with a predicate to accept or reject every element.
+                     */
                     class PredicateVisitor {
                         protected:
                             /**
