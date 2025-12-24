@@ -140,11 +140,12 @@ $(function(){initNavTree('heap__sort_8h_source.html',''); initResizable(true); }
 <div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span><span class="preprocessor">#include &quot;<a class="code" href="MinArrayHeap_8h.html">../../structures/heaps/MinArrayHeap.h</a>&quot;</span></div>
 <div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span> </div>
 <div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span><span class="keyword">namespace </span>yh {</div>
-<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>    <span class="keyword">namespace </span>algo {</div>
-<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>        <span class="keyword">namespace </span>sort {</div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>    <span class="keyword">namespace </span><a class="code hl_namespace" href="namespaceyh_1_1algo.html">algo</a> {</div>
+<div class="foldopen" id="foldopen00045" data-start="{" data-end="}">
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno"><a class="line" href="namespaceyh_1_1algo_1_1sort.html">   45</a></span>        <span class="keyword">namespace </span><a class="code hl_namespace" href="namespaceyh_1_1algo_1_1sort.html">sort</a> {</div>
 <div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>            <span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;</div>
 <div class="foldopen" id="foldopen00054" data-start="{" data-end="}">
-<div class="line"><a id="l00054" name="l00054"></a><span class="lineno"><a class="line" href="heap__sort_8h.html#ae55913c5fd2272613f9e08552f105b8d">   54</a></span>            <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code hl_function" href="heap__sort_8h.html#ae55913c5fd2272613f9e08552f105b8d">heap_sort</a>(T *<span class="keyword">const</span> elements, <span class="keyword">const</span> <span class="keywordtype">size_t</span> start, <span class="keyword">const</span> <span class="keywordtype">size_t</span> end) {</div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno"><a class="line" href="namespaceyh_1_1algo_1_1sort.html#ae55913c5fd2272613f9e08552f105b8d">   54</a></span>            <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code hl_function" href="namespaceyh_1_1algo_1_1sort.html#ae55913c5fd2272613f9e08552f105b8d">heap_sort</a>(T *<span class="keyword">const</span> elements, <span class="keyword">const</span> <span class="keywordtype">size_t</span> start, <span class="keyword">const</span> <span class="keywordtype">size_t</span> end) {</div>
 <div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>                <span class="keywordflow">if</span> (start + 1 &gt;= end) {</div>
 <div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>                    <span class="keywordflow">return</span>;</div>
 <div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>                }</div>
@@ -172,6 +173,7 @@ $(function(){initNavTree('heap__sort_8h_source.html',''); initResizable(true); }
 <div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span>            }</div>
 </div>
 <div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span>        }</div>
+</div>
 <div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span>    }</div>
 <div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span>}</div>
 <div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span> </div>
@@ -180,7 +182,9 @@ $(function(){initNavTree('heap__sort_8h_source.html',''); initResizable(true); }
 <div class="ttc" id="aclassyh_1_1structures_1_1heaps_1_1MinArrayHeap_html"><div class="ttname"><a href="classyh_1_1structures_1_1heaps_1_1MinArrayHeap.html">yh::structures::heaps::MinArrayHeap</a></div><div class="ttdoc">A minimum heap implemented by an array.</div><div class="ttdef"><b>Definition</b> MinArrayHeap.h:46</div></div>
 <div class="ttc" id="aclassyh_1_1structures_1_1heaps_1_1MinArrayHeap_html_a0d1ff784269ad42977b67cf3e85faace"><div class="ttname"><a href="classyh_1_1structures_1_1heaps_1_1MinArrayHeap.html#a0d1ff784269ad42977b67cf3e85faace">yh::structures::heaps::MinArrayHeap::insert</a></div><div class="ttdeci">virtual void insert(T *element) override</div><div class="ttdoc">Inserts an element to this heap.</div><div class="ttdef"><b>Definition</b> MinArrayHeap.h:71</div></div>
 <div class="ttc" id="aclassyh_1_1structures_1_1heaps_1_1MinArrayHeap_html_a399d6c5a11bea310770a4a58deb0a4b5"><div class="ttname"><a href="classyh_1_1structures_1_1heaps_1_1MinArrayHeap.html#a399d6c5a11bea310770a4a58deb0a4b5">yh::structures::heaps::MinArrayHeap::removeMin</a></div><div class="ttdeci">virtual T * removeMin()</div><div class="ttdoc">Removes the minimum element from this heap.</div><div class="ttdef"><b>Definition</b> MinArrayHeap.h:87</div></div>
-<div class="ttc" id="aheap__sort_8h_html_ae55913c5fd2272613f9e08552f105b8d"><div class="ttname"><a href="heap__sort_8h.html#ae55913c5fd2272613f9e08552f105b8d">yh::algo::sort::heap_sort</a></div><div class="ttdeci">void heap_sort(T *const elements, const size_t start, const size_t end)</div><div class="ttdoc">Sorts an array with heap sort.</div><div class="ttdef"><b>Definition</b> heap_sort.h:54</div></div>
+<div class="ttc" id="anamespaceyh_1_1algo_1_1sort_html"><div class="ttname"><a href="namespaceyh_1_1algo_1_1sort.html">yh::algo::sort</a></div><div class="ttdoc">Interfaces and implementations of sorting algorithms. Sorting algorithms are placed under this namesp...</div><div class="ttdef"><b>Definition</b> heap_sort.h:45</div></div>
+<div class="ttc" id="anamespaceyh_1_1algo_1_1sort_html_ae55913c5fd2272613f9e08552f105b8d"><div class="ttname"><a href="namespaceyh_1_1algo_1_1sort.html#ae55913c5fd2272613f9e08552f105b8d">yh::algo::sort::heap_sort</a></div><div class="ttdeci">void heap_sort(T *const elements, const size_t start, const size_t end)</div><div class="ttdoc">Sorts an array with heap sort.</div><div class="ttdef"><b>Definition</b> heap_sort.h:54</div></div>
+<div class="ttc" id="anamespaceyh_1_1algo_html"><div class="ttname"><a href="namespaceyh_1_1algo.html">yh::algo</a></div><div class="ttdoc">Interfaces and implementations of algorithms. Algorithms are placed under this namespace.</div><div class="ttdef"><b>Definition</b> algo.h:40</div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- HTML footer for doxygen 1.13.2-->

@@ -26,6 +26,13 @@ var NAVTREE =
 [
   [ "C++ Data Structs & Algo", "index.html", [
     [ "Abstract", "index.html", "index" ],
+    [ "Namespaces", "namespaces.html", [
+      [ "Namespace List", "namespaces.html", "namespaces_dup" ],
+      [ "Namespace Members", "namespacemembers.html", [
+        [ "All", "namespacemembers.html", null ],
+        [ "Functions", "namespacemembers_func.html", null ]
+      ] ]
+    ] ],
     [ "Classes", "annotated.html", [
       [ "Class List", "annotated.html", "annotated_dup" ],
       [ "Class Index", "classes.html", null ],
@@ -43,7 +50,8 @@ var NAVTREE =
 
 var NAVTREEINDEX =
 [
-"ArrayHeap_8h.html"
+"ArrayHeap_8h.html",
+"classyh_1_1structures_1_1queues_1_1LinkedQueue.html#a1778a4f6660ec735155931ab8b1182a7"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronization';

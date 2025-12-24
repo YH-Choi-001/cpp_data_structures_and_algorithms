@@ -138,8 +138,8 @@ $(function(){initNavTree('quick__sort_8h_source.html',''); initResizable(true); 
 <div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span><span class="preprocessor">#endif</span></div>
 <div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span> </div>
 <div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span><span class="keyword">namespace </span>yh {</div>
-<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>    <span class="keyword">namespace </span>algo {</div>
-<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>        <span class="keyword">namespace </span>sort {</div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>    <span class="keyword">namespace </span><a class="code hl_namespace" href="namespaceyh_1_1algo.html">algo</a> {</div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>        <span class="keyword">namespace </span><a class="code hl_namespace" href="namespaceyh_1_1algo_1_1sort.html">sort</a> {</div>
 <div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>            <span class="keyword">namespace </span>_quick_sort {</div>
 <div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>                <span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;</div>
 <div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>                <span class="keyword">inline</span> <span class="keywordtype">void</span> swap(T &amp;lhs, T &amp;rhs) {</div>
@@ -150,7 +150,7 @@ $(function(){initNavTree('quick__sort_8h_source.html',''); initResizable(true); 
 <div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>            }</div>
 <div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>            <span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;</div>
 <div class="foldopen" id="foldopen00060" data-start="{" data-end="}">
-<div class="line"><a id="l00060" name="l00060"></a><span class="lineno"><a class="line" href="quick__sort_8h.html#ac89dc496d0c23006915ca49fd40481f4">   60</a></span>            <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code hl_function" href="quick__sort_8h.html#ac89dc496d0c23006915ca49fd40481f4">quick_sort</a>(T *<span class="keyword">const</span> elements, <span class="keyword">const</span> <span class="keywordtype">size_t</span> start, <span class="keyword">const</span> <span class="keywordtype">size_t</span> end) {</div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno"><a class="line" href="namespaceyh_1_1algo_1_1sort.html#ac89dc496d0c23006915ca49fd40481f4">   60</a></span>            <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code hl_function" href="namespaceyh_1_1algo_1_1sort.html#ac89dc496d0c23006915ca49fd40481f4">quick_sort</a>(T *<span class="keyword">const</span> elements, <span class="keyword">const</span> <span class="keywordtype">size_t</span> start, <span class="keyword">const</span> <span class="keywordtype">size_t</span> end) {</div>
 <div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>                <span class="keywordflow">if</span> (start + 1 &gt;= end) {</div>
 <div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>                    <span class="keywordflow">return</span>;</div>
 <div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>                }</div>
@@ -177,8 +177,8 @@ $(function(){initNavTree('quick__sort_8h_source.html',''); initResizable(true); 
 <div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span>                <span class="comment">// j now points to the pivot</span></div>
 <div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span>                <span class="comment">// sort the remaining partitions</span></div>
 <div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span>                <span class="keyword">const</span> <span class="keywordtype">size_t</span> j_position = (size_t)(j - elements);</div>
-<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span>                <a class="code hl_function" href="quick__sort_8h.html#ac89dc496d0c23006915ca49fd40481f4">quick_sort</a>(elements, start, j_position);</div>
-<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span>                <a class="code hl_function" href="quick__sort_8h.html#ac89dc496d0c23006915ca49fd40481f4">quick_sort</a>(elements, j_position + 1, end);</div>
+<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span>                <a class="code hl_function" href="namespaceyh_1_1algo_1_1sort.html#ac89dc496d0c23006915ca49fd40481f4">quick_sort</a>(elements, start, j_position);</div>
+<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span>                <a class="code hl_function" href="namespaceyh_1_1algo_1_1sort.html#ac89dc496d0c23006915ca49fd40481f4">quick_sort</a>(elements, j_position + 1, end);</div>
 <div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span>            }</div>
 </div>
 <div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span>        }</div>
@@ -186,7 +186,9 @@ $(function(){initNavTree('quick__sort_8h_source.html',''); initResizable(true); 
 <div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span>}</div>
 <div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span> </div>
 <div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span><span class="preprocessor">#endif </span><span class="comment">// #ifndef YH_ALGO_SORT_QUICK_SORT_H</span></div>
-<div class="ttc" id="aquick__sort_8h_html_ac89dc496d0c23006915ca49fd40481f4"><div class="ttname"><a href="quick__sort_8h.html#ac89dc496d0c23006915ca49fd40481f4">yh::algo::sort::quick_sort</a></div><div class="ttdeci">void quick_sort(T *const elements, const size_t start, const size_t end)</div><div class="ttdoc">Sorts an array with quick sort.</div><div class="ttdef"><b>Definition</b> quick_sort.h:60</div></div>
+<div class="ttc" id="anamespaceyh_1_1algo_1_1sort_html"><div class="ttname"><a href="namespaceyh_1_1algo_1_1sort.html">yh::algo::sort</a></div><div class="ttdoc">Interfaces and implementations of sorting algorithms. Sorting algorithms are placed under this namesp...</div><div class="ttdef"><b>Definition</b> heap_sort.h:45</div></div>
+<div class="ttc" id="anamespaceyh_1_1algo_1_1sort_html_ac89dc496d0c23006915ca49fd40481f4"><div class="ttname"><a href="namespaceyh_1_1algo_1_1sort.html#ac89dc496d0c23006915ca49fd40481f4">yh::algo::sort::quick_sort</a></div><div class="ttdeci">void quick_sort(T *const elements, const size_t start, const size_t end)</div><div class="ttdoc">Sorts an array with quick sort.</div><div class="ttdef"><b>Definition</b> quick_sort.h:60</div></div>
+<div class="ttc" id="anamespaceyh_1_1algo_html"><div class="ttname"><a href="namespaceyh_1_1algo.html">yh::algo</a></div><div class="ttdoc">Interfaces and implementations of algorithms. Algorithms are placed under this namespace.</div><div class="ttdef"><b>Definition</b> algo.h:40</div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- HTML footer for doxygen 1.13.2-->

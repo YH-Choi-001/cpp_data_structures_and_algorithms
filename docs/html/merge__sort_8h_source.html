@@ -138,19 +138,19 @@ $(function(){initNavTree('merge__sort_8h_source.html',''); initResizable(true); 
 <div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span><span class="preprocessor">#endif</span></div>
 <div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span> </div>
 <div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span><span class="keyword">namespace </span>yh {</div>
-<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>    <span class="keyword">namespace </span>algo {</div>
-<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>        <span class="keyword">namespace </span>sort {</div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>    <span class="keyword">namespace </span><a class="code hl_namespace" href="namespaceyh_1_1algo.html">algo</a> {</div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>        <span class="keyword">namespace </span><a class="code hl_namespace" href="namespaceyh_1_1algo_1_1sort.html">sort</a> {</div>
 <div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>            <span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;</div>
 <div class="foldopen" id="foldopen00052" data-start="{" data-end="}">
-<div class="line"><a id="l00052" name="l00052"></a><span class="lineno"><a class="line" href="merge__sort_8h.html#a7b19a581999f4731e883621fabbd0886">   52</a></span>            <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code hl_function" href="merge__sort_8h.html#a7b19a581999f4731e883621fabbd0886">merge_sort</a>(T *<span class="keyword">const</span> elements, <span class="keyword">const</span> <span class="keywordtype">size_t</span> start, <span class="keyword">const</span> <span class="keywordtype">size_t</span> end) {</div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno"><a class="line" href="namespaceyh_1_1algo_1_1sort.html#a7b19a581999f4731e883621fabbd0886">   52</a></span>            <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code hl_function" href="namespaceyh_1_1algo_1_1sort.html#a7b19a581999f4731e883621fabbd0886">merge_sort</a>(T *<span class="keyword">const</span> elements, <span class="keyword">const</span> <span class="keywordtype">size_t</span> start, <span class="keyword">const</span> <span class="keywordtype">size_t</span> end) {</div>
 <div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>                <span class="keywordflow">if</span> (start + 1 &gt;= end) {</div>
 <div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>                    <span class="keywordflow">return</span>;</div>
 <div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>                }</div>
 <div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span> </div>
 <div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>                <span class="comment">// sort the 2 halves separately</span></div>
 <div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>                <span class="keyword">const</span> <span class="keywordtype">size_t</span> mid = (start + end) / 2;</div>
-<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>                <a class="code hl_function" href="merge__sort_8h.html#a7b19a581999f4731e883621fabbd0886">merge_sort</a>(elements, start, mid);</div>
-<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>                <a class="code hl_function" href="merge__sort_8h.html#a7b19a581999f4731e883621fabbd0886">merge_sort</a>(elements, mid, end);</div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>                <a class="code hl_function" href="namespaceyh_1_1algo_1_1sort.html#a7b19a581999f4731e883621fabbd0886">merge_sort</a>(elements, start, mid);</div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>                <a class="code hl_function" href="namespaceyh_1_1algo_1_1sort.html#a7b19a581999f4731e883621fabbd0886">merge_sort</a>(elements, mid, end);</div>
 <div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span> </div>
 <div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>                T sorted[end - start];</div>
 <div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>                T *sorted_ptr = sorted;</div>
@@ -202,7 +202,9 @@ $(function(){initNavTree('merge__sort_8h_source.html',''); initResizable(true); 
 <div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span>}</div>
 <div class="line"><a id="l00109" name="l00109"></a><span class="lineno">  109</span> </div>
 <div class="line"><a id="l00110" name="l00110"></a><span class="lineno">  110</span><span class="preprocessor">#endif </span><span class="comment">// #ifndef YH_ALGO_SORT_MERGE_SORT_H</span></div>
-<div class="ttc" id="amerge__sort_8h_html_a7b19a581999f4731e883621fabbd0886"><div class="ttname"><a href="merge__sort_8h.html#a7b19a581999f4731e883621fabbd0886">yh::algo::sort::merge_sort</a></div><div class="ttdeci">void merge_sort(T *const elements, const size_t start, const size_t end)</div><div class="ttdoc">Sorts an array with merge sort.</div><div class="ttdef"><b>Definition</b> merge_sort.h:52</div></div>
+<div class="ttc" id="anamespaceyh_1_1algo_1_1sort_html"><div class="ttname"><a href="namespaceyh_1_1algo_1_1sort.html">yh::algo::sort</a></div><div class="ttdoc">Interfaces and implementations of sorting algorithms. Sorting algorithms are placed under this namesp...</div><div class="ttdef"><b>Definition</b> heap_sort.h:45</div></div>
+<div class="ttc" id="anamespaceyh_1_1algo_1_1sort_html_a7b19a581999f4731e883621fabbd0886"><div class="ttname"><a href="namespaceyh_1_1algo_1_1sort.html#a7b19a581999f4731e883621fabbd0886">yh::algo::sort::merge_sort</a></div><div class="ttdeci">void merge_sort(T *const elements, const size_t start, const size_t end)</div><div class="ttdoc">Sorts an array with merge sort.</div><div class="ttdef"><b>Definition</b> merge_sort.h:52</div></div>
+<div class="ttc" id="anamespaceyh_1_1algo_html"><div class="ttname"><a href="namespaceyh_1_1algo.html">yh::algo</a></div><div class="ttdoc">Interfaces and implementations of algorithms. Algorithms are placed under this namespace.</div><div class="ttdef"><b>Definition</b> algo.h:40</div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- HTML footer for doxygen 1.13.2-->
