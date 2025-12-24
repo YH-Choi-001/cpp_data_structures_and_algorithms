@@ -188,6 +188,75 @@ namespace yh {
                         return remove(size() - 1);
                     }
 
+                    class Visitor {
+                        protected:
+                            /**
+                             * @brief A protected default constructor to avoid accidental instantiation.
+                             */
+                            Visitor() {}
+
+                        public:
+                            /**
+                             * @brief Visits each element once.
+                             * @param elementPointer The pointer to the element.
+                             */
+                            virtual void visit(T *elementPointer) = 0;
+
+                            /**
+                             * @brief A virtual destructor.
+                             */
+                            virtual ~Visitor() {}
+                    };
+
+                    /**
+                     * @brief Processes each element with a function.
+                     * @param visitor The visitor to visit each element.
+                     * @note Do not add or remove elements in the list within the given function.
+                     */
+                    virtual void foreach(Visitor &visitor) {
+                        const size_t len = size();
+                        for (size_t i = 0; i < len; i++) {
+                            visitor.visit(get(i));
+                        }
+                    }
+
+                    class PredicateVisitor {
+                        protected:
+                            /**
+                             * @brief A protected default constructor to avoid accidental instantiation.
+                             */
+                            PredicateVisitor() {}
+
+                        public:
+                            /**
+                             * @brief Visits each element once.
+                             * @param elementPointer The pointer to the element.
+                             * @return <code>true</code> or <code>false</code> for a decision to be made.
+                             */
+                            virtual bool visit(T *elementPointer) = 0;
+
+                            /**
+                             * @brief A virtual destructor.
+                             */
+                            virtual ~PredicateVisitor() {}
+                    };
+
+                    /**
+                     * @brief Processes each element with a predicate function.
+                     * @param visitor The visitor to visit each element. Return true to remove the element, false otherwise.
+                     * @note Do not add or remove elements in the list within the given function.
+                     */
+                    virtual void removeIf(PredicateVisitor &visitor) {
+                        for (size_t i = 0; i < size();) {
+                            const bool needToRemove = visitor.visit(get(i));
+                            if (needToRemove) {
+                                remove(i);
+                            } else {
+                                i++;
+                            }
+                        }
+                    }
+
                     /**
                      * @brief Processes each element with a function.
                      * @param func The function to process the elements. param: T* Pointer to the element.
@@ -197,10 +266,17 @@ namespace yh {
                         if (func == nullptr) {
                             return;
                         }
-                        const size_t len = size();
-                        for (size_t i = 0; i < len; i++) {
-                            func(get(i));
-                        }
+                        class ConcreteVisitor : public Visitor {
+                            private:
+                                void (*const func)(T *);
+                            public:
+                                ConcreteVisitor(void (*func)(T *)) : func(func) {}
+                                virtual void visit(T *const elementPointer) override {
+                                    func(elementPointer);
+                                }
+                        };
+                        ConcreteVisitor visitor(func);
+                        foreach(visitor);
                     }
 
                     /**
@@ -212,14 +288,17 @@ namespace yh {
                         if (func == nullptr) {
                             return;
                         }
-                        for (size_t i = 0; i < size();) {
-                            const bool needToRemove = func(get(i));
-                            if (needToRemove) {
-                                remove(i);
-                            } else {
-                                i++;
-                            }
-                        }
+                        class ConcretePredicateVisitor : public PredicateVisitor {
+                            private:
+                                bool (*const func)(T *);
+                            public:
+                                ConcretePredicateVisitor(bool (*func)(T *)) : func(func) {}
+                                virtual bool visit(T *const elementPointer) override {
+                                    return func(elementPointer);
+                                }
+                        };
+                        ConcretePredicateVisitor visitor(func);
+                        removeIf(visitor);
                     }
             };
         }
