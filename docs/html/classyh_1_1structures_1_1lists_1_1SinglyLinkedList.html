@@ -193,6 +193,12 @@ virtual&#160;</td><td class="memItemRight" valign="bottom"><b>~SinglyLinkedList<
 <tr class="memitem:a7d28d19f47d98a28dc12edc808f02a1e" id="r_a7d28d19f47d98a28dc12edc808f02a1e"><td class="memItemLeft" align="right" valign="top">virtual T *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a7d28d19f47d98a28dc12edc808f02a1e">removeTail</a> () override</td></tr>
 <tr class="memdesc:a7d28d19f47d98a28dc12edc808f02a1e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Removes the element at the tail of the list.  <br /></td></tr>
 <tr class="separator:a7d28d19f47d98a28dc12edc808f02a1e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afc1993f9f0f71838e7514e1ca0e5852d" id="r_afc1993f9f0f71838e7514e1ca0e5852d"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#afc1993f9f0f71838e7514e1ca0e5852d">foreach</a> (typename <a class="el" href="classyh_1_1structures_1_1lists_1_1List.html">List</a>&lt; T &gt;::Visitor &amp;visitor) override</td></tr>
+<tr class="memdesc:afc1993f9f0f71838e7514e1ca0e5852d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Processes each element with a function.  <br /></td></tr>
+<tr class="separator:afc1993f9f0f71838e7514e1ca0e5852d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6c7b5429590ce793b1cef79db8a40dec" id="r_a6c7b5429590ce793b1cef79db8a40dec"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6c7b5429590ce793b1cef79db8a40dec">removeIf</a> (typename <a class="el" href="classyh_1_1structures_1_1lists_1_1List.html">List</a>&lt; T &gt;::PredicateVisitor &amp;visitor) override</td></tr>
+<tr class="memdesc:a6c7b5429590ce793b1cef79db8a40dec"><td class="mdescLeft">&#160;</td><td class="mdescRight">Processes each element with a predicate function.  <br /></td></tr>
+<tr class="separator:a6c7b5429590ce793b1cef79db8a40dec"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5f3e9ff2b949b02b0281e772187183bf" id="r_a5f3e9ff2b949b02b0281e772187183bf"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5f3e9ff2b949b02b0281e772187183bf">foreach</a> (void(*func)(T *)) override</td></tr>
 <tr class="memdesc:a5f3e9ff2b949b02b0281e772187183bf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Processes each element with a function.  <br /></td></tr>
 <tr class="separator:a5f3e9ff2b949b02b0281e772187183bf"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -309,8 +315,44 @@ template&lt;typename T&gt; </div>
 
 </div>
 </div>
+<a id="afc1993f9f0f71838e7514e1ca0e5852d" name="afc1993f9f0f71838e7514e1ca0e5852d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afc1993f9f0f71838e7514e1ca0e5852d">&#9670;&#160;</a></span>foreach() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual void <a class="el" href="classyh_1_1structures_1_1lists_1_1SinglyLinkedList.html">yh::structures::lists::SinglyLinkedList</a>&lt; T &gt;::foreach </td>
+          <td>(</td>
+          <td class="paramtype">typename <a class="el" href="classyh_1_1structures_1_1lists_1_1List.html">List</a>&lt; T &gt;::Visitor &amp;</td>          <td class="paramname"><span class="paramname"><em>visitor</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel inline">inline</span><span class="mlabel override">override</span><span class="mlabel virtual">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Processes each element with a function. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">visitor</td><td>The visitor to visit each element. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section note"><dt>Note</dt><dd>Do not add or remove elements in the list within the given function. </dd></dl>
+
+</div>
+</div>
 <a id="a5f3e9ff2b949b02b0281e772187183bf" name="a5f3e9ff2b949b02b0281e772187183bf"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a5f3e9ff2b949b02b0281e772187183bf">&#9670;&#160;</a></span>foreach()</h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a5f3e9ff2b949b02b0281e772187183bf">&#9670;&#160;</a></span>foreach() <span class="overload">[2/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -565,7 +607,7 @@ template&lt;typename T&gt; </div>
 </div>
 </div>
 <a id="a62b4fce2c6035049af0e7bc44054d8f4" name="a62b4fce2c6035049af0e7bc44054d8f4"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a62b4fce2c6035049af0e7bc44054d8f4">&#9670;&#160;</a></span>removeIf()</h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a62b4fce2c6035049af0e7bc44054d8f4">&#9670;&#160;</a></span>removeIf() <span class="overload">[1/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -599,6 +641,42 @@ template&lt;typename T&gt; </div>
 <dl class="section note"><dt>Note</dt><dd>Do not add or remove elements in the list within the given function. </dd></dl>
 
 <p>Reimplemented from <a class="el" href="classyh_1_1structures_1_1lists_1_1List.html#a11dc5e0c309f1248181762e6eeee77f7">yh::structures::lists::List&lt; T &gt;</a>.</p>
+
+</div>
+</div>
+<a id="a6c7b5429590ce793b1cef79db8a40dec" name="a6c7b5429590ce793b1cef79db8a40dec"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6c7b5429590ce793b1cef79db8a40dec">&#9670;&#160;</a></span>removeIf() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual void <a class="el" href="classyh_1_1structures_1_1lists_1_1SinglyLinkedList.html">yh::structures::lists::SinglyLinkedList</a>&lt; T &gt;::removeIf </td>
+          <td>(</td>
+          <td class="paramtype">typename <a class="el" href="classyh_1_1structures_1_1lists_1_1List.html">List</a>&lt; T &gt;::PredicateVisitor &amp;</td>          <td class="paramname"><span class="paramname"><em>visitor</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel inline">inline</span><span class="mlabel override">override</span><span class="mlabel virtual">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Processes each element with a predicate function. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">visitor</td><td>The visitor to visit each element. Return true to remove the element, false otherwise. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section note"><dt>Note</dt><dd>Do not add or remove elements in the list within the given function. </dd></dl>
 
 </div>
 </div>
