@@ -40,6 +40,11 @@
 
 namespace yh {
     namespace structures {
+        /**
+         * A list is the most commonly used data structure in holding an ordered and repeatable collection of elements.
+         * Elements are referred by their indices (locations) in a list.
+         * @brief Interfaces and implementations of lists.
+         */
         namespace lists {
             /**
              * @brief The interface of a list.

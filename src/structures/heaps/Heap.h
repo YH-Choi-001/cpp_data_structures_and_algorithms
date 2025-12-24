@@ -40,6 +40,11 @@
 
 namespace yh {
     namespace structures {
+        /**
+         * A heap is a binary tree that efficiently keeps track of the extreme element of a collection.
+         * This may be the minimum or maximum of a group of numbers.
+         * @brief Interfaces and implementations of heaps.
+         */
         namespace heaps {
             /**
              * @brief The interface of a heap.

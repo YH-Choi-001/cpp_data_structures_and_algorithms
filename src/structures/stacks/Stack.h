@@ -40,6 +40,12 @@
 
 namespace yh {
     namespace structures {
+        /**
+         * A stack is a special list,
+         * where elements could only be appended to the top of the stack,
+         * and only the most recently joined element could be visited and removed.
+         * @brief Interfaces and implementations of stacks.
+         */
         namespace stacks {
             /**
              * @brief The interface of a stack.
