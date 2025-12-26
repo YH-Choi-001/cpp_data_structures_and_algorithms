@@ -2,7 +2,19 @@ name: Doxygen GitHub Pages Deploy Action
 
 on:
   push:
-    branches: [ "main" ]
+    branches:
+      - main
+    paths-ignore:
+      - '.github/**'
+      - '!.github/workflows/doxygen-docs.yml'
+      - 'docs/**'
+  pull_request:
+    paths-ignore:
+      - '.github/**'
+      - '!.github/workflows/doxygen-docs.yml'
+      - 'docs/**'
+  workflow_dispatch:
+  # Allows you to run this workflow manually from the Actions tab
 
 jobs:
   deploy:
@@ -17,4 +29,4 @@ jobs:
           folder: docs/html
           config_file: docs/doxygen/Doxyfile
           target_folder: docs/html
-          doxygen_version: 1.13.2
+          doxygen_version: 1.14.0
