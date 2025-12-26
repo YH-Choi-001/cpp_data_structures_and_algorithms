@@ -40,6 +40,11 @@
 
 namespace yh {
     namespace structures {
+        /**
+         * A list is the most commonly used data structure in holding an ordered and repeatable collection of elements.
+         * Elements are referred by their indices (locations) in a list.
+         * @brief Interfaces and implementations of lists.
+         */
         namespace lists {
             /**
              * @brief The interface of a list.
@@ -186,6 +191,125 @@ namespace yh {
                      */
                     virtual T *removeTail() {
                         return remove(size() - 1);
+                    }
+
+                    /**
+                     * @brief A visitor used to visit elements of a list.
+                     */
+                    class Visitor {
+                        protected:
+                            /**
+                             * @brief A protected default constructor to avoid accidental instantiation.
+                             */
+                            Visitor() {}
+
+                        public:
+                            /**
+                             * @brief Visits each element once.
+                             * @param elementPointer The pointer to the element.
+                             */
+                            virtual void visit(T *elementPointer) = 0;
+
+                            /**
+                             * @brief A virtual destructor.
+                             */
+                            virtual ~Visitor() {}
+                    };
+
+                    /**
+                     * @brief Processes each element with a function.
+                     * @param visitor The visitor to visit each element.
+                     * @note Do not add or remove elements in the list within the given function.
+                     */
+                    virtual void foreach(Visitor &visitor) {
+                        const size_t len = size();
+                        for (size_t i = 0; i < len; i++) {
+                            visitor.visit(get(i));
+                        }
+                    }
+
+                    /**
+                     * @brief A visitor used to visit elements of a list, with a predicate to accept or reject every element.
+                     */
+                    class PredicateVisitor {
+                        protected:
+                            /**
+                             * @brief A protected default constructor to avoid accidental instantiation.
+                             */
+                            PredicateVisitor() {}
+
+                        public:
+                            /**
+                             * @brief Visits each element once.
+                             * @param elementPointer The pointer to the element.
+                             * @return <code>true</code> or <code>false</code> for a decision to be made.
+                             */
+                            virtual bool visit(T *elementPointer) = 0;
+
+                            /**
+                             * @brief A virtual destructor.
+                             */
+                            virtual ~PredicateVisitor() {}
+                    };
+
+                    /**
+                     * @brief Processes each element with a predicate function.
+                     * @param visitor The visitor to visit each element. Return true to remove the element, false otherwise.
+                     * @note Do not add or remove elements in the list within the given function.
+                     */
+                    virtual void removeIf(PredicateVisitor &visitor) {
+                        for (size_t i = 0; i < size();) {
+                            const bool needToRemove = visitor.visit(get(i));
+                            if (needToRemove) {
+                                remove(i);
+                            } else {
+                                i++;
+                            }
+                        }
+                    }
+
+                    /**
+                     * @brief Processes each element with a function.
+                     * @param func The function to process the elements. param: T* Pointer to the element.
+                     * @note Do not add or remove elements in the list within the given function.
+                     */
+                    virtual void foreach(void (*func)(T *)) {
+                        if (func == nullptr) {
+                            return;
+                        }
+                        class ConcreteVisitor : public Visitor {
+                            private:
+                                void (*const func)(T *);
+                            public:
+                                ConcreteVisitor(void (*func)(T *)) : func(func) {}
+                                virtual void visit(T *const elementPointer) override {
+                                    func(elementPointer);
+                                }
+                        };
+                        ConcreteVisitor visitor(func);
+                        foreach(visitor);
+                    }
+
+                    /**
+                     * @brief Processes each element with a predicate function.
+                     * @param func The function to process the elements. param: T* Pointer to the element. return: True to remove the element.
+                     * @note Do not add or remove elements in the list within the given function.
+                     */
+                    virtual void removeIf(bool (*func)(T *)) {
+                        if (func == nullptr) {
+                            return;
+                        }
+                        class ConcretePredicateVisitor : public PredicateVisitor {
+                            private:
+                                bool (*const func)(T *);
+                            public:
+                                ConcretePredicateVisitor(bool (*func)(T *)) : func(func) {}
+                                virtual bool visit(T *const elementPointer) override {
+                                    return func(elementPointer);
+                                }
+                        };
+                        ConcretePredicateVisitor visitor(func);
+                        removeIf(visitor);
                     }
             };
         }

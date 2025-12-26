@@ -40,6 +40,12 @@
 
 namespace yh {
     namespace structures {
+        /**
+         * A queue is a special list,
+         * where elements could only be appended to the tail,
+         * and elements could only be visited and removed in the order they joined the list.
+         * @brief Interfaces and implementations of queues.
+         */
         namespace queues {
             /**
              * @brief The interface of a queue.

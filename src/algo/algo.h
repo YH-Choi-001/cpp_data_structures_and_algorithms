@@ -1,5 +1,5 @@
 /**
- * @file testSinglyLinkedList.cpp - Tests for singly-linked list.
+ * @file algo.h The algo namespace documentation.
  * 
  * @copyright Copyright (c) 2025 YH Choi. All rights reserved.
  * 
@@ -29,6 +29,16 @@
  * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#define LIST_TYPE SinglyLinkedList
-#include "../../../src/structures/lists/SinglyLinkedList.h"
-#include "_testList.cpp"
+#ifndef YH_ALGO_H
+#define YH_ALGO_H
+
+namespace yh {
+    /**
+     * Algorithms are placed under this namespace.
+     * @brief Interfaces and implementations of algorithms.
+     */
+    namespace algo {
+    }
+}
+
+#endif // #ifndef YH_ALGO_H

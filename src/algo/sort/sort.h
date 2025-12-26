@@ -1,5 +1,5 @@
 /**
- * @file testSinglyLinkedList.cpp - Tests for singly-linked list.
+ * @file sort.h The sort namespace documentation.
  * 
  * @copyright Copyright (c) 2025 YH Choi. All rights reserved.
  * 
@@ -29,6 +29,18 @@
  * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#define LIST_TYPE SinglyLinkedList
-#include "../../../src/structures/lists/SinglyLinkedList.h"
-#include "_testList.cpp"
+#ifndef YH_ALGO_SORT_H
+#define YH_ALGO_SORT_H
+
+namespace yh {
+    namespace algo {
+        /**
+         * Sorting algorithms are placed under this namespace.
+         * @brief Interfaces and implementations of sorting algorithms.
+         */
+        namespace sort {
+        }
+    }
+}
+
+#endif // #ifndef YH_ALGO_SORT_H

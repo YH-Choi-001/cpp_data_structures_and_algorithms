@@ -1,5 +1,5 @@
 /**
- * @file testSinglyLinkedList.cpp - Tests for singly-linked list.
+ * @file structures.h The structures namespace documentation.
  * 
  * @copyright Copyright (c) 2025 YH Choi. All rights reserved.
  * 
@@ -29,6 +29,16 @@
  * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#define LIST_TYPE SinglyLinkedList
-#include "../../../src/structures/lists/SinglyLinkedList.h"
-#include "_testList.cpp"
+#ifndef YH_STRUCTURES_H
+#define YH_STRUCTURES_H
+
+namespace yh {
+    /**
+     * Classes of data structures are placed under this namespace.
+     * @brief Interfaces and implementations of data structures.
+     */
+    namespace structures {
+    }
+}
+
+#endif // #ifndef YH_STRUCTURES_H
