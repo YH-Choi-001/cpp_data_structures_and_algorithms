@@ -8,11 +8,13 @@ on:
       - '.github/**'
       - '!.github/workflows/doxygen-docs.yml'
       - 'docs/**'
+      - 'tests/**'
   pull_request:
     paths-ignore:
       - '.github/**'
       - '!.github/workflows/doxygen-docs.yml'
       - 'docs/**'
+      - 'tests/**'
   workflow_dispatch:
   # Allows you to run this workflow manually from the Actions tab
 
