@@ -1305,18 +1305,19 @@ TEST_BEGIN(list_foreach)
     pointers[3] = &a;
     static int i;
     i = 0;
-    static bool passed;
-    passed = true;
-    static std::string reason;
-    reason = result.reason;
+    static testcase_result_t static_result;
+    result.passed = true;
+    static_result.passed = result.passed;
+    static_result.reason = result.reason;
     list.foreach([](int *const ptr) {
         if (ptr != pointers[i]) {
-            passed = false;
-            reason = "list.foreach() gives incorrect pointer.";
+            static_result.passed = false;
+            static_result.reason = "list.foreach() gives incorrect pointer.";
         }
         i++;
     });
-    result.passed = passed;
+    result.passed = static_result.passed;
+    result.reason = static_result.reason;
     if (i != 4) {
         result.passed = false;
         result.reason = "list.foreach() doesn't run on every element.";
