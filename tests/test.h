@@ -20,6 +20,7 @@ static size_t failed_testcase_count = 0;
 
 void test(testfunc_t func) {
     testcase_result_t result {false, 0, "no reason provided"};
+    result.reason.reserve(2048); // avoid malloc resizing when a long reason is provided
     tests::mem_leak::reset_malloc_count();
     func(result);
     const size_t malloc_count = tests::mem_leak::get_malloc_count();
