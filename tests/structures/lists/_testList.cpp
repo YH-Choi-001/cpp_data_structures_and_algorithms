@@ -958,30 +958,40 @@ TEST_BEGIN(list_foreach)
     list.addTail(&y);
     list.addTail(&z);
     list.addTail(&a);
-    static int *pointers [4];
-    pointers[0] = &x;
-    pointers[1] = &y;
-    pointers[2] = &z;
-    pointers[3] = &a;
-    static int i;
-    i = 0;
-    static testing_framework::testcase_result_t static_result;
-    result.passed = true;
-    static_result.passed = result.passed;
-    static_result.reason = result.reason;
-    list.foreach([](int *const ptr) {
-        if (ptr != pointers[i]) {
-            static_result.passed = false;
-            static_result.reason = "list.foreach() gives incorrect pointer.";
-        }
-        i++;
-    });
-    result.passed = static_result.passed;
-    result.reason = static_result.reason;
-    if (i != 4) {
-        result.passed = false;
-        result.reason = "list.foreach() doesn't run on every element.";
-    }
+
+    class TestVisitor : public yh::structures::lists::List<int>::Visitor {
+        private:
+            int *pointers[16];
+            int visitCounter;
+        public:
+            TestVisitor() :
+                pointers{nullptr},
+                visitCounter(0)
+            {
+                //
+            }
+            void visit(int *const elementPointer) override {
+                pointers[visitCounter] = elementPointer;
+                visitCounter++;
+            }
+            int getVisitCounter() {
+                return visitCounter;
+            }
+            int *operator[](const size_t index) {
+                if (index >= visitCounter) {
+                    return nullptr;
+                }
+                return pointers[index];
+            }
+    };
+
+    TestVisitor visitor;
+    list.foreach(visitor);
+    ASSERT_EQUALS(visitor.getVisitCounter(), 4);
+    ASSERT_EQUALS(visitor[0], &x);
+    ASSERT_EQUALS(visitor[1], &y);
+    ASSERT_EQUALS(visitor[2], &z);
+    ASSERT_EQUALS(visitor[3], &a);
 }
 TEST_END()
 
