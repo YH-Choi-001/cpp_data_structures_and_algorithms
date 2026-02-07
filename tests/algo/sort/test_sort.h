@@ -34,6 +34,13 @@
 
 #include <cstddef>
 
+void print_array(const int array [], const size_t len) {
+    std::cout << "{";
+    for (size_t i = 0; i < len; i++) {
+        std::cout << array[i] << ((i == len - 1) ? "}" : ", ");
+    }
+}
+
 unsigned int test() {
     unsigned int failed_testcase_count = 0;
     size_t testcase_index = 0;
@@ -52,14 +59,10 @@ unsigned int test() {
             std::cout << " passed." << std::endl; \
         } else { \
             ++failed_testcase_count; \
-            std::cout << " failed. Expected: {"; \
-            for (size_t i = 0; i < len; i++) { \
-                std::cout << results[i] << ((i == len - 1) ? "}" : ", "); \
-            } \
-            std::cout << " but Returned: {"; \
-            for (size_t i = 0; i < len; i++) { \
-                std::cout << elements[i] << ((i == len - 1) ? "}" : ", "); \
-            } \
+            std::cout << " failed. Expected: "; \
+            print_array(results, len); \
+            std::cout << " but Returned: "; \
+            print_array(elements, len); \
             std::cout << std::endl; \
         } \
         ++testcase_index; \
