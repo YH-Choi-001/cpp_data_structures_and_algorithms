@@ -40,12 +40,7 @@ using yh::structures::lists::LIST_TYPE;
 TEST_BEGIN(list_is_empty_for_empty_list)
 {
     LIST_TYPE<int> list;
-    if (list.isEmpty()) {
-        result.passed = true;
-    } else {
-        result.passed = false;
-        result.reason = "list.isEmpty() returns false for an empty list.";
-    }
+    ASSERT_TRUE(list.isEmpty());
 }
 TEST_END()
 
@@ -54,12 +49,7 @@ TEST_BEGIN(list_is_not_empty_for_1_element_list_add_head)
     LIST_TYPE<int> list;
     int x = 35;
     list.addHead(&x);
-    if (!list.isEmpty()) {
-        result.passed = true;
-    } else {
-        result.passed = false;
-        result.reason = "list.isEmpty() returns true for a list with 1 element.";
-    }
+    ASSERT_FALSE(list.isEmpty());
 }
 TEST_END()
 
@@ -68,12 +58,7 @@ TEST_BEGIN(list_is_not_empty_for_1_element_list_add_tail)
     LIST_TYPE<int> list;
     int x = 35;
     list.addTail(&x);
-    if (!list.isEmpty()) {
-        result.passed = true;
-    } else {
-        result.passed = false;
-        result.reason = "list.isEmpty() returns true for a list with 1 element.";
-    }
+    ASSERT_FALSE(list.isEmpty());
 }
 TEST_END()
 
@@ -82,12 +67,7 @@ TEST_BEGIN(list_is_not_empty_for_1_element_list_insert)
     LIST_TYPE<int> list;
     int x = 35;
     list.insert(0, &x);
-    if (!list.isEmpty()) {
-        result.passed = true;
-    } else {
-        result.reason = "list.isEmpty() returns true for a list with 1 element.";
-        result.passed = false;
-    }
+    ASSERT_FALSE(list.isEmpty());
 }
 TEST_END()
 
@@ -96,12 +76,7 @@ TEST_BEGIN(list_is_empty_for_1_element_list_insert_invalid_index)
     LIST_TYPE<int> list;
     int x = 35;
     list.insert(1, &x);
-    if (list.isEmpty()) {
-        result.passed = true;
-    } else {
-        result.reason = "list.isEmpty() returns false for an empty list but with an element inserted at an invalid index.";
-        result.passed = false;
-    }
+    ASSERT_TRUE(list.isEmpty());
 }
 TEST_END()
 
@@ -112,12 +87,7 @@ TEST_BEGIN(list_is_not_empty_for_2_element_list_add_head)
     int y = -12;
     list.addHead(&x);
     list.addHead(&y);
-    if (!list.isEmpty()) {
-        result.passed = true;
-    } else {
-        result.reason = "list.isEmpty() returns true for a list with 2 elements.";
-        result.passed = false;
-    }
+    ASSERT_FALSE(list.isEmpty());
 }
 TEST_END()
 
@@ -128,12 +98,7 @@ TEST_BEGIN(list_is_not_empty_for_2_element_list_add_head_then_add_tail)
     int y = -12;
     list.addHead(&x);
     list.addTail(&y);
-    if (!list.isEmpty()) {
-        result.passed = true;
-    } else {
-        result.reason = "list.isEmpty() returns true for a list with 2 elements.";
-        result.passed = false;
-    }
+    ASSERT_FALSE(list.isEmpty());
 }
 TEST_END()
 
@@ -144,12 +109,7 @@ TEST_BEGIN(list_is_not_empty_for_2_element_list_add_tail_then_add_head)
     int y = -12;
     list.addTail(&x);
     list.addHead(&y);
-    if (!list.isEmpty()) {
-        result.passed = true;
-    } else {
-        result.reason = "list.isEmpty() returns true for a list with 2 elements.";
-        result.passed = false;
-    }
+    ASSERT_FALSE(list.isEmpty());
 }
 TEST_END()
 
@@ -160,12 +120,7 @@ TEST_BEGIN(list_is_not_empty_for_2_element_list_add_tail)
     int y = -12;
     list.addTail(&x);
     list.addTail(&y);
-    if (!list.isEmpty()) {
-        result.passed = true;
-    } else {
-        result.reason = "list.isEmpty() returns true for a list with 2 elements.";
-        result.passed = false;
-    }
+    ASSERT_FALSE(list.isEmpty());
 }
 TEST_END()
 
@@ -176,12 +131,7 @@ TEST_BEGIN(list_is_not_empty_for_2_element_list_insert_0_then_insert_0)
     int y = -12;
     list.insert(0, &x);
     list.insert(0, &y);
-    if (!list.isEmpty()) {
-        result.passed = true;
-    } else {
-        result.reason = "list.isEmpty() returns true for a list with 2 elements.";
-        result.passed = false;
-    }
+    ASSERT_FALSE(list.isEmpty());
 }
 TEST_END()
 
@@ -192,12 +142,7 @@ TEST_BEGIN(list_is_not_empty_for_2_element_list_insert_0_then_insert_1)
     int y = -12;
     list.insert(0, &x);
     list.insert(1, &y);
-    if (!list.isEmpty()) {
-        result.passed = true;
-    } else {
-        result.reason = "list.isEmpty() returns true for a list with 2 elements.";
-        result.passed = false;
-    }
+    ASSERT_FALSE(list.isEmpty());
 }
 TEST_END()
 
@@ -208,12 +153,7 @@ TEST_BEGIN(list_is_not_empty_for_1_element_list_insert_valid_index_then_insert_i
     int y = -12;
     list.insert(0, &x);
     list.insert(2, &y);
-    if (!list.isEmpty()) {
-        result.passed = true;
-    } else {
-        result.reason = "list.isEmpty() returns true for a list with 1 element.";
-        result.passed = false;
-    }
+    ASSERT_FALSE(list.isEmpty());
 }
 TEST_END()
 
@@ -224,27 +164,14 @@ TEST_BEGIN(list_is_not_empty_for_1_element_list_insert_invalid_index_then_insert
     int y = -12;
     list.insert(1, &x);
     list.insert(0, &y);
-    if (!list.isEmpty()) {
-        result.passed = true;
-    } else {
-        result.reason = "list.isEmpty() returns true for a list with 1 element.";
-        result.passed = false;
-    }
+    ASSERT_FALSE(list.isEmpty());
 }
 TEST_END()
 
 TEST_BEGIN(list_size_is_0_for_empty_list)
 {
     LIST_TYPE<int> list;
-    const size_t size = list.size();
-    if (size == 0) {
-        result.passed = true;
-    } else {
-        std::stringstream sstream;
-        sstream << "list.size() returns " << size << " for an empty list.";
-        result.reason = sstream.str();
-        result.passed = false;
-    }
+    ASSERT_EQUALS(list.size(), 0);
 }
 TEST_END()
 
@@ -253,15 +180,7 @@ TEST_BEGIN(list_size_is_1_for_1_element_list_add_head)
     LIST_TYPE<int> list;
     int x = 35;
     list.addHead(&x);
-    const size_t size = list.size();
-    if (size == 1) {
-        result.passed = true;
-    } else {
-        std::stringstream sstream;
-        sstream << "list.size() returns " << size << " for a list with 1 element.";
-        result.reason = sstream.str();
-        result.passed = false;
-    }
+    ASSERT_EQUALS(list.size(), 1);
 }
 TEST_END()
 
@@ -270,15 +189,7 @@ TEST_BEGIN(list_size_is_1_for_1_element_list_add_tail)
     LIST_TYPE<int> list;
     int x = 35;
     list.addTail(&x);
-    const size_t size = list.size();
-    if (size == 1) {
-        result.passed = true;
-    } else {
-        std::stringstream sstream;
-        sstream << "list.size() returns " << size << " for a list with 1 element.";
-        result.reason = sstream.str();
-        result.passed = false;
-    }
+    ASSERT_EQUALS(list.size(), 1);
 }
 TEST_END()
 
@@ -287,15 +198,7 @@ TEST_BEGIN(list_size_is_1_for_1_element_list_insert)
     LIST_TYPE<int> list;
     int x = 35;
     list.insert(0, &x);
-    const size_t size = list.size();
-    if (size == 1) {
-        result.passed = true;
-    } else {
-        std::stringstream sstream;
-        sstream << "list.size() returns " << size << " for a list with 1 element.";
-        result.reason = sstream.str();
-        result.passed = false;
-    }
+    ASSERT_EQUALS(list.size(), 1);
 }
 TEST_END()
 
@@ -304,15 +207,7 @@ TEST_BEGIN(list_size_is_1_for_1_element_list_insert_invalid_index)
     LIST_TYPE<int> list;
     int x = 35;
     list.insert(1, &x);
-    const size_t size = list.size();
-    if (size == 0) {
-        result.passed = true;
-    } else {
-        std::stringstream sstream;
-        sstream << "list.size() returns " << size << " for an empty list but with an element inserted at an invalid index.";
-        result.reason = sstream.str();
-        result.passed = false;
-    }
+    ASSERT_EQUALS(list.size(), 0);
 }
 TEST_END()
 
@@ -323,15 +218,7 @@ TEST_BEGIN(list_size_is_2_for_2_element_list_add_head)
     int y = -12;
     list.addHead(&x);
     list.addHead(&y);
-    const size_t size = list.size();
-    if (size == 2) {
-        result.passed = true;
-    } else {
-        std::stringstream sstream;
-        sstream << "list.size() returns " << size << " for a list with 2 elements.";
-        result.reason = sstream.str();
-        result.passed = false;
-    }
+    ASSERT_EQUALS(list.size(), 2);
 }
 TEST_END()
 
@@ -342,15 +229,7 @@ TEST_BEGIN(list_size_is_2_for_2_element_list_add_head_then_add_tail)
     int y = -12;
     list.addHead(&x);
     list.addTail(&y);
-    const size_t size = list.size();
-    if (size == 2) {
-        result.passed = true;
-    } else {
-        std::stringstream sstream;
-        sstream << "list.size() returns " << size << " for a list with 2 elements.";
-        result.reason = sstream.str();
-        result.passed = false;
-    }
+    ASSERT_EQUALS(list.size(), 2);
 }
 TEST_END()
 
@@ -361,15 +240,7 @@ TEST_BEGIN(list_size_is_2_for_2_element_list_add_tail_then_add_head)
     int y = -12;
     list.addTail(&x);
     list.addHead(&y);
-    const size_t size = list.size();
-    if (size == 2) {
-        result.passed = true;
-    } else {
-        std::stringstream sstream;
-        sstream << "list.size() returns " << size << " for a list with 2 elements.";
-        result.reason = sstream.str();
-        result.passed = false;
-    }
+    ASSERT_EQUALS(list.size(), 2);
 }
 TEST_END()
 
@@ -380,15 +251,7 @@ TEST_BEGIN(list_size_is_2_for_2_element_list_add_tail)
     int y = -12;
     list.addTail(&x);
     list.addTail(&y);
-    const size_t size = list.size();
-    if (size == 2) {
-        result.passed = true;
-    } else {
-        std::stringstream sstream;
-        sstream << "list.size() returns " << size << " for a list with 2 elements.";
-        result.reason = sstream.str();
-        result.passed = false;
-    }
+    ASSERT_EQUALS(list.size(), 2);
 }
 TEST_END()
 
@@ -399,15 +262,7 @@ TEST_BEGIN(list_size_is_2_for_2_element_list_insert_0_then_insert_0)
     int y = -12;
     list.insert(0, &x);
     list.insert(0, &y);
-    const size_t size = list.size();
-    if (size == 2) {
-        result.passed = true;
-    } else {
-        std::stringstream sstream;
-        sstream << "list.size() returns " << size << " for a list with 2 elements.";
-        result.reason = sstream.str();
-        result.passed = false;
-    }
+    ASSERT_EQUALS(list.size(), 2);
 }
 TEST_END()
 
@@ -418,15 +273,7 @@ TEST_BEGIN(list_size_is_2_for_2_element_list_insert_0_then_insert_1)
     int y = -12;
     list.insert(0, &x);
     list.insert(1, &y);
-    const size_t size = list.size();
-    if (size == 2) {
-        result.passed = true;
-    } else {
-        std::stringstream sstream;
-        sstream << "list.size() returns " << size << " for a list with 2 elements.";
-        result.reason = sstream.str();
-        result.passed = false;
-    }
+    ASSERT_EQUALS(list.size(), 2);
 }
 TEST_END()
 
@@ -437,15 +284,7 @@ TEST_BEGIN(list_size_is_2_for_2_element_list_insert_valid_index_then_insert_inva
     int y = -12;
     list.insert(0, &x);
     list.insert(2, &y);
-    const size_t size = list.size();
-    if (size == 1) {
-        result.passed = true;
-    } else {
-        std::stringstream sstream;
-        sstream << "list.size() returns " << size << " for a list with 1 element and another element inserted at an invalid index.";
-        result.reason = sstream.str();
-        result.passed = false;
-    }
+    ASSERT_EQUALS(list.size(), 1);
 }
 TEST_END()
 
@@ -456,15 +295,7 @@ TEST_BEGIN(list_size_is_2_for_2_element_list_insert_invalid_index_then_insert_va
     int y = -12;
     list.insert(1, &x);
     list.insert(0, &y);
-    const size_t size = list.size();
-    if (size == 1) {
-        result.passed = true;
-    } else {
-        std::stringstream sstream;
-        sstream << "list.size() returns " << size << " for a list with 1 element and another element inserted at an invalid index.";
-        result.reason = sstream.str();
-        result.passed = false;
-    }
+    ASSERT_EQUALS(list.size(), 1);
 }
 TEST_END()
 
@@ -477,18 +308,10 @@ TEST_BEGIN(list_add_head_head_head)
     list.addHead(&x);
     list.addHead(&y);
     list.addHead(&z);
-    const size_t size = list.size();
-    result.passed = true;
-    if (size != 3) {
-        std::stringstream sstream;
-        sstream << "list.size() returns " << size << " for a list with 3 elements.";
-        result.reason = sstream.str();
-        result.passed = false;
-    }
-    if (list.get(0) != &z || list.get(1) != &y || list.get(2) != &x) {
-        result.reason = "list.get() returns wrong order or invalid addresses for a list with 3 elements.";
-        result.passed = false;
-    }
+    ASSERT_EQUALS(list.size(), 3);
+    ASSERT_EQUALS(list.get(0), &z);
+    ASSERT_EQUALS(list.get(1), &y);
+    ASSERT_EQUALS(list.get(2), &x);
 }
 TEST_END()
 
@@ -501,18 +324,10 @@ TEST_BEGIN(list_add_tail_tail_tail)
     list.addTail(&x);
     list.addTail(&y);
     list.addTail(&z);
-    const size_t size = list.size();
-    result.passed = true;
-    if (size != 3) {
-        std::stringstream sstream;
-        sstream << "list.size() returns " << size << " for a list with 3 elements.";
-        result.reason = sstream.str();
-        result.passed = false;
-    }
-    if (list.get(0) != &x || list.get(1) != &y || list.get(2) != &z) {
-        result.reason = "list.get() returns wrong order or invalid addresses for a list with 3 elements.";
-        result.passed = false;
-    }
+    ASSERT_EQUALS(list.size(), 3);
+    ASSERT_EQUALS(list.get(0), &x);
+    ASSERT_EQUALS(list.get(1), &y);
+    ASSERT_EQUALS(list.get(2), &z);
 }
 TEST_END()
 
@@ -525,18 +340,10 @@ TEST_BEGIN(list_add_head_tail_head)
     list.addHead(&x);
     list.addTail(&y);
     list.addHead(&z);
-    const size_t size = list.size();
-    result.passed = true;
-    if (size != 3) {
-        std::stringstream sstream;
-        sstream << "list.size() returns " << size << " for a list with 3 elements.";
-        result.reason = sstream.str();
-        result.passed = false;
-    }
-    if (list.get(0) != &z || list.get(1) != &x || list.get(2) != &y) {
-        result.reason = "list.get() returns wrong order or invalid addresses for a list with 3 elements.";
-        result.passed = false;
-    }
+    ASSERT_EQUALS(list.size(), 3);
+    ASSERT_EQUALS(list.get(0), &z);
+    ASSERT_EQUALS(list.get(1), &x);
+    ASSERT_EQUALS(list.get(2), &y);
 }
 TEST_END()
 
@@ -549,18 +356,10 @@ TEST_BEGIN(list_add_tail_head_tail)
     list.addTail(&x);
     list.addHead(&y);
     list.addTail(&z);
-    const size_t size = list.size();
-    result.passed = true;
-    if (size != 3) {
-        std::stringstream sstream;
-        sstream << "list.size() returns " << size << " for a list with 3 elements.";
-        result.reason = sstream.str();
-        result.passed = false;
-    }
-    if (list.get(0) != &y || list.get(1) != &x || list.get(2) != &z) {
-        result.reason = "list.get() returns wrong order or invalid addresses for a list with 3 elements.";
-        result.passed = false;
-    }
+    ASSERT_EQUALS(list.size(), 3);
+    ASSERT_EQUALS(list.get(0), &y);
+    ASSERT_EQUALS(list.get(1), &x);
+    ASSERT_EQUALS(list.get(2), &z);
 }
 TEST_END()
 
@@ -573,18 +372,10 @@ TEST_BEGIN(list_add_head_head_tail)
     list.addHead(&x);
     list.addHead(&y);
     list.addTail(&z);
-    const size_t size = list.size();
-    result.passed = true;
-    if (size != 3) {
-        std::stringstream sstream;
-        sstream << "list.size() returns " << size << " for a list with 3 elements.";
-        result.reason = sstream.str();
-        result.passed = false;
-    }
-    if (list.get(0) != &y || list.get(1) != &x || list.get(2) != &z) {
-        result.reason = "list.get() returns wrong order or invalid addresses for a list with 3 elements.";
-        result.passed = false;
-    }
+    ASSERT_EQUALS(list.size(), 3);
+    ASSERT_EQUALS(list.get(0), &y);
+    ASSERT_EQUALS(list.get(1), &x);
+    ASSERT_EQUALS(list.get(2), &z);
 }
 TEST_END()
 
@@ -597,18 +388,10 @@ TEST_BEGIN(list_add_head_tail_tail)
     list.addHead(&x);
     list.addTail(&y);
     list.addTail(&z);
-    const size_t size = list.size();
-    result.passed = true;
-    if (size != 3) {
-        std::stringstream sstream;
-        sstream << "list.size() returns " << size << " for a list with 3 elements.";
-        result.reason = sstream.str();
-        result.passed = false;
-    }
-    if (list.get(0) != &x || list.get(1) != &y || list.get(2) != &z) {
-        result.reason = "list.get() returns wrong order or invalid addresses for a list with 3 elements.";
-        result.passed = false;
-    }
+    ASSERT_EQUALS(list.size(), 3);
+    ASSERT_EQUALS(list.get(0), &x);
+    ASSERT_EQUALS(list.get(1), &y);
+    ASSERT_EQUALS(list.get(2), &z);
 }
 TEST_END()
 
@@ -621,18 +404,10 @@ TEST_BEGIN(list_add_tail_tail_head)
     list.addTail(&x);
     list.addTail(&y);
     list.addHead(&z);
-    const size_t size = list.size();
-    result.passed = true;
-    if (size != 3) {
-        std::stringstream sstream;
-        sstream << "list.size() returns " << size << " for a list with 3 elements.";
-        result.reason = sstream.str();
-        result.passed = false;
-    }
-    if (list.get(0) != &z || list.get(1) != &x || list.get(2) != &y) {
-        result.reason = "list.get() returns wrong order or invalid addresses for a list with 3 elements.";
-        result.passed = false;
-    }
+    ASSERT_EQUALS(list.size(), 3);
+    ASSERT_EQUALS(list.get(0), &z);
+    ASSERT_EQUALS(list.get(1), &x);
+    ASSERT_EQUALS(list.get(2), &y);
 }
 TEST_END()
 
@@ -645,18 +420,10 @@ TEST_BEGIN(list_add_tail_head_head)
     list.addTail(&x);
     list.addHead(&y);
     list.addHead(&z);
-    const size_t size = list.size();
-    result.passed = true;
-    if (size != 3) {
-        std::stringstream sstream;
-        sstream << "list.size() returns " << size << " for a list with 3 elements.";
-        result.reason = sstream.str();
-        result.passed = false;
-    }
-    if (list.get(0) != &z || list.get(1) != &y || list.get(2) != &x) {
-        result.reason = "list.get() returns wrong order or invalid addresses for a list with 3 elements.";
-        result.passed = false;
-    }
+    ASSERT_EQUALS(list.size(), 3);
+    ASSERT_EQUALS(list.get(0), &z);
+    ASSERT_EQUALS(list.get(1), &y);
+    ASSERT_EQUALS(list.get(2), &x);
 }
 TEST_END()
 
@@ -671,18 +438,11 @@ TEST_BEGIN(list_add_tail_tail_tail_tail)
     list.addTail(&y);
     list.addTail(&z);
     list.addTail(&a);
-    const size_t size = list.size();
-    result.passed = true;
-    if (size != 4) {
-        std::stringstream sstream;
-        sstream << "list.size() returns " << size << " for a list with 4 elements.";
-        result.reason = sstream.str();
-        result.passed = false;
-    }
-    if (list.get(0) != &x || list.get(1) != &y || list.get(2) != &z || list.get(3) != &a) {
-        result.reason = "list.get() returns wrong order or invalid addresses for a list with 4 elements.";
-        result.passed = false;
-    }
+    ASSERT_EQUALS(list.size(), 4);
+    ASSERT_EQUALS(list.get(0), &x);
+    ASSERT_EQUALS(list.get(1), &y);
+    ASSERT_EQUALS(list.get(2), &z);
+    ASSERT_EQUALS(list.get(3), &a);
 }
 TEST_END()
 
@@ -697,18 +457,11 @@ TEST_BEGIN(list_insert_tail_tail_tail_tail)
     list.insert(1, &y);
     list.insert(2, &z);
     list.insert(3, &a);
-    const size_t size = list.size();
-    result.passed = true;
-    if (size != 4) {
-        std::stringstream sstream;
-        sstream << "list.size() returns " << size << " for a list with 4 elements.";
-        result.reason = sstream.str();
-        result.passed = false;
-    }
-    if (list.get(0) != &x || list.get(1) != &y || list.get(2) != &z || list.get(3) != &a) {
-        result.reason = "list.get() returns wrong order or invalid addresses for a list with 4 elements.";
-        result.passed = false;
-    }
+    ASSERT_EQUALS(list.size(), 4);
+    ASSERT_EQUALS(list.get(0), &x);
+    ASSERT_EQUALS(list.get(1), &y);
+    ASSERT_EQUALS(list.get(2), &z);
+    ASSERT_EQUALS(list.get(3), &a);
 }
 TEST_END()
 
@@ -723,18 +476,11 @@ TEST_BEGIN(list_insert_tail_tail_mid_head)
     list.insert(1, &a);
     list.insert(1, &z);
     list.insert(0, &x);
-    const size_t size = list.size();
-    result.passed = true;
-    if (size != 4) {
-        std::stringstream sstream;
-        sstream << "list.size() returns " << size << " for a list with 4 elements.";
-        result.reason = sstream.str();
-        result.passed = false;
-    }
-    if (list.get(0) != &x || list.get(1) != &y || list.get(2) != &z || list.get(3) != &a) {
-        result.reason = "list.get() returns wrong order or invalid addresses for a list with 4 elements.";
-        result.passed = false;
-    }
+    ASSERT_EQUALS(list.size(), 4);
+    ASSERT_EQUALS(list.get(0), &x);
+    ASSERT_EQUALS(list.get(1), &y);
+    ASSERT_EQUALS(list.get(2), &z);
+    ASSERT_EQUALS(list.get(3), &a);
 }
 TEST_END()
 
@@ -749,18 +495,11 @@ TEST_BEGIN(list_insert_head_head_mid_mid)
     list.insert(0, &x);
     list.insert(1, &y);
     list.insert(2, &z);
-    const size_t size = list.size();
-    result.passed = true;
-    if (size != 4) {
-        std::stringstream sstream;
-        sstream << "list.size() returns " << size << " for a list with 4 elements.";
-        result.reason = sstream.str();
-        result.passed = false;
-    }
-    if (list.get(0) != &x || list.get(1) != &y || list.get(2) != &z || list.get(3) != &a) {
-        result.reason = "list.get() returns wrong order or invalid addresses for a list with 4 elements.";
-        result.passed = false;
-    }
+    ASSERT_EQUALS(list.size(), 4);
+    ASSERT_EQUALS(list.get(0), &x);
+    ASSERT_EQUALS(list.get(1), &y);
+    ASSERT_EQUALS(list.get(2), &z);
+    ASSERT_EQUALS(list.get(3), &a);
 }
 TEST_END()
 
@@ -775,18 +514,11 @@ TEST_BEGIN(list_insert_tail_tail_mid_mid)
     list.insert(1, &a);
     list.insert(1, &y);
     list.insert(2, &z);
-    const size_t size = list.size();
-    result.passed = true;
-    if (size != 4) {
-        std::stringstream sstream;
-        sstream << "list.size() returns " << size << " for a list with 4 elements.";
-        result.reason = sstream.str();
-        result.passed = false;
-    }
-    if (list.get(0) != &x || list.get(1) != &y || list.get(2) != &z || list.get(3) != &a) {
-        result.reason = "list.get() returns wrong order or invalid addresses for a list with 4 elements.";
-        result.passed = false;
-    }
+    ASSERT_EQUALS(list.size(), 4);
+    ASSERT_EQUALS(list.get(0), &x);
+    ASSERT_EQUALS(list.get(1), &y);
+    ASSERT_EQUALS(list.get(2), &z);
+    ASSERT_EQUALS(list.get(3), &a);
 }
 TEST_END()
 
@@ -800,36 +532,28 @@ TEST_BEGIN(list_head_operations)
     list.addHead(&x);
     list.addHead(&y);
     list.addHead(&z);
-    int *dataGet = list.getHead();
-    int *data = list.removeHead();
+    int *const dataGet = list.getHead();
+    int *const data = list.removeHead();
     list.addHead(&a);
-    int *dataGet2 = list.getHead();
-    int *data2 = list.removeHead();
-    int *dataGet3 = list.getHead();
-    int *data3 = list.removeHead();
-    int *dataGet4 = list.getHead();
-    int *data4 = list.removeHead();
-    result.passed = true;
-    if (data != &z || data2 != &a || data3 != &y || data4 != &x) {
-        result.reason = "list.remove...() returns wrong addresses or in wrong order.";
-        result.passed = false;
-    }
-    if (data != dataGet || data2 != dataGet2 || data3 != dataGet3 || data4 != dataGet4) {
-        result.reason = "list.get...() and list.remove...() do not return the same objects.";
-        result.passed = false;
-    }
-    const bool isEmpty = list.isEmpty();
-    if (!isEmpty) {
-        result.reason = "list.isEmpty() returns false for a list that is removed till empty.";
-        result.passed = false;
-    }
-    const size_t size = list.size();
-    if (size != 0) {
-        std::stringstream sstream;
-        sstream << "list.size() returns " << size << " instead of 0 for a list that is removed till empty.";
-        result.reason = sstream.str();
-        result.passed = false;
-    }
+    int *const dataGet2 = list.getHead();
+    int *const data2 = list.removeHead();
+    int *const dataGet3 = list.getHead();
+    int *const data3 = list.removeHead();
+    int *const dataGet4 = list.getHead();
+    int *const data4 = list.removeHead();
+
+    ASSERT_EQUALS(data, &z);
+    ASSERT_EQUALS(data2, &a);
+    ASSERT_EQUALS(data3, &y);
+    ASSERT_EQUALS(data4, &x);
+
+    ASSERT_EQUALS(data, dataGet);
+    ASSERT_EQUALS(data2, dataGet2);
+    ASSERT_EQUALS(data3, dataGet3);
+    ASSERT_EQUALS(data4, dataGet4);
+
+    ASSERT_TRUE(list.isEmpty());
+    ASSERT_EQUALS(list.size(), 0);
 }
 TEST_END()
 
@@ -843,36 +567,28 @@ TEST_BEGIN(list_tail_operations)
     list.addTail(&x);
     list.addTail(&y);
     list.addTail(&z);
-    int *dataGet = list.getTail();
-    int *data = list.removeTail();
+    int *const dataGet = list.getTail();
+    int *const data = list.removeTail();
     list.addTail(&a);
-    int *dataGet2 = list.getTail();
-    int *data2 = list.removeTail();
-    int *dataGet3 = list.getTail();
-    int *data3 = list.removeTail();
-    int *dataGet4 = list.getTail();
-    int *data4 = list.removeTail();
-    result.passed = true;
-    if (data != &z || data2 != &a || data3 != &y || data4 != &x) {
-        result.reason = "list.remove...() returns wrong addresses or in wrong order.";
-        result.passed = false;
-    }
-    if (data != dataGet || data2 != dataGet2 || data3 != dataGet3 || data4 != dataGet4) {
-        result.reason = "list.get...() and list.remove...() do not return the same objects.";
-        result.passed = false;
-    }
-    const bool isEmpty = list.isEmpty();
-    if (!isEmpty) {
-        result.reason = "list.isEmpty() returns false for a list that is removed till empty.";
-        result.passed = false;
-    }
-    const size_t size = list.size();
-    if (size != 0) {
-        std::stringstream sstream;
-        sstream << "list.size() returns " << size << " instead of 0 for a list that is removed till empty.";
-        result.reason = sstream.str();
-        result.passed = false;
-    }
+    int *const dataGet2 = list.getTail();
+    int *const data2 = list.removeTail();
+    int *const dataGet3 = list.getTail();
+    int *const data3 = list.removeTail();
+    int *const dataGet4 = list.getTail();
+    int *const data4 = list.removeTail();
+
+    ASSERT_EQUALS(data, &z);
+    ASSERT_EQUALS(data2, &a);
+    ASSERT_EQUALS(data3, &y);
+    ASSERT_EQUALS(data4, &x);
+
+    ASSERT_EQUALS(data, dataGet);
+    ASSERT_EQUALS(data2, dataGet2);
+    ASSERT_EQUALS(data3, dataGet3);
+    ASSERT_EQUALS(data4, dataGet4);
+
+    ASSERT_TRUE(list.isEmpty());
+    ASSERT_EQUALS(list.size(), 0);
 }
 TEST_END()
 
@@ -886,36 +602,28 @@ TEST_BEGIN(list_add_head_remove_tail_operations)
     list.addHead(&x);
     list.addHead(&y);
     list.addHead(&z);
-    int *dataGet = list.getTail();
-    int *data = list.removeTail();
+    int *const dataGet = list.getTail();
+    int *const data = list.removeTail();
     list.addHead(&a);
-    int *dataGet2 = list.getTail();
-    int *data2 = list.removeTail();
-    int *dataGet3 = list.getTail();
-    int *data3 = list.removeTail();
-    int *dataGet4 = list.getTail();
-    int *data4 = list.removeTail();
-    result.passed = true;
-    if (data != &x || data2 != &y || data3 != &z || data4 != &a) {
-        result.reason = "list.remove...() returns wrong addresses or in wrong order.";
-        result.passed = false;
-    }
-    if (data != dataGet || data2 != dataGet2 || data3 != dataGet3 || data4 != dataGet4) {
-        result.reason = "list.get...() and list.remove...() do not return the same objects.";
-        result.passed = false;
-    }
-    const bool isEmpty = list.isEmpty();
-    if (!isEmpty) {
-        result.reason = "list.isEmpty() returns false for a list that is removed till empty.";
-        result.passed = false;
-    }
-    const size_t size = list.size();
-    if (size != 0) {
-        std::stringstream sstream;
-        sstream << "list.size() returns " << size << " instead of 0 for a list that is removed till empty.";
-        result.reason = sstream.str();
-        result.passed = false;
-    }
+    int *const dataGet2 = list.getTail();
+    int *const data2 = list.removeTail();
+    int *const dataGet3 = list.getTail();
+    int *const data3 = list.removeTail();
+    int *const dataGet4 = list.getTail();
+    int *const data4 = list.removeTail();
+
+    ASSERT_EQUALS(data, &x);
+    ASSERT_EQUALS(data2, &y);
+    ASSERT_EQUALS(data3, &z);
+    ASSERT_EQUALS(data4, &a);
+
+    ASSERT_EQUALS(data, dataGet);
+    ASSERT_EQUALS(data2, dataGet2);
+    ASSERT_EQUALS(data3, dataGet3);
+    ASSERT_EQUALS(data4, dataGet4);
+
+    ASSERT_TRUE(list.isEmpty());
+    ASSERT_EQUALS(list.size(), 0);
 }
 TEST_END()
 
@@ -929,36 +637,28 @@ TEST_BEGIN(list_add_tail_remove_head_operations)
     list.addTail(&x);
     list.addTail(&y);
     list.addTail(&z);
-    int *dataGet = list.getHead();
-    int *data = list.removeHead();
+    int *const dataGet = list.getHead();
+    int *const data = list.removeHead();
     list.addTail(&a);
-    int *dataGet2 = list.getHead();
-    int *data2 = list.removeHead();
-    int *dataGet3 = list.getHead();
-    int *data3 = list.removeHead();
-    int *dataGet4 = list.getHead();
-    int *data4 = list.removeHead();
-    result.passed = true;
-    if (data != &x || data2 != &y || data3 != &z || data4 != &a) {
-        result.reason = "list.remove...() returns wrong addresses or in wrong order.";
-        result.passed = false;
-    }
-    if (data != dataGet || data2 != dataGet2 || data3 != dataGet3 || data4 != dataGet4) {
-        result.reason = "list.get...() and list.remove...() do not return the same objects.";
-        result.passed = false;
-    }
-    const bool isEmpty = list.isEmpty();
-    if (!isEmpty) {
-        result.reason = "list.isEmpty() returns false for a list that is removed till empty.";
-        result.passed = false;
-    }
-    const size_t size = list.size();
-    if (size != 0) {
-        std::stringstream sstream;
-        sstream << "list.size() returns " << size << " instead of 0 for a list that is removed till empty.";
-        result.reason = sstream.str();
-        result.passed = false;
-    }
+    int *const dataGet2 = list.getHead();
+    int *const data2 = list.removeHead();
+    int *const dataGet3 = list.getHead();
+    int *const data3 = list.removeHead();
+    int *const dataGet4 = list.getHead();
+    int *const data4 = list.removeHead();
+
+    ASSERT_EQUALS(data, &x);
+    ASSERT_EQUALS(data2, &y);
+    ASSERT_EQUALS(data3, &z);
+    ASSERT_EQUALS(data4, &a);
+
+    ASSERT_EQUALS(data, dataGet);
+    ASSERT_EQUALS(data2, dataGet2);
+    ASSERT_EQUALS(data3, dataGet3);
+    ASSERT_EQUALS(data4, dataGet4);
+
+    ASSERT_TRUE(list.isEmpty());
+    ASSERT_EQUALS(list.size(), 0);
 }
 TEST_END()
 
@@ -972,36 +672,28 @@ TEST_BEGIN(list_mixed_ends_add_remove_operations_1)
     list.addHead(&x);
     list.addTail(&y);
     list.addHead(&z);
-    int *dataGet = list.getHead();
-    int *data = list.removeHead();
+    int *const dataGet = list.getHead();
+    int *const data = list.removeHead();
     list.addTail(&a);
-    int *dataGet2 = list.getTail();
-    int *data2 = list.removeTail();
-    int *dataGet3 = list.getHead();
-    int *data3 = list.removeHead();
-    int *dataGet4 = list.getTail();
-    int *data4 = list.removeTail();
-    result.passed = true;
-    if (data != &z || data2 != &a || data3 != &x || data4 != &y) {
-        result.reason = "list.remove...() returns wrong addresses or in wrong order.";
-        result.passed = false;
-    }
-    if (data != dataGet || data2 != dataGet2 || data3 != dataGet3 || data4 != dataGet4) {
-        result.reason = "list.get...() and list.remove...() do not return the same objects.";
-        result.passed = false;
-    }
-    const bool isEmpty = list.isEmpty();
-    if (!isEmpty) {
-        result.reason = "list.isEmpty() returns false for a list that is removed till empty.";
-        result.passed = false;
-    }
-    const size_t size = list.size();
-    if (size != 0) {
-        std::stringstream sstream;
-        sstream << "list.size() returns " << size << " instead of 0 for a list that is removed till empty.";
-        result.reason = sstream.str();
-        result.passed = false;
-    }
+    int *const dataGet2 = list.getTail();
+    int *const data2 = list.removeTail();
+    int *const dataGet3 = list.getHead();
+    int *const data3 = list.removeHead();
+    int *const dataGet4 = list.getTail();
+    int *const data4 = list.removeTail();
+
+    ASSERT_EQUALS(data, &z);
+    ASSERT_EQUALS(data2, &a);
+    ASSERT_EQUALS(data3, &x);
+    ASSERT_EQUALS(data4, &y);
+
+    ASSERT_EQUALS(data, dataGet);
+    ASSERT_EQUALS(data2, dataGet2);
+    ASSERT_EQUALS(data3, dataGet3);
+    ASSERT_EQUALS(data4, dataGet4);
+
+    ASSERT_TRUE(list.isEmpty());
+    ASSERT_EQUALS(list.size(), 0);
 }
 TEST_END()
 
@@ -1015,36 +707,28 @@ TEST_BEGIN(list_mixed_ends_add_remove_operations_2)
     list.addHead(&x);
     list.addTail(&y);
     list.addHead(&z);
-    int *dataGet = list.getTail();
-    int *data = list.removeTail();
+    int *const dataGet = list.getTail();
+    int *const data = list.removeTail();
     list.addTail(&a);
-    int *dataGet2 = list.getHead();
-    int *data2 = list.removeHead();
-    int *dataGet3 = list.getTail();
-    int *data3 = list.removeTail();
-    int *dataGet4 = list.getHead();
-    int *data4 = list.removeHead();
-    result.passed = true;
-    if (data != &y || data2 != &z || data3 != &a || data4 != &x) {
-        result.reason = "list.remove...() returns wrong addresses or in wrong order.";
-        result.passed = false;
-    }
-    if (data != dataGet || data2 != dataGet2 || data3 != dataGet3 || data4 != dataGet4) {
-        result.reason = "list.get...() and list.remove...() do not return the same objects.";
-        result.passed = false;
-    }
-    const bool isEmpty = list.isEmpty();
-    if (!isEmpty) {
-        result.reason = "list.isEmpty() returns false for a list that is removed till empty.";
-        result.passed = false;
-    }
-    const size_t size = list.size();
-    if (size != 0) {
-        std::stringstream sstream;
-        sstream << "list.size() returns " << size << " instead of 0 for a list that is removed till empty.";
-        result.reason = sstream.str();
-        result.passed = false;
-    }
+    int *const dataGet2 = list.getHead();
+    int *const data2 = list.removeHead();
+    int *const dataGet3 = list.getTail();
+    int *const data3 = list.removeTail();
+    int *const dataGet4 = list.getHead();
+    int *const data4 = list.removeHead();
+
+    ASSERT_EQUALS(data, &y);
+    ASSERT_EQUALS(data2, &z);
+    ASSERT_EQUALS(data3, &a);
+    ASSERT_EQUALS(data4, &x);
+
+    ASSERT_EQUALS(data, dataGet);
+    ASSERT_EQUALS(data2, dataGet2);
+    ASSERT_EQUALS(data3, dataGet3);
+    ASSERT_EQUALS(data4, dataGet4);
+
+    ASSERT_TRUE(list.isEmpty());
+    ASSERT_EQUALS(list.size(), 0);
 }
 TEST_END()
 
@@ -1058,36 +742,28 @@ TEST_BEGIN(list_remove_operations)
     list.insert(0, &x);
     list.insert(1, &z);
     list.insert(1, &y);
-    int *dataGet = list.get(1);
-    int *data = list.remove(1);
+    int *const dataGet = list.get(1);
+    int *const data = list.remove(1);
     list.insert(1, &a);
-    int *dataGet2 = list.get(1);
-    int *data2 = list.remove(1);
-    int *dataGet3 = list.get(1);
-    int *data3 = list.remove(1);
-    int *dataGet4 = list.get(0);
-    int *data4 = list.remove(0);
-    result.passed = true;
-    if (data != &y || data2 != &a || data3 != &z || data4 != &x) {
-        result.reason = "list.remove...() returns wrong addresses or in wrong order.";
-        result.passed = false;
-    }
-    if (data != dataGet || data2 != dataGet2 || data3 != dataGet3 || data4 != dataGet4) {
-        result.reason = "list.get...() and list.remove...() do not return the same objects.";
-        result.passed = false;
-    }
-    const bool isEmpty = list.isEmpty();
-    if (!isEmpty) {
-        result.reason = "list.isEmpty() returns false for a list that is removed till empty.";
-        result.passed = false;
-    }
-    const size_t size = list.size();
-    if (size != 0) {
-        std::stringstream sstream;
-        sstream << "list.size() returns " << size << " instead of 0 for a list that is removed till empty.";
-        result.reason = sstream.str();
-        result.passed = false;
-    }
+    int *const dataGet2 = list.get(1);
+    int *const data2 = list.remove(1);
+    int *const dataGet3 = list.get(1);
+    int *const data3 = list.remove(1);
+    int *const dataGet4 = list.get(0);
+    int *const data4 = list.remove(0);
+
+    ASSERT_EQUALS(data, &y);
+    ASSERT_EQUALS(data2, &a);
+    ASSERT_EQUALS(data3, &z);
+    ASSERT_EQUALS(data4, &x);
+
+    ASSERT_EQUALS(data, dataGet);
+    ASSERT_EQUALS(data2, dataGet2);
+    ASSERT_EQUALS(data3, dataGet3);
+    ASSERT_EQUALS(data4, dataGet4);
+
+    ASSERT_TRUE(list.isEmpty());
+    ASSERT_EQUALS(list.size(), 0);
 }
 TEST_END()
 
@@ -1106,37 +782,33 @@ TEST_BEGIN(list_set_operations_1)
     list.insert(1, &y);
     list.insert(2, &z);
     list.insert(3, &a);
-    int *dataGet = list.get(0);
-    int *data = list.set(0, &j);
-    const size_t size = list.size();
-    int *dataGet2 = list.get(1);
-    int *data2 = list.set(1, &k);
-    const size_t size2 = list.size();
-    int *dataGet3 = list.get(2);
-    int *data3 = list.set(2, &l);
-    const size_t size3 = list.size();
-    int *dataGet4 = list.get(3);
-    int *data4 = list.set(3, &m);
-    const size_t size4 = list.size();
-    result.passed = true;
-    if (size != 4 || size2 != 4 || size3 != 4 || size4 != 4) {
-        std::stringstream sstream;
-        sstream << "list.size() returns " << size << " for a list with 4 elements.";
-        result.reason = sstream.str();
-        result.passed = false;
-    }
-    if (data != &x || data2 != &y || data3 != &z || data4 != &a) {
-        result.reason = "list.set() returns wrong order or invalid addresses for a list with 4 elements.";
-        result.passed = false;
-    }
-    if (data != dataGet || data2 != dataGet2 || data3 != dataGet3 || data4 != dataGet4) {
-        result.reason = "list.set() and list.get() returns different objects.";
-        result.passed = false;
-    }
-    if (list.get(0) != &j || list.get(1) != &k || list.get(2) != &l || list.get(3) != &m) {
-        result.reason = "list.get() returns wrong order or invalid addresses for a list with 4 elements after list.set().";
-        result.passed = false;
-    }
+    int *const dataGet = list.get(0);
+    int *const data = list.set(0, &j);
+    ASSERT_EQUALS(list.size(), 4);
+    int *const dataGet2 = list.get(1);
+    int *const data2 = list.set(1, &k);
+    ASSERT_EQUALS(list.size(), 4);
+    int *const dataGet3 = list.get(2);
+    int *const data3 = list.set(2, &l);
+    ASSERT_EQUALS(list.size(), 4);
+    int *const dataGet4 = list.get(3);
+    int *const data4 = list.set(3, &m);
+    ASSERT_EQUALS(list.size(), 4);
+
+    ASSERT_EQUALS(data, &x);
+    ASSERT_EQUALS(data2, &y);
+    ASSERT_EQUALS(data3, &z);
+    ASSERT_EQUALS(data4, &a);
+
+    ASSERT_EQUALS(data, dataGet);
+    ASSERT_EQUALS(data2, dataGet2);
+    ASSERT_EQUALS(data3, dataGet3);
+    ASSERT_EQUALS(data4, dataGet4);
+
+    ASSERT_EQUALS(list.get(0), &j);
+    ASSERT_EQUALS(list.get(1), &k);
+    ASSERT_EQUALS(list.get(2), &l);
+    ASSERT_EQUALS(list.get(3), &m);
 }
 TEST_END()
 
@@ -1155,37 +827,33 @@ TEST_BEGIN(list_set_operations_2)
     list.insert(1, &y);
     list.insert(2, &z);
     list.insert(3, &a);
-    int *dataGet = list.get(0);
-    int *data = list.set(0, &j);
-    const size_t size = list.size();
-    int *dataGet3 = list.get(2);
-    int *data3 = list.set(2, &l);
-    const size_t size3 = list.size();
-    int *dataGet4 = list.get(3);
-    int *data4 = list.set(3, &m);
-    const size_t size4 = list.size();
-    int *dataGet2 = list.get(1);
-    int *data2 = list.set(1, &k);
-    const size_t size2 = list.size();
-    result.passed = true;
-    if (size != 4 || size2 != 4 || size3 != 4 || size4 != 4) {
-        std::stringstream sstream;
-        sstream << "list.size() returns " << size << " for a list with 4 elements.";
-        result.reason = sstream.str();
-        result.passed = false;
-    }
-    if (data != &x || data2 != &y || data3 != &z || data4 != &a) {
-        result.reason = "list.set() returns wrong order or invalid addresses for a list with 4 elements.";
-        result.passed = false;
-    }
-    if (data != dataGet || data2 != dataGet2 || data3 != dataGet3 || data4 != dataGet4) {
-        result.reason = "list.set() and list.get() returns different objects.";
-        result.passed = false;
-    }
-    if (list.get(0) != &j || list.get(1) != &k || list.get(2) != &l || list.get(3) != &m) {
-        result.reason = "list.get() returns wrong order or invalid addresses for a list with 4 elements after list.set().";
-        result.passed = false;
-    }
+    int *const dataGet = list.get(0);
+    int *const data = list.set(0, &j);
+    ASSERT_EQUALS(list.size(), 4);
+    int *const dataGet3 = list.get(2);
+    int *const data3 = list.set(2, &l);
+    ASSERT_EQUALS(list.size(), 4);
+    int *const dataGet4 = list.get(3);
+    int *const data4 = list.set(3, &m);
+    ASSERT_EQUALS(list.size(), 4);
+    int *const dataGet2 = list.get(1);
+    int *const data2 = list.set(1, &k);
+    ASSERT_EQUALS(list.size(), 4);
+
+    ASSERT_EQUALS(data, &x);
+    ASSERT_EQUALS(data2, &y);
+    ASSERT_EQUALS(data3, &z);
+    ASSERT_EQUALS(data4, &a);
+
+    ASSERT_EQUALS(data, dataGet);
+    ASSERT_EQUALS(data2, dataGet2);
+    ASSERT_EQUALS(data3, dataGet3);
+    ASSERT_EQUALS(data4, dataGet4);
+
+    ASSERT_EQUALS(list.get(0), &j);
+    ASSERT_EQUALS(list.get(1), &k);
+    ASSERT_EQUALS(list.get(2), &l);
+    ASSERT_EQUALS(list.get(3), &m);
 }
 TEST_END()
 
@@ -1204,37 +872,33 @@ TEST_BEGIN(list_set_operations_3)
     list.insert(1, &y);
     list.insert(2, &z);
     list.insert(3, &a);
-    int *dataGet4 = list.get(3);
-    int *data4 = list.set(3, &m);
-    const size_t size4 = list.size();
-    int *dataGet = list.get(0);
-    int *data = list.set(0, &j);
-    const size_t size = list.size();
-    int *dataGet2 = list.get(1);
-    int *data2 = list.set(1, &k);
-    const size_t size2 = list.size();
-    int *dataGet3 = list.get(2);
-    int *data3 = list.set(2, &l);
-    const size_t size3 = list.size();
-    result.passed = true;
-    if (size != 4 || size2 != 4 || size3 != 4 || size4 != 4) {
-        std::stringstream sstream;
-        sstream << "list.size() returns " << size << " for a list with 4 elements.";
-        result.reason = sstream.str();
-        result.passed = false;
-    }
-    if (data != &x || data2 != &y || data3 != &z || data4 != &a) {
-        result.reason = "list.set() returns wrong order or invalid addresses for a list with 4 elements.";
-        result.passed = false;
-    }
-    if (data != dataGet || data2 != dataGet2 || data3 != dataGet3 || data4 != dataGet4) {
-        result.reason = "list.set() and list.get() returns different objects.";
-        result.passed = false;
-    }
-    if (list.get(0) != &j || list.get(1) != &k || list.get(2) != &l || list.get(3) != &m) {
-        result.reason = "list.get() returns wrong order or invalid addresses for a list with 4 elements after list.set().";
-        result.passed = false;
-    }
+    int *const dataGet4 = list.get(3);
+    int *const data4 = list.set(3, &m);
+    ASSERT_EQUALS(list.size(), 4);
+    int *const dataGet = list.get(0);
+    int *const data = list.set(0, &j);
+    ASSERT_EQUALS(list.size(), 4);
+    int *const dataGet2 = list.get(1);
+    int *const data2 = list.set(1, &k);
+    ASSERT_EQUALS(list.size(), 4);
+    int *const dataGet3 = list.get(2);
+    int *const data3 = list.set(2, &l);
+    ASSERT_EQUALS(list.size(), 4);
+
+    ASSERT_EQUALS(data, &x);
+    ASSERT_EQUALS(data2, &y);
+    ASSERT_EQUALS(data3, &z);
+    ASSERT_EQUALS(data4, &a);
+
+    ASSERT_EQUALS(data, dataGet);
+    ASSERT_EQUALS(data2, dataGet2);
+    ASSERT_EQUALS(data3, dataGet3);
+    ASSERT_EQUALS(data4, dataGet4);
+
+    ASSERT_EQUALS(list.get(0), &j);
+    ASSERT_EQUALS(list.get(1), &k);
+    ASSERT_EQUALS(list.get(2), &l);
+    ASSERT_EQUALS(list.get(3), &m);
 }
 TEST_END()
 
@@ -1253,37 +917,33 @@ TEST_BEGIN(list_set_operations_4)
     list.insert(1, &y);
     list.insert(2, &z);
     list.insert(3, &a);
-    int *dataGet3 = list.get(2);
-    int *data3 = list.set(2, &l);
-    const size_t size3 = list.size();
-    int *dataGet = list.get(0);
-    int *data = list.set(0, &j);
-    const size_t size = list.size();
-    int *dataGet4 = list.get(3);
-    int *data4 = list.set(3, &m);
-    const size_t size4 = list.size();
-    int *dataGet2 = list.get(1);
-    int *data2 = list.set(1, &k);
-    const size_t size2 = list.size();
-    result.passed = true;
-    if (size != 4 || size2 != 4 || size3 != 4 || size4 != 4) {
-        std::stringstream sstream;
-        sstream << "list.size() returns " << size << " for a list with 4 elements.";
-        result.reason = sstream.str();
-        result.passed = false;
-    }
-    if (data != &x || data2 != &y || data3 != &z || data4 != &a) {
-        result.reason = "list.set() returns wrong order or invalid addresses for a list with 4 elements.";
-        result.passed = false;
-    }
-    if (data != dataGet || data2 != dataGet2 || data3 != dataGet3 || data4 != dataGet4) {
-        result.reason = "list.set() and list.get() returns different objects.";
-        result.passed = false;
-    }
-    if (list.get(0) != &j || list.get(1) != &k || list.get(2) != &l || list.get(3) != &m) {
-        result.reason = "list.get() returns wrong order or invalid addresses for a list with 4 elements after list.set().";
-        result.passed = false;
-    }
+    int *const dataGet3 = list.get(2);
+    int *const data3 = list.set(2, &l);
+    ASSERT_EQUALS(list.size(), 4);
+    int *const dataGet = list.get(0);
+    int *const data = list.set(0, &j);
+    ASSERT_EQUALS(list.size(), 4);
+    int *const dataGet4 = list.get(3);
+    int *const data4 = list.set(3, &m);
+    ASSERT_EQUALS(list.size(), 4);
+    int *const dataGet2 = list.get(1);
+    int *const data2 = list.set(1, &k);
+    ASSERT_EQUALS(list.size(), 4);
+
+    ASSERT_EQUALS(data, &x);
+    ASSERT_EQUALS(data2, &y);
+    ASSERT_EQUALS(data3, &z);
+    ASSERT_EQUALS(data4, &a);
+
+    ASSERT_EQUALS(data, dataGet);
+    ASSERT_EQUALS(data2, dataGet2);
+    ASSERT_EQUALS(data3, dataGet3);
+    ASSERT_EQUALS(data4, dataGet4);
+
+    ASSERT_EQUALS(list.get(0), &j);
+    ASSERT_EQUALS(list.get(1), &k);
+    ASSERT_EQUALS(list.get(2), &l);
+    ASSERT_EQUALS(list.get(3), &m);
 }
 TEST_END()
 
@@ -1305,7 +965,7 @@ TEST_BEGIN(list_foreach)
     pointers[3] = &a;
     static int i;
     i = 0;
-    static testcase_result_t static_result;
+    static testing_framework::testcase_result_t static_result;
     result.passed = true;
     static_result.passed = result.passed;
     static_result.reason = result.reason;
@@ -1337,15 +997,8 @@ TEST_BEGIN(list_removeIf)
     list.addTail(&z);
     list.addTail(&a);
     list.removeIf([](int *const ptr) { return (*ptr) % 4 == 0; });
-    result.passed = true;
-    if (list.size() != 1) {
-        result.passed = false;
-        result.reason = "list.size() does not match expectations after list.removeIf().";
-    }
-    if (list.get(0) != &x) {
-        result.passed = false;
-        result.reason = "list.removeIf() does not remove the appropriate elements.";
-    }
+    ASSERT_EQUALS(list.size(), 1);
+    ASSERT_EQUALS(list.get(0), &x);
 }
 TEST_END()
 
@@ -1404,19 +1057,7 @@ const testfunc_t functions [] = {
     test_list_removeIf
 };
 
-int main() {
-    std::cout << "Testing " << __BASE_FILE__ << std::endl;
-    for (testfunc_t func : functions) {
-        test(func);
-    }
-    const unsigned int failed_testcase_count = get_failed_testcase_count();
-    if (failed_testcase_count == 0) {
-        std::cout << "All passed: " << __BASE_FILE__ << std::endl;
-    } else {
-        std::cout << failed_testcase_count << " failed: " << __BASE_FILE__ << std::endl;
-    }
-    return failed_testcase_count;
-}
+MAIN();
 
 #else // # ifdef LIST_TYPE
 

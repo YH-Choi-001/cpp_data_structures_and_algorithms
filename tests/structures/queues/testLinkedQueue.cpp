@@ -38,15 +38,22 @@
 
 using yh::structures::queues::LinkedQueue;
 
+TEST_BEGIN(empty_testcase)
+{
+    //
+}
+TEST_END()
+
+TEST_BEGIN(constructor_memory_leak)
+{
+    LinkedQueue<int> queue;
+}
+TEST_END()
+
 TEST_BEGIN(queue_is_empty_for_empty_queue)
 {
     LinkedQueue<int> queue;
-    if (queue.isEmpty()) {
-        result.passed = true;
-    } else {
-        result.passed = false;
-        result.reason = "queue.isEmpty() returns false for an empty queue.";
-    }
+    ASSERT_TRUE(queue.isEmpty());
 }
 TEST_END()
 
@@ -55,12 +62,7 @@ TEST_BEGIN(queue_is_not_empty_for_1_element_queue)
     LinkedQueue<int> queue;
     int x = 35;
     queue.enqueue(&x);
-    if (!queue.isEmpty()) {
-        result.passed = true;
-    } else {
-        result.passed = false;
-        result.reason = "queue.isEmpty() returns true for a queue with 1 element.";
-    }
+    ASSERT_FALSE(queue.isEmpty());
 }
 TEST_END()
 
@@ -71,27 +73,14 @@ TEST_BEGIN(queue_is_not_empty_for_2_element_queue)
     int y = -12;
     queue.enqueue(&x);
     queue.enqueue(&y);
-    if (!queue.isEmpty()) {
-        result.passed = true;
-    } else {
-        result.passed = false;
-        result.reason = "queue.isEmpty() returns true for a queue with 2 elements.";
-    }
+    ASSERT_FALSE(queue.isEmpty());
 }
 TEST_END()
 
 TEST_BEGIN(queue_size_is_0_for_empty_queue)
 {
     LinkedQueue<int> queue;
-    const size_t size = queue.size();
-    if (size == 0) {
-        result.passed = true;
-    } else {
-        result.passed = false;
-        std::stringstream ss;
-        ss << "queue.size() returns " << size << " for an empty queue.";
-        result.reason = ss.str();
-    }
+    ASSERT_EQUALS(queue.size(), 0);
 }
 TEST_END()
 
@@ -100,15 +89,7 @@ TEST_BEGIN(queue_size_is_1_for_1_element_queue)
     LinkedQueue<int> queue;
     int x = 35;
     queue.enqueue(&x);
-    const size_t size = queue.size();
-    if (size == 1) {
-        result.passed = true;
-    } else {
-        result.passed = false;
-        std::stringstream ss;
-        ss << "queue.size() returns " << size << " for a queue with 1 element.";
-        result.reason = ss.str();
-    }
+    ASSERT_EQUALS(queue.size(), 1);
 }
 TEST_END()
 
@@ -119,15 +100,7 @@ TEST_BEGIN(queue_size_is_2_for_2_element_queue)
     int y = -12;
     queue.enqueue(&x);
     queue.enqueue(&y);
-    const size_t size = queue.size();
-    if (size == 2) {
-        result.passed = true;
-    } else {
-        result.passed = false;
-        std::stringstream ss;
-        ss << "queue.size() returns " << size << " for a queue with 2 elements.";
-        result.reason = ss.str();
-    }
+    ASSERT_EQUALS(queue.size(), 2);
 }
 TEST_END()
 
@@ -140,15 +113,7 @@ TEST_BEGIN(queue_size_is_3_for_3_element_queue)
     queue.enqueue(&x);
     queue.enqueue(&y);
     queue.enqueue(&z);
-    const size_t size = queue.size();
-    if (size == 3) {
-        result.passed = true;
-    } else {
-        result.passed = false;
-        std::stringstream ss;
-        ss << "queue.size() returns " << size << " for a queue with 3 elements.";
-        result.reason = ss.str();
-    }
+    ASSERT_EQUALS(queue.size(), 3);
 }
 TEST_END()
 
@@ -163,30 +128,14 @@ TEST_BEGIN(queue_size_is_4_for_4_element_queue)
     queue.enqueue(&y);
     queue.enqueue(&z);
     queue.enqueue(&a);
-    const size_t size = queue.size();
-    if (size == 4) {
-        result.passed = true;
-    } else {
-        result.passed = false;
-        std::stringstream ss;
-        ss << "queue.size() returns " << size << " for a queue with 4 elements.";
-        result.reason = ss.str();
-    }
+    ASSERT_EQUALS(queue.size(), 4);
 }
 TEST_END()
 
 TEST_BEGIN(queue_peeking_gives_nullptr_for_empty_queue)
 {
     LinkedQueue<int> queue;
-    int *data = queue.peek();
-    if (data == nullptr) {
-        result.passed = true;
-    } else {
-        result.passed = false;
-        std::stringstream ss;
-        ss << "queue.peek() returns " << data << " for an empty queue.";
-        result.reason = ss.str();
-    }
+    ASSERT_IS_NULLPTR(queue.peek());
 }
 TEST_END()
 
@@ -195,15 +144,7 @@ TEST_BEGIN(queue_peeking_gives_first_element_for_1_element_queue)
     LinkedQueue<int> queue;
     int x = 35;
     queue.enqueue(&x);
-    int *data = queue.peek();
-    if (data == &x) {
-        result.passed = true;
-    } else {
-        result.passed = false;
-        std::stringstream ss;
-        ss << "queue.peek() returns " << data << " but not &x ( = " << &x << ") for a queue with 1 element.";
-        result.reason = ss.str();
-    }
+    ASSERT_EQUALS(queue.peek(), &x);
 }
 TEST_END()
 
@@ -214,15 +155,7 @@ TEST_BEGIN(queue_peeking_gives_first_element_for_2_element_queue)
     int y = -12;
     queue.enqueue(&x);
     queue.enqueue(&y);
-    int *data = queue.peek();
-    if (data == &x) {
-        result.passed = true;
-    } else {
-        result.passed = false;
-        std::stringstream ss;
-        ss << "queue.peek() returns " << data << " but not &x ( = " << &x << ") for a queue with 2 elements.";
-        result.reason = ss.str();
-    }
+    ASSERT_EQUALS(queue.peek(), &x);
 }
 TEST_END()
 
@@ -235,30 +168,14 @@ TEST_BEGIN(queue_peeking_gives_first_element_for_3_element_queue)
     queue.enqueue(&x);
     queue.enqueue(&y);
     queue.enqueue(&z);
-    int *data = queue.peek();
-    if (data == &x) {
-        result.passed = true;
-    } else {
-        result.passed = false;
-        std::stringstream ss;
-        ss << "queue.peek() returns " << data << " but not &x ( = " << &x << ") for a queue with 3 elements.";
-        result.reason = ss.str();
-    }
+    ASSERT_EQUALS(queue.peek(), &x);
 }
 TEST_END()
 
 TEST_BEGIN(queue_dequeueing_gives_nullptr_for_empty_queue)
 {
     LinkedQueue<int> queue;
-    int *data = queue.dequeue();
-    if (data == nullptr) {
-        result.passed = true;
-    } else {
-        result.passed = false;
-        std::stringstream ss;
-        ss << "queue.dequeue() returns " << data << " for an empty queue.";
-        result.reason = ss.str();
-    }
+    ASSERT_IS_NULLPTR(queue.dequeue());
 }
 TEST_END()
 
@@ -267,15 +184,7 @@ TEST_BEGIN(queue_dequeueing_gives_first_element_for_1_element_queue)
     LinkedQueue<int> queue;
     int x = 35;
     queue.enqueue(&x);
-    int *data = queue.dequeue();
-    if (data == &x) {
-        result.passed = true;
-    } else {
-        result.passed = false;
-        std::stringstream ss;
-        ss << "queue.dequeue() returns " << data << " but not &x ( = " << &x << ") for a queue with 1 element.";
-        result.reason = ss.str();
-    }
+    ASSERT_EQUALS(queue.dequeue(), &x);
 }
 TEST_END()
 
@@ -286,15 +195,7 @@ TEST_BEGIN(queue_dequeueing_gives_first_element_for_2_element_queue)
     int y = -12;
     queue.enqueue(&x);
     queue.enqueue(&y);
-    int *data = queue.dequeue();
-    if (data == &x) {
-        result.passed = true;
-    } else {
-        result.passed = false;
-        std::stringstream ss;
-        ss << "queue.dequeue() returns " << data << " but not &x ( = " << &x << ") for a queue with 2 elements.";
-        result.reason = ss.str();
-    }
+    ASSERT_EQUALS(queue.dequeue(), &x);
 }
 TEST_END()
 
@@ -307,15 +208,7 @@ TEST_BEGIN(queue_dequeueing_gives_first_element_for_3_element_queue)
     queue.enqueue(&x);
     queue.enqueue(&y);
     queue.enqueue(&z);
-    int *data = queue.dequeue();
-    if (data == &x) {
-        result.passed = true;
-    } else {
-        result.passed = false;
-        std::stringstream ss;
-        ss << "queue.dequeue() returns " << data << " but not &x ( = " << &x << ") for a queue with 3 elements.";
-        result.reason = ss.str();
-    }
+    ASSERT_EQUALS(queue.dequeue(), &x);
 }
 TEST_END()
 
@@ -328,37 +221,16 @@ TEST_BEGIN(queue_dequeueing_twice_gives_first_element_for_3_element_queue)
     queue.enqueue(&x);
     queue.enqueue(&y);
     queue.enqueue(&z);
-    int *data = queue.dequeue();
-    int *data2 = queue.dequeue();
-    if (data == &x && data2 == &y) {
-        result.passed = true;
-    } else {
-        result.passed = false;
-        std::stringstream ss;
-        if (data != &x) {
-            ss << "queue.dequeue() returns " << data << " but not &x ( = " << &x << ") for a queue with 3 elements.";
-        }
-        if (data2 != &y) {
-            ss << "queue.dequeue() returns " << data << " but not &y ( = " << &y << ") for a queue with 2 elements.";
-        }
-        result.reason = ss.str();
-    }
+    ASSERT_EQUALS(queue.dequeue(), &x);
+    ASSERT_EQUALS(queue.dequeue(), &y);
 }
 TEST_END()
 
 TEST_BEGIN(queue_size_is_0_after_dequeueing_from_empty_queue)
 {
     LinkedQueue<int> queue;
-    int *data = queue.dequeue();
-    const size_t size = queue.size();
-    if (size == 0) {
-        result.passed = true;
-    } else {
-        result.passed = false;
-        std::stringstream ss;
-        ss << "queue.size() returns " << size << " after dequeueing an empty queue.";
-        result.reason = ss.str();
-    }
+    queue.dequeue();
+    ASSERT_EQUALS(queue.size(), 0);
 }
 TEST_END()
 
@@ -367,16 +239,8 @@ TEST_BEGIN(queue_size_is_0_after_dequeueing_from_1_element_queue)
     LinkedQueue<int> queue;
     int x = 35;
     queue.enqueue(&x);
-    int *data = queue.dequeue();
-    const size_t size = queue.size();
-    if (size == 0) {
-        result.passed = true;
-    } else {
-        result.passed = false;
-        std::stringstream ss;
-        ss << "queue.size() returns " << size << " after dequeueing a queue with 1 element.";
-        result.reason = ss.str();
-    }
+    queue.dequeue();
+    ASSERT_EQUALS(queue.size(), 0);
 }
 TEST_END()
 
@@ -387,16 +251,8 @@ TEST_BEGIN(queue_size_is_1_after_dequeueing_from_2_element_queue)
     int y = -12;
     queue.enqueue(&x);
     queue.enqueue(&y);
-    int *data = queue.dequeue();
-    const size_t size = queue.size();
-    if (size == 1) {
-        result.passed = true;
-    } else {
-        result.passed = false;
-        std::stringstream ss;
-        ss << "queue.size() returns " << size << " after dequeueing a queue with 2 elements.";
-        result.reason = ss.str();
-    }
+    queue.dequeue();
+    ASSERT_EQUALS(queue.size(), 1);
 }
 TEST_END()
 
@@ -409,16 +265,8 @@ TEST_BEGIN(queue_size_is_2_after_dequeueing_from_3_element_queue)
     queue.enqueue(&x);
     queue.enqueue(&y);
     queue.enqueue(&z);
-    int *data = queue.dequeue();
-    const size_t size = queue.size();
-    if (size == 2) {
-        result.passed = true;
-    } else {
-        result.passed = false;
-        std::stringstream ss;
-        ss << "queue.size() returns " << size << " after dequeueing a queue with 3 elements.";
-        result.reason = ss.str();
-    }
+    queue.dequeue();
+    ASSERT_EQUALS(queue.size(), 2);
 }
 TEST_END()
 
@@ -431,17 +279,10 @@ TEST_BEGIN(queue_size_is_1_after_dequeueing_twice_from_3_element_queue)
     queue.enqueue(&x);
     queue.enqueue(&y);
     queue.enqueue(&z);
-    int *data = queue.dequeue();
-    int *data2 = queue.dequeue();
-    const size_t size = queue.size();
-    if (size == 1) {
-        result.passed = true;
-    } else {
-        result.passed = false;
-        std::stringstream ss;
-        ss << "queue.size() returns " << size << " after dequeueing a queue with 3 elements twice.";
-        result.reason = ss.str();
-    }
+    queue.dequeue();
+    ASSERT_EQUALS(queue.size(), 2);
+    queue.dequeue();
+    ASSERT_EQUALS(queue.size(), 1);
 }
 TEST_END()
 
@@ -455,17 +296,9 @@ TEST_BEGIN(queue_is_not_empty_for_3_element_queue_dequeued_and_enqueued)
     queue.enqueue(&x);
     queue.enqueue(&y);
     queue.enqueue(&z);
-    int *data = queue.dequeue();
+    queue.dequeue();
     queue.enqueue(&a);
-    const bool isEmpty = queue.isEmpty();
-    if (!isEmpty) {
-        result.passed = true;
-    } else {
-        result.passed = false;
-        std::stringstream ss;
-        ss << "queue.isEmpty() returns " << isEmpty << " after a queue with 3 elements is dequeued then enqueued.";
-        result.reason = ss.str();
-    }
+    ASSERT_FALSE(queue.isEmpty());
 }
 TEST_END()
 
@@ -479,17 +312,9 @@ TEST_BEGIN(queue_size_is_3_for_3_element_queue_dequeued_and_enqueued)
     queue.enqueue(&x);
     queue.enqueue(&y);
     queue.enqueue(&z);
-    int *data = queue.dequeue();
+    queue.dequeue();
     queue.enqueue(&a);
-    const size_t size = queue.size();
-    if (size == 3) {
-        result.passed = true;
-    } else {
-        result.passed = false;
-        std::stringstream ss;
-        ss << "queue.size() returns " << size << " after a queue with 3 elements is dequeued then enqueued.";
-        result.reason = ss.str();
-    }
+    ASSERT_EQUALS(queue.size(), 3);
 }
 TEST_END()
 
@@ -503,17 +328,9 @@ TEST_BEGIN(queue_peeking_gives_first_element_for_3_element_queue_dequeued_and_en
     queue.enqueue(&x);
     queue.enqueue(&y);
     queue.enqueue(&z);
-    int *data = queue.dequeue();
+    queue.dequeue();
     queue.enqueue(&a);
-    int *data2 = queue.peek();
-    if (data2 == &y) {
-        result.passed = true;
-    } else {
-        result.passed = false;
-        std::stringstream ss;
-        ss << "queue.peek() returns " << data << " but not &y ( = " << &y << ") after a queue with 3 elements is dequeued then enqueued.";
-        result.reason = ss.str();
-    }
+    ASSERT_EQUALS(queue.peek(), &y);
 }
 TEST_END()
 
@@ -527,17 +344,9 @@ TEST_BEGIN(queue_dequeueing_gives_first_element_for_3_element_queue_dequeued_and
     queue.enqueue(&x);
     queue.enqueue(&y);
     queue.enqueue(&z);
-    int *data = queue.dequeue();
+    queue.dequeue();
     queue.enqueue(&a);
-    int *data2 = queue.dequeue();
-    if (data2 == &y) {
-        result.passed = true;
-    } else {
-        result.passed = false;
-        std::stringstream ss;
-        ss << "queue.dequeue() returns " << data << " but not &y ( = " << &y << ") after a queue with 3 elements is dequeued then enqueued.";
-        result.reason = ss.str();
-    }
+    ASSERT_EQUALS(queue.dequeue(), &y);
 }
 TEST_END()
 
@@ -551,18 +360,12 @@ TEST_BEGIN(queue_is_empty_for_4_element_queue_enqueued_and_dequeued)
     queue.enqueue(&x);
     queue.enqueue(&y);
     queue.enqueue(&z);
-    int *data = queue.dequeue();
+    queue.dequeue();
     queue.enqueue(&a);
-    int *data2 = queue.dequeue();
-    int *data3 = queue.dequeue();
-    int *data4 = queue.dequeue();
-    const bool isEmpty = queue.isEmpty();
-    if (isEmpty) {
-        result.passed = true;
-    } else {
-        result.passed = false;
-        result.reason = "queue.isEmpty() returns false after a queue with 4 elements is enqueued then dequeued.";
-    }
+    queue.dequeue();
+    queue.dequeue();
+    queue.dequeue();
+    ASSERT_TRUE(queue.isEmpty());
 }
 TEST_END()
 
@@ -576,32 +379,25 @@ TEST_BEGIN(queue_order_for_4_element_queue)
     queue.enqueue(&x);
     queue.enqueue(&y);
     queue.enqueue(&z);
-    int *data = queue.dequeue();
+    int *const data = queue.dequeue();
     queue.enqueue(&a);
-    int *data2 = queue.dequeue();
-    int *data3 = queue.dequeue();
-    int *data4 = queue.dequeue();
-    result.passed = true;
-    if (data != &x || data2 != &y || data3 != &z || data4 != &a) {
-        result.passed = false;
-        result.reason = "queue.dequeue() returns wrong addresses or in wrong order.";
-    }
-    const bool isEmpty = queue.isEmpty();
-    if (!isEmpty) {
-        result.passed = false;
-        result.reason = "queue.isEmpty() returns false for a queue that is dequeued till empty.";
-    }
-    const size_t size = queue.size();
-    if (size != 0) {
-        result.passed = false;
-        std::stringstream ss;
-        ss << " failed: queue.size() returns " << size << " instead of 0 for a queue that is dequeued till empty.";
-        result.reason = ss.str();
-    }
+    int *const data2 = queue.dequeue();
+    int *const data3 = queue.dequeue();
+    int *const data4 = queue.dequeue();
+
+    ASSERT_EQUALS(data, &x);
+    ASSERT_EQUALS(data2, &y);
+    ASSERT_EQUALS(data3, &z);
+    ASSERT_EQUALS(data4, &a);
+
+    ASSERT_TRUE(queue.isEmpty());
+    ASSERT_EQUALS(queue.size(), 0);
 }
 TEST_END()
 
 const testfunc_t functions [] = {
+    test_empty_testcase,
+    test_constructor_memory_leak,
     test_queue_is_empty_for_empty_queue,
     test_queue_is_not_empty_for_1_element_queue,
     test_queue_is_not_empty_for_2_element_queue,
@@ -632,16 +428,4 @@ const testfunc_t functions [] = {
     test_queue_order_for_4_element_queue,
 };
 
-int main() {
-    std::cout << "Testing " << __FILE__ << std::endl;
-    for (testfunc_t func : functions) {
-        test(func);
-    }
-    const unsigned int failed_testcase_count = get_failed_testcase_count();
-    if (failed_testcase_count == 0) {
-        std::cout << "All passed: " << __FILE__ << std::endl;
-    } else {
-        std::cout << failed_testcase_count << " failed: " << __FILE__ << std::endl;
-    }
-    return failed_testcase_count;
-}
+MAIN();
