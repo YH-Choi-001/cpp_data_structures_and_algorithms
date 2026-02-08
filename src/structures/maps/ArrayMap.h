@@ -53,12 +53,14 @@ namespace yh {
                      */
                     yh::structures::lists::ArrayList<typename Map<K, V>::Entry> entries;
 
+                protected:
                     /**
                      * @brief Gets the entry from a key.
                      * @param key The key of the entry.
                      * @return The index of the entry requested, or entries.size() if such entry does not exist.
                      */
                     virtual size_t getEntryIndex(K *const key) {
+                        const bool is_key_null = (key == nullptr);
                         const size_t size = entries.size();
                         for (size_t i = 0; i < size; i++) {
                             typename Map<K, V>::Entry *const entry = entries.get(i);
@@ -67,7 +69,6 @@ namespace yh {
                             }
                             K *const entry_key = entry->key;
                             const bool is_entry_key_null = (entry_key == nullptr);
-                            const bool is_key_null = (key == nullptr);
                             if (
                                 (is_entry_key_null && is_key_null)
                                 || (!is_entry_key_null && !is_key_null && ((*entry_key) == (*key)))
@@ -78,7 +79,6 @@ namespace yh {
                         return size;
                     }
 
-                protected:
                     /**
                      * @brief Gets the entry from a key.
                      * @param key The key of the entry.
@@ -98,7 +98,36 @@ namespace yh {
                      * @param entry The entry to be inserted.
                      */
                     virtual void insertEntry(typename Map<K, V>::Entry *const entry) override {
+                        if (entry == nullptr) {
+                            return;
+                        }
                         entries.addTail(entry);
+                    }
+
+                    /**
+                     * @brief Inserts an entry.
+                     * @param entry The entry to be inserted.
+                     */
+                    void insertEntry(const size_t index, typename Map<K, V>::Entry *const entry) {
+                        if (index > entries.size()) {
+                            return;
+                        }
+                        if (entry == nullptr) {
+                            return;
+                        }
+                        entries.insert(index, entry);
+                    }
+
+                    /**
+                     * @brief Gets the entry from an index.
+                     * @param index The index of the entry.
+                     * @return The entry requested, or nullptr if the key does not exist.
+                     */
+                    virtual typename Map<K, V>::Entry *getEntryByIndex(const size_t index) {
+                        if (index >= entries.size()) {
+                            return nullptr;
+                        }
+                        return entries.get(index);
                     }
 
                 public:

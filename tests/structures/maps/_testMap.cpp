@@ -227,15 +227,11 @@ TEST_BEGIN(map_get_remove_operations)
     int f = -6;
     int g = 59;
     int h = 47;
-    int i = -6;
-    int j = -6;
 
     int x = 35;
     int y = -12;
     int z = 0;
     int a = -4;
-    int b = 87;
-    int c = -16;
 
     int dum1 = 19123;
     ASSERT_EQUALS(map.size(), 0);
@@ -410,6 +406,7 @@ TEST_BEGIN(map_foreach)
     TestVisitor visitor;
     map.foreach(visitor);
     ASSERT_EQUALS(visitor.getVisitCounter(), 4);
+    #ifndef YH_STRUCTURES_MAPS_SORTEDARRAYMAP_H
     ASSERT_EQUALS(visitor.getKey(0), &e);
     ASSERT_EQUALS(visitor.getValue(0), &b);
     ASSERT_EQUALS(visitor.getKey(1), &f);
@@ -418,6 +415,16 @@ TEST_BEGIN(map_foreach)
     ASSERT_EQUALS(visitor.getValue(2), &c);
     ASSERT_EQUALS(visitor.getKey(3), &h);
     ASSERT_EQUALS(visitor.getValue(3), &a);
+    #else
+    ASSERT_EQUALS(visitor.getKey(0), &f);
+    ASSERT_EQUALS(visitor.getValue(0), &y);
+    ASSERT_EQUALS(visitor.getKey(1), &e);
+    ASSERT_EQUALS(visitor.getValue(1), &b);
+    ASSERT_EQUALS(visitor.getKey(2), &h);
+    ASSERT_EQUALS(visitor.getValue(2), &a);
+    ASSERT_EQUALS(visitor.getKey(3), &g);
+    ASSERT_EQUALS(visitor.getValue(3), &c);
+    #endif
 }
 TEST_END()
 
