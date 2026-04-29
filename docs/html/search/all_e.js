@@ -1,10 +1,6 @@
 var searchData=
 [
-  ['yh_3a_3aalgo_0',['algo',['../namespaceyh_1_1algo.html',1,'yh']]],
-  ['yh_3a_3aalgo_3a_3asort_1',['sort',['../namespaceyh_1_1algo_1_1sort.html',1,'yh::algo']]],
-  ['yh_3a_3astructures_2',['structures',['../namespaceyh_1_1structures.html',1,'yh']]],
-  ['yh_3a_3astructures_3a_3aheaps_3',['heaps',['../namespaceyh_1_1structures_1_1heaps.html',1,'yh::structures']]],
-  ['yh_3a_3astructures_3a_3alists_4',['lists',['../namespaceyh_1_1structures_1_1lists.html',1,'yh::structures']]],
-  ['yh_3a_3astructures_3a_3aqueues_5',['queues',['../namespaceyh_1_1structures_1_1queues.html',1,'yh::structures']]],
-  ['yh_3a_3astructures_3a_3astacks_6',['stacks',['../namespaceyh_1_1structures_1_1stacks.html',1,'yh::structures']]]
+  ['value_0',['value',['../structyh_1_1structures_1_1maps_1_1Map_1_1Entry.html#a045751bd8059e43e9186a9460aa39855',1,'yh::structures::maps::Map::Entry']]],
+  ['visit_1',['visit',['../classyh_1_1structures_1_1lists_1_1List_1_1Visitor.html#aa37271cd874296345481b12c4ded9032',1,'yh::structures::lists::List::Visitor::visit()'],['../classyh_1_1structures_1_1lists_1_1List_1_1PredicateVisitor.html#ac6c77571ae9017f7174ffdf6cffde37c',1,'yh::structures::lists::List::PredicateVisitor::visit()'],['../classyh_1_1structures_1_1maps_1_1Map_1_1Visitor.html#a2ca6eefb2626e578a758fcd8ba1c9d19',1,'yh::structures::maps::Map::Visitor::visit()'],['../classyh_1_1structures_1_1maps_1_1Map_1_1PredicateVisitor.html#a2b9d00d60402840e384952ab42bfd46d',1,'yh::structures::maps::Map::PredicateVisitor::visit()']]],
+  ['visitor_2',['Visitor',['../classyh_1_1structures_1_1lists_1_1List_1_1Visitor.html',1,'yh::structures::lists::List&lt; T &gt;::Visitor'],['../classyh_1_1structures_1_1maps_1_1Map_1_1Visitor.html',1,'yh::structures::maps::Map&lt; K, V &gt;::Visitor'],['../classyh_1_1structures_1_1lists_1_1List_1_1Visitor.html#a774efa1e0fd807fee9a05866e6dc3c71',1,'yh::structures::lists::List::Visitor::Visitor()'],['../classyh_1_1structures_1_1maps_1_1Map_1_1Visitor.html#a335a187e39badbf096bc64fd04503569',1,'yh::structures::maps::Map::Visitor::Visitor()']]]
 ];
