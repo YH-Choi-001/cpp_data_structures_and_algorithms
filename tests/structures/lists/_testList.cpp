@@ -1012,6 +1012,39 @@ TEST_BEGIN(list_removeIf)
 }
 TEST_END()
 
+TEST_BEGIN(list_expand)
+{
+    LIST_TYPE<int> list;
+    int numbers [40];
+    for (int i = 0; i < 40; i++) {
+        numbers[i] = 15 - i;
+        ASSERT_EQUALS(list.size(), i);
+        list.insert(i, numbers + i);
+        ASSERT_EQUALS(list.size(), i + 1);
+    }
+}
+TEST_END()
+
+TEST_BEGIN(list_shrink)
+{
+    LIST_TYPE<int> list;
+    int numbers [40];
+    for (int i = 0; i < 40; i++) {
+        numbers[i] = 15 - i;
+        ASSERT_EQUALS(list.size(), i);
+        list.insert(i, numbers + i);
+        ASSERT_EQUALS(list.size(), i + 1);
+    }
+    for (int i = 0; i < 40; i++) {
+        ASSERT_EQUALS(list.size(), 40 - i);
+        const int *const ptr = list.remove(0);
+        ASSERT_EQUALS(list.size(), 40 - 1 - i);
+        ASSERT_EQUALS(ptr, numbers + i);
+        ASSERT_EQUALS(*ptr, 15 - i);
+    }
+}
+TEST_END()
+
 const testfunc_t functions [] = {
     test_list_is_empty_for_empty_list,
     test_list_is_not_empty_for_1_element_list_add_head,
@@ -1064,7 +1097,9 @@ const testfunc_t functions [] = {
     test_list_set_operations_3,
     test_list_set_operations_4,
     test_list_foreach,
-    test_list_removeIf
+    test_list_removeIf,
+    test_list_expand,
+    test_list_shrink
 };
 
 MAIN();
