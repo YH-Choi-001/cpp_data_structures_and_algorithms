@@ -2,6 +2,7 @@
 #define TEST_H
 
 #include <iostream>
+#include <cstring>
 #include <string>
 #include <sstream>
 
@@ -30,6 +31,30 @@ typedef void (*testfunc_t)(testcase_result_t &, std::stringstream &);
 namespace {
 static size_t testcase_number = 1;
 static size_t failed_testcase_count = 0;
+static bool colored_output = true;
+namespace terminal {
+    class Color {
+        private:
+            const char *const string_rep;
+        public:
+            Color(const char *const string_rep) : string_rep(string_rep) {}
+            inline const char *get_string_rep() const { return string_rep; }
+    };
+    namespace colors {
+        const Color RED = "\33[31m";
+        const Color YELLOW = "\33[33m";
+        const Color GREEN = "\33[32m";
+        const Color BLUE = "\33[34m";
+        const Color RESET = "\33[0m";
+    }
+}
+}
+
+std::ostream &operator<<(std::ostream &os, const terminal::Color &color) {
+    if (colored_output) {
+        os << color.get_string_rep();
+    }
+    return os;
 }
 
 void test(testfunc_t func) {
@@ -66,11 +91,14 @@ void test(testfunc_t func) {
     }
     if (result.passed) {
         sstream << "passed.";
+        std::cout << terminal::colors::GREEN;
     } else {
         sstream << "failed: " << result.reason;
         failed_testcase_count++;
+        std::cout << terminal::colors::RED;
     }
-    std::cout << sstream.str() << std::endl;
+    std::cout << sstream.str();
+    std::cout << terminal::colors::RESET << std::endl;
     testcase_number++;
 }
 
@@ -81,38 +109,41 @@ size_t get_failed_testcase_count() {
 }
 
 using testing_framework::testfunc_t;
+using testing_framework::operator<<;
 
 // should be defined in test*.cpp
 extern const testing_framework::testfunc_t functions [];
 
 #define TEST_BEGIN(testcase_name) \
 void test_##testcase_name(testing_framework::testcase_result_t &result, std::stringstream &reasonstream) { \
-    result.line = __LINE__;
+    { \
+        result.line = __LINE__; \
+    }
 
 #define TEST_END() \
 }
 
 
-#define ASSERT_EQUALS(x,y) \
+#define ASSERT_EQUALS(x,y) { \
     if (!((x) == (y))) { \
         result.passed = false; \
         reasonstream << #x << " = " << (x) << " should be, but doesn\'t equal to " << #y << " = " << (y) << "."; \
-    }
+    } \
+}
 
-#define _ASSERT_FLOATING_POINT_EQUALS(x,y,tolerance,type_t) \
-    { \
-        const type_t eval_x = (x); \
-        const type_t eval_y = (y); \
-        type_t delta = (eval_x - eval_y); \
-        if (delta < 0) { \
-            delta = -delta; \
-        } \
-        const type_t abstolerance = (tolerance > 0) ? tolerance : -tolerance; \
-        if (delta > abstolerance) { \
-            result.passed = false; \
-            reasonstream << #x << " = " << eval_x << " should be, but doesn\'t equal to " << #y << " = " << eval_y << "."; \
-        } \
-    }
+#define _ASSERT_FLOATING_POINT_EQUALS(x,y,tolerance,type_t) { \
+    const type_t eval_x = (x); \
+    const type_t eval_y = (y); \
+    type_t delta = (eval_x - eval_y); \
+    if (delta < 0) { \
+        delta = -delta; \
+    } \
+    const type_t abstolerance = (tolerance > 0) ? tolerance : -tolerance; \
+    if (delta > abstolerance) { \
+        result.passed = false; \
+        reasonstream << #x << " = " << eval_x << " should be, but doesn\'t equal to " << #y << " = " << eval_y << "."; \
+    } \
+}
 
 #define ASSERT_FLOAT_EQUALS(x,y,tolerance) \
     _ASSERT_FLOATING_POINT_EQUALS(x,y,tolerance,float)
@@ -120,64 +151,81 @@ void test_##testcase_name(testing_framework::testcase_result_t &result, std::str
 #define ASSERT_DOUBLE_EQUALS(x,y,tolerance) \
     _ASSERT_FLOATING_POINT_EQUALS(x,y,tolerance,double)
 
-#define ASSERT_CSTR_EQUALS(x,y) \
+#define ASSERT_CSTR_EQUALS(x,y) { \
     if (std::strcmp((x), (y)) != 0) { \
         result.passed = false; \
         reasonstream << #x << " = " << (x) << " should be, but doesn\'t equal to " << #y << " = " << (y) << "."; \
-    }
+    } \
+}
 
-#define ASSERT_NOT_EQUALS(x,y) \
+#define ASSERT_NOT_EQUALS(x,y) { \
     if (!((x) != (y))) { \
         result.passed = false; \
         reasonstream << #x << " = " << (x) << " should not, but equals to " << #y << " = " << (y) << "."; \
-    }
+    } \
+}
 
-#define ASSERT_TRUE(x) \
+#define ASSERT_TRUE(x) { \
     if (!(x)) { \
         result.passed = false; \
         reasonstream << #x << " should be true, but is false."; \
-    }
+    } \
+}
 
-#define ASSERT_FALSE(x) \
+#define ASSERT_FALSE(x) { \
     if (x) { \
         result.passed = false; \
         reasonstream << #x << " should be false, but is true."; \
-    }
+    } \
+}
 
 #define ASSERT_IS_NULLPTR(x) { \
-        void *const ptr = (x); \
-        if ((ptr) != nullptr) { \
-            result.passed = false; \
-            reasonstream << #x << " should be nullptr, but is " << ptr << "."; \
-        } \
-    }
+    const void *const ptr = (x); \
+    if ((ptr) != nullptr) { \
+        result.passed = false; \
+        reasonstream << #x << " should be nullptr, but is " << ptr << "."; \
+    } \
+}
 
-#define ASSERT_IS_NOT_NULLPTR(x) \
+#define ASSERT_IS_NOT_NULLPTR(x) { \
     if ((x) == nullptr) { \
         result.passed = false; \
         reasonstream << #x << " should not be nullptr, but is nullptr."; \
-    }
+    } \
+}
 
 
-#define ALL_TESTS_BEGIN() \
-    std::cout << "Testing " << __BASE_FILE__ << std::endl;
+#define ALL_TESTS_BEGIN() { \
+    std::cout << testing_framework::terminal::colors::YELLOW << "Testing " \
+    << __BASE_FILE__ << testing_framework::terminal::colors::RESET << std::endl; \
+}
 
-#define TEST_ALL() \
+#define TEST_ALL() { \
     for (const testfunc_t func : functions) { \
         test(func); \
-    }
+    } \
+}
 
-#define ALL_TESTS_END() \
+#define ALL_TESTS_END() { \
     const size_t failed_testcase_count = \
         testing_framework::get_failed_testcase_count(); \
+    std::stringstream line_contents; \
     if (failed_testcase_count == 0) { \
-        std::cout << "All passed: " << __BASE_FILE__ << std::endl; \
+        line_contents << testing_framework::terminal::colors::GREEN << "All passed: "; \
     } else { \
-        std::cout << failed_testcase_count << " failed: " << __BASE_FILE__ << std::endl; \
+        line_contents << testing_framework::terminal::colors::RED << failed_testcase_count << " failed: "; \
     } \
-    return failed_testcase_count;
+    line_contents << __BASE_FILE__ << testing_framework::terminal::colors::RESET; \
+    std::cout << line_contents.str() << std::endl; \
+    return failed_testcase_count; \
+}
 
-#define MAIN() int main() { \
+#define MAIN() int main(const int argc, const char **argv) { \
+    for (int i = 1; i < argc; i++) { \
+        if (std::strcmp(argv[i], "--no-color") == 0) { \
+            testing_framework::colored_output = false; \
+        } \
+    } \
     ALL_TESTS_BEGIN() \
     TEST_ALL() \
     ALL_TESTS_END() \
