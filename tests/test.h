@@ -221,7 +221,7 @@ void test_##testcase_name(testing_framework::testcase_result_t &result, std::str
 
 #define MAIN() int main(const int argc, const char **argv) { \
     for (int i = 1; i < argc; i++) { \
-        if (strcmp(argv[i], "--no-color") == 0) { \
+        if (std::strcmp(argv[i], "--no-color") == 0) { \
             testing_framework::colored_output = false; \
         } \
     } \
