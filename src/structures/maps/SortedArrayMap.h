@@ -34,8 +34,6 @@
 
 #include "ArrayMap.h"
 
-#include <iostream>
-
 namespace yh {
     namespace structures {
         namespace maps {
