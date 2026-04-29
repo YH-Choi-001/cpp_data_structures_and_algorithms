@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['entry_0',['Entry',['../structyh_1_1structures_1_1maps_1_1Map_1_1Entry.html',1,'yh::structures::maps::Map']]]
+  ['heap_0',['Heap',['../classyh_1_1structures_1_1heaps_1_1Heap.html',1,'yh::structures::heaps']]]
 ];

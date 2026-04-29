@@ -8,8 +8,5 @@ var searchData=
   ['arrayheap_5',['ArrayHeap',['../classyh_1_1structures_1_1heaps_1_1ArrayHeap.html',1,'yh::structures::heaps::ArrayHeap&lt; T &gt;'],['../classyh_1_1structures_1_1heaps_1_1ArrayHeap.html#abf0e798c8233b4ab3911cafd5005082a',1,'yh::structures::heaps::ArrayHeap::ArrayHeap()']]],
   ['arrayheap_2eh_6',['ArrayHeap.h',['../ArrayHeap_8h.html',1,'']]],
   ['arraylist_7',['ArrayList',['../classyh_1_1structures_1_1lists_1_1ArrayList.html',1,'yh::structures::lists::ArrayList&lt; T &gt;'],['../classyh_1_1structures_1_1lists_1_1ArrayList.html#a8bb077f127c6832ad41e69f22468ec38',1,'yh::structures::lists::ArrayList::ArrayList()']]],
-  ['arraylist_2eh_8',['ArrayList.h',['../ArrayList_8h.html',1,'']]],
-  ['arraylist_3c_20typename_20yh_3a_3astructures_3a_3amaps_3a_3amap_3c_20k_2c_20v_20_3e_3a_3aentry_20_3e_9',['ArrayList&lt; typename yh::structures::maps::Map&lt; K, V &gt;::Entry &gt;',['../classyh_1_1structures_1_1lists_1_1ArrayList.html',1,'yh::structures::lists']]],
-  ['arraymap_10',['ArrayMap',['../classyh_1_1structures_1_1maps_1_1ArrayMap.html',1,'yh::structures::maps::ArrayMap&lt; K, V &gt;'],['../classyh_1_1structures_1_1maps_1_1ArrayMap.html#a9d9a1ad0152dc35cf670d1ec2b262a7d',1,'yh::structures::maps::ArrayMap::ArrayMap()']]],
-  ['arraymap_2eh_11',['ArrayMap.h',['../ArrayMap_8h.html',1,'']]]
+  ['arraylist_2eh_8',['ArrayList.h',['../ArrayList_8h.html',1,'']]]
 ];

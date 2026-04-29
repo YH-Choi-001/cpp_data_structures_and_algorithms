@@ -14,11 +14,6 @@ var annotated_dup =
           [ "List", "classyh_1_1structures_1_1lists_1_1List.html", "classyh_1_1structures_1_1lists_1_1List" ],
           [ "SinglyLinkedList", "classyh_1_1structures_1_1lists_1_1SinglyLinkedList.html", "classyh_1_1structures_1_1lists_1_1SinglyLinkedList" ]
         ] ],
-        [ "maps", "namespaceyh_1_1structures_1_1maps.html", [
-          [ "ArrayMap", "classyh_1_1structures_1_1maps_1_1ArrayMap.html", "classyh_1_1structures_1_1maps_1_1ArrayMap" ],
-          [ "Map", "classyh_1_1structures_1_1maps_1_1Map.html", "classyh_1_1structures_1_1maps_1_1Map" ],
-          [ "SortedArrayMap", "classyh_1_1structures_1_1maps_1_1SortedArrayMap.html", "classyh_1_1structures_1_1maps_1_1SortedArrayMap" ]
-        ] ],
         [ "queues", "namespaceyh_1_1structures_1_1queues.html", [
           [ "LinkedQueue", "classyh_1_1structures_1_1queues_1_1LinkedQueue.html", "classyh_1_1structures_1_1queues_1_1LinkedQueue" ],
           [ "Queue", "classyh_1_1structures_1_1queues_1_1Queue.html", "classyh_1_1structures_1_1queues_1_1Queue" ]
