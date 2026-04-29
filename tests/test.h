@@ -176,7 +176,7 @@ void test_##testcase_name(testing_framework::testcase_result_t &result, std::str
     if (x) { \
         result.passed = false; \
         reasonstream << #x << " should be false, but is true."; \
-    } \  
+    } \
 }
 
 #define ASSERT_IS_NULLPTR(x) { \
