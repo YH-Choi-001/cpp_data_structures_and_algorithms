@@ -384,7 +384,7 @@ namespace yh {
                             void proceed() {
                                 if (isRemoved) {
                                     isRemoved = false;
-                                } else {
+                                } else if (index < list.size()) {
                                     index++;
                                 }
                             }
