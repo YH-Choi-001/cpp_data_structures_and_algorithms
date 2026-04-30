@@ -354,6 +354,7 @@ namespace yh {
                             tail = nullptr;
                         } else {
                             tail = getNode(elementsCount - 2);
+                            tail->next = nullptr;
                         }
                         delete removedTail;
                         elementsCount--;
