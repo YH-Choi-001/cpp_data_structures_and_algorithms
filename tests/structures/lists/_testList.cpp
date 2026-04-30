@@ -740,17 +740,29 @@ TEST_BEGIN(list_remove_operations)
     int z = 0;
     int a = -4;
     list.insert(0, &x);
+    ASSERT_EQUALS(list.size(), 1);
     list.insert(1, &z);
+    ASSERT_EQUALS(list.size(), 2);
     list.insert(1, &y);
+    ASSERT_EQUALS(list.size(), 3);
     int *const dataGet = list.get(1);
+    ASSERT_EQUALS(list.size(), 3);
     int *const data = list.remove(1);
+    ASSERT_EQUALS(list.size(), 2);
     list.insert(1, &a);
+    ASSERT_EQUALS(list.size(), 3);
     int *const dataGet2 = list.get(1);
+    ASSERT_EQUALS(list.size(), 3);
     int *const data2 = list.remove(1);
+    ASSERT_EQUALS(list.size(), 2);
     int *const dataGet3 = list.get(1);
+    ASSERT_EQUALS(list.size(), 2);
     int *const data3 = list.remove(1);
+    ASSERT_EQUALS(list.size(), 1);
     int *const dataGet4 = list.get(0);
+    ASSERT_EQUALS(list.size(), 1);
     int *const data4 = list.remove(0);
+    ASSERT_EQUALS(list.size(), 0);
 
     ASSERT_EQUALS(data, &y);
     ASSERT_EQUALS(data2, &a);
@@ -1012,6 +1024,216 @@ TEST_BEGIN(list_removeIf)
 }
 TEST_END()
 
+#define ASSERT_NEXT_ELEMENT_IS(e,rm) { \
+    ASSERT_TRUE(it.hasNext()); \
+    for (int i = 0; i < 10; i++) { \
+        ASSERT_EQUALS(it.get(), &e); \
+    } \
+    if (rm) { \
+        ASSERT_EQUALS(it.remove(), &e); \
+        for (int i = 0; i < 10; i++) { \
+            ASSERT_IS_NULLPTR(it.remove()); \
+        } \
+    } \
+    it.proceed(); \
+}
+
+#define ASSERT_NO_NEXT_ELEMENT() { \
+    ASSERT_FALSE(it.hasNext()); \
+    for (int i = 0; i < 10; i++) { \
+        ASSERT_IS_NULLPTR(it.get()); \
+        ASSERT_IS_NULLPTR(it.remove()); \
+    } \
+    it.proceed(); \
+}
+
+#define ASSERT_NO_MORE_ELEMENTS() { \
+    for (int i = 0; i < 10; i++) { \
+        ASSERT_NO_NEXT_ELEMENT(); \
+    } \
+}
+
+TEST_BEGIN(list_iterator_readonly)
+{
+    LIST_TYPE<int> list;
+    int x = 35;
+    int y = -12;
+    int z = 0;
+    int a = -4;
+    list.addTail(&x);
+    list.addTail(&y);
+    list.addTail(&z);
+    list.addTail(&a);
+
+    LIST_TYPE<int>::Iterator it = list;
+
+    ASSERT_NEXT_ELEMENT_IS(x, false);
+    ASSERT_NEXT_ELEMENT_IS(y, false);
+    ASSERT_NEXT_ELEMENT_IS(z, false);
+    ASSERT_NEXT_ELEMENT_IS(a, false);
+
+    ASSERT_NO_MORE_ELEMENTS();
+}
+TEST_END()
+
+TEST_BEGIN(list_iterator_remove_only_once_for_all_evens)
+{
+    LIST_TYPE<int> list;
+    int x = 35;
+    int y = -12;
+    int z = 0;
+    int a = -4;
+    list.addTail(&x);
+    list.addTail(&y);
+    list.addTail(&z);
+    list.addTail(&a);
+
+    LIST_TYPE<int>::Iterator it = list;
+
+    ASSERT_NEXT_ELEMENT_IS(x, false);
+    ASSERT_NEXT_ELEMENT_IS(y, true);
+    ASSERT_NEXT_ELEMENT_IS(z, false);
+    ASSERT_NEXT_ELEMENT_IS(a, true);
+
+    ASSERT_NO_MORE_ELEMENTS();
+
+    ASSERT_EQUALS(list.size(), 2);
+    ASSERT_EQUALS(list.get(0), &x);
+    ASSERT_EQUALS(list.get(1), &z);
+}
+TEST_END()
+
+TEST_BEGIN(list_iterator_remove_only_once_for_all_odds)
+{
+    LIST_TYPE<int> list;
+    int x = 35;
+    int y = -12;
+    int z = 0;
+    int a = -4;
+    list.addTail(&x);
+    list.addTail(&y);
+    list.addTail(&z);
+    list.addTail(&a);
+
+    LIST_TYPE<int>::Iterator it = list;
+
+    ASSERT_NEXT_ELEMENT_IS(x, true);
+    ASSERT_NEXT_ELEMENT_IS(y, false);
+    ASSERT_NEXT_ELEMENT_IS(z, true);
+    ASSERT_NEXT_ELEMENT_IS(a, false);
+
+    ASSERT_NO_MORE_ELEMENTS();
+
+    ASSERT_EQUALS(list.size(), 2);
+    ASSERT_EQUALS(list.get(0), &y);
+    ASSERT_EQUALS(list.get(1), &a);
+}
+TEST_END()
+
+TEST_BEGIN(list_iterator_remove_only_once_for_all_elements)
+{
+    LIST_TYPE<int> list;
+    int x = 35;
+    int y = -12;
+    int z = 0;
+    int a = -4;
+    list.addTail(&x);
+    list.addTail(&y);
+    list.addTail(&z);
+    list.addTail(&a);
+
+    LIST_TYPE<int>::Iterator it = list;
+
+    ASSERT_NEXT_ELEMENT_IS(x, true);
+    ASSERT_NEXT_ELEMENT_IS(y, true);
+    ASSERT_NEXT_ELEMENT_IS(z, true);
+    ASSERT_NEXT_ELEMENT_IS(a, true);
+
+    ASSERT_NO_MORE_ELEMENTS();
+
+    ASSERT_EQUALS(list.size(), 0);
+}
+TEST_END()
+
+TEST_BEGIN(list_iterator_removed_even_elements_are_not_visible)
+{
+    LIST_TYPE<int> list;
+    int x = 35;
+    int y = -12;
+    int z = 0;
+    int a = -4;
+    list.addTail(&x);
+    list.addTail(&y);
+    list.addTail(&z);
+    list.addTail(&a);
+
+    LIST_TYPE<int>::Iterator it = list;
+
+    ASSERT_NEXT_ELEMENT_IS(x, false);
+    ASSERT_NEXT_ELEMENT_IS(y, true);
+    ASSERT_NEXT_ELEMENT_IS(z, false);
+    ASSERT_NEXT_ELEMENT_IS(a, true);
+
+    ASSERT_NO_MORE_ELEMENTS();
+
+    ASSERT_EQUALS(list.size(), 2);
+    ASSERT_EQUALS(list.get(0), &x);
+    ASSERT_EQUALS(list.get(1), &z);
+}
+TEST_END()
+
+TEST_BEGIN(list_iterator_removed_odd_elements_are_not_visible)
+{
+    LIST_TYPE<int> list;
+    int x = 35;
+    int y = -12;
+    int z = 0;
+    int a = -4;
+    list.addTail(&x);
+    list.addTail(&y);
+    list.addTail(&z);
+    list.addTail(&a);
+
+    LIST_TYPE<int>::Iterator it = list;
+
+    ASSERT_NEXT_ELEMENT_IS(x, true);
+    ASSERT_NEXT_ELEMENT_IS(y, false);
+    ASSERT_NEXT_ELEMENT_IS(z, true);
+    ASSERT_NEXT_ELEMENT_IS(a, false);
+
+    ASSERT_NO_MORE_ELEMENTS();
+
+    ASSERT_EQUALS(list.size(), 2);
+    ASSERT_EQUALS(list.get(0), &y);
+    ASSERT_EQUALS(list.get(1), &a);
+}
+TEST_END()
+
+TEST_BEGIN(list_iterator_removed_all_elements_are_not_visible)
+{
+    LIST_TYPE<int> list;
+    int x = 35;
+    int y = -12;
+    int z = 0;
+    int a = -4;
+    list.addTail(&x);
+    list.addTail(&y);
+    list.addTail(&z);
+    list.addTail(&a);
+
+    LIST_TYPE<int>::Iterator it = list;
+
+    ASSERT_NEXT_ELEMENT_IS(x, true);
+    ASSERT_NEXT_ELEMENT_IS(y, true);
+    ASSERT_NEXT_ELEMENT_IS(z, true);
+    ASSERT_NEXT_ELEMENT_IS(a, true);
+
+    ASSERT_NO_MORE_ELEMENTS();
+
+    ASSERT_EQUALS(list.size(), 0);
+}
+TEST_END()
+
 TEST_BEGIN(list_expand)
 {
     LIST_TYPE<int> list;
@@ -1098,6 +1320,13 @@ const testfunc_t functions [] = {
     test_list_set_operations_4,
     test_list_foreach,
     test_list_removeIf,
+    test_list_iterator_readonly,
+    test_list_iterator_remove_only_once_for_all_evens,
+    test_list_iterator_remove_only_once_for_all_odds,
+    test_list_iterator_remove_only_once_for_all_elements,
+    test_list_iterator_removed_even_elements_are_not_visible,
+    test_list_iterator_removed_odd_elements_are_not_visible,
+    test_list_iterator_removed_all_elements_are_not_visible,
     test_list_expand,
     test_list_shrink
 };
