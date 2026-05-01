@@ -130,6 +130,21 @@ namespace yh {
                         return entries.get(index);
                     }
 
+                    /**
+                     * @brief Removes an entry by its index.
+                     * @param index The index of the entry to be removed.
+                     * @return The value pointed by the entry, or nullptr if the entry does not exist.
+                     */
+                    virtual V *removeEntryByIndex(const size_t index) {
+                        if (index >= entries.size()) {
+                            return nullptr;
+                        }
+                        typename Map<K, V>::Entry *const entry = entries.remove(index);
+                        V *const value = entry->value;
+                        delete entry;
+                        return value;
+                    }
+
                 public:
                     /**
                      * @brief Creates an empty array map.
@@ -137,7 +152,7 @@ namespace yh {
                     ArrayMap() : entries() {}
 
                     /**
-                     * @brief Destroys the list of entries.
+                     * @brief Destroys the map.
                      */
                     virtual ~ArrayMap() {
                         entries.foreach([](typename Map<K, V>::Entry *const entry) {
@@ -146,8 +161,8 @@ namespace yh {
                     }
 
                     /**
-                     * @brief Gets the number of entries in the list.
-                     * @return The number of entries in the list.
+                     * @brief Gets the number of entries in the map.
+                     * @return The number of entries in the map.
                      */
                     virtual size_t size() override {
                         return entries.size();
@@ -161,19 +176,13 @@ namespace yh {
                     virtual V *remove(K *const key) override {
                         const size_t size = entries.size();
                         const size_t index = getEntryIndex(key);
-                        if (index == size) {
-                            return nullptr;
-                        }
-                        typename Map<K, V>::Entry *const entry = entries.remove(index);
-                        V *const value = entry->value;
-                        delete entry;
-                        return value;
+                        return removeEntryByIndex(index);
                     }
 
                     /**
                      * @brief Processes each entry with a function.
                      * @param visitor The visitor to visit each entry.
-                     * @note Do not add or remove entries in the list within the given function.
+                     * @note Do not add or remove entries in the map within the given function.
                      */
                     virtual void foreach(typename Map<K, V>::Visitor &visitor) override {
                         class ConcreteVisitor : public yh::structures::lists::List<typename Map<K, V>::Entry>::Visitor {
@@ -193,7 +202,7 @@ namespace yh {
                     /**
                      * @brief Processes each entry with a predicate function.
                      * @param visitor The visitor to visit each entry. Return true to remove the entry, false otherwise.
-                     * @note Do not add or remove entries in the list within the given function.
+                     * @note Do not add or remove entries in the map within the given function.
                      */
                     virtual void removeIf(typename Map<K, V>::PredicateVisitor &visitor) override {
                         class ConcretePredicateVisitor : public yh::structures::lists::List<typename Map<K, V>::Entry>::PredicateVisitor {
@@ -217,7 +226,7 @@ namespace yh {
                     /**
                      * @brief Processes each entry with a function.
                      * @param func The function to process the entries. param: V* Pointer to the entry.
-                     * @note Do not add or remove entries in the list within the given function.
+                     * @note Do not add or remove entries in the map within the given function.
                      */
                     virtual void foreach(void (*func)(typename Map<K, V>::Entry)) override {
                         Map<K, V>::foreach(func);
@@ -231,6 +240,84 @@ namespace yh {
                     virtual void removeIf(bool (*func)(typename Map<K, V>::Entry)) override {
                         Map<K, V>::removeIf(func);
                     }
+
+                    /**
+                     * @brief An iterator used to visit entries of a map.
+                     */
+                    class Iterator {
+                        private:
+                            /**
+                             * @brief The map visited by this iterator.
+                             */
+                            ArrayMap<K, V> &map;
+
+                            /**
+                             * @brief The index pointed by this iterator.
+                             */
+                            size_t index;
+
+                            /**
+                             * @brief Whether the current entry is removed.
+                             */
+                            bool isRemoved;
+
+                        public:
+                            /**
+                             * @brief Creates a new iterator to visit entries of a map.
+                             * @param map The map being visited.
+                             */
+                            Iterator(ArrayMap<K, V> &map) : map(map), index(0), isRemoved(false)
+                            {
+                                //
+                            }
+
+                            /**
+                             * @brief Whether there are unvisited entries in the map.
+                             * @return `true` if there are unvisited entries, `false` otherwise.
+                             */
+                            bool hasNext() {
+                                return index < map.size();
+                            }
+
+                            /**
+                             * A nullptr will be returned after removing the current entry.
+                             * @brief Get the current entry pointed by the iterator.
+                             * @return The current entry pointed by the iterator, or nullptr if it does not exist.
+                             * @see remove()
+                             */
+                            Map<K, V>::Entry *get() {
+                                if (isRemoved || !hasNext()) {
+                                    return nullptr;
+                                }
+                                return map.getEntryByIndex(index);
+                            }
+
+                            /**
+                             * Each entry could only be removed once.
+                             * Calling this function repetitively will not remove any other entries from the map.
+                             * @brief Remove the current entry from the map.
+                             * @return The entry removed, or nullptr if none is removed.
+                             * @see get()
+                             */
+                            V *remove() {
+                                if (isRemoved || !hasNext()) {
+                                    return nullptr;
+                                }
+                                isRemoved = true;
+                                return map.removeEntryByIndex(index);
+                            }
+
+                            /**
+                             * @brief Move on to the next element.
+                             */
+                            void proceed() {
+                                if (isRemoved) {
+                                    isRemoved = false;
+                                } else if (hasNext()) {
+                                    index++;
+                                }
+                            }
+                    };
             };
         }
     }
