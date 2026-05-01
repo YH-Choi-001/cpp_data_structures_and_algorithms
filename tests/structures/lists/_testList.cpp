@@ -1025,7 +1025,9 @@ TEST_BEGIN(list_removeIf)
 TEST_END()
 
 #define ASSERT_NEXT_ELEMENT_IS(e,rm) { \
-    ASSERT_TRUE(it.hasNext()); \
+    for (int i = 0; i < 10; i++) { \
+        ASSERT_TRUE(it.hasNext()); \
+    } \
     for (int i = 0; i < 10; i++) { \
         ASSERT_EQUALS(it.get(), &e); \
     } \
