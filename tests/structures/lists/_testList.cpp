@@ -1075,6 +1075,12 @@ TEST_BEGIN(list_iterator_readonly)
     ASSERT_NEXT_ELEMENT_IS(a, false);
 
     ASSERT_NO_MORE_ELEMENTS();
+
+    ASSERT_EQUALS(list.size(), 4);
+    ASSERT_EQUALS(list.get(0), &x);
+    ASSERT_EQUALS(list.get(1), &y);
+    ASSERT_EQUALS(list.get(2), &z);
+    ASSERT_EQUALS(list.get(3), &a);
 }
 TEST_END()
 
