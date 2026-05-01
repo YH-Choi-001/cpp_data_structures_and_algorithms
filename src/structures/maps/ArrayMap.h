@@ -174,7 +174,6 @@ namespace yh {
                      * @return The value removed, or nullptr if the key does not exist.
                      */
                     virtual V *remove(K *const key) override {
-                        const size_t size = entries.size();
                         const size_t index = getEntryIndex(key);
                         return removeEntryByIndex(index);
                     }
@@ -285,7 +284,7 @@ namespace yh {
                              * @return The current entry pointed by the iterator, or nullptr if it does not exist.
                              * @see remove()
                              */
-                            Map<K, V>::Entry *get() {
+                            typename Map<K, V>::Entry *get() {
                                 if (isRemoved || !hasNext()) {
                                     return nullptr;
                                 }
