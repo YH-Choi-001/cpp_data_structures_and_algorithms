@@ -39,7 +39,7 @@ compile: $(OBJS)
 build: $(TARGET)
 
 # Rule to run the executable
-run: $(TARGET)
+test: $(TARGET)
 	find ./ -type f -name "test*.out" -exec "{}" \; | grep -E "(All passed|failed)"
 
 # Update the testcases in the testfile
