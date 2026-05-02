@@ -1024,7 +1024,7 @@ TEST_BEGIN(list_removeIf)
 }
 TEST_END()
 
-#define ASSERT_NEXT_ELEMENT_IS(e,rm) { \
+#define ASSERT_NEXT_ELEMENT_IS(e,rm,checkRemovedIsHidden) { \
     for (int i = 0; i < 10; i++) { \
         ASSERT_TRUE(it.hasNext()); \
     } \
@@ -1033,6 +1033,11 @@ TEST_END()
     } \
     if (rm) { \
         ASSERT_EQUALS(it.remove(), &e); \
+        if (checkRemovedIsHidden) { \
+            for (int i = 0; i < 10; i++) { \
+                ASSERT_IS_NULLPTR(it.get()); \
+            } \
+        } \
         for (int i = 0; i < 10; i++) { \
             ASSERT_IS_NULLPTR(it.remove()); \
         } \
@@ -1069,10 +1074,10 @@ TEST_BEGIN(list_iterator_readonly)
 
     LIST_TYPE<int>::Iterator it = list;
 
-    ASSERT_NEXT_ELEMENT_IS(x, false);
-    ASSERT_NEXT_ELEMENT_IS(y, false);
-    ASSERT_NEXT_ELEMENT_IS(z, false);
-    ASSERT_NEXT_ELEMENT_IS(a, false);
+    ASSERT_NEXT_ELEMENT_IS(x, false, false);
+    ASSERT_NEXT_ELEMENT_IS(y, false, false);
+    ASSERT_NEXT_ELEMENT_IS(z, false, false);
+    ASSERT_NEXT_ELEMENT_IS(a, false, false);
 
     ASSERT_NO_MORE_ELEMENTS();
 
@@ -1098,10 +1103,10 @@ TEST_BEGIN(list_iterator_remove_only_once_for_all_evens)
 
     LIST_TYPE<int>::Iterator it = list;
 
-    ASSERT_NEXT_ELEMENT_IS(x, false);
-    ASSERT_NEXT_ELEMENT_IS(y, true);
-    ASSERT_NEXT_ELEMENT_IS(z, false);
-    ASSERT_NEXT_ELEMENT_IS(a, true);
+    ASSERT_NEXT_ELEMENT_IS(x, false, false);
+    ASSERT_NEXT_ELEMENT_IS(y, true, false);
+    ASSERT_NEXT_ELEMENT_IS(z, false, false);
+    ASSERT_NEXT_ELEMENT_IS(a, true, false);
 
     ASSERT_NO_MORE_ELEMENTS();
 
@@ -1125,10 +1130,10 @@ TEST_BEGIN(list_iterator_remove_only_once_for_all_odds)
 
     LIST_TYPE<int>::Iterator it = list;
 
-    ASSERT_NEXT_ELEMENT_IS(x, true);
-    ASSERT_NEXT_ELEMENT_IS(y, false);
-    ASSERT_NEXT_ELEMENT_IS(z, true);
-    ASSERT_NEXT_ELEMENT_IS(a, false);
+    ASSERT_NEXT_ELEMENT_IS(x, true, false);
+    ASSERT_NEXT_ELEMENT_IS(y, false, false);
+    ASSERT_NEXT_ELEMENT_IS(z, true, false);
+    ASSERT_NEXT_ELEMENT_IS(a, false, false);
 
     ASSERT_NO_MORE_ELEMENTS();
 
@@ -1152,10 +1157,10 @@ TEST_BEGIN(list_iterator_remove_only_once_for_all_elements)
 
     LIST_TYPE<int>::Iterator it = list;
 
-    ASSERT_NEXT_ELEMENT_IS(x, true);
-    ASSERT_NEXT_ELEMENT_IS(y, true);
-    ASSERT_NEXT_ELEMENT_IS(z, true);
-    ASSERT_NEXT_ELEMENT_IS(a, true);
+    ASSERT_NEXT_ELEMENT_IS(x, true, false);
+    ASSERT_NEXT_ELEMENT_IS(y, true, false);
+    ASSERT_NEXT_ELEMENT_IS(z, true, false);
+    ASSERT_NEXT_ELEMENT_IS(a, true, false);
 
     ASSERT_NO_MORE_ELEMENTS();
 
@@ -1177,10 +1182,10 @@ TEST_BEGIN(list_iterator_removed_even_elements_are_not_visible)
 
     LIST_TYPE<int>::Iterator it = list;
 
-    ASSERT_NEXT_ELEMENT_IS(x, false);
-    ASSERT_NEXT_ELEMENT_IS(y, true);
-    ASSERT_NEXT_ELEMENT_IS(z, false);
-    ASSERT_NEXT_ELEMENT_IS(a, true);
+    ASSERT_NEXT_ELEMENT_IS(x, false, true);
+    ASSERT_NEXT_ELEMENT_IS(y, true, true);
+    ASSERT_NEXT_ELEMENT_IS(z, false, true);
+    ASSERT_NEXT_ELEMENT_IS(a, true, true);
 
     ASSERT_NO_MORE_ELEMENTS();
 
@@ -1204,10 +1209,10 @@ TEST_BEGIN(list_iterator_removed_odd_elements_are_not_visible)
 
     LIST_TYPE<int>::Iterator it = list;
 
-    ASSERT_NEXT_ELEMENT_IS(x, true);
-    ASSERT_NEXT_ELEMENT_IS(y, false);
-    ASSERT_NEXT_ELEMENT_IS(z, true);
-    ASSERT_NEXT_ELEMENT_IS(a, false);
+    ASSERT_NEXT_ELEMENT_IS(x, true, true);
+    ASSERT_NEXT_ELEMENT_IS(y, false, true);
+    ASSERT_NEXT_ELEMENT_IS(z, true, true);
+    ASSERT_NEXT_ELEMENT_IS(a, false, true);
 
     ASSERT_NO_MORE_ELEMENTS();
 
@@ -1231,10 +1236,10 @@ TEST_BEGIN(list_iterator_removed_all_elements_are_not_visible)
 
     LIST_TYPE<int>::Iterator it = list;
 
-    ASSERT_NEXT_ELEMENT_IS(x, true);
-    ASSERT_NEXT_ELEMENT_IS(y, true);
-    ASSERT_NEXT_ELEMENT_IS(z, true);
-    ASSERT_NEXT_ELEMENT_IS(a, true);
+    ASSERT_NEXT_ELEMENT_IS(x, true, true);
+    ASSERT_NEXT_ELEMENT_IS(y, true, true);
+    ASSERT_NEXT_ELEMENT_IS(z, true, true);
+    ASSERT_NEXT_ELEMENT_IS(a, true, true);
 
     ASSERT_NO_MORE_ELEMENTS();
 
