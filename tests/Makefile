@@ -23,7 +23,7 @@ SRCS := $(TARGETCPP)
 OBJS := $(SRCS:.cpp=.o)
 
 # Default rule to build and run the executable
-all: update_tests build run
+all: update_tests build test
 
 # Rule to compile .cpp files into .o files
 %.o: %.cpp $(HEADERS)
