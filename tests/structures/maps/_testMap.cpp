@@ -33,12 +33,10 @@
 
 #include <iostream>
 
-// #ifndef MAP_TYPE
-// #define MAP_TYPE ArrayMap
-// #include "../../../src/structures/maps/ArrayMap.h"
-// #endif
-
-#ifdef MAP_TYPE
+#ifndef MAP_TYPE
+#define MAP_TYPE ArrayMap
+#include "../../../src/structures/maps/ArrayMap.h"
+#endif
 
 using yh::structures::maps::Map;
 using yh::structures::maps::MAP_TYPE;
@@ -471,13 +469,7 @@ const testfunc_t functions [] = {
     test_map_get_remove_operations,
     test_map_get_put_remove_operations,
     test_map_foreach,
-    test_map_removeIf
+    test_map_removeIf,
 };
 
 MAIN();
-
-#else // # ifdef MAP_TYPE
-
-#error MAP_TYPE needs to be defined.
-
-#endif // #ifdef MAP_TYPE
