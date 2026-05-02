@@ -796,7 +796,7 @@ const testfunc_t functions [] = {
     test_map_iterator_removed_even_elements_are_not_visible,
     test_map_iterator_removed_odd_elements_are_not_visible,
     test_map_iterator_removed_all_elements_are_not_visible,
-    test_map_iterator_remove_some
+    test_map_iterator_remove_some,
 };
 
 MAIN();
