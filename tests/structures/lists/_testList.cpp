@@ -33,7 +33,10 @@
 
 #include <iostream>
 
-#ifdef LIST_TYPE
+#ifndef LIST_TYPE
+#define LIST_TYPE ArrayList
+#include "../../../src/structures/lists/ArrayList.h"
+#endif
 
 using yh::structures::lists::LIST_TYPE;
 
@@ -1099,13 +1102,7 @@ const testfunc_t functions [] = {
     test_list_foreach,
     test_list_removeIf,
     test_list_expand,
-    test_list_shrink
+    test_list_shrink,
 };
 
 MAIN();
-
-#else // # ifdef LIST_TYPE
-
-#error LIST_TYPE needs to be defined.
-
-#endif // #ifdef LIST_TYPE
