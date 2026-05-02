@@ -459,6 +459,325 @@ TEST_BEGIN(map_removeIf)
 }
 TEST_END()
 
+#define SETUP_ITERATOR_MAP() \
+    MAP_TYPE<int, int> map; \
+    int e = 18; \
+    int f = -6; \
+    int g = 59; \
+    int h = 47; \
+ \
+    int x = 35; \
+    int y = -12; \
+    int z = 0; \
+    int a = -4; \
+    int b = 87; \
+    int c = -16; \
+ \
+    ASSERT_EQUALS(map.size(), 0); \
+    ASSERT_IS_NULLPTR(map.put(&e, &x)); \
+    ASSERT_EQUALS(map.size(), 1); \
+    ASSERT_IS_NULLPTR(map.put(&f, &y)); \
+    ASSERT_EQUALS(map.size(), 2); \
+    ASSERT_EQUALS(map.get(&e), &x); \
+    ASSERT_EQUALS(map.put(&e, &b), &x); \
+    ASSERT_EQUALS(map.size(), 2); \
+    ASSERT_EQUALS(map.get(&e), &b); \
+    ASSERT_IS_NULLPTR(map.put(&g, &z)); \
+    ASSERT_EQUALS(map.size(), 3); \
+    ASSERT_IS_NULLPTR(map.put(&h, &a)); \
+    ASSERT_EQUALS(map.size(), 4); \
+    ASSERT_EQUALS(map.put(&g, &c), &z); \
+    ASSERT_EQUALS(map.size(), 4); \
+ \
+    MAP_TYPE<int, int>::Iterator it(map); \
+
+
+#define ASSERT_NEXT_ENTRY_IS(k,v,rm,checkRemovedIsHidden) { \
+    for (int i = 0; i < 10; i++) { \
+        ASSERT_TRUE(it.hasNext()); \
+    } \
+    for (int i = 0; i < 10; i++) { \
+        Map<int, int>::Entry *const entry = it.get(); \
+        ASSERT_IS_NOT_NULLPTR(entry); \
+        ASSERT_EQUALS(entry->key, &k); \
+        ASSERT_EQUALS(entry->value, &v); \
+    } \
+    if (rm) { \
+        ASSERT_EQUALS(it.remove(), &v); \
+        if (checkRemovedIsHidden) { \
+            for (int i = 0; i < 10; i++) { \
+                ASSERT_IS_NULLPTR(it.get()); \
+            } \
+        } \
+        for (int i = 0; i < 10; i++) { \
+            ASSERT_IS_NULLPTR(it.remove()); \
+        } \
+    } \
+    it.proceed(); \
+}
+
+#define ASSERT_NO_NEXT_ENTRY() { \
+    ASSERT_FALSE(it.hasNext()); \
+    for (int i = 0; i < 10; i++) { \
+        ASSERT_IS_NULLPTR(it.get()); \
+        ASSERT_IS_NULLPTR(it.remove()); \
+    } \
+    it.proceed(); \
+}
+
+#define ASSERT_NO_MORE_ENTRIES() { \
+    for (int i = 0; i < 10; i++) { \
+        ASSERT_NO_NEXT_ENTRY(); \
+    } \
+}
+
+TEST_BEGIN(map_iterator_readonly)
+{
+    SETUP_ITERATOR_MAP();
+
+    #ifndef YH_STRUCTURES_MAPS_SORTEDARRAYMAP_H
+    ASSERT_NEXT_ENTRY_IS(e, b, false, false);
+    ASSERT_NEXT_ENTRY_IS(f, y, false, false);
+    ASSERT_NEXT_ENTRY_IS(g, c, false, false);
+    ASSERT_NEXT_ENTRY_IS(h, a, false, false);
+    #else
+    ASSERT_NEXT_ENTRY_IS(f, y, false, false);
+    ASSERT_NEXT_ENTRY_IS(e, b, false, false);
+    ASSERT_NEXT_ENTRY_IS(h, a, false, false);
+    ASSERT_NEXT_ENTRY_IS(g, c, false, false);
+    #endif
+    ASSERT_NO_MORE_ENTRIES();
+
+    ASSERT_EQUALS(map.size(), 4);
+    ASSERT_EQUALS(map.get(&e), &b);
+    ASSERT_EQUALS(map.get(&f), &y);
+    ASSERT_EQUALS(map.get(&g), &c);
+    ASSERT_EQUALS(map.get(&h), &a);
+}
+TEST_END()
+
+TEST_BEGIN(map_iterator_remove_only_once_for_all_evens)
+{
+    SETUP_ITERATOR_MAP();
+
+    #ifndef YH_STRUCTURES_MAPS_SORTEDARRAYMAP_H
+    ASSERT_NEXT_ENTRY_IS(e, b, false, false);
+    ASSERT_NEXT_ENTRY_IS(f, y, true, false);
+    ASSERT_NEXT_ENTRY_IS(g, c, false, false);
+    ASSERT_NEXT_ENTRY_IS(h, a, true, false);
+    ASSERT_NO_MORE_ENTRIES();
+
+    ASSERT_EQUALS(map.size(), 2);
+    ASSERT_EQUALS(map.get(&e), &b);
+    ASSERT_IS_NULLPTR(map.get(&f));
+    ASSERT_EQUALS(map.get(&g), &c);
+    ASSERT_IS_NULLPTR(map.get(&h));
+    #else
+    ASSERT_NEXT_ENTRY_IS(f, y, false, false);
+    ASSERT_NEXT_ENTRY_IS(e, b, true, false);
+    ASSERT_NEXT_ENTRY_IS(h, a, false, false);
+    ASSERT_NEXT_ENTRY_IS(g, c, true, false);
+    ASSERT_NO_MORE_ENTRIES();
+
+    ASSERT_EQUALS(map.size(), 2);
+    ASSERT_EQUALS(map.get(&f), &y);
+    ASSERT_IS_NULLPTR(map.get(&e));
+    ASSERT_EQUALS(map.get(&h), &a);
+    ASSERT_IS_NULLPTR(map.get(&g));
+    #endif
+}
+TEST_END()
+
+TEST_BEGIN(map_iterator_remove_only_once_for_all_odds)
+{
+    SETUP_ITERATOR_MAP();
+
+    #ifndef YH_STRUCTURES_MAPS_SORTEDARRAYMAP_H
+    ASSERT_NEXT_ENTRY_IS(e, b, true, false);
+    ASSERT_NEXT_ENTRY_IS(f, y, false, false);
+    ASSERT_NEXT_ENTRY_IS(g, c, true, false);
+    ASSERT_NEXT_ENTRY_IS(h, a, false, false);
+    ASSERT_NO_MORE_ENTRIES();
+
+    ASSERT_EQUALS(map.size(), 2);
+    ASSERT_IS_NULLPTR(map.get(&e));
+    ASSERT_EQUALS(map.get(&f), &y);
+    ASSERT_IS_NULLPTR(map.get(&g));
+    ASSERT_EQUALS(map.get(&h), &a);
+    #else
+    ASSERT_NEXT_ENTRY_IS(f, y, true, false);
+    ASSERT_NEXT_ENTRY_IS(e, b, false, false);
+    ASSERT_NEXT_ENTRY_IS(h, a, true, false);
+    ASSERT_NEXT_ENTRY_IS(g, c, false, false);
+    ASSERT_NO_MORE_ENTRIES();
+
+    ASSERT_EQUALS(map.size(), 2);
+    ASSERT_IS_NULLPTR(map.get(&f));
+    ASSERT_EQUALS(map.get(&e), &b);
+    ASSERT_IS_NULLPTR(map.get(&h));
+    ASSERT_EQUALS(map.get(&g), &c);
+    #endif
+}
+TEST_END()
+
+TEST_BEGIN(map_iterator_remove_only_once_for_all_entries)
+{
+    SETUP_ITERATOR_MAP();
+
+    #ifndef YH_STRUCTURES_MAPS_SORTEDARRAYMAP_H
+    ASSERT_NEXT_ENTRY_IS(e, b, true, false);
+    ASSERT_NEXT_ENTRY_IS(f, y, true, false);
+    ASSERT_NEXT_ENTRY_IS(g, c, true, false);
+    ASSERT_NEXT_ENTRY_IS(h, a, true, false);
+    #else
+    ASSERT_NEXT_ENTRY_IS(f, y, true, false);
+    ASSERT_NEXT_ENTRY_IS(e, b, true, false);
+    ASSERT_NEXT_ENTRY_IS(h, a, true, false);
+    ASSERT_NEXT_ENTRY_IS(g, c, true, false);
+    #endif
+
+    ASSERT_NO_MORE_ENTRIES();
+
+    ASSERT_EQUALS(map.size(), 0);
+    ASSERT_IS_NULLPTR(map.get(&e));
+    ASSERT_IS_NULLPTR(map.get(&f));
+    ASSERT_IS_NULLPTR(map.get(&g));
+    ASSERT_IS_NULLPTR(map.get(&h));
+}
+TEST_END()
+
+TEST_BEGIN(map_iterator_removed_even_elements_are_not_visible)
+{
+    SETUP_ITERATOR_MAP();
+
+    #ifndef YH_STRUCTURES_MAPS_SORTEDARRAYMAP_H
+    ASSERT_NEXT_ENTRY_IS(e, b, false, true);
+    ASSERT_NEXT_ENTRY_IS(f, y, true, true);
+    ASSERT_NEXT_ENTRY_IS(g, c, false, true);
+    ASSERT_NEXT_ENTRY_IS(h, a, true, true);
+    ASSERT_NO_MORE_ENTRIES();
+
+    ASSERT_EQUALS(map.size(), 2);
+    ASSERT_EQUALS(map.get(&e), &b);
+    ASSERT_IS_NULLPTR(map.get(&f));
+    ASSERT_EQUALS(map.get(&g), &c);
+    ASSERT_IS_NULLPTR(map.get(&h));
+    #else
+    ASSERT_NEXT_ENTRY_IS(f, y, false, true);
+    ASSERT_NEXT_ENTRY_IS(e, b, true, true);
+    ASSERT_NEXT_ENTRY_IS(h, a, false, true);
+    ASSERT_NEXT_ENTRY_IS(g, c, true, true);
+    ASSERT_NO_MORE_ENTRIES();
+
+    ASSERT_EQUALS(map.size(), 2);
+    ASSERT_EQUALS(map.get(&f), &y);
+    ASSERT_IS_NULLPTR(map.get(&e));
+    ASSERT_EQUALS(map.get(&h), &a);
+    ASSERT_IS_NULLPTR(map.get(&g));
+    #endif
+}
+TEST_END()
+
+TEST_BEGIN(map_iterator_removed_odd_elements_are_not_visible)
+{
+    SETUP_ITERATOR_MAP();
+
+    #ifndef YH_STRUCTURES_MAPS_SORTEDARRAYMAP_H
+    ASSERT_NEXT_ENTRY_IS(e, b, true, true);
+    ASSERT_NEXT_ENTRY_IS(f, y, false, true);
+    ASSERT_NEXT_ENTRY_IS(g, c, true, true);
+    ASSERT_NEXT_ENTRY_IS(h, a, false, true);
+    ASSERT_NO_MORE_ENTRIES();
+
+    ASSERT_EQUALS(map.size(), 2);
+    ASSERT_IS_NULLPTR(map.get(&e));
+    ASSERT_EQUALS(map.get(&f), &y);
+    ASSERT_IS_NULLPTR(map.get(&g));
+    ASSERT_EQUALS(map.get(&h), &a);
+    #else
+    ASSERT_NEXT_ENTRY_IS(f, y, true, true);
+    ASSERT_NEXT_ENTRY_IS(e, b, false, true);
+    ASSERT_NEXT_ENTRY_IS(h, a, true, true);
+    ASSERT_NEXT_ENTRY_IS(g, c, false, true);
+    ASSERT_NO_MORE_ENTRIES();
+
+    ASSERT_EQUALS(map.size(), 2);
+    ASSERT_IS_NULLPTR(map.get(&f));
+    ASSERT_EQUALS(map.get(&e), &b);
+    ASSERT_IS_NULLPTR(map.get(&h));
+    ASSERT_EQUALS(map.get(&g), &c);
+    #endif
+}
+TEST_END()
+
+TEST_BEGIN(map_iterator_removed_all_elements_are_not_visible)
+{
+    SETUP_ITERATOR_MAP();
+
+    #ifndef YH_STRUCTURES_MAPS_SORTEDARRAYMAP_H
+    ASSERT_NEXT_ENTRY_IS(e, b, true, true);
+    ASSERT_NEXT_ENTRY_IS(f, y, true, true);
+    ASSERT_NEXT_ENTRY_IS(g, c, true, true);
+    ASSERT_NEXT_ENTRY_IS(h, a, true, true);
+    #else
+    ASSERT_NEXT_ENTRY_IS(f, y, true, true);
+    ASSERT_NEXT_ENTRY_IS(e, b, true, true);
+    ASSERT_NEXT_ENTRY_IS(h, a, true, true);
+    ASSERT_NEXT_ENTRY_IS(g, c, true, true);
+    #endif
+
+    ASSERT_NO_MORE_ENTRIES();
+
+    ASSERT_EQUALS(map.size(), 0);
+    ASSERT_IS_NULLPTR(map.get(&e));
+    ASSERT_IS_NULLPTR(map.get(&f));
+    ASSERT_IS_NULLPTR(map.get(&g));
+    ASSERT_IS_NULLPTR(map.get(&h));
+}
+TEST_END()
+
+TEST_BEGIN(map_iterator_remove_some)
+{
+    MAP_TYPE<int, int> map;
+    int e = 18;
+    int f = -6;
+    int g = 59;
+    int h = 47;
+
+    int x = 35;
+    int y = -12;
+    int z = 0;
+    int a = -4;
+
+    ASSERT_EQUALS(map.size(), 0);
+    ASSERT_IS_NULLPTR(map.put(&e, &x));
+    ASSERT_EQUALS(map.size(), 1);
+    ASSERT_IS_NULLPTR(map.put(&f, &y));
+    ASSERT_EQUALS(map.size(), 2);
+    ASSERT_IS_NULLPTR(map.put(&g, &z));
+    ASSERT_EQUALS(map.size(), 3);
+    ASSERT_IS_NULLPTR(map.put(&h, &a));
+    ASSERT_EQUALS(map.size(), 4);
+
+    MAP_TYPE<int, int>::Iterator it(map);
+
+    while (it.hasNext()) {
+        Map<int, int>::Entry *const entry = it.get();
+        if ((*entry->key + *entry->value) % 2 == 0) {
+            it.remove();
+        }
+        it.proceed();
+    }
+    ASSERT_NO_MORE_ENTRIES();
+
+    ASSERT_EQUALS(map.size(), 3);
+    ASSERT_EQUALS(map.get(&e), &x);
+    ASSERT_IS_NULLPTR(map.get(&f));
+    ASSERT_EQUALS(map.get(&g), &z);
+    ASSERT_EQUALS(map.get(&h), &a);
+}
+TEST_END()
+
 const testfunc_t functions [] = {
     test_empty_map,
     test_map_with_1_element,
@@ -470,6 +789,14 @@ const testfunc_t functions [] = {
     test_map_get_put_remove_operations,
     test_map_foreach,
     test_map_removeIf,
+    test_map_iterator_readonly,
+    test_map_iterator_remove_only_once_for_all_evens,
+    test_map_iterator_remove_only_once_for_all_odds,
+    test_map_iterator_remove_only_once_for_all_entries,
+    test_map_iterator_removed_even_elements_are_not_visible,
+    test_map_iterator_removed_odd_elements_are_not_visible,
+    test_map_iterator_removed_all_elements_are_not_visible,
+    test_map_iterator_remove_some
 };
 
 MAIN();

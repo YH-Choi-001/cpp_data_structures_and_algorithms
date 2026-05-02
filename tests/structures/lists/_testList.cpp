@@ -743,17 +743,29 @@ TEST_BEGIN(list_remove_operations)
     int z = 0;
     int a = -4;
     list.insert(0, &x);
+    ASSERT_EQUALS(list.size(), 1);
     list.insert(1, &z);
+    ASSERT_EQUALS(list.size(), 2);
     list.insert(1, &y);
+    ASSERT_EQUALS(list.size(), 3);
     int *const dataGet = list.get(1);
+    ASSERT_EQUALS(list.size(), 3);
     int *const data = list.remove(1);
+    ASSERT_EQUALS(list.size(), 2);
     list.insert(1, &a);
+    ASSERT_EQUALS(list.size(), 3);
     int *const dataGet2 = list.get(1);
+    ASSERT_EQUALS(list.size(), 3);
     int *const data2 = list.remove(1);
+    ASSERT_EQUALS(list.size(), 2);
     int *const dataGet3 = list.get(1);
+    ASSERT_EQUALS(list.size(), 2);
     int *const data3 = list.remove(1);
+    ASSERT_EQUALS(list.size(), 1);
     int *const dataGet4 = list.get(0);
+    ASSERT_EQUALS(list.size(), 1);
     int *const data4 = list.remove(0);
+    ASSERT_EQUALS(list.size(), 0);
 
     ASSERT_EQUALS(data, &y);
     ASSERT_EQUALS(data2, &a);
@@ -1015,6 +1027,173 @@ TEST_BEGIN(list_removeIf)
 }
 TEST_END()
 
+#define SETUP_ITERATOR_LIST() \
+    LIST_TYPE<int> list; \
+    int x = 35; \
+    int y = -12; \
+    int z = 0; \
+    int a = -4; \
+    list.addTail(&x); \
+    list.addTail(&y); \
+    list.addTail(&z); \
+    list.addTail(&a); \
+ \
+    LIST_TYPE<int>::Iterator it = list; \
+
+
+#define ASSERT_NEXT_ELEMENT_IS(e,rm,checkRemovedIsHidden) { \
+    for (int i = 0; i < 10; i++) { \
+        ASSERT_TRUE(it.hasNext()); \
+    } \
+    for (int i = 0; i < 10; i++) { \
+        ASSERT_EQUALS(it.get(), &e); \
+    } \
+    if (rm) { \
+        ASSERT_EQUALS(it.remove(), &e); \
+        if (checkRemovedIsHidden) { \
+            for (int i = 0; i < 10; i++) { \
+                ASSERT_IS_NULLPTR(it.get()); \
+            } \
+        } \
+        for (int i = 0; i < 10; i++) { \
+            ASSERT_IS_NULLPTR(it.remove()); \
+        } \
+    } \
+    it.proceed(); \
+}
+
+#define ASSERT_NO_NEXT_ELEMENT() { \
+    ASSERT_FALSE(it.hasNext()); \
+    for (int i = 0; i < 10; i++) { \
+        ASSERT_IS_NULLPTR(it.get()); \
+        ASSERT_IS_NULLPTR(it.remove()); \
+    } \
+    it.proceed(); \
+}
+
+#define ASSERT_NO_MORE_ELEMENTS() { \
+    for (int i = 0; i < 10; i++) { \
+        ASSERT_NO_NEXT_ELEMENT(); \
+    } \
+}
+
+TEST_BEGIN(list_iterator_readonly)
+{
+    SETUP_ITERATOR_LIST();
+
+    ASSERT_NEXT_ELEMENT_IS(x, false, false);
+    ASSERT_NEXT_ELEMENT_IS(y, false, false);
+    ASSERT_NEXT_ELEMENT_IS(z, false, false);
+    ASSERT_NEXT_ELEMENT_IS(a, false, false);
+
+    ASSERT_NO_MORE_ELEMENTS();
+
+    ASSERT_EQUALS(list.size(), 4);
+    ASSERT_EQUALS(list.get(0), &x);
+    ASSERT_EQUALS(list.get(1), &y);
+    ASSERT_EQUALS(list.get(2), &z);
+    ASSERT_EQUALS(list.get(3), &a);
+}
+TEST_END()
+
+TEST_BEGIN(list_iterator_remove_only_once_for_all_evens)
+{
+    SETUP_ITERATOR_LIST();
+
+    ASSERT_NEXT_ELEMENT_IS(x, false, false);
+    ASSERT_NEXT_ELEMENT_IS(y, true, false);
+    ASSERT_NEXT_ELEMENT_IS(z, false, false);
+    ASSERT_NEXT_ELEMENT_IS(a, true, false);
+
+    ASSERT_NO_MORE_ELEMENTS();
+
+    ASSERT_EQUALS(list.size(), 2);
+    ASSERT_EQUALS(list.get(0), &x);
+    ASSERT_EQUALS(list.get(1), &z);
+}
+TEST_END()
+
+TEST_BEGIN(list_iterator_remove_only_once_for_all_odds)
+{
+    SETUP_ITERATOR_LIST();
+
+    ASSERT_NEXT_ELEMENT_IS(x, true, false);
+    ASSERT_NEXT_ELEMENT_IS(y, false, false);
+    ASSERT_NEXT_ELEMENT_IS(z, true, false);
+    ASSERT_NEXT_ELEMENT_IS(a, false, false);
+
+    ASSERT_NO_MORE_ELEMENTS();
+
+    ASSERT_EQUALS(list.size(), 2);
+    ASSERT_EQUALS(list.get(0), &y);
+    ASSERT_EQUALS(list.get(1), &a);
+}
+TEST_END()
+
+TEST_BEGIN(list_iterator_remove_only_once_for_all_elements)
+{
+    SETUP_ITERATOR_LIST();
+
+    ASSERT_NEXT_ELEMENT_IS(x, true, false);
+    ASSERT_NEXT_ELEMENT_IS(y, true, false);
+    ASSERT_NEXT_ELEMENT_IS(z, true, false);
+    ASSERT_NEXT_ELEMENT_IS(a, true, false);
+
+    ASSERT_NO_MORE_ELEMENTS();
+
+    ASSERT_EQUALS(list.size(), 0);
+}
+TEST_END()
+
+TEST_BEGIN(list_iterator_removed_even_elements_are_not_visible)
+{
+    SETUP_ITERATOR_LIST();
+
+    ASSERT_NEXT_ELEMENT_IS(x, false, true);
+    ASSERT_NEXT_ELEMENT_IS(y, true, true);
+    ASSERT_NEXT_ELEMENT_IS(z, false, true);
+    ASSERT_NEXT_ELEMENT_IS(a, true, true);
+
+    ASSERT_NO_MORE_ELEMENTS();
+
+    ASSERT_EQUALS(list.size(), 2);
+    ASSERT_EQUALS(list.get(0), &x);
+    ASSERT_EQUALS(list.get(1), &z);
+}
+TEST_END()
+
+TEST_BEGIN(list_iterator_removed_odd_elements_are_not_visible)
+{
+    SETUP_ITERATOR_LIST();
+
+    ASSERT_NEXT_ELEMENT_IS(x, true, true);
+    ASSERT_NEXT_ELEMENT_IS(y, false, true);
+    ASSERT_NEXT_ELEMENT_IS(z, true, true);
+    ASSERT_NEXT_ELEMENT_IS(a, false, true);
+
+    ASSERT_NO_MORE_ELEMENTS();
+
+    ASSERT_EQUALS(list.size(), 2);
+    ASSERT_EQUALS(list.get(0), &y);
+    ASSERT_EQUALS(list.get(1), &a);
+}
+TEST_END()
+
+TEST_BEGIN(list_iterator_removed_all_elements_are_not_visible)
+{
+    SETUP_ITERATOR_LIST();
+
+    ASSERT_NEXT_ELEMENT_IS(x, true, true);
+    ASSERT_NEXT_ELEMENT_IS(y, true, true);
+    ASSERT_NEXT_ELEMENT_IS(z, true, true);
+    ASSERT_NEXT_ELEMENT_IS(a, true, true);
+
+    ASSERT_NO_MORE_ELEMENTS();
+
+    ASSERT_EQUALS(list.size(), 0);
+}
+TEST_END()
+
 TEST_BEGIN(list_expand)
 {
     LIST_TYPE<int> list;
@@ -1101,6 +1280,13 @@ const testfunc_t functions [] = {
     test_list_set_operations_4,
     test_list_foreach,
     test_list_removeIf,
+    test_list_iterator_readonly,
+    test_list_iterator_remove_only_once_for_all_evens,
+    test_list_iterator_remove_only_once_for_all_odds,
+    test_list_iterator_remove_only_once_for_all_elements,
+    test_list_iterator_removed_even_elements_are_not_visible,
+    test_list_iterator_removed_odd_elements_are_not_visible,
+    test_list_iterator_removed_all_elements_are_not_visible,
     test_list_expand,
     test_list_shrink,
 };

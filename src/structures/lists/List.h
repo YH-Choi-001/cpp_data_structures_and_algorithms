@@ -311,6 +311,84 @@ namespace yh {
                         ConcretePredicateVisitor visitor(func);
                         removeIf(visitor);
                     }
+
+                    /**
+                     * @brief An iterator used to visit elements of a list.
+                     */
+                    class Iterator {
+                        private:
+                            /**
+                             * @brief The list visited by this iterator.
+                             */
+                            List<T> &list;
+
+                            /**
+                             * @brief The index pointed by this iterator.
+                             */
+                            size_t index;
+
+                            /**
+                             * @brief Whether the current element is removed.
+                             */
+                            bool isRemoved;
+
+                        public:
+                            /**
+                             * @brief Creates a new iterator to visit elements of a list.
+                             * @param list The list being visited.
+                             */
+                            Iterator(List<T> &list) : list(list), index(0), isRemoved(false)
+                            {
+                                //
+                            }
+
+                            /**
+                             * @brief Whether there are unvisited elements in the list.
+                             * @return `true` if there are unvisited elements, `false` otherwise.
+                             */
+                            bool hasNext() {
+                                return index < list.size();
+                            }
+
+                            /**
+                             * A nullptr will be returned after removing the current element.
+                             * @brief Get the current element pointed by the iterator.
+                             * @return The current element pointed by the iterator, or nullptr if it does not exist.
+                             * @see remove()
+                             */
+                            T *get() {
+                                if (index >= list.size() || isRemoved) {
+                                    return nullptr;
+                                }
+                                return list.get(index);
+                            }
+
+                            /**
+                             * Each element could only be removed once.
+                             * Calling this function repetitively will not remove any other elements from the list.
+                             * @brief Remove the current element from the list.
+                             * @return The element removed, or nullptr if none is removed.
+                             * @see get()
+                             */
+                            T *remove() {
+                                if (index >= list.size() || isRemoved) {
+                                    return nullptr;
+                                }
+                                isRemoved = true;
+                                return list.remove(index);
+                            }
+
+                            /**
+                             * @brief Move on to the next element.
+                             */
+                            void proceed() {
+                                if (isRemoved) {
+                                    isRemoved = false;
+                                } else if (index < list.size()) {
+                                    index++;
+                                }
+                            }
+                    };
             };
         }
     }
