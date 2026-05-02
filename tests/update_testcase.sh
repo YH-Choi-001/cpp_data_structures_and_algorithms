@@ -4,7 +4,7 @@ TARGETCPP=$1
 
 if [ ! -f "$TARGETCPP" ]
 then
-    echo "file not found:" "$TARGETCPP"
+    echo "$0: file not found:" "$TARGETCPP"
     exit 1
 fi
 
@@ -12,7 +12,7 @@ ENDLINE_STR=$(grep -n "const testfunc_t functions \[\] \=" "$TARGETCPP")
 
 if [ $? -ne 0 ]
 then
-    echo "file does not have the testcases collection array: $TARGETCPP"
+    echo "$0: file does not have the testcases collection array: $TARGETCPP"
     exit 0
 fi
 
@@ -24,4 +24,4 @@ printf "};\n\nMAIN();\n" >> "$TARGETCPP.target"
 cat "$TARGETCPP.target" > $TARGETCPP
 rm "$TARGETCPP.target"
 
-echo "$0 $1 : done"
+echo "$0: done: $TARGETCPP"
