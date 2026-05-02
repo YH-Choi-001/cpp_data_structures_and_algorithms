@@ -133,6 +133,11 @@ Inheritance diagram for yh::structures::maps::ArrayMap&lt; K, V &gt;:</div>
   </map>
 </div></div>
 <table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-nested-classes" class="groupheader"><a id="nested-classes" name="nested-classes"></a>
+Classes</h2></td></tr>
+<tr class="memitem:Iterator" id="r_Iterator"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classyh_1_1structures_1_1maps_1_1ArrayMap_1_1Iterator.html">Iterator</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">An iterator used to visit entries of a map.  <a href="classyh_1_1structures_1_1maps_1_1ArrayMap_1_1Iterator.html#details">More...</a><br /></td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pub-methods" class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a9d9a1ad0152dc35cf670d1ec2b262a7d" id="r_a9d9a1ad0152dc35cf670d1ec2b262a7d"><td class="memItemLeft" align="right" valign="top"><a id="a9d9a1ad0152dc35cf670d1ec2b262a7d" name="a9d9a1ad0152dc35cf670d1ec2b262a7d"></a>
@@ -140,9 +145,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memdesc:a9d9a1ad0152dc35cf670d1ec2b262a7d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates an empty array map. <br /></td></tr>
 <tr class="memitem:a89578ea2c085415036a7ce57678e13ec" id="r_a89578ea2c085415036a7ce57678e13ec"><td class="memItemLeft" align="right" valign="top"><a id="a89578ea2c085415036a7ce57678e13ec" name="a89578ea2c085415036a7ce57678e13ec"></a>
 virtual&#160;</td><td class="memItemRight" valign="bottom"><b>~ArrayMap</b> ()</td></tr>
-<tr class="memdesc:a89578ea2c085415036a7ce57678e13ec"><td class="mdescLeft">&#160;</td><td class="mdescRight">Destroys the list of entries. <br /></td></tr>
+<tr class="memdesc:a89578ea2c085415036a7ce57678e13ec"><td class="mdescLeft">&#160;</td><td class="mdescRight">Destroys the map. <br /></td></tr>
 <tr class="memitem:a9f45d5021b3e470a87268a93a1ddc4e8" id="r_a9f45d5021b3e470a87268a93a1ddc4e8"><td class="memItemLeft" align="right" valign="top">virtual size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9f45d5021b3e470a87268a93a1ddc4e8">size</a> () override</td></tr>
-<tr class="memdesc:a9f45d5021b3e470a87268a93a1ddc4e8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the number of entries in the list.  <br /></td></tr>
+<tr class="memdesc:a9f45d5021b3e470a87268a93a1ddc4e8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the number of entries in the map.  <br /></td></tr>
 <tr class="memitem:afaf693afd0c4c1429f8bf6c26ab3b45f" id="r_afaf693afd0c4c1429f8bf6c26ab3b45f"><td class="memItemLeft" align="right" valign="top">virtual V *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#afaf693afd0c4c1429f8bf6c26ab3b45f">remove</a> (K *const key) override</td></tr>
 <tr class="memdesc:afaf693afd0c4c1429f8bf6c26ab3b45f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Removes a key from the map.  <br /></td></tr>
 <tr class="memitem:a3b802594a3309c65b2d722221591eec8" id="r_a3b802594a3309c65b2d722221591eec8"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3b802594a3309c65b2d722221591eec8">foreach</a> (typename <a class="el" href="classyh_1_1structures_1_1maps_1_1Map.html">Map</a>&lt; K, V &gt;::Visitor &amp;visitor) override</td></tr>
@@ -184,6 +189,8 @@ Protected Member Functions</h2></td></tr>
 <tr class="memdesc:a8985168edadbc22513a60565c3ce879b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Inserts an entry.  <br /></td></tr>
 <tr class="memitem:aefbc5ed08cc7153a5bbd415d04a992db" id="r_aefbc5ed08cc7153a5bbd415d04a992db"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="classyh_1_1structures_1_1maps_1_1Map.html">Map</a>&lt; K, V &gt;::Entry *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aefbc5ed08cc7153a5bbd415d04a992db">getEntryByIndex</a> (const size_t index)</td></tr>
 <tr class="memdesc:aefbc5ed08cc7153a5bbd415d04a992db"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the entry from an index.  <br /></td></tr>
+<tr class="memitem:a60b48edf90325fa3f66b52d4c3cfd571" id="r_a60b48edf90325fa3f66b52d4c3cfd571"><td class="memItemLeft" align="right" valign="top">virtual V *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a60b48edf90325fa3f66b52d4c3cfd571">removeEntryByIndex</a> (const size_t index)</td></tr>
+<tr class="memdesc:a60b48edf90325fa3f66b52d4c3cfd571"><td class="mdescLeft">&#160;</td><td class="mdescRight">Removes an entry by its index.  <br /></td></tr>
 <tr class="inherit_header pro_methods_classyh_1_1structures_1_1maps_1_1Map"><td colspan="2" onclick="javascript:dynsection.toggleInherit('pro_methods_classyh_1_1structures_1_1maps_1_1Map')"><span class="dynarrow"><span class="arrowhead closed"></span></span>Protected Member Functions inherited from <a class="el" href="classyh_1_1structures_1_1maps_1_1Map.html">yh::structures::maps::Map&lt; K, V &gt;</a></td></tr>
 <tr class="memitem:a38c283af0385c4a963aee8e4531cb58e inherit pro_methods_classyh_1_1structures_1_1maps_1_1Map" id="r_a38c283af0385c4a963aee8e4531cb58e"><td class="memItemLeft" align="right" valign="top">
 &#160;</td><td class="memItemRight" valign="bottom"><b>Map</b> ()</td></tr>
@@ -235,7 +242,7 @@ template&lt;typename K, typename V&gt; </div>
   </table>
   </dd>
 </dl>
-<dl class="section note"><dt>Note</dt><dd>Do not add or remove entries in the list within the given function. </dd></dl>
+<dl class="section note"><dt>Note</dt><dd>Do not add or remove entries in the map within the given function. </dd></dl>
 
 </div>
 </div>
@@ -271,7 +278,7 @@ template&lt;typename K, typename V&gt; </div>
   </table>
   </dd>
 </dl>
-<dl class="section note"><dt>Note</dt><dd>Do not add or remove entries in the list within the given function. </dd></dl>
+<dl class="section note"><dt>Note</dt><dd>Do not add or remove entries in the map within the given function. </dd></dl>
 
 </div>
 </div>
@@ -501,6 +508,42 @@ template&lt;typename K, typename V&gt; </div>
 
 </div>
 </div>
+<a id="a60b48edf90325fa3f66b52d4c3cfd571" name="a60b48edf90325fa3f66b52d4c3cfd571"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a60b48edf90325fa3f66b52d4c3cfd571">&#9670;&#160;</a></span>removeEntryByIndex()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename K, typename V&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual V * <a class="el" href="classyh_1_1structures_1_1maps_1_1ArrayMap.html">yh::structures::maps::ArrayMap</a>&lt; K, V &gt;::removeEntryByIndex </td>
+          <td>(</td>
+          <td class="paramtype">const size_t</td>          <td class="paramname"><span class="paramname"><em>index</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel inline">inline</span><span class="mlabel protected">protected</span><span class="mlabel virtual">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Removes an entry by its index. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">index</td><td>The index of the entry to be removed. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The value pointed by the entry, or nullptr if the entry does not exist. </dd></dl>
+
+</div>
+</div>
 <a id="a786bfdbd0f997cf9e17e3fa783684a78" name="a786bfdbd0f997cf9e17e3fa783684a78"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a786bfdbd0f997cf9e17e3fa783684a78">&#9670;&#160;</a></span>removeIf() <span class="overload">[1/2]</span></h2>
 
@@ -569,7 +612,7 @@ template&lt;typename K, typename V&gt; </div>
   </table>
   </dd>
 </dl>
-<dl class="section note"><dt>Note</dt><dd>Do not add or remove entries in the list within the given function. </dd></dl>
+<dl class="section note"><dt>Note</dt><dd>Do not add or remove entries in the map within the given function. </dd></dl>
 
 </div>
 </div>
@@ -598,8 +641,8 @@ template&lt;typename K, typename V&gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p>Gets the number of entries in the list. </p>
-<dl class="section return"><dt>Returns</dt><dd>The number of entries in the list. </dd></dl>
+<p>Gets the number of entries in the map. </p>
+<dl class="section return"><dt>Returns</dt><dd>The number of entries in the map. </dd></dl>
 
 <p>Implements <a class="el" href="classyh_1_1structures_1_1maps_1_1Map.html#a693c2b242e84725c2fb2f4be368d95cf">yh::structures::maps::Map&lt; K, V &gt;</a>.</p>
 

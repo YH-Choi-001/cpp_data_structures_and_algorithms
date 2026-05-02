@@ -1,5 +1,6 @@
 var classyh_1_1structures_1_1lists_1_1List =
 [
+    [ "Iterator", "classyh_1_1structures_1_1lists_1_1List_1_1Iterator.html", "classyh_1_1structures_1_1lists_1_1List_1_1Iterator" ],
     [ "PredicateVisitor", "classyh_1_1structures_1_1lists_1_1List_1_1PredicateVisitor.html", "classyh_1_1structures_1_1lists_1_1List_1_1PredicateVisitor" ],
     [ "Visitor", "classyh_1_1structures_1_1lists_1_1List_1_1Visitor.html", "classyh_1_1structures_1_1lists_1_1List_1_1Visitor" ],
     [ "List", "classyh_1_1structures_1_1lists_1_1List.html#adb22fc711617330d968c87cfe7f3b510", null ],

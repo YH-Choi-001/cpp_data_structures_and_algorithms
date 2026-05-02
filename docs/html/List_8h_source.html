@@ -287,13 +287,72 @@ $(function(){initNavTree('List_8h_source.html','',''); });
 <div class="line"><a id="l00312" name="l00312"></a><span class="lineno">  312</span>                        <a class="code hl_function" href="classyh_1_1structures_1_1lists_1_1List.html#a779d0d4ba7647ee0daa54de3d0782daa">removeIf</a>(visitor);</div>
 <div class="line"><a id="l00313" name="l00313"></a><span class="lineno">  313</span>                    }</div>
 </div>
-<div class="line"><a id="l00314" name="l00314"></a><span class="lineno">  314</span>            };</div>
+<div class="line"><a id="l00314" name="l00314"></a><span class="lineno">  314</span></div>
+<div class="foldopen" id="foldopen00318" data-start="{" data-end="};">
+<div class="line"><a id="l00318" name="l00318"></a><span class="lineno"><a class="line" href="classyh_1_1structures_1_1lists_1_1List_1_1Iterator.html">  318</a></span>                    <span class="keyword">class </span><a class="code hl_function" href="classyh_1_1structures_1_1lists_1_1List_1_1Iterator.html#ac36fab10ff77a775d334428afa4e6c27">Iterator</a> {</div>
+<div class="line"><a id="l00319" name="l00319"></a><span class="lineno">  319</span>                        <span class="keyword">private</span>:</div>
+<div class="line"><a id="l00323" name="l00323"></a><span class="lineno">  323</span>                            <a class="code hl_function" href="classyh_1_1structures_1_1lists_1_1List.html#adb22fc711617330d968c87cfe7f3b510">List&lt;T&gt;</a> &amp;list;</div>
+<div class="line"><a id="l00324" name="l00324"></a><span class="lineno">  324</span></div>
+<div class="line"><a id="l00328" name="l00328"></a><span class="lineno">  328</span>                            <span class="keywordtype">size_t</span> index;</div>
+<div class="line"><a id="l00329" name="l00329"></a><span class="lineno">  329</span></div>
+<div class="line"><a id="l00333" name="l00333"></a><span class="lineno">  333</span>                            <span class="keywordtype">bool</span> isRemoved;</div>
+<div class="line"><a id="l00334" name="l00334"></a><span class="lineno">  334</span> </div>
+<div class="line"><a id="l00335" name="l00335"></a><span class="lineno">  335</span>                        <span class="keyword">public</span>:</div>
+<div class="foldopen" id="foldopen00340" data-start="{" data-end="}">
+<div class="line"><a id="l00340" name="l00340"></a><span class="lineno"><a class="line" href="classyh_1_1structures_1_1lists_1_1List_1_1Iterator.html#ac36fab10ff77a775d334428afa4e6c27">  340</a></span>                            <a class="code hl_function" href="classyh_1_1structures_1_1lists_1_1List_1_1Iterator.html#ac36fab10ff77a775d334428afa4e6c27">Iterator</a>(<a class="code hl_function" href="classyh_1_1structures_1_1lists_1_1List.html#adb22fc711617330d968c87cfe7f3b510">List&lt;T&gt;</a> &amp;list) : list(list), index(0), isRemoved(false)</div>
+<div class="line"><a id="l00341" name="l00341"></a><span class="lineno">  341</span>                            {</div>
+<div class="line"><a id="l00342" name="l00342"></a><span class="lineno">  342</span>                                <span class="comment">//</span></div>
+<div class="line"><a id="l00343" name="l00343"></a><span class="lineno">  343</span>                            }</div>
 </div>
-<div class="line"><a id="l00315" name="l00315"></a><span class="lineno">  315</span>        }</div>
-<div class="line"><a id="l00316" name="l00316"></a><span class="lineno">  316</span>    }</div>
-<div class="line"><a id="l00317" name="l00317"></a><span class="lineno">  317</span>}</div>
-<div class="line"><a id="l00318" name="l00318"></a><span class="lineno">  318</span> </div>
-<div class="line"><a id="l00319" name="l00319"></a><span class="lineno">  319</span><span class="preprocessor">#endif </span><span class="comment">// #ifndef YH_STRUCTURES_LISTS_LIST_H</span></div>
+<div class="line"><a id="l00344" name="l00344"></a><span class="lineno">  344</span></div>
+<div class="foldopen" id="foldopen00349" data-start="{" data-end="}">
+<div class="line"><a id="l00349" name="l00349"></a><span class="lineno"><a class="line" href="classyh_1_1structures_1_1lists_1_1List_1_1Iterator.html#aa0b7f22a613470b472d8418dd88df722">  349</a></span>                            <span class="keywordtype">bool</span> <a class="code hl_function" href="classyh_1_1structures_1_1lists_1_1List_1_1Iterator.html#aa0b7f22a613470b472d8418dd88df722">hasNext</a>() {</div>
+<div class="line"><a id="l00350" name="l00350"></a><span class="lineno">  350</span>                                <span class="keywordflow">return</span> index &lt; list.size();</div>
+<div class="line"><a id="l00351" name="l00351"></a><span class="lineno">  351</span>                            }</div>
+</div>
+<div class="line"><a id="l00352" name="l00352"></a><span class="lineno">  352</span></div>
+<div class="foldopen" id="foldopen00359" data-start="{" data-end="}">
+<div class="line"><a id="l00359" name="l00359"></a><span class="lineno"><a class="line" href="classyh_1_1structures_1_1lists_1_1List_1_1Iterator.html#a0e6a9809a37890a26ca656621232f28e">  359</a></span>                            T *<a class="code hl_function" href="classyh_1_1structures_1_1lists_1_1List_1_1Iterator.html#a0e6a9809a37890a26ca656621232f28e">get</a>() {</div>
+<div class="line"><a id="l00360" name="l00360"></a><span class="lineno">  360</span>                                <span class="keywordflow">if</span> (index &gt;= list.size() || isRemoved) {</div>
+<div class="line"><a id="l00361" name="l00361"></a><span class="lineno">  361</span>                                    <span class="keywordflow">return</span> <span class="keyword">nullptr</span>;</div>
+<div class="line"><a id="l00362" name="l00362"></a><span class="lineno">  362</span>                                }</div>
+<div class="line"><a id="l00363" name="l00363"></a><span class="lineno">  363</span>                                <span class="keywordflow">return</span> list.get(index);</div>
+<div class="line"><a id="l00364" name="l00364"></a><span class="lineno">  364</span>                            }</div>
+</div>
+<div class="line"><a id="l00365" name="l00365"></a><span class="lineno">  365</span></div>
+<div class="foldopen" id="foldopen00373" data-start="{" data-end="}">
+<div class="line"><a id="l00373" name="l00373"></a><span class="lineno"><a class="line" href="classyh_1_1structures_1_1lists_1_1List_1_1Iterator.html#ad2977e3e8c0b12803d332c0af023fc20">  373</a></span>                            T *<a class="code hl_function" href="classyh_1_1structures_1_1lists_1_1List_1_1Iterator.html#ad2977e3e8c0b12803d332c0af023fc20">remove</a>() {</div>
+<div class="line"><a id="l00374" name="l00374"></a><span class="lineno">  374</span>                                <span class="keywordflow">if</span> (index &gt;= list.size() || isRemoved) {</div>
+<div class="line"><a id="l00375" name="l00375"></a><span class="lineno">  375</span>                                    <span class="keywordflow">return</span> <span class="keyword">nullptr</span>;</div>
+<div class="line"><a id="l00376" name="l00376"></a><span class="lineno">  376</span>                                }</div>
+<div class="line"><a id="l00377" name="l00377"></a><span class="lineno">  377</span>                                isRemoved = <span class="keyword">true</span>;</div>
+<div class="line"><a id="l00378" name="l00378"></a><span class="lineno">  378</span>                                <span class="keywordflow">return</span> list.remove(index);</div>
+<div class="line"><a id="l00379" name="l00379"></a><span class="lineno">  379</span>                            }</div>
+</div>
+<div class="line"><a id="l00380" name="l00380"></a><span class="lineno">  380</span></div>
+<div class="foldopen" id="foldopen00384" data-start="{" data-end="}">
+<div class="line"><a id="l00384" name="l00384"></a><span class="lineno"><a class="line" href="classyh_1_1structures_1_1lists_1_1List_1_1Iterator.html#a4cec0319f6d2a59706dcc7e7780484e6">  384</a></span>                            <span class="keywordtype">void</span> <a class="code hl_function" href="classyh_1_1structures_1_1lists_1_1List_1_1Iterator.html#a4cec0319f6d2a59706dcc7e7780484e6">proceed</a>() {</div>
+<div class="line"><a id="l00385" name="l00385"></a><span class="lineno">  385</span>                                <span class="keywordflow">if</span> (isRemoved) {</div>
+<div class="line"><a id="l00386" name="l00386"></a><span class="lineno">  386</span>                                    isRemoved = <span class="keyword">false</span>;</div>
+<div class="line"><a id="l00387" name="l00387"></a><span class="lineno">  387</span>                                } <span class="keywordflow">else</span> <span class="keywordflow">if</span> (index &lt; list.size()) {</div>
+<div class="line"><a id="l00388" name="l00388"></a><span class="lineno">  388</span>                                    index++;</div>
+<div class="line"><a id="l00389" name="l00389"></a><span class="lineno">  389</span>                                }</div>
+<div class="line"><a id="l00390" name="l00390"></a><span class="lineno">  390</span>                            }</div>
+</div>
+<div class="line"><a id="l00391" name="l00391"></a><span class="lineno">  391</span>                    };</div>
+</div>
+<div class="line"><a id="l00392" name="l00392"></a><span class="lineno">  392</span>            };</div>
+</div>
+<div class="line"><a id="l00393" name="l00393"></a><span class="lineno">  393</span>        }</div>
+<div class="line"><a id="l00394" name="l00394"></a><span class="lineno">  394</span>    }</div>
+<div class="line"><a id="l00395" name="l00395"></a><span class="lineno">  395</span>}</div>
+<div class="line"><a id="l00396" name="l00396"></a><span class="lineno">  396</span> </div>
+<div class="line"><a id="l00397" name="l00397"></a><span class="lineno">  397</span><span class="preprocessor">#endif </span><span class="comment">// #ifndef YH_STRUCTURES_LISTS_LIST_H</span></div>
+<div class="ttc" id="aclassyh_1_1structures_1_1lists_1_1List_1_1Iterator_html_a0e6a9809a37890a26ca656621232f28e"><div class="ttname"><a href="classyh_1_1structures_1_1lists_1_1List_1_1Iterator.html#a0e6a9809a37890a26ca656621232f28e">yh::structures::lists::List::Iterator::get</a></div><div class="ttdeci">T * get()</div><div class="ttdoc">Get the current element pointed by the iterator.</div><div class="ttdef"><b>Definition</b> List.h:359</div></div>
+<div class="ttc" id="aclassyh_1_1structures_1_1lists_1_1List_1_1Iterator_html_a4cec0319f6d2a59706dcc7e7780484e6"><div class="ttname"><a href="classyh_1_1structures_1_1lists_1_1List_1_1Iterator.html#a4cec0319f6d2a59706dcc7e7780484e6">yh::structures::lists::List::Iterator::proceed</a></div><div class="ttdeci">void proceed()</div><div class="ttdoc">Move on to the next element.</div><div class="ttdef"><b>Definition</b> List.h:384</div></div>
+<div class="ttc" id="aclassyh_1_1structures_1_1lists_1_1List_1_1Iterator_html_aa0b7f22a613470b472d8418dd88df722"><div class="ttname"><a href="classyh_1_1structures_1_1lists_1_1List_1_1Iterator.html#aa0b7f22a613470b472d8418dd88df722">yh::structures::lists::List::Iterator::hasNext</a></div><div class="ttdeci">bool hasNext()</div><div class="ttdoc">Whether there are unvisited elements in the list.</div><div class="ttdef"><b>Definition</b> List.h:349</div></div>
+<div class="ttc" id="aclassyh_1_1structures_1_1lists_1_1List_1_1Iterator_html_ac36fab10ff77a775d334428afa4e6c27"><div class="ttname"><a href="classyh_1_1structures_1_1lists_1_1List_1_1Iterator.html#ac36fab10ff77a775d334428afa4e6c27">yh::structures::lists::List::Iterator::Iterator</a></div><div class="ttdeci">Iterator(List&lt; T &gt; &amp;list)</div><div class="ttdoc">Creates a new iterator to visit elements of a list.</div><div class="ttdef"><b>Definition</b> List.h:340</div></div>
+<div class="ttc" id="aclassyh_1_1structures_1_1lists_1_1List_1_1Iterator_html_ad2977e3e8c0b12803d332c0af023fc20"><div class="ttname"><a href="classyh_1_1structures_1_1lists_1_1List_1_1Iterator.html#ad2977e3e8c0b12803d332c0af023fc20">yh::structures::lists::List::Iterator::remove</a></div><div class="ttdeci">T * remove()</div><div class="ttdoc">Remove the current element from the list.</div><div class="ttdef"><b>Definition</b> List.h:373</div></div>
 <div class="ttc" id="aclassyh_1_1structures_1_1lists_1_1List_1_1PredicateVisitor_html"><div class="ttname"><a href="classyh_1_1structures_1_1lists_1_1List_1_1PredicateVisitor.html">yh::structures::lists::List::PredicateVisitor</a></div><div class="ttdoc">A visitor used to visit elements of a list, with a predicate to accept or reject every element.</div><div class="ttdef"><b>Definition</b> List.h:234</div></div>
 <div class="ttc" id="aclassyh_1_1structures_1_1lists_1_1List_1_1PredicateVisitor_html_a0c7cc960d0b2a7c29405e57fb7fb25fb"><div class="ttname"><a href="classyh_1_1structures_1_1lists_1_1List_1_1PredicateVisitor.html#a0c7cc960d0b2a7c29405e57fb7fb25fb">yh::structures::lists::List::PredicateVisitor::~PredicateVisitor</a></div><div class="ttdeci">virtual ~PredicateVisitor()</div><div class="ttdoc">A virtual destructor.</div><div class="ttdef"><b>Definition</b> List.h:252</div></div>
 <div class="ttc" id="aclassyh_1_1structures_1_1lists_1_1List_1_1PredicateVisitor_html_ac6c77571ae9017f7174ffdf6cffde37c"><div class="ttname"><a href="classyh_1_1structures_1_1lists_1_1List_1_1PredicateVisitor.html#ac6c77571ae9017f7174ffdf6cffde37c">yh::structures::lists::List::PredicateVisitor::visit</a></div><div class="ttdeci">virtual bool visit(T *elementPointer)=0</div><div class="ttdoc">Visits each element once.</div></div>
