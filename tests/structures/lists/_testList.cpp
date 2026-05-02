@@ -1024,6 +1024,20 @@ TEST_BEGIN(list_removeIf)
 }
 TEST_END()
 
+#define SETUP_ITERATOR_LIST() \
+    LIST_TYPE<int> list; \
+    int x = 35; \
+    int y = -12; \
+    int z = 0; \
+    int a = -4; \
+    list.addTail(&x); \
+    list.addTail(&y); \
+    list.addTail(&z); \
+    list.addTail(&a); \
+ \
+    LIST_TYPE<int>::Iterator it = list; \
+
+
 #define ASSERT_NEXT_ELEMENT_IS(e,rm,checkRemovedIsHidden) { \
     for (int i = 0; i < 10; i++) { \
         ASSERT_TRUE(it.hasNext()); \
@@ -1062,17 +1076,7 @@ TEST_END()
 
 TEST_BEGIN(list_iterator_readonly)
 {
-    LIST_TYPE<int> list;
-    int x = 35;
-    int y = -12;
-    int z = 0;
-    int a = -4;
-    list.addTail(&x);
-    list.addTail(&y);
-    list.addTail(&z);
-    list.addTail(&a);
-
-    LIST_TYPE<int>::Iterator it = list;
+    SETUP_ITERATOR_LIST();
 
     ASSERT_NEXT_ELEMENT_IS(x, false, false);
     ASSERT_NEXT_ELEMENT_IS(y, false, false);
@@ -1091,17 +1095,7 @@ TEST_END()
 
 TEST_BEGIN(list_iterator_remove_only_once_for_all_evens)
 {
-    LIST_TYPE<int> list;
-    int x = 35;
-    int y = -12;
-    int z = 0;
-    int a = -4;
-    list.addTail(&x);
-    list.addTail(&y);
-    list.addTail(&z);
-    list.addTail(&a);
-
-    LIST_TYPE<int>::Iterator it = list;
+    SETUP_ITERATOR_LIST();
 
     ASSERT_NEXT_ELEMENT_IS(x, false, false);
     ASSERT_NEXT_ELEMENT_IS(y, true, false);
@@ -1118,17 +1112,7 @@ TEST_END()
 
 TEST_BEGIN(list_iterator_remove_only_once_for_all_odds)
 {
-    LIST_TYPE<int> list;
-    int x = 35;
-    int y = -12;
-    int z = 0;
-    int a = -4;
-    list.addTail(&x);
-    list.addTail(&y);
-    list.addTail(&z);
-    list.addTail(&a);
-
-    LIST_TYPE<int>::Iterator it = list;
+    SETUP_ITERATOR_LIST();
 
     ASSERT_NEXT_ELEMENT_IS(x, true, false);
     ASSERT_NEXT_ELEMENT_IS(y, false, false);
@@ -1145,17 +1129,7 @@ TEST_END()
 
 TEST_BEGIN(list_iterator_remove_only_once_for_all_elements)
 {
-    LIST_TYPE<int> list;
-    int x = 35;
-    int y = -12;
-    int z = 0;
-    int a = -4;
-    list.addTail(&x);
-    list.addTail(&y);
-    list.addTail(&z);
-    list.addTail(&a);
-
-    LIST_TYPE<int>::Iterator it = list;
+    SETUP_ITERATOR_LIST();
 
     ASSERT_NEXT_ELEMENT_IS(x, true, false);
     ASSERT_NEXT_ELEMENT_IS(y, true, false);
@@ -1170,17 +1144,7 @@ TEST_END()
 
 TEST_BEGIN(list_iterator_removed_even_elements_are_not_visible)
 {
-    LIST_TYPE<int> list;
-    int x = 35;
-    int y = -12;
-    int z = 0;
-    int a = -4;
-    list.addTail(&x);
-    list.addTail(&y);
-    list.addTail(&z);
-    list.addTail(&a);
-
-    LIST_TYPE<int>::Iterator it = list;
+    SETUP_ITERATOR_LIST();
 
     ASSERT_NEXT_ELEMENT_IS(x, false, true);
     ASSERT_NEXT_ELEMENT_IS(y, true, true);
@@ -1197,17 +1161,7 @@ TEST_END()
 
 TEST_BEGIN(list_iterator_removed_odd_elements_are_not_visible)
 {
-    LIST_TYPE<int> list;
-    int x = 35;
-    int y = -12;
-    int z = 0;
-    int a = -4;
-    list.addTail(&x);
-    list.addTail(&y);
-    list.addTail(&z);
-    list.addTail(&a);
-
-    LIST_TYPE<int>::Iterator it = list;
+    SETUP_ITERATOR_LIST();
 
     ASSERT_NEXT_ELEMENT_IS(x, true, true);
     ASSERT_NEXT_ELEMENT_IS(y, false, true);
@@ -1224,17 +1178,7 @@ TEST_END()
 
 TEST_BEGIN(list_iterator_removed_all_elements_are_not_visible)
 {
-    LIST_TYPE<int> list;
-    int x = 35;
-    int y = -12;
-    int z = 0;
-    int a = -4;
-    list.addTail(&x);
-    list.addTail(&y);
-    list.addTail(&z);
-    list.addTail(&a);
-
-    LIST_TYPE<int>::Iterator it = list;
+    SETUP_ITERATOR_LIST();
 
     ASSERT_NEXT_ELEMENT_IS(x, true, true);
     ASSERT_NEXT_ELEMENT_IS(y, true, true);
