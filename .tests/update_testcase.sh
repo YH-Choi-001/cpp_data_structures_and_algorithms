@@ -19,7 +19,8 @@ fi
 ENDLINE=$(echo "$ENDLINE_STR" | cut -f1 -d:)
 
 head -n $ENDLINE "$TARGETCPP" > "$TARGETCPP.target"
-grep "TEST_BEGIN" "$TARGETCPP.target" | sed 's/TEST_BEGIN(/    test_/g' | sed 's/)/,/g' >> "$TARGETCPP.target"
+chmod u+x ./get_testcase.sh
+./get_testcase.sh "$TARGETCPP" | sed 's/^/    /g' | sed 's/$/,/g' >> "$TARGETCPP.target"
 printf "};\n\nMAIN();\n" >> "$TARGETCPP.target"
 cat "$TARGETCPP.target" > $TARGETCPP
 rm "$TARGETCPP.target"
