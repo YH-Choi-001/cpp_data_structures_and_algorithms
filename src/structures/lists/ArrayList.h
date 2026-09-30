@@ -81,7 +81,7 @@ namespace yh {
                      * @brief Gets the number of elements in the list.
                      * @return The number of elements in the list.
                      */
-                    virtual size_t size() override {
+                    virtual size_t size() const override {
                         return elementsCount;
                     }
 
@@ -131,7 +131,7 @@ namespace yh {
                      * @param index The index of the requested element [ 0 : size() ).
                      * @return The requested element, or nullptr if index is invalid.
                      */
-                    virtual T *get(const size_t index) override {
+                    virtual T *get(const size_t index) const override {
                         if (index >= elementsCount) {
                             return nullptr;
                         }

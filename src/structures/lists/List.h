@@ -69,13 +69,13 @@ namespace yh {
                      * @brief Gets the number of elements in the list.
                      * @return The number of elements in the list.
                      */
-                    virtual size_t size() = 0;
+                    virtual size_t size() const = 0;
 
                     /**
                      * @brief Checks whether the list is empty.
                      * @return true if the list is empty, false otherwise.
                      */
-                    virtual bool isEmpty() {
+                    virtual bool isEmpty() const {
                         return size() == 0;
                     }
 
@@ -94,7 +94,7 @@ namespace yh {
                      * @param index The index of the requested element [ 0 : size() ).
                      * @return The requested element, or nullptr if index is invalid.
                      */
-                    virtual T *get(const size_t index) = 0;
+                    virtual T *get(const size_t index) const = 0;
 
                     /**
                      * @brief Sets an element at a specific index.
@@ -137,7 +137,7 @@ namespace yh {
                      * @return The element at the head of the list, or nullptr if the list is empty.
                      * @see get()
                      */
-                    virtual T *getHead() {
+                    virtual T *getHead() const {
                         return get(0);
                     }
 
@@ -147,7 +147,7 @@ namespace yh {
                      * @return The element at the tail of the list, or nullptr if the list is empty.
                      * @see get()
                      */
-                    virtual T *getTail() {
+                    virtual T *getTail() const {
                         return get(size() - 1);
                     }
 
