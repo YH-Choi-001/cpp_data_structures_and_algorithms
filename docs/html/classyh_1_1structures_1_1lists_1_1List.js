@@ -9,11 +9,11 @@ var classyh_1_1structures_1_1lists_1_1List =
     [ "addTail", "classyh_1_1structures_1_1lists_1_1List.html#a89c8b1bdc14630a1fd68a1d73dbaf21c", null ],
     [ "foreach", "classyh_1_1structures_1_1lists_1_1List.html#a274f69844f87a75957536cee6aa4ae73", null ],
     [ "foreach", "classyh_1_1structures_1_1lists_1_1List.html#a94da6fdd1609a139b328107d5726de59", null ],
-    [ "get", "classyh_1_1structures_1_1lists_1_1List.html#a33dea7a356dd21460972ce7e79569273", null ],
-    [ "getHead", "classyh_1_1structures_1_1lists_1_1List.html#a63e78f82dc311525826da877c179ea4f", null ],
-    [ "getTail", "classyh_1_1structures_1_1lists_1_1List.html#a98bc4b8ddb2eb5124967db02da96e592", null ],
+    [ "get", "classyh_1_1structures_1_1lists_1_1List.html#a02533c19fc385f9f8e75387d66b8514e", null ],
+    [ "getHead", "classyh_1_1structures_1_1lists_1_1List.html#ac44d02ed01b7e5fd561efd1d91b406ae", null ],
+    [ "getTail", "classyh_1_1structures_1_1lists_1_1List.html#ac06e64d4ba90535dba0a7d23b2d8416a", null ],
     [ "insert", "classyh_1_1structures_1_1lists_1_1List.html#a615639c9bb668b2d0a4cefd167aabf1c", null ],
-    [ "isEmpty", "classyh_1_1structures_1_1lists_1_1List.html#a48d6279a3f16323551db77a7fdd2155c", null ],
+    [ "isEmpty", "classyh_1_1structures_1_1lists_1_1List.html#ade9fd96c57e5ed187d316da29734adcc", null ],
     [ "remove", "classyh_1_1structures_1_1lists_1_1List.html#a2555917acb779758ba2f6bdcbf9c1a14", null ],
     [ "removeHead", "classyh_1_1structures_1_1lists_1_1List.html#a692735d3df197b12a7d4cdf3c703f839", null ],
     [ "removeIf", "classyh_1_1structures_1_1lists_1_1List.html#a11dc5e0c309f1248181762e6eeee77f7", null ],
@@ -22,5 +22,5 @@ var classyh_1_1structures_1_1lists_1_1List =
     [ "set", "classyh_1_1structures_1_1lists_1_1List.html#a1b24a2b7e0c92aff64a73ecb29991393", null ],
     [ "setHead", "classyh_1_1structures_1_1lists_1_1List.html#a55606de2ec3f95d3874cee2dd1609460", null ],
     [ "setTail", "classyh_1_1structures_1_1lists_1_1List.html#a509b1e95255481f21c6f52a256385927", null ],
-    [ "size", "classyh_1_1structures_1_1lists_1_1List.html#a6166a49e21f8edb648f999f5f1be9d9f", null ]
+    [ "size", "classyh_1_1structures_1_1lists_1_1List.html#ae09425ab23b94e7b44b66734d7f28d81", null ]
 ];

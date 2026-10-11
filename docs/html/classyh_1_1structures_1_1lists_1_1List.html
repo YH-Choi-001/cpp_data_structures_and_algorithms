@@ -128,9 +128,11 @@ Inheritance diagram for yh::structures::lists::List&lt; T &gt;:</div>
  <div class="center">
   <img src="classyh_1_1structures_1_1lists_1_1List.png" usemap="#yh_3A_3Astructures_3A_3Alists_3A_3AList_3C_20T_20_3E_map" alt=""/>
   <map id="yh_3A_3Astructures_3A_3Alists_3A_3AList_3C_20T_20_3E_map" name="yh_3A_3Astructures_3A_3Alists_3A_3AList_3C_20T_20_3E_map">
-<area href="classyh_1_1structures_1_1lists_1_1ArrayList.html" title="A list implemented by an array." alt="yh::structures::lists::ArrayList&lt; T &gt;" shape="rect" coords="0,56,248,80"/>
-<area href="classyh_1_1structures_1_1lists_1_1DoublyLinkedList.html" title="A list implemented by doubly-linked nodes." alt="yh::structures::lists::DoublyLinkedList&lt; T &gt;" shape="rect" coords="258,56,506,80"/>
-<area href="classyh_1_1structures_1_1lists_1_1SinglyLinkedList.html" title="A list implemented by singly-linked nodes." alt="yh::structures::lists::SinglyLinkedList&lt; T &gt;" shape="rect" coords="516,56,764,80"/>
+<area href="classyh_1_1structures_1_1lists_1_1ArrayList.html" alt="yh::structures::lists::ArrayList&lt; Bucket &gt;" shape="rect" coords="0,56,406,80"/>
+<area href="classyh_1_1structures_1_1lists_1_1SinglyLinkedList.html" alt="yh::structures::lists::SinglyLinkedList&lt; typename Map&lt; K, V &gt;::Entry &gt;" shape="rect" coords="416,56,822,80"/>
+<area href="classyh_1_1structures_1_1lists_1_1ArrayList.html" title="A list implemented by an array." alt="yh::structures::lists::ArrayList&lt; T &gt;" shape="rect" coords="832,56,1238,80"/>
+<area href="classyh_1_1structures_1_1lists_1_1DoublyLinkedList.html" title="A list implemented by doubly-linked nodes." alt="yh::structures::lists::DoublyLinkedList&lt; T &gt;" shape="rect" coords="1248,56,1654,80"/>
+<area href="classyh_1_1structures_1_1lists_1_1SinglyLinkedList.html" title="A list implemented by singly-linked nodes." alt="yh::structures::lists::SinglyLinkedList&lt; T &gt;" shape="rect" coords="1664,56,2070,80"/>
   </map>
 </div></div>
 <table class="memberdecls">
@@ -148,14 +150,14 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a14cf85e0121d8ed9c98650093ce96e1a" id="r_a14cf85e0121d8ed9c98650093ce96e1a"><td class="memItemLeft" align="right" valign="top"><a id="a14cf85e0121d8ed9c98650093ce96e1a" name="a14cf85e0121d8ed9c98650093ce96e1a"></a>
 virtual&#160;</td><td class="memItemRight" valign="bottom"><b>~List</b> ()</td></tr>
 <tr class="memdesc:a14cf85e0121d8ed9c98650093ce96e1a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Destroys the list. <br /></td></tr>
-<tr class="memitem:a6166a49e21f8edb648f999f5f1be9d9f" id="r_a6166a49e21f8edb648f999f5f1be9d9f"><td class="memItemLeft" align="right" valign="top">virtual size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6166a49e21f8edb648f999f5f1be9d9f">size</a> ()=0</td></tr>
-<tr class="memdesc:a6166a49e21f8edb648f999f5f1be9d9f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the number of elements in the list.  <br /></td></tr>
-<tr class="memitem:a48d6279a3f16323551db77a7fdd2155c" id="r_a48d6279a3f16323551db77a7fdd2155c"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a48d6279a3f16323551db77a7fdd2155c">isEmpty</a> ()</td></tr>
-<tr class="memdesc:a48d6279a3f16323551db77a7fdd2155c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks whether the list is empty.  <br /></td></tr>
+<tr class="memitem:ae09425ab23b94e7b44b66734d7f28d81" id="r_ae09425ab23b94e7b44b66734d7f28d81"><td class="memItemLeft" align="right" valign="top">virtual size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae09425ab23b94e7b44b66734d7f28d81">size</a> () const =0</td></tr>
+<tr class="memdesc:ae09425ab23b94e7b44b66734d7f28d81"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the number of elements in the list.  <br /></td></tr>
+<tr class="memitem:ade9fd96c57e5ed187d316da29734adcc" id="r_ade9fd96c57e5ed187d316da29734adcc"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ade9fd96c57e5ed187d316da29734adcc">isEmpty</a> () const</td></tr>
+<tr class="memdesc:ade9fd96c57e5ed187d316da29734adcc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks whether the list is empty.  <br /></td></tr>
 <tr class="memitem:a615639c9bb668b2d0a4cefd167aabf1c" id="r_a615639c9bb668b2d0a4cefd167aabf1c"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a615639c9bb668b2d0a4cefd167aabf1c">insert</a> (const size_t index, T *element)=0</td></tr>
 <tr class="memdesc:a615639c9bb668b2d0a4cefd167aabf1c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Inserts an element at a specific index.  <br /></td></tr>
-<tr class="memitem:a33dea7a356dd21460972ce7e79569273" id="r_a33dea7a356dd21460972ce7e79569273"><td class="memItemLeft" align="right" valign="top">virtual T *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a33dea7a356dd21460972ce7e79569273">get</a> (const size_t index)=0</td></tr>
-<tr class="memdesc:a33dea7a356dd21460972ce7e79569273"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets an element at a specific index.  <br /></td></tr>
+<tr class="memitem:a02533c19fc385f9f8e75387d66b8514e" id="r_a02533c19fc385f9f8e75387d66b8514e"><td class="memItemLeft" align="right" valign="top">virtual T *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a02533c19fc385f9f8e75387d66b8514e">get</a> (const size_t index) const =0</td></tr>
+<tr class="memdesc:a02533c19fc385f9f8e75387d66b8514e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets an element at a specific index.  <br /></td></tr>
 <tr class="memitem:a1b24a2b7e0c92aff64a73ecb29991393" id="r_a1b24a2b7e0c92aff64a73ecb29991393"><td class="memItemLeft" align="right" valign="top">virtual T *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a1b24a2b7e0c92aff64a73ecb29991393">set</a> (const size_t index, T *element)=0</td></tr>
 <tr class="memdesc:a1b24a2b7e0c92aff64a73ecb29991393"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets an element at a specific index.  <br /></td></tr>
 <tr class="memitem:a2555917acb779758ba2f6bdcbf9c1a14" id="r_a2555917acb779758ba2f6bdcbf9c1a14"><td class="memItemLeft" align="right" valign="top">virtual T *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2555917acb779758ba2f6bdcbf9c1a14">remove</a> (const size_t index)=0</td></tr>
@@ -164,10 +166,10 @@ virtual&#160;</td><td class="memItemRight" valign="bottom"><b>~List</b> ()</td><
 <tr class="memdesc:a1f5f77113928bc992037c32950db7900"><td class="mdescLeft">&#160;</td><td class="mdescRight">Adds an element to the head of the list.  <br /></td></tr>
 <tr class="memitem:a89c8b1bdc14630a1fd68a1d73dbaf21c" id="r_a89c8b1bdc14630a1fd68a1d73dbaf21c"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a89c8b1bdc14630a1fd68a1d73dbaf21c">addTail</a> (T *element)</td></tr>
 <tr class="memdesc:a89c8b1bdc14630a1fd68a1d73dbaf21c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Adds an element to the tail of the list.  <br /></td></tr>
-<tr class="memitem:a63e78f82dc311525826da877c179ea4f" id="r_a63e78f82dc311525826da877c179ea4f"><td class="memItemLeft" align="right" valign="top">virtual T *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a63e78f82dc311525826da877c179ea4f">getHead</a> ()</td></tr>
-<tr class="memdesc:a63e78f82dc311525826da877c179ea4f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the element at the head of the list.  <br /></td></tr>
-<tr class="memitem:a98bc4b8ddb2eb5124967db02da96e592" id="r_a98bc4b8ddb2eb5124967db02da96e592"><td class="memItemLeft" align="right" valign="top">virtual T *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a98bc4b8ddb2eb5124967db02da96e592">getTail</a> ()</td></tr>
-<tr class="memdesc:a98bc4b8ddb2eb5124967db02da96e592"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the element at the tail of the list.  <br /></td></tr>
+<tr class="memitem:ac44d02ed01b7e5fd561efd1d91b406ae" id="r_ac44d02ed01b7e5fd561efd1d91b406ae"><td class="memItemLeft" align="right" valign="top">virtual T *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac44d02ed01b7e5fd561efd1d91b406ae">getHead</a> () const</td></tr>
+<tr class="memdesc:ac44d02ed01b7e5fd561efd1d91b406ae"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the element at the head of the list.  <br /></td></tr>
+<tr class="memitem:ac06e64d4ba90535dba0a7d23b2d8416a" id="r_ac06e64d4ba90535dba0a7d23b2d8416a"><td class="memItemLeft" align="right" valign="top">virtual T *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac06e64d4ba90535dba0a7d23b2d8416a">getTail</a> () const</td></tr>
+<tr class="memdesc:ac06e64d4ba90535dba0a7d23b2d8416a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the element at the tail of the list.  <br /></td></tr>
 <tr class="memitem:a55606de2ec3f95d3874cee2dd1609460" id="r_a55606de2ec3f95d3874cee2dd1609460"><td class="memItemLeft" align="right" valign="top">virtual T *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a55606de2ec3f95d3874cee2dd1609460">setHead</a> (T *element)</td></tr>
 <tr class="memdesc:a55606de2ec3f95d3874cee2dd1609460"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the element at the head of the list.  <br /></td></tr>
 <tr class="memitem:a509b1e95255481f21c6f52a256385927" id="r_a509b1e95255481f21c6f52a256385927"><td class="memItemLeft" align="right" valign="top">virtual T *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a509b1e95255481f21c6f52a256385927">setTail</a> (T *element)</td></tr>
@@ -352,8 +354,8 @@ template&lt;typename T&gt; </div>
 
 </div>
 </div>
-<a id="a33dea7a356dd21460972ce7e79569273" name="a33dea7a356dd21460972ce7e79569273"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a33dea7a356dd21460972ce7e79569273">&#9670;&#160;</a></span>get()</h2>
+<a id="a02533c19fc385f9f8e75387d66b8514e" name="a02533c19fc385f9f8e75387d66b8514e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a02533c19fc385f9f8e75387d66b8514e">&#9670;&#160;</a></span>get()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -367,7 +369,7 @@ template&lt;typename T&gt; </div>
           <td class="memname">virtual T * <a class="el" href="classyh_1_1structures_1_1lists_1_1List.html">yh::structures::lists::List</a>&lt; T &gt;::get </td>
           <td>(</td>
           <td class="paramtype">const size_t</td>          <td class="paramname"><span class="paramname"><em>index</em></span></td><td>)</td>
-          <td></td>
+          <td> const</td>
         </tr>
       </table>
   </td>
@@ -380,18 +382,18 @@ template&lt;typename T&gt; </div>
 <p>Gets an element at a specific index. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">index</td><td>The index of the requested element [ 0 : <a class="el" href="#a6166a49e21f8edb648f999f5f1be9d9f" title="Gets the number of elements in the list.">size()</a> ). </td></tr>
+    <tr><td class="paramname">index</td><td>The index of the requested element [ 0 : <a class="el" href="#ae09425ab23b94e7b44b66734d7f28d81" title="Gets the number of elements in the list.">size()</a> ). </td></tr>
   </table>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>The requested element, or nullptr if index is invalid. </dd></dl>
 
-<p>Implemented in <a class="el" href="classyh_1_1structures_1_1lists_1_1ArrayList.html#ad5145f39111d1fa51aae47020f8d5139">yh::structures::lists::ArrayList&lt; T &gt;</a>, <a class="el" href="classyh_1_1structures_1_1lists_1_1ArrayList.html#ad5145f39111d1fa51aae47020f8d5139">yh::structures::lists::ArrayList&lt; typename yh::structures::maps::Map&lt; K, V &gt;::Entry &gt;</a>, <a class="el" href="classyh_1_1structures_1_1lists_1_1DoublyLinkedList.html#af96e08b1d37f11da64ecdcc8065a4feb">yh::structures::lists::DoublyLinkedList&lt; T &gt;</a>, and <a class="el" href="classyh_1_1structures_1_1lists_1_1SinglyLinkedList.html#ab6a4d4f6b58c236b119436916a12562d">yh::structures::lists::SinglyLinkedList&lt; T &gt;</a>.</p>
+<p>Implemented in <a class="el" href="classyh_1_1structures_1_1lists_1_1ArrayList.html#a89eb3e2a59ce193ddce890bc182dfea6">yh::structures::lists::ArrayList&lt; T &gt;</a>, <a class="el" href="classyh_1_1structures_1_1lists_1_1ArrayList.html#a89eb3e2a59ce193ddce890bc182dfea6">yh::structures::lists::ArrayList&lt; Bucket &gt;</a>, <a class="el" href="classyh_1_1structures_1_1lists_1_1ArrayList.html#a89eb3e2a59ce193ddce890bc182dfea6">yh::structures::lists::ArrayList&lt; typename yh::structures::maps::Map&lt; K, V &gt;::Entry &gt;</a>, <a class="el" href="classyh_1_1structures_1_1lists_1_1DoublyLinkedList.html#a8dc87c73084a1c0ae52252fb61f7f592">yh::structures::lists::DoublyLinkedList&lt; T &gt;</a>, <a class="el" href="classyh_1_1structures_1_1lists_1_1SinglyLinkedList.html#a5e3ce7b3ab630388cf5c186fcbb70644">yh::structures::lists::SinglyLinkedList&lt; T &gt;</a>, and <a class="el" href="classyh_1_1structures_1_1lists_1_1SinglyLinkedList.html#a5e3ce7b3ab630388cf5c186fcbb70644">yh::structures::lists::SinglyLinkedList&lt; typename Map&lt; K, V &gt;::Entry &gt;</a>.</p>
 
 </div>
 </div>
-<a id="a63e78f82dc311525826da877c179ea4f" name="a63e78f82dc311525826da877c179ea4f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a63e78f82dc311525826da877c179ea4f">&#9670;&#160;</a></span>getHead()</h2>
+<a id="ac44d02ed01b7e5fd561efd1d91b406ae" name="ac44d02ed01b7e5fd561efd1d91b406ae"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac44d02ed01b7e5fd561efd1d91b406ae">&#9670;&#160;</a></span>getHead()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -405,7 +407,7 @@ template&lt;typename T&gt; </div>
           <td class="memname">virtual T * <a class="el" href="classyh_1_1structures_1_1lists_1_1List.html">yh::structures::lists::List</a>&lt; T &gt;::getHead </td>
           <td>(</td>
           <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
-          <td></td>
+          <td> const</td>
         </tr>
       </table>
   </td>
@@ -417,14 +419,14 @@ template&lt;typename T&gt; </div>
 
 <p>Gets the element at the head of the list. </p>
 <p>Equivalent to <code>get(0)</code>. </p><dl class="section return"><dt>Returns</dt><dd>The element at the head of the list, or nullptr if the list is empty. </dd></dl>
-<dl class="section see"><dt>See also</dt><dd><a class="el" href="#a33dea7a356dd21460972ce7e79569273" title="Gets an element at a specific index.">get()</a> </dd></dl>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="#a02533c19fc385f9f8e75387d66b8514e" title="Gets an element at a specific index.">get()</a> </dd></dl>
 
-<p>Reimplemented in <a class="el" href="classyh_1_1structures_1_1lists_1_1DoublyLinkedList.html#a5cc65151d8adfb1833d9375e43a21ffd">yh::structures::lists::DoublyLinkedList&lt; T &gt;</a>, and <a class="el" href="classyh_1_1structures_1_1lists_1_1SinglyLinkedList.html#af4bbd9d4891e04fc3b30c583a46971d9">yh::structures::lists::SinglyLinkedList&lt; T &gt;</a>.</p>
+<p>Reimplemented in <a class="el" href="classyh_1_1structures_1_1lists_1_1DoublyLinkedList.html#ab8216eea50206763db2ae2682ba9d0a0">yh::structures::lists::DoublyLinkedList&lt; T &gt;</a>, <a class="el" href="classyh_1_1structures_1_1lists_1_1SinglyLinkedList.html#aca97120b4a09d7008b9f7c6b905c447e">yh::structures::lists::SinglyLinkedList&lt; T &gt;</a>, and <a class="el" href="classyh_1_1structures_1_1lists_1_1SinglyLinkedList.html#aca97120b4a09d7008b9f7c6b905c447e">yh::structures::lists::SinglyLinkedList&lt; typename Map&lt; K, V &gt;::Entry &gt;</a>.</p>
 
 </div>
 </div>
-<a id="a98bc4b8ddb2eb5124967db02da96e592" name="a98bc4b8ddb2eb5124967db02da96e592"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a98bc4b8ddb2eb5124967db02da96e592">&#9670;&#160;</a></span>getTail()</h2>
+<a id="ac06e64d4ba90535dba0a7d23b2d8416a" name="ac06e64d4ba90535dba0a7d23b2d8416a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac06e64d4ba90535dba0a7d23b2d8416a">&#9670;&#160;</a></span>getTail()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -438,7 +440,7 @@ template&lt;typename T&gt; </div>
           <td class="memname">virtual T * <a class="el" href="classyh_1_1structures_1_1lists_1_1List.html">yh::structures::lists::List</a>&lt; T &gt;::getTail </td>
           <td>(</td>
           <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
-          <td></td>
+          <td> const</td>
         </tr>
       </table>
   </td>
@@ -449,10 +451,10 @@ template&lt;typename T&gt; </div>
 </div><div class="memdoc">
 
 <p>Gets the element at the tail of the list. </p>
-<p>Equivalent to <code>get(<a class="el" href="#a6166a49e21f8edb648f999f5f1be9d9f" title="Gets the number of elements in the list.">size()</a> - 1)</code>. </p><dl class="section return"><dt>Returns</dt><dd>The element at the tail of the list, or nullptr if the list is empty. </dd></dl>
-<dl class="section see"><dt>See also</dt><dd><a class="el" href="#a33dea7a356dd21460972ce7e79569273" title="Gets an element at a specific index.">get()</a> </dd></dl>
+<p>Equivalent to <code>get(<a class="el" href="#ae09425ab23b94e7b44b66734d7f28d81" title="Gets the number of elements in the list.">size()</a> - 1)</code>. </p><dl class="section return"><dt>Returns</dt><dd>The element at the tail of the list, or nullptr if the list is empty. </dd></dl>
+<dl class="section see"><dt>See also</dt><dd><a class="el" href="#a02533c19fc385f9f8e75387d66b8514e" title="Gets an element at a specific index.">get()</a> </dd></dl>
 
-<p>Reimplemented in <a class="el" href="classyh_1_1structures_1_1lists_1_1DoublyLinkedList.html#aaf8d4264bfd1d2ee8c87c13818c5f2f4">yh::structures::lists::DoublyLinkedList&lt; T &gt;</a>, and <a class="el" href="classyh_1_1structures_1_1lists_1_1SinglyLinkedList.html#a8cb4106bb4b0f2b5ef6122efd637bd3a">yh::structures::lists::SinglyLinkedList&lt; T &gt;</a>.</p>
+<p>Reimplemented in <a class="el" href="classyh_1_1structures_1_1lists_1_1DoublyLinkedList.html#af97b18171e1b354e7ef685294ec7f8f0">yh::structures::lists::DoublyLinkedList&lt; T &gt;</a>, <a class="el" href="classyh_1_1structures_1_1lists_1_1SinglyLinkedList.html#a453c2f01407c9f4d94a316f18f319994">yh::structures::lists::SinglyLinkedList&lt; T &gt;</a>, and <a class="el" href="classyh_1_1structures_1_1lists_1_1SinglyLinkedList.html#a453c2f01407c9f4d94a316f18f319994">yh::structures::lists::SinglyLinkedList&lt; typename Map&lt; K, V &gt;::Entry &gt;</a>.</p>
 
 </div>
 </div>
@@ -488,7 +490,7 @@ template&lt;typename T&gt; </div>
 <p>Inserts an element at a specific index. </p>
 <p>After insertion, the inserted element is accessible at the specific index, while all elements at or after the specific index before insertion are moved backwards by 1 unit. </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">index</td><td>The index where the element is to be inserted [ 0 : <a class="el" href="#a6166a49e21f8edb648f999f5f1be9d9f" title="Gets the number of elements in the list.">size()</a> ]. </td></tr>
+    <tr><td class="paramname">index</td><td>The index where the element is to be inserted [ 0 : <a class="el" href="#ae09425ab23b94e7b44b66734d7f28d81" title="Gets the number of elements in the list.">size()</a> ]. </td></tr>
     <tr><td class="paramname">element</td><td>The element to be inserted. </td></tr>
   </table>
   </dd>
@@ -498,8 +500,8 @@ template&lt;typename T&gt; </div>
 
 </div>
 </div>
-<a id="a48d6279a3f16323551db77a7fdd2155c" name="a48d6279a3f16323551db77a7fdd2155c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a48d6279a3f16323551db77a7fdd2155c">&#9670;&#160;</a></span>isEmpty()</h2>
+<a id="ade9fd96c57e5ed187d316da29734adcc" name="ade9fd96c57e5ed187d316da29734adcc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ade9fd96c57e5ed187d316da29734adcc">&#9670;&#160;</a></span>isEmpty()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -513,7 +515,7 @@ template&lt;typename T&gt; </div>
           <td class="memname">virtual bool <a class="el" href="classyh_1_1structures_1_1lists_1_1List.html">yh::structures::lists::List</a>&lt; T &gt;::isEmpty </td>
           <td>(</td>
           <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
-          <td></td>
+          <td> const</td>
         </tr>
       </table>
   </td>
@@ -556,13 +558,13 @@ template&lt;typename T&gt; </div>
 <p>Removes an element from a specific index. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">index</td><td>The index of the element to be removed [ 0 : <a class="el" href="#a6166a49e21f8edb648f999f5f1be9d9f" title="Gets the number of elements in the list.">size()</a> ). </td></tr>
+    <tr><td class="paramname">index</td><td>The index of the element to be removed [ 0 : <a class="el" href="#ae09425ab23b94e7b44b66734d7f28d81" title="Gets the number of elements in the list.">size()</a> ). </td></tr>
   </table>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>The element removed, or nullptr if index is invalid. </dd></dl>
 
-<p>Implemented in <a class="el" href="classyh_1_1structures_1_1lists_1_1ArrayList.html#a887aac5bba26c26a551a24cbdd848637">yh::structures::lists::ArrayList&lt; T &gt;</a>, <a class="el" href="classyh_1_1structures_1_1lists_1_1ArrayList.html#a887aac5bba26c26a551a24cbdd848637">yh::structures::lists::ArrayList&lt; typename yh::structures::maps::Map&lt; K, V &gt;::Entry &gt;</a>, <a class="el" href="classyh_1_1structures_1_1lists_1_1DoublyLinkedList.html#a76fd05fa4aa1f64705a5a7e1257e47fc">yh::structures::lists::DoublyLinkedList&lt; T &gt;</a>, and <a class="el" href="classyh_1_1structures_1_1lists_1_1SinglyLinkedList.html#a6a85915d45acdb87ff1cf47d51a0070d">yh::structures::lists::SinglyLinkedList&lt; T &gt;</a>.</p>
+<p>Implemented in <a class="el" href="classyh_1_1structures_1_1lists_1_1ArrayList.html#a887aac5bba26c26a551a24cbdd848637">yh::structures::lists::ArrayList&lt; T &gt;</a>, <a class="el" href="classyh_1_1structures_1_1lists_1_1ArrayList.html#a887aac5bba26c26a551a24cbdd848637">yh::structures::lists::ArrayList&lt; Bucket &gt;</a>, <a class="el" href="classyh_1_1structures_1_1lists_1_1ArrayList.html#a887aac5bba26c26a551a24cbdd848637">yh::structures::lists::ArrayList&lt; typename yh::structures::maps::Map&lt; K, V &gt;::Entry &gt;</a>, <a class="el" href="classyh_1_1structures_1_1lists_1_1DoublyLinkedList.html#a76fd05fa4aa1f64705a5a7e1257e47fc">yh::structures::lists::DoublyLinkedList&lt; T &gt;</a>, <a class="el" href="classyh_1_1structures_1_1lists_1_1SinglyLinkedList.html#a6a85915d45acdb87ff1cf47d51a0070d">yh::structures::lists::SinglyLinkedList&lt; T &gt;</a>, and <a class="el" href="classyh_1_1structures_1_1lists_1_1SinglyLinkedList.html#a6a85915d45acdb87ff1cf47d51a0070d">yh::structures::lists::SinglyLinkedList&lt; typename Map&lt; K, V &gt;::Entry &gt;</a>.</p>
 
 </div>
 </div>
@@ -595,7 +597,7 @@ template&lt;typename T&gt; </div>
 <p>Equivalent to <code>remove(0, element)</code>. </p><dl class="section return"><dt>Returns</dt><dd>The element that is previously at the head of the list, or nullptr if the list is empty. </dd></dl>
 <dl class="section see"><dt>See also</dt><dd><a class="el" href="#a2555917acb779758ba2f6bdcbf9c1a14" title="Removes an element from a specific index.">remove()</a> </dd></dl>
 
-<p>Reimplemented in <a class="el" href="classyh_1_1structures_1_1lists_1_1DoublyLinkedList.html#a227db9a2b633eff76bec4bb6a90ef48a">yh::structures::lists::DoublyLinkedList&lt; T &gt;</a>, and <a class="el" href="classyh_1_1structures_1_1lists_1_1SinglyLinkedList.html#a770dfaa878bc0a25f8caea71b414f3a5">yh::structures::lists::SinglyLinkedList&lt; T &gt;</a>.</p>
+<p>Reimplemented in <a class="el" href="classyh_1_1structures_1_1lists_1_1DoublyLinkedList.html#a227db9a2b633eff76bec4bb6a90ef48a">yh::structures::lists::DoublyLinkedList&lt; T &gt;</a>, <a class="el" href="classyh_1_1structures_1_1lists_1_1SinglyLinkedList.html#a770dfaa878bc0a25f8caea71b414f3a5">yh::structures::lists::SinglyLinkedList&lt; T &gt;</a>, and <a class="el" href="classyh_1_1structures_1_1lists_1_1SinglyLinkedList.html#a770dfaa878bc0a25f8caea71b414f3a5">yh::structures::lists::SinglyLinkedList&lt; typename Map&lt; K, V &gt;::Entry &gt;</a>.</p>
 
 </div>
 </div>
@@ -699,10 +701,10 @@ template&lt;typename T&gt; </div>
 </div><div class="memdoc">
 
 <p>Removes the element at the tail of the list. </p>
-<p>Equivalent to <code>remove(<a class="el" href="#a6166a49e21f8edb648f999f5f1be9d9f" title="Gets the number of elements in the list.">size()</a> - 1, element)</code>. </p><dl class="section return"><dt>Returns</dt><dd>The element that is previously at the tail of the list, or nullptr if the list is empty. </dd></dl>
+<p>Equivalent to <code>remove(<a class="el" href="#ae09425ab23b94e7b44b66734d7f28d81" title="Gets the number of elements in the list.">size()</a> - 1, element)</code>. </p><dl class="section return"><dt>Returns</dt><dd>The element that is previously at the tail of the list, or nullptr if the list is empty. </dd></dl>
 <dl class="section see"><dt>See also</dt><dd><a class="el" href="#a2555917acb779758ba2f6bdcbf9c1a14" title="Removes an element from a specific index.">remove()</a> </dd></dl>
 
-<p>Reimplemented in <a class="el" href="classyh_1_1structures_1_1lists_1_1DoublyLinkedList.html#ac341a06a3f3f46f70e76f6fed9a90c3b">yh::structures::lists::DoublyLinkedList&lt; T &gt;</a>, and <a class="el" href="classyh_1_1structures_1_1lists_1_1SinglyLinkedList.html#a7d28d19f47d98a28dc12edc808f02a1e">yh::structures::lists::SinglyLinkedList&lt; T &gt;</a>.</p>
+<p>Reimplemented in <a class="el" href="classyh_1_1structures_1_1lists_1_1DoublyLinkedList.html#ac341a06a3f3f46f70e76f6fed9a90c3b">yh::structures::lists::DoublyLinkedList&lt; T &gt;</a>, <a class="el" href="classyh_1_1structures_1_1lists_1_1SinglyLinkedList.html#a7d28d19f47d98a28dc12edc808f02a1e">yh::structures::lists::SinglyLinkedList&lt; T &gt;</a>, and <a class="el" href="classyh_1_1structures_1_1lists_1_1SinglyLinkedList.html#a7d28d19f47d98a28dc12edc808f02a1e">yh::structures::lists::SinglyLinkedList&lt; typename Map&lt; K, V &gt;::Entry &gt;</a>.</p>
 
 </div>
 </div>
@@ -738,7 +740,7 @@ template&lt;typename T&gt; </div>
 <p>Sets an element at a specific index. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">index</td><td>The index to place the new element [ 0 : <a class="el" href="#a6166a49e21f8edb648f999f5f1be9d9f" title="Gets the number of elements in the list.">size()</a> ). </td></tr>
+    <tr><td class="paramname">index</td><td>The index to place the new element [ 0 : <a class="el" href="#ae09425ab23b94e7b44b66734d7f28d81" title="Gets the number of elements in the list.">size()</a> ). </td></tr>
     <tr><td class="paramname">element</td><td>The new element to be placed at the index. </td></tr>
   </table>
   </dd>
@@ -814,7 +816,7 @@ template&lt;typename T&gt; </div>
 </div><div class="memdoc">
 
 <p>Sets the element at the tail of the list. </p>
-<p>Equivalent to <code>set(<a class="el" href="#a6166a49e21f8edb648f999f5f1be9d9f" title="Gets the number of elements in the list.">size()</a> - 1, element)</code>. </p><dl class="params"><dt>Parameters</dt><dd>
+<p>Equivalent to <code>set(<a class="el" href="#ae09425ab23b94e7b44b66734d7f28d81" title="Gets the number of elements in the list.">size()</a> - 1, element)</code>. </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">element</td><td>The new element to be placed at the tail of the list. </td></tr>
   </table>
@@ -827,8 +829,8 @@ template&lt;typename T&gt; </div>
 
 </div>
 </div>
-<a id="a6166a49e21f8edb648f999f5f1be9d9f" name="a6166a49e21f8edb648f999f5f1be9d9f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a6166a49e21f8edb648f999f5f1be9d9f">&#9670;&#160;</a></span>size()</h2>
+<a id="ae09425ab23b94e7b44b66734d7f28d81" name="ae09425ab23b94e7b44b66734d7f28d81"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae09425ab23b94e7b44b66734d7f28d81">&#9670;&#160;</a></span>size()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -842,7 +844,7 @@ template&lt;typename T&gt; </div>
           <td class="memname">virtual size_t <a class="el" href="classyh_1_1structures_1_1lists_1_1List.html">yh::structures::lists::List</a>&lt; T &gt;::size </td>
           <td>(</td>
           <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
-          <td></td>
+          <td> const</td>
         </tr>
       </table>
   </td>
@@ -855,7 +857,7 @@ template&lt;typename T&gt; </div>
 <p>Gets the number of elements in the list. </p>
 <dl class="section return"><dt>Returns</dt><dd>The number of elements in the list. </dd></dl>
 
-<p>Implemented in <a class="el" href="classyh_1_1structures_1_1lists_1_1ArrayList.html#ac36a760eb117f45529a4648c4ccbf247">yh::structures::lists::ArrayList&lt; T &gt;</a>, <a class="el" href="classyh_1_1structures_1_1lists_1_1ArrayList.html#ac36a760eb117f45529a4648c4ccbf247">yh::structures::lists::ArrayList&lt; typename yh::structures::maps::Map&lt; K, V &gt;::Entry &gt;</a>, <a class="el" href="classyh_1_1structures_1_1lists_1_1DoublyLinkedList.html#a98eb8470bfa281514bf89c2f9c3b60b8">yh::structures::lists::DoublyLinkedList&lt; T &gt;</a>, and <a class="el" href="classyh_1_1structures_1_1lists_1_1SinglyLinkedList.html#a5e6a76d12cef3fa3bdd268468df5ca65">yh::structures::lists::SinglyLinkedList&lt; T &gt;</a>.</p>
+<p>Implemented in <a class="el" href="classyh_1_1structures_1_1lists_1_1ArrayList.html#abb9f93092d80021f6d6b891bdce26a1f">yh::structures::lists::ArrayList&lt; T &gt;</a>, <a class="el" href="classyh_1_1structures_1_1lists_1_1ArrayList.html#abb9f93092d80021f6d6b891bdce26a1f">yh::structures::lists::ArrayList&lt; Bucket &gt;</a>, <a class="el" href="classyh_1_1structures_1_1lists_1_1ArrayList.html#abb9f93092d80021f6d6b891bdce26a1f">yh::structures::lists::ArrayList&lt; typename yh::structures::maps::Map&lt; K, V &gt;::Entry &gt;</a>, <a class="el" href="classyh_1_1structures_1_1lists_1_1DoublyLinkedList.html#aab3737df8400eaeec2bb2a0f1a438d06">yh::structures::lists::DoublyLinkedList&lt; T &gt;</a>, <a class="el" href="classyh_1_1structures_1_1lists_1_1SinglyLinkedList.html#adfdeda81a8047c88ed79a10454036781">yh::structures::lists::SinglyLinkedList&lt; T &gt;</a>, and <a class="el" href="classyh_1_1structures_1_1lists_1_1SinglyLinkedList.html#adfdeda81a8047c88ed79a10454036781">yh::structures::lists::SinglyLinkedList&lt; typename Map&lt; K, V &gt;::Entry &gt;</a>.</p>
 
 </div>
 </div>

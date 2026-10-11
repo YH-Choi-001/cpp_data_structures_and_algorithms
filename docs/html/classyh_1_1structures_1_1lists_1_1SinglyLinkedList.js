@@ -6,9 +6,9 @@ var classyh_1_1structures_1_1lists_1_1SinglyLinkedList =
     [ "addTail", "classyh_1_1structures_1_1lists_1_1SinglyLinkedList.html#afa595e631e55447a3973658c47588609", null ],
     [ "foreach", "classyh_1_1structures_1_1lists_1_1SinglyLinkedList.html#afc1993f9f0f71838e7514e1ca0e5852d", null ],
     [ "foreach", "classyh_1_1structures_1_1lists_1_1SinglyLinkedList.html#a5f3e9ff2b949b02b0281e772187183bf", null ],
-    [ "get", "classyh_1_1structures_1_1lists_1_1SinglyLinkedList.html#ab6a4d4f6b58c236b119436916a12562d", null ],
-    [ "getHead", "classyh_1_1structures_1_1lists_1_1SinglyLinkedList.html#af4bbd9d4891e04fc3b30c583a46971d9", null ],
-    [ "getTail", "classyh_1_1structures_1_1lists_1_1SinglyLinkedList.html#a8cb4106bb4b0f2b5ef6122efd637bd3a", null ],
+    [ "get", "classyh_1_1structures_1_1lists_1_1SinglyLinkedList.html#a5e3ce7b3ab630388cf5c186fcbb70644", null ],
+    [ "getHead", "classyh_1_1structures_1_1lists_1_1SinglyLinkedList.html#aca97120b4a09d7008b9f7c6b905c447e", null ],
+    [ "getTail", "classyh_1_1structures_1_1lists_1_1SinglyLinkedList.html#a453c2f01407c9f4d94a316f18f319994", null ],
     [ "insert", "classyh_1_1structures_1_1lists_1_1SinglyLinkedList.html#a0238855f53cb374543dca433ebd34509", null ],
     [ "remove", "classyh_1_1structures_1_1lists_1_1SinglyLinkedList.html#a6a85915d45acdb87ff1cf47d51a0070d", null ],
     [ "removeHead", "classyh_1_1structures_1_1lists_1_1SinglyLinkedList.html#a770dfaa878bc0a25f8caea71b414f3a5", null ],
@@ -18,5 +18,5 @@ var classyh_1_1structures_1_1lists_1_1SinglyLinkedList =
     [ "set", "classyh_1_1structures_1_1lists_1_1SinglyLinkedList.html#a9bfed5638a01aad2ccbf60b91a59a807", null ],
     [ "setHead", "classyh_1_1structures_1_1lists_1_1SinglyLinkedList.html#a87b2dd745b396facf4b33e1d64b80340", null ],
     [ "setTail", "classyh_1_1structures_1_1lists_1_1SinglyLinkedList.html#aa63197ef2c7405311001deffdd6a72f7", null ],
-    [ "size", "classyh_1_1structures_1_1lists_1_1SinglyLinkedList.html#a5e6a76d12cef3fa3bdd268468df5ca65", null ]
+    [ "size", "classyh_1_1structures_1_1lists_1_1SinglyLinkedList.html#adfdeda81a8047c88ed79a10454036781", null ]
 ];

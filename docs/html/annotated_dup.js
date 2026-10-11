@@ -16,6 +16,7 @@ var annotated_dup =
         ] ],
         [ "maps", "namespaceyh_1_1structures_1_1maps.html", [
           [ "ArrayMap", "classyh_1_1structures_1_1maps_1_1ArrayMap.html", "classyh_1_1structures_1_1maps_1_1ArrayMap" ],
+          [ "HashMap", "classyh_1_1structures_1_1maps_1_1HashMap.html", "classyh_1_1structures_1_1maps_1_1HashMap" ],
           [ "Map", "classyh_1_1structures_1_1maps_1_1Map.html", "classyh_1_1structures_1_1maps_1_1Map" ],
           [ "SortedArrayMap", "classyh_1_1structures_1_1maps_1_1SortedArrayMap.html", "classyh_1_1structures_1_1maps_1_1SortedArrayMap" ]
         ] ],

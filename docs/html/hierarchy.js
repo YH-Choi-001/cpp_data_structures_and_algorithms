@@ -9,7 +9,10 @@ var hierarchy =
     ] ],
     [ "yh::structures::lists::List< T >::Iterator", "classyh_1_1structures_1_1lists_1_1List_1_1Iterator.html", null ],
     [ "yh::structures::maps::ArrayMap< K, V >::Iterator", "classyh_1_1structures_1_1maps_1_1ArrayMap_1_1Iterator.html", null ],
+    [ "yh::structures::maps::HashMap< K, V >::Iterator", "classyh_1_1structures_1_1maps_1_1HashMap_1_1Iterator.html", null ],
     [ "yh::structures::lists::List< T >", "classyh_1_1structures_1_1lists_1_1List.html", [
+      [ "yh::structures::lists::ArrayList< Bucket >", "classyh_1_1structures_1_1lists_1_1ArrayList.html", null ],
+      [ "yh::structures::lists::SinglyLinkedList< typename Map< K, V >::Entry >", "classyh_1_1structures_1_1lists_1_1SinglyLinkedList.html", null ],
       [ "yh::structures::lists::ArrayList< T >", "classyh_1_1structures_1_1lists_1_1ArrayList.html", null ],
       [ "yh::structures::lists::DoublyLinkedList< T >", "classyh_1_1structures_1_1lists_1_1DoublyLinkedList.html", null ],
       [ "yh::structures::lists::SinglyLinkedList< T >", "classyh_1_1structures_1_1lists_1_1SinglyLinkedList.html", null ]
@@ -20,7 +23,8 @@ var hierarchy =
     [ "yh::structures::maps::Map< K, V >", "classyh_1_1structures_1_1maps_1_1Map.html", [
       [ "yh::structures::maps::ArrayMap< K, V >", "classyh_1_1structures_1_1maps_1_1ArrayMap.html", [
         [ "yh::structures::maps::SortedArrayMap< K, V >", "classyh_1_1structures_1_1maps_1_1SortedArrayMap.html", null ]
-      ] ]
+      ] ],
+      [ "yh::structures::maps::HashMap< K, V >", "classyh_1_1structures_1_1maps_1_1HashMap.html", null ]
     ] ],
     [ "yh::structures::lists::List< T >::PredicateVisitor", "classyh_1_1structures_1_1lists_1_1List_1_1PredicateVisitor.html", null ],
     [ "yh::structures::maps::Map< K, V >::PredicateVisitor", "classyh_1_1structures_1_1maps_1_1Map_1_1PredicateVisitor.html", null ],
