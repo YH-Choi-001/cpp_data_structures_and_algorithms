@@ -72,6 +72,15 @@ namespace yh {
                          * @param initNext The node after this node.
                          */
                         Node(T *const initData, Node *initNext) : data(initData), next(initNext) {}
+
+                        /**
+                         * This helps detecting dangling pointers.
+                         * @brief Remove the information contained in this node.
+                         */
+                        ~Node() {
+                            data = nullptr;
+                            next = nullptr;
+                        }
                     };
 
                     /**
@@ -423,6 +432,107 @@ namespace yh {
                     virtual void removeIf(bool (*func)(T *)) override {
                         List<T>::removeIf(func);
                     }
+
+                    /**
+                     * @brief An iterator used to visit elements of a list.
+                     */
+                    class Iterator {
+                        private:
+                            /**
+                             * @brief The list visited by this iterator.
+                             */
+                            SinglyLinkedList<T> &list;
+
+                            /**
+                             * @brief The previous node visited by this iterator.
+                             */
+                            Node *prev;
+
+                            /**
+                             * @brief The current node being visited by this iterator.
+                             */
+                            Node *curr;
+
+                            /**
+                             * @brief Whether the current element is removed.
+                             */
+                            bool isRemoved;
+
+                        public:
+                            /**
+                             * @brief Creates a new iterator to visit elements of a list.
+                             * @param list The list being visited.
+                             */
+                            Iterator(SinglyLinkedList<T> &list) : list(list), prev(nullptr), curr(list.head), isRemoved(false)
+                            {
+                                //
+                            }
+
+                            /**
+                             * @brief Whether there are unvisited elements in the list.
+                             * @return `true` if there are unvisited elements, `false` otherwise.
+                             */
+                            bool hasNext() {
+                                return curr != nullptr;
+                            }
+
+                            /**
+                             * A nullptr will be returned after removing the current element.
+                             * @brief Get the current element pointed by the iterator.
+                             * @return The current element pointed by the iterator, or nullptr if it does not exist.
+                             * @see remove()
+                             */
+                            T *get() {
+                                if (!hasNext() || isRemoved) {
+                                    return nullptr;
+                                }
+                                return curr->data;
+                            }
+
+                            /**
+                             * Each element could only be removed once.
+                             * Calling this function repetitively will not remove any other elements from the list.
+                             * @brief Remove the current element from the list.
+                             * @return The element removed, or nullptr if none is removed.
+                             * @see get()
+                             */
+                            T *remove() {
+                                if (!hasNext() || isRemoved) {
+                                    return nullptr;
+                                }
+                                isRemoved = true;
+                                Node *const removedNode = curr;
+                                if (removedNode == list.head) {
+                                    T *const data = list.removeHead();
+                                    curr = list.head;
+                                    return data;
+                                } else if (removedNode == list.tail) {
+                                    T *const data = list.removeTail();
+                                    curr = nullptr;
+                                    return data;
+                                }
+                                list.elementsCount--;
+                                if (prev != nullptr) {
+                                    prev->next = curr->next;
+                                }
+                                curr = curr->next;
+                                T *const data = removedNode->data;
+                                delete removedNode;
+                                return data;
+                            }
+
+                            /**
+                             * @brief Move on to the next element.
+                             */
+                            void proceed() {
+                                if (isRemoved) {
+                                    isRemoved = false;
+                                } else if (hasNext()) {
+                                    prev = curr;
+                                    curr = curr->next;
+                                }
+                            }
+                    };
             };
         }
     }
