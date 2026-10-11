@@ -7,7 +7,9 @@ var hierarchy =
         [ "yh::structures::heaps::MinArrayHeap< T >", "classyh_1_1structures_1_1heaps_1_1MinArrayHeap.html", null ]
       ] ]
     ] ],
+    [ "yh::structures::lists::DoublyLinkedList< T >::Iterator", "classyh_1_1structures_1_1lists_1_1DoublyLinkedList_1_1Iterator.html", null ],
     [ "yh::structures::lists::List< T >::Iterator", "classyh_1_1structures_1_1lists_1_1List_1_1Iterator.html", null ],
+    [ "yh::structures::lists::SinglyLinkedList< T >::Iterator", "classyh_1_1structures_1_1lists_1_1SinglyLinkedList_1_1Iterator.html", null ],
     [ "yh::structures::maps::ArrayMap< K, V >::Iterator", "classyh_1_1structures_1_1maps_1_1ArrayMap_1_1Iterator.html", null ],
     [ "yh::structures::maps::HashMap< K, V >::Iterator", "classyh_1_1structures_1_1maps_1_1HashMap_1_1Iterator.html", null ],
     [ "yh::structures::lists::List< T >", "classyh_1_1structures_1_1lists_1_1List.html", [

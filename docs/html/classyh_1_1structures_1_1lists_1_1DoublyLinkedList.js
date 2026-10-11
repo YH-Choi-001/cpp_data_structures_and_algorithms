@@ -1,5 +1,6 @@
 var classyh_1_1structures_1_1lists_1_1DoublyLinkedList =
 [
+    [ "Iterator", "classyh_1_1structures_1_1lists_1_1DoublyLinkedList_1_1Iterator.html", "classyh_1_1structures_1_1lists_1_1DoublyLinkedList_1_1Iterator" ],
     [ "DoublyLinkedList", "classyh_1_1structures_1_1lists_1_1DoublyLinkedList.html#a399edca83210ac6c990982acfeccad51", null ],
     [ "~DoublyLinkedList", "classyh_1_1structures_1_1lists_1_1DoublyLinkedList.html#a6ea3f6517a84b6860a27ad9639825597", null ],
     [ "addHead", "classyh_1_1structures_1_1lists_1_1DoublyLinkedList.html#ac7ab1d5b4033fc63e05816d3289e4490", null ],

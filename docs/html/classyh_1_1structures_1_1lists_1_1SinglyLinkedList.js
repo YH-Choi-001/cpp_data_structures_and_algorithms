@@ -1,5 +1,6 @@
 var classyh_1_1structures_1_1lists_1_1SinglyLinkedList =
 [
+    [ "Iterator", "classyh_1_1structures_1_1lists_1_1SinglyLinkedList_1_1Iterator.html", "classyh_1_1structures_1_1lists_1_1SinglyLinkedList_1_1Iterator" ],
     [ "SinglyLinkedList", "classyh_1_1structures_1_1lists_1_1SinglyLinkedList.html#ae422247d8cb670a0c46ee5ea20d25e1a", null ],
     [ "~SinglyLinkedList", "classyh_1_1structures_1_1lists_1_1SinglyLinkedList.html#a37e86d5aa9fda27c56b6c428059b0c32", null ],
     [ "addHead", "classyh_1_1structures_1_1lists_1_1SinglyLinkedList.html#acfbbe6d580b71f69e42f122696cb7092", null ],
