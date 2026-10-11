@@ -18,9 +18,6 @@ TARGETCPP := $(shell find "$(TEST_DIR)" -type f -name "test*.cpp")
 # Target
 TARGET := $(TARGETCPP:.cpp=.out)
 
-# Command to run tests
-RUN_TESTS_CMD := $(shell echo $(TARGET) | sed 's/ /; /g')
-
 # Header files
 HEADERS := $(shell find "$(SRC_DIR)" -type f -name "*.h")
 
@@ -59,7 +56,11 @@ build: $(TARGET)
 
 # Rule to run the executable
 test: $(TARGET)
-	$(RUN_TESTS_CMD)
+	@fail=0; \
+	for exe in $(TARGET); do \
+		$$exe || { fail=1; }; \
+	done; \
+	exit $$fail
 
 # Update the testcases in the testfile
 update_tests:
