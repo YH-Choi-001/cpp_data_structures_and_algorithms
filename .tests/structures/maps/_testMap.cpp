@@ -41,9 +41,17 @@
 using yh::structures::maps::Map;
 using yh::structures::maps::MAP_TYPE;
 
+#ifdef CONSTRUCTOR_ARGS
+#define CONSTRUCT_EMPTY_MAP(map) \
+  MAP_TYPE<int, int> map(CONSTRUCTOR_ARGS);
+#else
+#define CONSTRUCT_EMPTY_MAP(map) \
+  MAP_TYPE<int, int> map;
+#endif
+
 TEST_BEGIN(empty_map)
 {
-    MAP_TYPE<int, int> map;
+    CONSTRUCT_EMPTY_MAP(map);
     int k1 = 35;
     int v1 = 18;
     int k2 = -84;
@@ -70,7 +78,7 @@ TEST_END()
 
 TEST_BEGIN(map_with_1_element)
 {
-    MAP_TYPE<int, int> map;
+    CONSTRUCT_EMPTY_MAP(map);
     int k1 = 35;
     int v1 = 18;
     int k2 = -84;
@@ -98,7 +106,7 @@ TEST_END()
 
 TEST_BEGIN(map_with_2_elements)
 {
-    MAP_TYPE<int, int> map;
+    CONSTRUCT_EMPTY_MAP(map);
     int k1 = 35;
     int v1 = 18;
     int k2 = -84;
@@ -127,7 +135,7 @@ TEST_END()
 
 TEST_BEGIN(map_with_3_elements)
 {
-    MAP_TYPE<int, int> map;
+    CONSTRUCT_EMPTY_MAP(map);
     int k1 = 35;
     int v1 = 18;
     int k2 = -84;
@@ -157,7 +165,7 @@ TEST_END()
 
 TEST_BEGIN(map_with_4_elements)
 {
-    MAP_TYPE<int, int> map;
+    CONSTRUCT_EMPTY_MAP(map);
     int k1 = 35;
     int v1 = 18;
     int k2 = -84;
@@ -188,7 +196,7 @@ TEST_END()
 
 TEST_BEGIN(map_with_5_elements)
 {
-    MAP_TYPE<int, int> map;
+    CONSTRUCT_EMPTY_MAP(map);
     int k1 = 35;
     int v1 = 18;
     int k2 = -84;
@@ -220,7 +228,7 @@ TEST_END()
 
 TEST_BEGIN(map_get_remove_operations)
 {
-    MAP_TYPE<int, int> map;
+    CONSTRUCT_EMPTY_MAP(map);
     int e = 18;
     int f = -6;
     int g = 59;
@@ -273,7 +281,7 @@ TEST_END()
 
 TEST_BEGIN(map_get_put_remove_operations)
 {
-    MAP_TYPE<int, int> map;
+    CONSTRUCT_EMPTY_MAP(map);
     int e = 18;
     int f = -6;
     int g = 59;
@@ -335,9 +343,53 @@ TEST_BEGIN(map_get_put_remove_operations)
 }
 TEST_END()
 
+class TestVisitor : public Map<int, int>::Visitor {
+    private:
+        int *keys [16];
+        int *values [16];
+        int visitCounter;
+    public:
+        TestVisitor() :
+            keys{nullptr},
+            values{nullptr},
+            visitCounter(0)
+        {
+            //
+        }
+        void visit(Map<int, int>::Entry entry) override {
+            keys[visitCounter] = entry.key;
+            values[visitCounter] = entry.value;
+            visitCounter++;
+        }
+        int getVisitCounter() {
+            return visitCounter;
+        }
+        int *getKey(const size_t index) {
+            if (index >= visitCounter) {
+                return nullptr;
+            }
+            return keys[index];
+        }
+        int *getValue(const size_t index) {
+            if (index >= visitCounter) {
+                return nullptr;
+            }
+            return values[index];
+        }
+        size_t indexOfKeyValuePair(int *const key, int *const value) {
+            for (size_t i = 0; i < visitCounter; i++) {
+                if (keys[i] == key && values[i] == value) {
+                    return i;
+                }
+            }
+            return visitCounter;
+        }
+};
+#define ASSERT_VISITOR_CONTAINS(visitor,k,v) ASSERT_NOT_EQUALS(visitor.indexOfKeyValuePair(&k, &v), visitor.getVisitCounter())
+
 TEST_BEGIN(map_foreach)
 {
-    MAP_TYPE<int, int> map;
+    CONSTRUCT_EMPTY_MAP(map);
     int e = 18;
     int f = -6;
     int g = 59;
@@ -366,54 +418,16 @@ TEST_BEGIN(map_foreach)
     ASSERT_EQUALS(map.put(&g, &c), &z);
     ASSERT_EQUALS(map.size(), 4);
 
-    class TestVisitor : public Map<int, int>::Visitor {
-        private:
-            int *keys [16];
-            int *values [16];
-            int visitCounter;
-        public:
-            TestVisitor() :
-                keys{nullptr},
-                values{nullptr},
-                visitCounter(0)
-            {
-                //
-            }
-            void visit(Map<int, int>::Entry entry) override {
-                keys[visitCounter] = entry.key;
-                values[visitCounter] = entry.value;
-                visitCounter++;
-            }
-            int getVisitCounter() {
-                return visitCounter;
-            }
-            int *getKey(const size_t index) {
-                if (index >= visitCounter) {
-                    return nullptr;
-                }
-                return keys[index];
-            }
-            int *getValue(const size_t index) {
-                if (index >= visitCounter) {
-                    return nullptr;
-                }
-                return values[index];
-            }
-    };
-
     TestVisitor visitor;
     map.foreach(visitor);
     ASSERT_EQUALS(visitor.getVisitCounter(), 4);
-    #ifndef YH_STRUCTURES_MAPS_SORTEDARRAYMAP_H
-    ASSERT_EQUALS(visitor.getKey(0), &e);
-    ASSERT_EQUALS(visitor.getValue(0), &b);
-    ASSERT_EQUALS(visitor.getKey(1), &f);
-    ASSERT_EQUALS(visitor.getValue(1), &y);
-    ASSERT_EQUALS(visitor.getKey(2), &g);
-    ASSERT_EQUALS(visitor.getValue(2), &c);
-    ASSERT_EQUALS(visitor.getKey(3), &h);
-    ASSERT_EQUALS(visitor.getValue(3), &a);
-    #else
+
+    ASSERT_VISITOR_CONTAINS(visitor, e, b);
+    ASSERT_VISITOR_CONTAINS(visitor, f, y);
+    ASSERT_VISITOR_CONTAINS(visitor, g, c);
+    ASSERT_VISITOR_CONTAINS(visitor, h, a);
+
+    #ifdef YH_STRUCTURES_MAPS_SORTEDARRAYMAP_H
     ASSERT_EQUALS(visitor.getKey(0), &f);
     ASSERT_EQUALS(visitor.getValue(0), &y);
     ASSERT_EQUALS(visitor.getKey(1), &e);
@@ -428,7 +442,7 @@ TEST_END()
 
 TEST_BEGIN(map_removeIf)
 {
-    MAP_TYPE<int, int> map;
+    CONSTRUCT_EMPTY_MAP(map);
     int e = 18;
     int f = -6;
     int g = 59;
@@ -460,7 +474,7 @@ TEST_BEGIN(map_removeIf)
 TEST_END()
 
 #define SETUP_ITERATOR_MAP() \
-    MAP_TYPE<int, int> map; \
+    CONSTRUCT_EMPTY_MAP(map); \
     int e = 18; \
     int f = -6; \
     int g = 59; \
@@ -492,16 +506,22 @@ TEST_END()
     MAP_TYPE<int, int>::Iterator it(map); \
 
 
-#define ASSERT_NEXT_ENTRY_IS(k,v,rm,checkRemovedIsHidden) { \
+#define ASSERT_HAS_NEXT_ENTRY() { \
     for (int i = 0; i < 10; i++) { \
         ASSERT_TRUE(it.hasNext()); \
     } \
+}
+
+#define ASSERT_ENTRY_EQUALS(k,v) { \
     for (int i = 0; i < 10; i++) { \
         Map<int, int>::Entry *const entry = it.get(); \
         ASSERT_IS_NOT_NULLPTR(entry); \
         ASSERT_EQUALS(entry->key, &k); \
         ASSERT_EQUALS(entry->value, &v); \
     } \
+}
+
+#define ENTRY_REMOVAL_OPS(v,rm,checkRemovedIsHidden) { \
     if (rm) { \
         ASSERT_EQUALS(it.remove(), &v); \
         if (checkRemovedIsHidden) { \
@@ -513,6 +533,16 @@ TEST_END()
             ASSERT_IS_NULLPTR(it.remove()); \
         } \
     } \
+}
+
+#define ASSERT_ENTRY_OPS(k,v,rm,checkRemovedIsHidden) { \
+    ASSERT_ENTRY_EQUALS(k,v); \
+    ENTRY_REMOVAL_OPS(v,rm,checkRemovedIsHidden); \
+}
+
+#define ASSERT_NEXT_ENTRY_IS(k,v,rm,checkRemovedIsHidden) { \
+    ASSERT_HAS_NEXT_ENTRY(); \
+    ASSERT_ENTRY_OPS(k,v,rm,checkRemovedIsHidden); \
     it.proceed(); \
 }
 
@@ -531,15 +561,42 @@ TEST_END()
     } \
 }
 
+#define ARRAY_LEN(x) (sizeof(x)/sizeof((x)[0]))
+
+#define ASSERT_ENTRIES_OPS(visitor, removeElements, checkRemovedIsHidden) \
+    TestVisitor visitor; \
+    int *const keys [] = {&e, &f, &g, &h}; \
+    int *const values [] = {&b, &y, &c, &a}; \
+    ASSERT_EQUALS(ARRAY_LEN(keys), ARRAY_LEN(values)); \
+    ASSERT_EQUALS(ARRAY_LEN(keys), ARRAY_LEN(removeElements)); \
+    ASSERT_EQUALS(ARRAY_LEN(keys), ARRAY_LEN(checkRemovedIsHidden)); \
+    for (size_t i = 0; i < ARRAY_LEN(keys); i++) { \
+        ASSERT_HAS_NEXT_ENTRY(); \
+        yh::structures::maps::Map<int, int>::Entry *const entry = it.get(); \
+        ASSERT_IS_NOT_NULLPTR(entry); \
+        visitor.visit(*entry); \
+        for (size_t j = 0; j < ARRAY_LEN(keys); j++) { \
+            if (entry->key == keys[j]) { \
+                ASSERT_ENTRY_OPS(*keys[j], *values[j], removeElements[j], checkRemovedIsHidden[j]); \
+                break; \
+            } \
+        } \
+        it.proceed(); \
+    }
+
+
 TEST_BEGIN(map_iterator_readonly)
 {
     SETUP_ITERATOR_MAP();
 
     #ifndef YH_STRUCTURES_MAPS_SORTEDARRAYMAP_H
-    ASSERT_NEXT_ENTRY_IS(e, b, false, false);
-    ASSERT_NEXT_ENTRY_IS(f, y, false, false);
-    ASSERT_NEXT_ENTRY_IS(g, c, false, false);
-    ASSERT_NEXT_ENTRY_IS(h, a, false, false);
+    const bool removeElements [] = {false, false, false, false};
+    const bool checkRemovedIsHidden [] = {false, false, false, false};
+    ASSERT_ENTRIES_OPS(visitor, removeElements, checkRemovedIsHidden);
+    ASSERT_VISITOR_CONTAINS(visitor, e, b);
+    ASSERT_VISITOR_CONTAINS(visitor, f, y);
+    ASSERT_VISITOR_CONTAINS(visitor, g, c);
+    ASSERT_VISITOR_CONTAINS(visitor, h, a);
     #else
     ASSERT_NEXT_ENTRY_IS(f, y, false, false);
     ASSERT_NEXT_ENTRY_IS(e, b, false, false);
@@ -561,10 +618,13 @@ TEST_BEGIN(map_iterator_remove_only_once_for_all_evens)
     SETUP_ITERATOR_MAP();
 
     #ifndef YH_STRUCTURES_MAPS_SORTEDARRAYMAP_H
-    ASSERT_NEXT_ENTRY_IS(e, b, false, false);
-    ASSERT_NEXT_ENTRY_IS(f, y, true, false);
-    ASSERT_NEXT_ENTRY_IS(g, c, false, false);
-    ASSERT_NEXT_ENTRY_IS(h, a, true, false);
+    const bool removeElements [] = {false, true, false, true};
+    const bool checkRemovedIsHidden [] = {false, false, false, false};
+    ASSERT_ENTRIES_OPS(visitor, removeElements, checkRemovedIsHidden);
+    ASSERT_VISITOR_CONTAINS(visitor, e, b);
+    ASSERT_VISITOR_CONTAINS(visitor, f, y);
+    ASSERT_VISITOR_CONTAINS(visitor, g, c);
+    ASSERT_VISITOR_CONTAINS(visitor, h, a);
     ASSERT_NO_MORE_ENTRIES();
 
     ASSERT_EQUALS(map.size(), 2);
@@ -593,10 +653,13 @@ TEST_BEGIN(map_iterator_remove_only_once_for_all_odds)
     SETUP_ITERATOR_MAP();
 
     #ifndef YH_STRUCTURES_MAPS_SORTEDARRAYMAP_H
-    ASSERT_NEXT_ENTRY_IS(e, b, true, false);
-    ASSERT_NEXT_ENTRY_IS(f, y, false, false);
-    ASSERT_NEXT_ENTRY_IS(g, c, true, false);
-    ASSERT_NEXT_ENTRY_IS(h, a, false, false);
+    const bool removeElements [] = {true, false, true, false};
+    const bool checkRemovedIsHidden [] = {false, false, false, false};
+    ASSERT_ENTRIES_OPS(visitor, removeElements, checkRemovedIsHidden);
+    ASSERT_VISITOR_CONTAINS(visitor, e, b);
+    ASSERT_VISITOR_CONTAINS(visitor, f, y);
+    ASSERT_VISITOR_CONTAINS(visitor, g, c);
+    ASSERT_VISITOR_CONTAINS(visitor, h, a);
     ASSERT_NO_MORE_ENTRIES();
 
     ASSERT_EQUALS(map.size(), 2);
@@ -625,10 +688,13 @@ TEST_BEGIN(map_iterator_remove_only_once_for_all_entries)
     SETUP_ITERATOR_MAP();
 
     #ifndef YH_STRUCTURES_MAPS_SORTEDARRAYMAP_H
-    ASSERT_NEXT_ENTRY_IS(e, b, true, false);
-    ASSERT_NEXT_ENTRY_IS(f, y, true, false);
-    ASSERT_NEXT_ENTRY_IS(g, c, true, false);
-    ASSERT_NEXT_ENTRY_IS(h, a, true, false);
+    const bool removeElements [] = {true, true, true, true};
+    const bool checkRemovedIsHidden [] = {false, false, false, false};
+    ASSERT_ENTRIES_OPS(visitor, removeElements, checkRemovedIsHidden);
+    ASSERT_VISITOR_CONTAINS(visitor, e, b);
+    ASSERT_VISITOR_CONTAINS(visitor, f, y);
+    ASSERT_VISITOR_CONTAINS(visitor, g, c);
+    ASSERT_VISITOR_CONTAINS(visitor, h, a);
     #else
     ASSERT_NEXT_ENTRY_IS(f, y, true, false);
     ASSERT_NEXT_ENTRY_IS(e, b, true, false);
@@ -651,10 +717,13 @@ TEST_BEGIN(map_iterator_removed_even_elements_are_not_visible)
     SETUP_ITERATOR_MAP();
 
     #ifndef YH_STRUCTURES_MAPS_SORTEDARRAYMAP_H
-    ASSERT_NEXT_ENTRY_IS(e, b, false, true);
-    ASSERT_NEXT_ENTRY_IS(f, y, true, true);
-    ASSERT_NEXT_ENTRY_IS(g, c, false, true);
-    ASSERT_NEXT_ENTRY_IS(h, a, true, true);
+    const bool removeElements [] = {false, true, false, true};
+    const bool checkRemovedIsHidden [] = {true, true, true, true};
+    ASSERT_ENTRIES_OPS(visitor, removeElements, checkRemovedIsHidden);
+    ASSERT_VISITOR_CONTAINS(visitor, e, b);
+    ASSERT_VISITOR_CONTAINS(visitor, f, y);
+    ASSERT_VISITOR_CONTAINS(visitor, g, c);
+    ASSERT_VISITOR_CONTAINS(visitor, h, a);
     ASSERT_NO_MORE_ENTRIES();
 
     ASSERT_EQUALS(map.size(), 2);
@@ -683,10 +752,13 @@ TEST_BEGIN(map_iterator_removed_odd_elements_are_not_visible)
     SETUP_ITERATOR_MAP();
 
     #ifndef YH_STRUCTURES_MAPS_SORTEDARRAYMAP_H
-    ASSERT_NEXT_ENTRY_IS(e, b, true, true);
-    ASSERT_NEXT_ENTRY_IS(f, y, false, true);
-    ASSERT_NEXT_ENTRY_IS(g, c, true, true);
-    ASSERT_NEXT_ENTRY_IS(h, a, false, true);
+    const bool removeElements [] = {true, false, true, false};
+    const bool checkRemovedIsHidden [] = {true, true, true, true};
+    ASSERT_ENTRIES_OPS(visitor, removeElements, checkRemovedIsHidden);
+    ASSERT_VISITOR_CONTAINS(visitor, e, b);
+    ASSERT_VISITOR_CONTAINS(visitor, f, y);
+    ASSERT_VISITOR_CONTAINS(visitor, g, c);
+    ASSERT_VISITOR_CONTAINS(visitor, h, a);
     ASSERT_NO_MORE_ENTRIES();
 
     ASSERT_EQUALS(map.size(), 2);
@@ -715,10 +787,13 @@ TEST_BEGIN(map_iterator_removed_all_elements_are_not_visible)
     SETUP_ITERATOR_MAP();
 
     #ifndef YH_STRUCTURES_MAPS_SORTEDARRAYMAP_H
-    ASSERT_NEXT_ENTRY_IS(e, b, true, true);
-    ASSERT_NEXT_ENTRY_IS(f, y, true, true);
-    ASSERT_NEXT_ENTRY_IS(g, c, true, true);
-    ASSERT_NEXT_ENTRY_IS(h, a, true, true);
+    const bool removeElements [] = {true, true, true, true};
+    const bool checkRemovedIsHidden [] = {true, true, true, true};
+    ASSERT_ENTRIES_OPS(visitor, removeElements, checkRemovedIsHidden);
+    ASSERT_VISITOR_CONTAINS(visitor, e, b);
+    ASSERT_VISITOR_CONTAINS(visitor, f, y);
+    ASSERT_VISITOR_CONTAINS(visitor, g, c);
+    ASSERT_VISITOR_CONTAINS(visitor, h, a);
     #else
     ASSERT_NEXT_ENTRY_IS(f, y, true, true);
     ASSERT_NEXT_ENTRY_IS(e, b, true, true);
@@ -738,7 +813,7 @@ TEST_END()
 
 TEST_BEGIN(map_iterator_remove_some)
 {
-    MAP_TYPE<int, int> map;
+    CONSTRUCT_EMPTY_MAP(map);
     int e = 18;
     int f = -6;
     int g = 59;

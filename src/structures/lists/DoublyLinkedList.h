@@ -100,7 +100,7 @@ namespace yh {
                      * @param index The index of the node requested [0, elementsCount).
                      * @return The node requested.
                      */
-                    Node *getNode(const size_t index) {
+                    Node *getNode(const size_t index) const {
                         Node *node;
 
                         if (index <= elementsCount / 2) {
@@ -153,7 +153,7 @@ namespace yh {
                      * @brief Gets the number of elements in the list.
                      * @return The number of elements in the list.
                      */
-                    virtual size_t size() override {
+                    virtual size_t size() const override {
                         return elementsCount;
                     }
 
@@ -197,7 +197,7 @@ namespace yh {
                      * @param index The index of the requested element [ 0 : size() ).
                      * @return The requested element, or nullptr if index is invalid.
                      */
-                    virtual T *get(const size_t index) override {
+                    virtual T *get(const size_t index) const override {
                         if (index >= elementsCount) {
                             return nullptr;
                         } else if (index == 0) {
@@ -300,7 +300,7 @@ namespace yh {
                      * @return The element at the head of the list, or nullptr if the list is empty.
                      * @see get()
                      */
-                    virtual T *getHead() override {
+                    virtual T *getHead() const override {
                         return (elementsCount != 0) ? head->data : nullptr;
                     }
 
@@ -310,7 +310,7 @@ namespace yh {
                      * @return The element at the tail of the list, or nullptr if the list is empty.
                      * @see get()
                      */
-                    virtual T *getTail() override {
+                    virtual T *getTail() const override {
                         return (elementsCount != 0) ? tail->data : nullptr;
                     }
 
