@@ -1,9 +1,9 @@
 var dir_b69a7934969d60afb70d61981b8535e0 =
 [
-    [ "heap_sort.h", "heap__sort_8h.html", "heap__sort_8h" ],
-    [ "insertion_sort.h", "insertion__sort_8h.html", "insertion__sort_8h" ],
-    [ "merge_sort.h", "merge__sort_8h.html", "merge__sort_8h" ],
-    [ "quick_sort.h", "quick__sort_8h.html", "quick__sort_8h" ],
-    [ "selection_sort.h", "selection__sort_8h.html", "selection__sort_8h" ],
-    [ "sort.h", "sort_8h.html", null ]
+    [ "HeapSort.h", "HeapSort_8h.html", "HeapSort_8h" ],
+    [ "InsertionSort.h", "InsertionSort_8h.html", "InsertionSort_8h" ],
+    [ "MergeSort.h", "MergeSort_8h.html", "MergeSort_8h" ],
+    [ "QuickSort.h", "QuickSort_8h.html", "QuickSort_8h" ],
+    [ "SelectionSort.h", "SelectionSort_8h.html", "SelectionSort_8h" ],
+    [ "Sort.h", "Sort_8h.html", "Sort_8h" ]
 ];

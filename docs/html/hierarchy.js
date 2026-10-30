@@ -33,6 +33,13 @@ var hierarchy =
     [ "yh::structures::queues::Queue< T >", "classyh_1_1structures_1_1queues_1_1Queue.html", [
       [ "yh::structures::queues::LinkedQueue< T >", "classyh_1_1structures_1_1queues_1_1LinkedQueue.html", null ]
     ] ],
+    [ "yh::algo::Sort< T >", "classyh_1_1algo_1_1Sort.html", [
+      [ "yh::algo::HeapSort< T >", "classyh_1_1algo_1_1HeapSort.html", null ],
+      [ "yh::algo::InsertionSort< T >", "classyh_1_1algo_1_1InsertionSort.html", null ],
+      [ "yh::algo::MergeSort< T >", "classyh_1_1algo_1_1MergeSort.html", null ],
+      [ "yh::algo::QuickSort< T >", "classyh_1_1algo_1_1QuickSort.html", null ],
+      [ "yh::algo::SelectionSort< T >", "classyh_1_1algo_1_1SelectionSort.html", null ]
+    ] ],
     [ "yh::structures::stacks::Stack< T >", "classyh_1_1structures_1_1stacks_1_1Stack.html", [
       [ "yh::structures::stacks::LinkedStack< T >", "classyh_1_1structures_1_1stacks_1_1LinkedStack.html", null ]
     ] ],

@@ -7,7 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=11" />
     <meta name="generator" content="Doxygen 1.14.0" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>C++ Data Structs &amp; Algo: src/algo/sort/selection_sort.h File Reference</title>
+    <title>C++ Data Structs &amp; Algo: yh::algo::QuickSort&lt; T &gt; Class Template Reference</title>
     <link rel="icon" href="favicon_rounded.svg" type="image/x-icon" />
     <link href="tabs.css" rel="stylesheet" type="text/css" />
     <script type="text/javascript" src="jquery.js"></script>
@@ -88,7 +88,7 @@ $(function() {
   </div>
 </div>
 <script type="text/javascript">
-$(function(){initNavTree('selection__sort_8h.html','',''); });
+$(function(){initNavTree('classyh_1_1algo_1_1QuickSort.html','','classyh_1_1algo_1_1QuickSort-members'); });
 </script>
 <div id="container">
 <div id="doc-content">
@@ -114,40 +114,84 @@ $(function(){initNavTree('selection__sort_8h.html','',''); });
 </div>
 
 <div class="header">
-  <div class="headertitle"><div class="title">selection_sort.h File Reference</div></div>
+  <div class="headertitle"><div class="title">yh::algo::QuickSort&lt; T &gt; Class Template Reference</div></div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><code>#include &lt;cstddef&gt;</code><br />
-</div>
-<p><a href="selection__sort_8h_source.html">Go to the source code of this file.</a></p>
+<div class="dynheader">
+Inheritance diagram for yh::algo::QuickSort&lt; T &gt;:</div>
+<div class="dyncontent">
+ <div class="center">
+  <img src="classyh_1_1algo_1_1QuickSort.png" usemap="#yh_3A_3Aalgo_3A_3AQuickSort_3C_20T_20_3E_map" alt=""/>
+  <map id="yh_3A_3Aalgo_3A_3AQuickSort_3C_20T_20_3E_map" name="yh_3A_3Aalgo_3A_3AQuickSort_3C_20T_20_3E_map">
+<area href="classyh_1_1algo_1_1Sort.html" title="Interface of sorting algorithms." alt="yh::algo::Sort&lt; T &gt;" shape="rect" coords="0,0,149,24"/>
+  </map>
+</div></div>
 <table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 id="header-namespaces" class="groupheader"><a id="namespaces" name="namespaces"></a>
-Namespaces</h2></td></tr>
-<tr class="memitem:yh_3A_3Aalgo" id="r_yh_3A_3Aalgo"><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceyh_1_1algo.html">yh::algo</a></td></tr>
-<tr class="memdesc:namespaceyh_1_1algo"><td class="mdescLeft">&#160;</td><td class="mdescRight">Interfaces and implementations of algorithms. <br /></td></tr>
-<tr class="memitem:yh_3A_3Aalgo_3A_3Asort" id="r_yh_3A_3Aalgo_3A_3Asort"><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceyh_1_1algo_1_1sort.html">yh::algo::sort</a></td></tr>
-<tr class="memdesc:namespaceyh_1_1algo_1_1sort"><td class="mdescLeft">&#160;</td><td class="mdescRight">Interfaces and implementations of sorting algorithms. <br /></td></tr>
+<tr class="heading"><td colspan="2"><h2 id="header-pub-methods" class="groupheader"><a id="pub-methods" name="pub-methods"></a>
+Public Member Functions</h2></td></tr>
+<tr class="memitem:a7f775413f79ad297b9e8e75f263f2219" id="r_a7f775413f79ad297b9e8e75f263f2219"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a7f775413f79ad297b9e8e75f263f2219">sort</a> (T *const elements, const size_t start, const size_t end) override</td></tr>
+<tr class="memdesc:a7f775413f79ad297b9e8e75f263f2219"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sorts an array with quick sort.  <br /></td></tr>
 </table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 id="header-func-members" class="groupheader"><a id="func-members" name="func-members"></a>
-Functions</h2></td></tr>
-<tr class="memitem:a8ea53d9ad44fd65a7b72fb329095c731" id="r_a8ea53d9ad44fd65a7b72fb329095c731"><td class="memTemplParams" colspan="2"><a id="a8ea53d9ad44fd65a7b72fb329095c731" name="a8ea53d9ad44fd65a7b72fb329095c731"></a>
-template&lt;typename T&gt; </td></tr>
-<tr class="memitem:a8ea53d9ad44fd65a7b72fb329095c731 template"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><b>yh::algo::sort::_selection_sort::swap</b> (T &amp;lhs, T &amp;rhs)</td></tr>
-<tr class="memitem:ac57f9ccc308860ad422bf61dede5d968" id="r_ac57f9ccc308860ad422bf61dede5d968"><td class="memTemplParams" colspan="2">template&lt;typename T&gt; </td></tr>
-<tr class="memitem:ac57f9ccc308860ad422bf61dede5d968 template"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceyh_1_1algo_1_1sort.html#ac57f9ccc308860ad422bf61dede5d968">yh::algo::sort::selection_sort</a> (T *const elements, const size_t start, const size_t end)</td></tr>
-<tr class="memdesc:ac57f9ccc308860ad422bf61dede5d968"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sorts an array with selection sort.  <br /></td></tr>
+<tr class="heading"><td colspan="2"><h2 id="header-inherited" class="groupheader"><a id="inherited" name="inherited"></a>
+Additional Inherited Members</h2></td></tr>
+<tr class="inherit_header pro_methods_classyh_1_1algo_1_1Sort"><td colspan="2" onclick="javascript:dynsection.toggleInherit('pro_methods_classyh_1_1algo_1_1Sort')"><span class="dynarrow"><span class="arrowhead closed"></span></span>Protected Member Functions inherited from <a class="el" href="classyh_1_1algo_1_1Sort.html">yh::algo::Sort&lt; T &gt;</a></td></tr>
+<tr class="memitem:a170f0f7d50d09c569f7549ffbbfea80e inherit pro_methods_classyh_1_1algo_1_1Sort" id="r_a170f0f7d50d09c569f7549ffbbfea80e"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classyh_1_1algo_1_1Sort.html#a170f0f7d50d09c569f7549ffbbfea80e">swap</a> (T &amp;lhs, T &amp;rhs)</td></tr>
+<tr class="memdesc:a170f0f7d50d09c569f7549ffbbfea80e inherit pro_methods_classyh_1_1algo_1_1Sort"><td class="mdescLeft">&#160;</td><td class="mdescRight">Swaps 2 elements.  <br /></td></tr>
 </table>
-<a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>The selection sort implementation in C++.</p>
-<dl class="section copyright"><dt>Copyright</dt><dd>Copyright (c) 2025 YH Choi. All rights reserved.</dd></dl>
-<p>Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:</p>
-<ol type="1">
-<li>Redistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer.</li>
-<li>Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.</li>
-<li>Neither the name of the copyright holder nor the names of its contributors may be used to endorse or promote products derived from this software without specific prior written permission.</li>
-</ol>
-<p>THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE. </p>
-</div></div><!-- contents -->
+<a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">Member Function Documentation</h2>
+<a id="a7f775413f79ad297b9e8e75f263f2219" name="a7f775413f79ad297b9e8e75f263f2219"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7f775413f79ad297b9e8e75f263f2219">&#9670;&#160;</a></span>sort()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void <a class="el" href="classyh_1_1algo_1_1QuickSort.html">yh::algo::QuickSort</a>&lt; T &gt;::sort </td>
+          <td>(</td>
+          <td class="paramtype">T *const</td>          <td class="paramname"><span class="paramname"><em>elements</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const size_t</td>          <td class="paramname"><span class="paramname"><em>start</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const size_t</td>          <td class="paramname"><span class="paramname"><em>end</em></span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel inline">inline</span><span class="mlabel override">override</span><span class="mlabel virtual">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Sorts an array with quick sort. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">T</td><td>The type of elements to be sorted. </td></tr>
+    <tr><td class="paramname">elements</td><td>The array of elements to be sorted. This same array will be sorted after this function returns. </td></tr>
+    <tr><td class="paramname">start</td><td>The index of the first element to be sorted. </td></tr>
+    <tr><td class="paramname">end</td><td>The index of the first element not to be sorted after <code>start</code>. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Implements <a class="el" href="classyh_1_1algo_1_1Sort.html#ac81cd738abaeff38a74989ca067c502b">yh::algo::Sort&lt; T &gt;</a>.</p>
+
+</div>
+</div>
+<hr/>The documentation for this class was generated from the following file:<ul>
+<li>src/algo/sort/<a class="el" href="QuickSort_8h_source.html">QuickSort.h</a></li>
+</ul>
+</div><!-- contents -->
 </div><!-- doc-content -->
 <div id="page-nav" class="page-nav-panel">
 <div id="page-nav-resize-handle"></div>
@@ -161,7 +205,7 @@ template&lt;typename T&gt; </td></tr>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a href="dir_8111f045ab156cab490d6e0f8a4c6c64.html">algo</a></li><li class="navelem"><a href="dir_b69a7934969d60afb70d61981b8535e0.html">sort</a></li><li class="navelem"><a href="selection__sort_8h.html">selection_sort.h</a></li>
+    <li class="navelem"><b>yh</b></li><li class="navelem"><a href="namespaceyh_1_1algo.html">algo</a></li><li class="navelem"><a href="classyh_1_1algo_1_1QuickSort.html">QuickSort</a></li>
     <li class="footer"><!-- insert your copyright notice here if wanted -->Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.14.0 </li>
   </ul>
 </div>
