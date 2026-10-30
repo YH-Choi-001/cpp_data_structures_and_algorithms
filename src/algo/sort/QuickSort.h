@@ -1,7 +1,7 @@
 /**
- * @file insertion_sort.h The insertion sort implementation in C++.
+ * @file QuickSort.h The quick sort implementation in C++.
  * 
- * @copyright Copyright (c) 2025 YH Choi. All rights reserved.
+ * @copyright Copyright (c) 2026 YH Choi. All rights reserved.
  * 
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the following conditions are met:
@@ -29,47 +29,44 @@
  * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#ifndef YH_ALGO_SORT_INSERTION_SORT_H
-#define YH_ALGO_SORT_INSERTION_SORT_H
+#ifndef YH_ALGO_SORT_QUICK_SORT_H
+#define YH_ALGO_SORT_QUICK_SORT_H
 
-#ifdef ARDUINO
-#include <stddef.h>
-#else
-#include <cstddef>
-#endif
+#include "Sort.h"
 
 namespace yh {
     namespace algo {
-        namespace sort {
-            namespace _insertion_sort {
-                template<typename T>
-                inline void swap(T &lhs, T &rhs) {
-                    T temp = lhs; // copy lhs to temp
-                    lhs = rhs; // move rhs to lhs
-                    rhs = temp; // move temp to rhs
-                }
-            }
-            /**
-             * @brief Sorts an array with insertion sort.
-             * @param T The type of elements to be sorted.
-             * @param elements The array of elements to be sorted.  This same array will be sorted after this function returns.
-             * @param start The index of the first element to be sorted.
-             * @param end The index of the first element not to be sorted after <code>start</code>.
-             */
-            template<typename T>
-            inline void insertion_sort(T *const elements, const size_t start, const size_t end) {
-                if (start + 1 >= end) {
-                    return;
-                }
-
-                for (size_t i = start + 1; i < end; ++i) {
-                    for (size_t j = i; (j > start) && (elements[j] < elements[j - 1]); --j) {
-                        _insertion_sort::swap(elements[j], elements[j - 1]);
+        template<typename T>
+        class QuickSort : public Sort<T> {
+            public:
+                /**
+                 * @brief Sorts an array with quick sort.
+                 * @param T The type of elements to be sorted.
+                 * @param elements The array of elements to be sorted.  This same array will be sorted after this function returns.
+                 * @param start The index of the first element to be sorted.
+                 * @param end The index of the first element not to be sorted after <code>start</code>.
+                 */
+                void sort(T *const elements, const size_t start, const size_t end) override {
+                    if (start + 1 >= end) {
+                        return;
                     }
+
+                    // set the last element as pivot
+                    T *const pivot = elements + end - 1;
+
+                    size_t l = start - 1;
+                    for (size_t r = start; r <= (end - 1); ++r) {
+                        if (elements[r] < (*pivot) || r == (end - 1)) {
+                            ++l;
+                            this->swap(elements[l], elements[r]);
+                        }
+                    }
+
+                    this->sort(elements, start, l);
+                    this->sort(elements, l + 1, end);
                 }
-            }
-        }
+        };
     }
 }
 
-#endif // #ifndef YH_ALGO_SORT_INSERTION_SORT_H
+#endif // #ifndef YH_ALGO_SORT_QUICK_SORT_H

@@ -1,7 +1,7 @@
 /**
- * @file test_insertion_sort.cpp - Tests for insertion sort.
+ * @file InsertionSort.h The insertion sort implementation in C++.
  * 
- * @copyright Copyright (c) 2025 YH Choi. All rights reserved.
+ * @copyright Copyright (c) 2026 YH Choi. All rights reserved.
  * 
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the following conditions are met:
@@ -29,31 +29,36 @@
  * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#include "../../../src/algo/sort/insertion_sort.h"
+#ifndef YH_ALGO_SORT_INSERTION_SORT_H
+#define YH_ALGO_SORT_INSERTION_SORT_H
 
-#include <iostream>
+#include "Sort.h"
 
-template<typename T>
-bool check(T *const elements, const T *const results, const size_t len) {
-    yh::algo::sort::insertion_sort(elements, 0, len);
-    for (size_t i = 0; i < len; i++) {
-        if (elements[i] != results[i]) {
-            return false;
-        }
+namespace yh {
+    namespace algo {
+        template<typename T>
+        class InsertionSort : public Sort<T> {
+            public:
+                /**
+                 * @brief Sorts an array with insertion sort.
+                 * @param T The type of elements to be sorted.
+                 * @param elements The array of elements to be sorted.  This same array will be sorted after this function returns.
+                 * @param start The index of the first element to be sorted.
+                 * @param end The index of the first element not to be sorted after <code>start</code>.
+                 */
+                void sort(T *const elements, const size_t start, const size_t end) override {
+                    if (start + 1 >= end) {
+                        return;
+                    }
+
+                    for (size_t i = start + 1; i < end; ++i) {
+                        for (size_t j = i; (j > start) && (elements[j] < elements[j - 1]); --j) {
+                            this->swap(elements[j], elements[j - 1]);
+                        }
+                    }
+                }
+        };
     }
-    return true;
 }
 
-#include "test_sort.h"
-
-int main() {
-    std::cout << "Testing " << __FILE__ << std::endl;
-    const unsigned int failed_testcase_count = test();
-    if (failed_testcase_count == 0) {
-        std::cout << "All passed: ";
-    } else {
-        std::cout << failed_testcase_count << " failed: ";
-    }
-    std::cout << __FILE__ << std::endl;
-    return failed_testcase_count;
-}
+#endif // #ifndef YH_ALGO_SORT_INSERTION_SORT_H

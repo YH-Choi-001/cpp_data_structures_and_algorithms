@@ -1,5 +1,5 @@
 /**
- * @file sort.h The sort namespace documentation.
+ * @file testMergeSort.cpp - Tests for merge sort.
  * 
  * @copyright Copyright (c) 2025 YH Choi. All rights reserved.
  * 
@@ -29,18 +29,6 @@
  * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#ifndef YH_ALGO_SORT_H
-#define YH_ALGO_SORT_H
-
-namespace yh {
-    namespace algo {
-        /**
-         * Sorting algorithms are placed under this namespace.
-         * @brief Interfaces and implementations of sorting algorithms.
-         */
-        namespace sort {
-        }
-    }
-}
-
-#endif // #ifndef YH_ALGO_SORT_H
+#define SORT_TYPE MergeSort
+#include "../../../src/algo/sort/MergeSort.h"
+#include "_testSort.cpp"
