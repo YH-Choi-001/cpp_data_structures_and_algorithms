@@ -29,83 +29,65 @@
  * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#include "../../test.h"
-#include "../../../src/structures/stacks/LinkedStack.h"
+#include "LeakCheckedTest.h"
 
-#include <iostream>
-#include <string>
-#include <sstream>
+#include "../../../src/structures/stacks/LinkedStack.h"
 
 using yh::structures::stacks::LinkedStack;
 
-TEST_BEGIN(empty_testcase)
-{
+class LinkedStackTest : public tests::LeakCheckedTest {};
+
+TEST_F(LinkedStackTest, EmptyTestcase) {
     //
 }
-TEST_END()
 
-TEST_BEGIN(constructor_memory_leak)
-{
+TEST_F(LinkedStackTest, ConstructorMemoryLeak) {
     LinkedStack<int> stack;
 }
-TEST_END()
 
-TEST_BEGIN(stack_is_empty_for_empty_stack)
-{
+TEST_F(LinkedStackTest, IsEmptyForEmptyStack) {
     LinkedStack<int> stack;
-    ASSERT_TRUE(stack.isEmpty());
+    EXPECT_TRUE(stack.isEmpty());
 }
-TEST_END()
 
-TEST_BEGIN(stack_is_not_empty_for_1_element_stack)
-{
+TEST_F(LinkedStackTest, IsNotEmptyFor1ElementStack) {
     LinkedStack<int> stack;
     int x = 35;
     stack.push(&x);
-    ASSERT_FALSE(stack.isEmpty());
+    EXPECT_FALSE(stack.isEmpty());
 }
-TEST_END()
 
-TEST_BEGIN(stack_is_not_empty_for_2_element_stack)
-{
+TEST_F(LinkedStackTest, IsNotEmptyFor2ElementStack) {
     LinkedStack<int> stack;
     int x = 35;
     int y = -12;
     stack.push(&x);
     stack.push(&y);
-    ASSERT_FALSE(stack.isEmpty());
+    EXPECT_FALSE(stack.isEmpty());
 }
-TEST_END()
 
-TEST_BEGIN(stack_size_is_0_for_empty_stack)
-{
+TEST_F(LinkedStackTest, SizeIs0ForEmptyStack) {
     LinkedStack<int> stack;
-    ASSERT_EQUALS(stack.size(), 0);
+    EXPECT_EQ(stack.size(), 0u);
 }
-TEST_END()
 
-TEST_BEGIN(stack_size_is_1_for_1_element_stack)
-{
+TEST_F(LinkedStackTest, SizeIs1For1ElementStack) {
     LinkedStack<int> stack;
     int x = 35;
     stack.push(&x);
-    ASSERT_EQUALS(stack.size(), 1);
+    EXPECT_EQ(stack.size(), 1u);
 }
-TEST_END()
 
-TEST_BEGIN(stack_size_is_2_for_2_element_stack)
-{
+TEST_F(LinkedStackTest, SizeIs2For2ElementStack) {
     LinkedStack<int> stack;
     int x = 35;
     int y = -12;
     stack.push(&x);
     stack.push(&y);
-    ASSERT_EQUALS(stack.size(), 2);
+    EXPECT_EQ(stack.size(), 2u);
 }
-TEST_END()
 
-TEST_BEGIN(stack_size_is_3_for_3_element_stack)
-{
+TEST_F(LinkedStackTest, SizeIs3For3ElementStack) {
     LinkedStack<int> stack;
     int x = 35;
     int y = -12;
@@ -113,12 +95,10 @@ TEST_BEGIN(stack_size_is_3_for_3_element_stack)
     stack.push(&x);
     stack.push(&y);
     stack.push(&z);
-    ASSERT_EQUALS(stack.size(), 3);
+    EXPECT_EQ(stack.size(), 3u);
 }
-TEST_END()
 
-TEST_BEGIN(stack_size_is_4_for_4_element_stack)
-{
+TEST_F(LinkedStackTest, SizeIs4For4ElementStack) {
     LinkedStack<int> stack;
     int x = 35;
     int y = -12;
@@ -128,39 +108,31 @@ TEST_BEGIN(stack_size_is_4_for_4_element_stack)
     stack.push(&y);
     stack.push(&z);
     stack.push(&a);
-    ASSERT_EQUALS(stack.size(), 4);
+    EXPECT_EQ(stack.size(), 4u);
 }
-TEST_END()
 
-TEST_BEGIN(stack_peeking_gives_nullptr_for_empty_stack)
-{
+TEST_F(LinkedStackTest, PeekingGivesNullptrForEmptyStack) {
     LinkedStack<int> stack;
-    ASSERT_IS_NULLPTR(stack.peek());
+    EXPECT_EQ(stack.peek(), nullptr);
 }
-TEST_END()
 
-TEST_BEGIN(stack_peeking_gives_top_element_for_1_element_stack)
-{
+TEST_F(LinkedStackTest, PeekingGivesTopElementFor1ElementStack) {
     LinkedStack<int> stack;
     int x = 35;
     stack.push(&x);
-    ASSERT_EQUALS(stack.peek(), &x);
+    EXPECT_EQ(stack.peek(), &x);
 }
-TEST_END()
 
-TEST_BEGIN(stack_peeking_gives_top_element_for_2_element_stack)
-{
+TEST_F(LinkedStackTest, PeekingGivesTopElementFor2ElementStack) {
     LinkedStack<int> stack;
     int x = 35;
     int y = -12;
     stack.push(&x);
     stack.push(&y);
-    ASSERT_EQUALS(stack.peek(), &y);
+    EXPECT_EQ(stack.peek(), &y);
 }
-TEST_END()
 
-TEST_BEGIN(stack_peeking_gives_top_element_for_3_element_stack)
-{
+TEST_F(LinkedStackTest, PeekingGivesTopElementFor3ElementStack) {
     LinkedStack<int> stack;
     int x = 35;
     int y = -12;
@@ -168,39 +140,31 @@ TEST_BEGIN(stack_peeking_gives_top_element_for_3_element_stack)
     stack.push(&x);
     stack.push(&y);
     stack.push(&z);
-    ASSERT_EQUALS(stack.peek(), &z);
+    EXPECT_EQ(stack.peek(), &z);
 }
-TEST_END()
 
-TEST_BEGIN(stack_popping_gives_nullptr_for_empty_stack)
-{
+TEST_F(LinkedStackTest, PoppingGivesNullptrForEmptyStack) {
     LinkedStack<int> stack;
-    ASSERT_IS_NULLPTR(stack.pop());
+    EXPECT_EQ(stack.pop(), nullptr);
 }
-TEST_END()
 
-TEST_BEGIN(stack_popping_gives_top_element_for_1_element_stack)
-{
+TEST_F(LinkedStackTest, PoppingGivesTopElementFor1ElementStack) {
     LinkedStack<int> stack;
     int x = 35;
     stack.push(&x);
-    ASSERT_EQUALS(stack.pop(), &x);
+    EXPECT_EQ(stack.pop(), &x);
 }
-TEST_END()
 
-TEST_BEGIN(stack_popping_gives_top_element_for_2_element_stack)
-{
+TEST_F(LinkedStackTest, PoppingGivesTopElementFor2ElementStack) {
     LinkedStack<int> stack;
     int x = 35;
     int y = -12;
     stack.push(&x);
     stack.push(&y);
-    ASSERT_EQUALS(stack.pop(), &y);
+    EXPECT_EQ(stack.pop(), &y);
 }
-TEST_END()
 
-TEST_BEGIN(stack_popping_gives_top_element_for_3_element_stack)
-{
+TEST_F(LinkedStackTest, PoppingGivesTopElementFor3ElementStack) {
     LinkedStack<int> stack;
     int x = 35;
     int y = -12;
@@ -208,12 +172,10 @@ TEST_BEGIN(stack_popping_gives_top_element_for_3_element_stack)
     stack.push(&x);
     stack.push(&y);
     stack.push(&z);
-    ASSERT_EQUALS(stack.pop(), &z);
+    EXPECT_EQ(stack.pop(), &z);
 }
-TEST_END()
 
-TEST_BEGIN(stack_popping_twice_gives_top_element_for_3_element_stack)
-{
+TEST_F(LinkedStackTest, PoppingTwiceGivesTopElementFor3ElementStack) {
     LinkedStack<int> stack;
     int x = 35;
     int y = -12;
@@ -221,43 +183,35 @@ TEST_BEGIN(stack_popping_twice_gives_top_element_for_3_element_stack)
     stack.push(&x);
     stack.push(&y);
     stack.push(&z);
-    ASSERT_EQUALS(stack.pop(), &z);
-    ASSERT_EQUALS(stack.pop(), &y);
+    EXPECT_EQ(stack.pop(), &z);
+    EXPECT_EQ(stack.pop(), &y);
 }
-TEST_END()
 
-TEST_BEGIN(stack_size_is_0_after_popping_from_empty_stack)
-{
+TEST_F(LinkedStackTest, SizeIs0AfterPoppingFromEmptyStack) {
     LinkedStack<int> stack;
     stack.pop();
-    ASSERT_EQUALS(stack.size(), 0);
+    EXPECT_EQ(stack.size(), 0u);
 }
-TEST_END()
 
-TEST_BEGIN(stack_size_is_0_after_popping_from_1_element_stack)
-{
+TEST_F(LinkedStackTest, SizeIs0AfterPoppingFrom1ElementStack) {
     LinkedStack<int> stack;
     int x = 35;
     stack.push(&x);
     stack.pop();
-    ASSERT_EQUALS(stack.size(), 0);
+    EXPECT_EQ(stack.size(), 0u);
 }
-TEST_END()
 
-TEST_BEGIN(stack_size_is_1_after_popping_from_2_element_stack)
-{
+TEST_F(LinkedStackTest, SizeIs1AfterPoppingFrom2ElementStack) {
     LinkedStack<int> stack;
     int x = 35;
     int y = -12;
     stack.push(&x);
     stack.push(&y);
     stack.pop();
-    ASSERT_EQUALS(stack.size(), 1);
+    EXPECT_EQ(stack.size(), 1u);
 }
-TEST_END()
 
-TEST_BEGIN(stack_size_is_2_after_popping_from_3_element_stack)
-{
+TEST_F(LinkedStackTest, SizeIs2AfterPoppingFrom3ElementStack) {
     LinkedStack<int> stack;
     int x = 35;
     int y = -12;
@@ -266,12 +220,10 @@ TEST_BEGIN(stack_size_is_2_after_popping_from_3_element_stack)
     stack.push(&y);
     stack.push(&z);
     stack.pop();
-    ASSERT_EQUALS(stack.size(), 2);
+    EXPECT_EQ(stack.size(), 2u);
 }
-TEST_END()
 
-TEST_BEGIN(stack_size_is_1_after_popping_twice_from_3_element_stack)
-{
+TEST_F(LinkedStackTest, SizeIs1AfterPoppingTwiceFrom3ElementStack) {
     LinkedStack<int> stack;
     int x = 35;
     int y = -12;
@@ -280,14 +232,12 @@ TEST_BEGIN(stack_size_is_1_after_popping_twice_from_3_element_stack)
     stack.push(&y);
     stack.push(&z);
     stack.pop();
-    ASSERT_EQUALS(stack.size(), 2);
+    EXPECT_EQ(stack.size(), 2u);
     stack.pop();
-    ASSERT_EQUALS(stack.size(), 1);
+    EXPECT_EQ(stack.size(), 1u);
 }
-TEST_END()
 
-TEST_BEGIN(stack_is_not_empty_for_3_element_stack_popped_and_pushed)
-{
+TEST_F(LinkedStackTest, IsNotEmptyFor3ElementStackPoppedAndPushed) {
     LinkedStack<int> stack;
     int x = 35;
     int y = -12;
@@ -298,12 +248,10 @@ TEST_BEGIN(stack_is_not_empty_for_3_element_stack_popped_and_pushed)
     stack.push(&z);
     stack.pop();
     stack.push(&a);
-    ASSERT_FALSE(stack.isEmpty());
+    EXPECT_FALSE(stack.isEmpty());
 }
-TEST_END()
 
-TEST_BEGIN(stack_size_is_3_for_3_element_stack_popped_and_pushed)
-{
+TEST_F(LinkedStackTest, SizeIs3For3ElementStackPoppedAndPushed) {
     LinkedStack<int> stack;
     int x = 35;
     int y = -12;
@@ -314,12 +262,10 @@ TEST_BEGIN(stack_size_is_3_for_3_element_stack_popped_and_pushed)
     stack.push(&z);
     stack.pop();
     stack.push(&a);
-    ASSERT_EQUALS(stack.size(), 3);
+    EXPECT_EQ(stack.size(), 3u);
 }
-TEST_END()
 
-TEST_BEGIN(stack_peeking_gives_top_element_for_3_element_stack_popped_and_pushed)
-{
+TEST_F(LinkedStackTest, PeekingGivesTopElementFor3ElementStackPoppedAndPushed) {
     LinkedStack<int> stack;
     int x = 35;
     int y = -12;
@@ -330,12 +276,10 @@ TEST_BEGIN(stack_peeking_gives_top_element_for_3_element_stack_popped_and_pushed
     stack.push(&z);
     stack.pop();
     stack.push(&a);
-    ASSERT_EQUALS(stack.peek(), &a);
+    EXPECT_EQ(stack.peek(), &a);
 }
-TEST_END()
 
-TEST_BEGIN(stack_popping_gives_top_element_for_3_element_stack_popped_and_pushed)
-{
+TEST_F(LinkedStackTest, PoppingGivesTopElementFor3ElementStackPoppedAndPushed) {
     LinkedStack<int> stack;
     int x = 35;
     int y = -12;
@@ -346,12 +290,10 @@ TEST_BEGIN(stack_popping_gives_top_element_for_3_element_stack_popped_and_pushed
     stack.push(&z);
     stack.pop();
     stack.push(&a);
-    ASSERT_EQUALS(stack.pop(), &a);
+    EXPECT_EQ(stack.pop(), &a);
 }
-TEST_END()
 
-TEST_BEGIN(stack_is_empty_for_4_element_stack_pushed_and_popped)
-{
+TEST_F(LinkedStackTest, IsEmptyFor4ElementStackPushedAndPopped) {
     LinkedStack<int> stack;
     int x = 35;
     int y = -12;
@@ -365,12 +307,10 @@ TEST_BEGIN(stack_is_empty_for_4_element_stack_pushed_and_popped)
     stack.pop();
     stack.pop();
     stack.pop();
-    ASSERT_TRUE(stack.isEmpty());
+    EXPECT_TRUE(stack.isEmpty());
 }
-TEST_END()
 
-TEST_BEGIN(stack_order_for_4_element_stack)
-{
+TEST_F(LinkedStackTest, OrderFor4ElementStack) {
     LinkedStack<int> stack;
     int x = 35;
     int y = -12;
@@ -385,47 +325,11 @@ TEST_BEGIN(stack_order_for_4_element_stack)
     int *const data3 = stack.pop();
     int *const data4 = stack.pop();
 
-    ASSERT_EQUALS(data, &z);
-    ASSERT_EQUALS(data2, &a);
-    ASSERT_EQUALS(data3, &y);
-    ASSERT_EQUALS(data4, &x);
+    EXPECT_EQ(data, &z);
+    EXPECT_EQ(data2, &a);
+    EXPECT_EQ(data3, &y);
+    EXPECT_EQ(data4, &x);
 
-    ASSERT_TRUE(stack.isEmpty());
-    ASSERT_EQUALS(stack.size(), 0);
+    EXPECT_TRUE(stack.isEmpty());
+    EXPECT_EQ(stack.size(), 0u);
 }
-TEST_END()
-
-const testfunc_t functions [] = {
-    test_empty_testcase,
-    test_constructor_memory_leak,
-    test_stack_is_empty_for_empty_stack,
-    test_stack_is_not_empty_for_1_element_stack,
-    test_stack_is_not_empty_for_2_element_stack,
-    test_stack_size_is_0_for_empty_stack,
-    test_stack_size_is_1_for_1_element_stack,
-    test_stack_size_is_2_for_2_element_stack,
-    test_stack_size_is_3_for_3_element_stack,
-    test_stack_size_is_4_for_4_element_stack,
-    test_stack_peeking_gives_nullptr_for_empty_stack,
-    test_stack_peeking_gives_top_element_for_1_element_stack,
-    test_stack_peeking_gives_top_element_for_2_element_stack,
-    test_stack_peeking_gives_top_element_for_3_element_stack,
-    test_stack_popping_gives_nullptr_for_empty_stack,
-    test_stack_popping_gives_top_element_for_1_element_stack,
-    test_stack_popping_gives_top_element_for_2_element_stack,
-    test_stack_popping_gives_top_element_for_3_element_stack,
-    test_stack_popping_twice_gives_top_element_for_3_element_stack,
-    test_stack_size_is_0_after_popping_from_empty_stack,
-    test_stack_size_is_0_after_popping_from_1_element_stack,
-    test_stack_size_is_1_after_popping_from_2_element_stack,
-    test_stack_size_is_2_after_popping_from_3_element_stack,
-    test_stack_size_is_1_after_popping_twice_from_3_element_stack,
-    test_stack_is_not_empty_for_3_element_stack_popped_and_pushed,
-    test_stack_size_is_3_for_3_element_stack_popped_and_pushed,
-    test_stack_peeking_gives_top_element_for_3_element_stack_popped_and_pushed,
-    test_stack_popping_gives_top_element_for_3_element_stack_popped_and_pushed,
-    test_stack_is_empty_for_4_element_stack_pushed_and_popped,
-    test_stack_order_for_4_element_stack,
-};
-
-MAIN();

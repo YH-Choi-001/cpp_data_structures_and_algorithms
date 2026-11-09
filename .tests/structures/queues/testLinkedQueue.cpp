@@ -29,83 +29,65 @@
  * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#include "../../test.h"
-#include "../../../src/structures/queues/LinkedQueue.h"
+#include "LeakCheckedTest.h"
 
-#include <iostream>
-#include <string>
-#include <sstream>
+#include "../../../src/structures/queues/LinkedQueue.h"
 
 using yh::structures::queues::LinkedQueue;
 
-TEST_BEGIN(empty_testcase)
-{
+class LinkedQueueTest : public tests::LeakCheckedTest {};
+
+TEST_F(LinkedQueueTest, EmptyTestcase) {
     //
 }
-TEST_END()
 
-TEST_BEGIN(constructor_memory_leak)
-{
+TEST_F(LinkedQueueTest, ConstructorMemoryLeak) {
     LinkedQueue<int> queue;
 }
-TEST_END()
 
-TEST_BEGIN(queue_is_empty_for_empty_queue)
-{
+TEST_F(LinkedQueueTest, IsEmptyForEmptyQueue) {
     LinkedQueue<int> queue;
-    ASSERT_TRUE(queue.isEmpty());
+    EXPECT_TRUE(queue.isEmpty());
 }
-TEST_END()
 
-TEST_BEGIN(queue_is_not_empty_for_1_element_queue)
-{
+TEST_F(LinkedQueueTest, IsNotEmptyFor1ElementQueue) {
     LinkedQueue<int> queue;
     int x = 35;
     queue.enqueue(&x);
-    ASSERT_FALSE(queue.isEmpty());
+    EXPECT_FALSE(queue.isEmpty());
 }
-TEST_END()
 
-TEST_BEGIN(queue_is_not_empty_for_2_element_queue)
-{
+TEST_F(LinkedQueueTest, IsNotEmptyFor2ElementQueue) {
     LinkedQueue<int> queue;
     int x = 35;
     int y = -12;
     queue.enqueue(&x);
     queue.enqueue(&y);
-    ASSERT_FALSE(queue.isEmpty());
+    EXPECT_FALSE(queue.isEmpty());
 }
-TEST_END()
 
-TEST_BEGIN(queue_size_is_0_for_empty_queue)
-{
+TEST_F(LinkedQueueTest, SizeIs0ForEmptyQueue) {
     LinkedQueue<int> queue;
-    ASSERT_EQUALS(queue.size(), 0);
+    EXPECT_EQ(queue.size(), 0u);
 }
-TEST_END()
 
-TEST_BEGIN(queue_size_is_1_for_1_element_queue)
-{
+TEST_F(LinkedQueueTest, SizeIs1For1ElementQueue) {
     LinkedQueue<int> queue;
     int x = 35;
     queue.enqueue(&x);
-    ASSERT_EQUALS(queue.size(), 1);
+    EXPECT_EQ(queue.size(), 1u);
 }
-TEST_END()
 
-TEST_BEGIN(queue_size_is_2_for_2_element_queue)
-{
+TEST_F(LinkedQueueTest, SizeIs2For2ElementQueue) {
     LinkedQueue<int> queue;
     int x = 35;
     int y = -12;
     queue.enqueue(&x);
     queue.enqueue(&y);
-    ASSERT_EQUALS(queue.size(), 2);
+    EXPECT_EQ(queue.size(), 2u);
 }
-TEST_END()
 
-TEST_BEGIN(queue_size_is_3_for_3_element_queue)
-{
+TEST_F(LinkedQueueTest, SizeIs3For3ElementQueue) {
     LinkedQueue<int> queue;
     int x = 35;
     int y = -12;
@@ -113,12 +95,10 @@ TEST_BEGIN(queue_size_is_3_for_3_element_queue)
     queue.enqueue(&x);
     queue.enqueue(&y);
     queue.enqueue(&z);
-    ASSERT_EQUALS(queue.size(), 3);
+    EXPECT_EQ(queue.size(), 3u);
 }
-TEST_END()
 
-TEST_BEGIN(queue_size_is_4_for_4_element_queue)
-{
+TEST_F(LinkedQueueTest, SizeIs4For4ElementQueue) {
     LinkedQueue<int> queue;
     int x = 35;
     int y = -12;
@@ -128,39 +108,31 @@ TEST_BEGIN(queue_size_is_4_for_4_element_queue)
     queue.enqueue(&y);
     queue.enqueue(&z);
     queue.enqueue(&a);
-    ASSERT_EQUALS(queue.size(), 4);
+    EXPECT_EQ(queue.size(), 4u);
 }
-TEST_END()
 
-TEST_BEGIN(queue_peeking_gives_nullptr_for_empty_queue)
-{
+TEST_F(LinkedQueueTest, PeekingGivesNullptrForEmptyQueue) {
     LinkedQueue<int> queue;
-    ASSERT_IS_NULLPTR(queue.peek());
+    EXPECT_EQ(queue.peek(), nullptr);
 }
-TEST_END()
 
-TEST_BEGIN(queue_peeking_gives_first_element_for_1_element_queue)
-{
+TEST_F(LinkedQueueTest, PeekingGivesFirstElementFor1ElementQueue) {
     LinkedQueue<int> queue;
     int x = 35;
     queue.enqueue(&x);
-    ASSERT_EQUALS(queue.peek(), &x);
+    EXPECT_EQ(queue.peek(), &x);
 }
-TEST_END()
 
-TEST_BEGIN(queue_peeking_gives_first_element_for_2_element_queue)
-{
+TEST_F(LinkedQueueTest, PeekingGivesFirstElementFor2ElementQueue) {
     LinkedQueue<int> queue;
     int x = 35;
     int y = -12;
     queue.enqueue(&x);
     queue.enqueue(&y);
-    ASSERT_EQUALS(queue.peek(), &x);
+    EXPECT_EQ(queue.peek(), &x);
 }
-TEST_END()
 
-TEST_BEGIN(queue_peeking_gives_first_element_for_3_element_queue)
-{
+TEST_F(LinkedQueueTest, PeekingGivesFirstElementFor3ElementQueue) {
     LinkedQueue<int> queue;
     int x = 35;
     int y = -12;
@@ -168,39 +140,31 @@ TEST_BEGIN(queue_peeking_gives_first_element_for_3_element_queue)
     queue.enqueue(&x);
     queue.enqueue(&y);
     queue.enqueue(&z);
-    ASSERT_EQUALS(queue.peek(), &x);
+    EXPECT_EQ(queue.peek(), &x);
 }
-TEST_END()
 
-TEST_BEGIN(queue_dequeueing_gives_nullptr_for_empty_queue)
-{
+TEST_F(LinkedQueueTest, DequeueingGivesNullptrForEmptyQueue) {
     LinkedQueue<int> queue;
-    ASSERT_IS_NULLPTR(queue.dequeue());
+    EXPECT_EQ(queue.dequeue(), nullptr);
 }
-TEST_END()
 
-TEST_BEGIN(queue_dequeueing_gives_first_element_for_1_element_queue)
-{
+TEST_F(LinkedQueueTest, DequeueingGivesFirstElementFor1ElementQueue) {
     LinkedQueue<int> queue;
     int x = 35;
     queue.enqueue(&x);
-    ASSERT_EQUALS(queue.dequeue(), &x);
+    EXPECT_EQ(queue.dequeue(), &x);
 }
-TEST_END()
 
-TEST_BEGIN(queue_dequeueing_gives_first_element_for_2_element_queue)
-{
+TEST_F(LinkedQueueTest, DequeueingGivesFirstElementFor2ElementQueue) {
     LinkedQueue<int> queue;
     int x = 35;
     int y = -12;
     queue.enqueue(&x);
     queue.enqueue(&y);
-    ASSERT_EQUALS(queue.dequeue(), &x);
+    EXPECT_EQ(queue.dequeue(), &x);
 }
-TEST_END()
 
-TEST_BEGIN(queue_dequeueing_gives_first_element_for_3_element_queue)
-{
+TEST_F(LinkedQueueTest, DequeueingGivesFirstElementFor3ElementQueue) {
     LinkedQueue<int> queue;
     int x = 35;
     int y = -12;
@@ -208,12 +172,10 @@ TEST_BEGIN(queue_dequeueing_gives_first_element_for_3_element_queue)
     queue.enqueue(&x);
     queue.enqueue(&y);
     queue.enqueue(&z);
-    ASSERT_EQUALS(queue.dequeue(), &x);
+    EXPECT_EQ(queue.dequeue(), &x);
 }
-TEST_END()
 
-TEST_BEGIN(queue_dequeueing_twice_gives_first_element_for_3_element_queue)
-{
+TEST_F(LinkedQueueTest, DequeueingTwiceGivesFirstElementFor3ElementQueue) {
     LinkedQueue<int> queue;
     int x = 35;
     int y = -12;
@@ -221,43 +183,35 @@ TEST_BEGIN(queue_dequeueing_twice_gives_first_element_for_3_element_queue)
     queue.enqueue(&x);
     queue.enqueue(&y);
     queue.enqueue(&z);
-    ASSERT_EQUALS(queue.dequeue(), &x);
-    ASSERT_EQUALS(queue.dequeue(), &y);
+    EXPECT_EQ(queue.dequeue(), &x);
+    EXPECT_EQ(queue.dequeue(), &y);
 }
-TEST_END()
 
-TEST_BEGIN(queue_size_is_0_after_dequeueing_from_empty_queue)
-{
+TEST_F(LinkedQueueTest, SizeIs0AfterDequeueingFromEmptyQueue) {
     LinkedQueue<int> queue;
     queue.dequeue();
-    ASSERT_EQUALS(queue.size(), 0);
+    EXPECT_EQ(queue.size(), 0u);
 }
-TEST_END()
 
-TEST_BEGIN(queue_size_is_0_after_dequeueing_from_1_element_queue)
-{
+TEST_F(LinkedQueueTest, SizeIs0AfterDequeueingFrom1ElementQueue) {
     LinkedQueue<int> queue;
     int x = 35;
     queue.enqueue(&x);
     queue.dequeue();
-    ASSERT_EQUALS(queue.size(), 0);
+    EXPECT_EQ(queue.size(), 0u);
 }
-TEST_END()
 
-TEST_BEGIN(queue_size_is_1_after_dequeueing_from_2_element_queue)
-{
+TEST_F(LinkedQueueTest, SizeIs1AfterDequeueingFrom2ElementQueue) {
     LinkedQueue<int> queue;
     int x = 35;
     int y = -12;
     queue.enqueue(&x);
     queue.enqueue(&y);
     queue.dequeue();
-    ASSERT_EQUALS(queue.size(), 1);
+    EXPECT_EQ(queue.size(), 1u);
 }
-TEST_END()
 
-TEST_BEGIN(queue_size_is_2_after_dequeueing_from_3_element_queue)
-{
+TEST_F(LinkedQueueTest, SizeIs2AfterDequeueingFrom3ElementQueue) {
     LinkedQueue<int> queue;
     int x = 35;
     int y = -12;
@@ -266,12 +220,10 @@ TEST_BEGIN(queue_size_is_2_after_dequeueing_from_3_element_queue)
     queue.enqueue(&y);
     queue.enqueue(&z);
     queue.dequeue();
-    ASSERT_EQUALS(queue.size(), 2);
+    EXPECT_EQ(queue.size(), 2u);
 }
-TEST_END()
 
-TEST_BEGIN(queue_size_is_1_after_dequeueing_twice_from_3_element_queue)
-{
+TEST_F(LinkedQueueTest, SizeIs1AfterDequeueingTwiceFrom3ElementQueue) {
     LinkedQueue<int> queue;
     int x = 35;
     int y = -12;
@@ -280,14 +232,12 @@ TEST_BEGIN(queue_size_is_1_after_dequeueing_twice_from_3_element_queue)
     queue.enqueue(&y);
     queue.enqueue(&z);
     queue.dequeue();
-    ASSERT_EQUALS(queue.size(), 2);
+    EXPECT_EQ(queue.size(), 2u);
     queue.dequeue();
-    ASSERT_EQUALS(queue.size(), 1);
+    EXPECT_EQ(queue.size(), 1u);
 }
-TEST_END()
 
-TEST_BEGIN(queue_is_not_empty_for_3_element_queue_dequeued_and_enqueued)
-{
+TEST_F(LinkedQueueTest, IsNotEmptyFor3ElementQueueDequeuedAndEnqueued) {
     LinkedQueue<int> queue;
     int x = 35;
     int y = -12;
@@ -298,12 +248,10 @@ TEST_BEGIN(queue_is_not_empty_for_3_element_queue_dequeued_and_enqueued)
     queue.enqueue(&z);
     queue.dequeue();
     queue.enqueue(&a);
-    ASSERT_FALSE(queue.isEmpty());
+    EXPECT_FALSE(queue.isEmpty());
 }
-TEST_END()
 
-TEST_BEGIN(queue_size_is_3_for_3_element_queue_dequeued_and_enqueued)
-{
+TEST_F(LinkedQueueTest, SizeIs3For3ElementQueueDequeuedAndEnqueued) {
     LinkedQueue<int> queue;
     int x = 35;
     int y = -12;
@@ -314,12 +262,10 @@ TEST_BEGIN(queue_size_is_3_for_3_element_queue_dequeued_and_enqueued)
     queue.enqueue(&z);
     queue.dequeue();
     queue.enqueue(&a);
-    ASSERT_EQUALS(queue.size(), 3);
+    EXPECT_EQ(queue.size(), 3u);
 }
-TEST_END()
 
-TEST_BEGIN(queue_peeking_gives_first_element_for_3_element_queue_dequeued_and_enqueued)
-{
+TEST_F(LinkedQueueTest, PeekingGivesFirstElementFor3ElementQueueDequeuedAndEnqueued) {
     LinkedQueue<int> queue;
     int x = 35;
     int y = -12;
@@ -330,12 +276,10 @@ TEST_BEGIN(queue_peeking_gives_first_element_for_3_element_queue_dequeued_and_en
     queue.enqueue(&z);
     queue.dequeue();
     queue.enqueue(&a);
-    ASSERT_EQUALS(queue.peek(), &y);
+    EXPECT_EQ(queue.peek(), &y);
 }
-TEST_END()
 
-TEST_BEGIN(queue_dequeueing_gives_first_element_for_3_element_queue_dequeued_and_enqueued)
-{
+TEST_F(LinkedQueueTest, DequeueingGivesFirstElementFor3ElementQueueDequeuedAndEnqueued) {
     LinkedQueue<int> queue;
     int x = 35;
     int y = -12;
@@ -346,12 +290,10 @@ TEST_BEGIN(queue_dequeueing_gives_first_element_for_3_element_queue_dequeued_and
     queue.enqueue(&z);
     queue.dequeue();
     queue.enqueue(&a);
-    ASSERT_EQUALS(queue.dequeue(), &y);
+    EXPECT_EQ(queue.dequeue(), &y);
 }
-TEST_END()
 
-TEST_BEGIN(queue_is_empty_for_4_element_queue_enqueued_and_dequeued)
-{
+TEST_F(LinkedQueueTest, IsEmptyFor4ElementQueueEnqueuedAndDequeued) {
     LinkedQueue<int> queue;
     int x = 35;
     int y = -12;
@@ -365,12 +307,10 @@ TEST_BEGIN(queue_is_empty_for_4_element_queue_enqueued_and_dequeued)
     queue.dequeue();
     queue.dequeue();
     queue.dequeue();
-    ASSERT_TRUE(queue.isEmpty());
+    EXPECT_TRUE(queue.isEmpty());
 }
-TEST_END()
 
-TEST_BEGIN(queue_order_for_4_element_queue)
-{
+TEST_F(LinkedQueueTest, OrderFor4ElementQueue) {
     LinkedQueue<int> queue;
     int x = 35;
     int y = -12;
@@ -385,47 +325,11 @@ TEST_BEGIN(queue_order_for_4_element_queue)
     int *const data3 = queue.dequeue();
     int *const data4 = queue.dequeue();
 
-    ASSERT_EQUALS(data, &x);
-    ASSERT_EQUALS(data2, &y);
-    ASSERT_EQUALS(data3, &z);
-    ASSERT_EQUALS(data4, &a);
+    EXPECT_EQ(data, &x);
+    EXPECT_EQ(data2, &y);
+    EXPECT_EQ(data3, &z);
+    EXPECT_EQ(data4, &a);
 
-    ASSERT_TRUE(queue.isEmpty());
-    ASSERT_EQUALS(queue.size(), 0);
+    EXPECT_TRUE(queue.isEmpty());
+    EXPECT_EQ(queue.size(), 0u);
 }
-TEST_END()
-
-const testfunc_t functions [] = {
-    test_empty_testcase,
-    test_constructor_memory_leak,
-    test_queue_is_empty_for_empty_queue,
-    test_queue_is_not_empty_for_1_element_queue,
-    test_queue_is_not_empty_for_2_element_queue,
-    test_queue_size_is_0_for_empty_queue,
-    test_queue_size_is_1_for_1_element_queue,
-    test_queue_size_is_2_for_2_element_queue,
-    test_queue_size_is_3_for_3_element_queue,
-    test_queue_size_is_4_for_4_element_queue,
-    test_queue_peeking_gives_nullptr_for_empty_queue,
-    test_queue_peeking_gives_first_element_for_1_element_queue,
-    test_queue_peeking_gives_first_element_for_2_element_queue,
-    test_queue_peeking_gives_first_element_for_3_element_queue,
-    test_queue_dequeueing_gives_nullptr_for_empty_queue,
-    test_queue_dequeueing_gives_first_element_for_1_element_queue,
-    test_queue_dequeueing_gives_first_element_for_2_element_queue,
-    test_queue_dequeueing_gives_first_element_for_3_element_queue,
-    test_queue_dequeueing_twice_gives_first_element_for_3_element_queue,
-    test_queue_size_is_0_after_dequeueing_from_empty_queue,
-    test_queue_size_is_0_after_dequeueing_from_1_element_queue,
-    test_queue_size_is_1_after_dequeueing_from_2_element_queue,
-    test_queue_size_is_2_after_dequeueing_from_3_element_queue,
-    test_queue_size_is_1_after_dequeueing_twice_from_3_element_queue,
-    test_queue_is_not_empty_for_3_element_queue_dequeued_and_enqueued,
-    test_queue_size_is_3_for_3_element_queue_dequeued_and_enqueued,
-    test_queue_peeking_gives_first_element_for_3_element_queue_dequeued_and_enqueued,
-    test_queue_dequeueing_gives_first_element_for_3_element_queue_dequeued_and_enqueued,
-    test_queue_is_empty_for_4_element_queue_enqueued_and_dequeued,
-    test_queue_order_for_4_element_queue,
-};
-
-MAIN();
