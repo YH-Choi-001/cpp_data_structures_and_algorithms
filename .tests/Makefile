@@ -1,72 +1,29 @@
-# Compiler
-CXX := g++
+# Convenience wrapper around the CMake/CTest build of the GoogleTest suite.
+#
+#   make             configure (if needed) and build all tests
+#   make test        build, then run all tests
+#   make clean       remove compiled objects and test executables
+#   make distclean   remove the whole build tree, including the fetched GoogleTest
 
-# C++ standard
-CXXSTD := c++11
+BUILD_DIR  ?= build
+BUILD_TYPE ?= Debug
+JOBS       ?= $(shell getconf _NPROCESSORS_ONLN 2>/dev/null || echo 2)
 
-# Compiler flags
-CXXFLAGS := -Wall -g -std=$(CXXSTD)
+.PHONY: all configure build test clean distclean
 
-# Directories definitions
-TEST_DIR := "."
-ROOT_DIR := ".."
-SRC_DIR := "$(ROOT_DIR)/src"
+all: build
 
-# Target C++ file
-TARGETCPP := $(shell find "$(TEST_DIR)" -type f -name "test*.cpp")
+configure:
+	cmake -S . -B "$(BUILD_DIR)" -DCMAKE_BUILD_TYPE=$(BUILD_TYPE)
 
-# Target
-TARGET := $(TARGETCPP:.cpp=.out)
+build: configure
+	cmake --build "$(BUILD_DIR)" --parallel $(JOBS)
 
-# Header files
-HEADERS := $(shell find "$(SRC_DIR)" -type f -name "*.h")
+test: build
+	ctest --test-dir "$(BUILD_DIR)" --output-on-failure --parallel $(JOBS)
 
-# Implementation C++ files
-IMPLCPP := $(shell find "$(SRC_DIR)" -type f -name "*.cpp")
-
-# Implementation files
-IMPL := $(IMPLCPP:.cpp=.o)
-
-# Source files
-SRCS := $(TARGETCPP) $(IMPLCPP)
-
-# Object files
-OBJS := $(SRCS:.cpp=.o)
-
-# Default rule to build and run the executable
-all: build test
-
-# Rule to compile test*.cpp files into test*.o files
-test%.o: test%.cpp $(HEADERS)
-	./update_testcase.sh $<
-	$(CXX) $(CXXFLAGS) -c $< -o $@
-
-# Rule to compile .cpp files into .o files
-%.o: %.cpp $(HEADERS)
-	$(CXX) $(CXXFLAGS) -c $< -o $@
-
-%.out: %.o $(IMPL)
-	$(CXX) $(CXXFLAGS) $< $(IMPL) -o $@
-
-# Rule to compile all source .cpp files
-compile: $(OBJS)
-
-# Rule to build the executable
-build: $(TARGET)
-
-# Rule to run the executable
-test: $(TARGET)
-	@fail=0; \
-	for exe in $(TARGET); do \
-		$$exe || { fail=1; }; \
-	done; \
-	exit $$fail
-
-# Update the testcases in the testfile
-update_tests:
-	find ./ -type f -name "*.cpp" -exec ./update_testcase.sh "{}" \;
-
-# Clean rule to remove generated files
 clean:
-	rm $(TARGET) $(OBJS) || true
-	find ./ -type d -name "*.dSYM" -exec rm -r "{}" \; || true
+	@if [ -d "$(BUILD_DIR)" ]; then cmake --build "$(BUILD_DIR)" --target clean; fi
+
+distclean:
+	rm -rf "$(BUILD_DIR)"

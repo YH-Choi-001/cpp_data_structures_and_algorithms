@@ -22,11 +22,11 @@ jobs:
   test:
     runs-on: ${{ matrix.os }}
     strategy:
+      fail-fast: false
       matrix:
         os: [ubuntu-latest]
     steps:
       - name: Checkout Repo
         uses: actions/checkout@v4
       - name: Tests
-        run: |
-          cd ${{ github.workspace }}/.tests && make compile && make test && make clean
+        run: make -C .tests test

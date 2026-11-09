@@ -108,3 +108,7 @@ $RECYCLE.BIN/
 
 # VS Code settings
 *.vscode
+
+### Test suite ###
+# CMake build tree (also holds the fetched GoogleTest sources)
+.tests/build/

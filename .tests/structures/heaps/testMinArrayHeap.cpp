@@ -29,58 +29,57 @@
  * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#include "../../test.h"
-#include "../../../src/structures/heaps/MinArrayHeap.h"
+#include "LeakCheckedTest.h"
 
-#include <iostream>
-#include <string>
-#include <sstream>
+#include "../../../src/structures/heaps/MinArrayHeap.h"
 
 using yh::structures::heaps::MinArrayHeap;
 
-TEST_BEGIN(heap_is_empty_for_empty_heap)
-    MinArrayHeap<int> heap(4);
-    ASSERT_TRUE(heap.isEmpty());
-TEST_END()
+class MinArrayHeapTest : public tests::LeakCheckedTest {};
 
-TEST_BEGIN(heap_is_not_empty_for_1_element_heap)
+TEST_F(MinArrayHeapTest, IsEmptyForEmptyHeap) {
     MinArrayHeap<int> heap(4);
-    int x = 35;
-    heap.insert(&x);
-    ASSERT_FALSE(heap.isEmpty());
-TEST_END()
+    EXPECT_TRUE(heap.isEmpty());
+}
 
-TEST_BEGIN(heap_is_not_empty_for_2_element_heap)
-    MinArrayHeap<int> heap(4);
-    int x = 35;
-    int y = -12;
-    heap.insert(&x);
-    heap.insert(&y);
-    ASSERT_FALSE(heap.isEmpty());
-TEST_END()
-
-TEST_BEGIN(heap_size_is_0_for_empty_heap)
-    MinArrayHeap<int> heap(4);
-    ASSERT_EQUALS(heap.size(), 0);
-TEST_END()
-
-TEST_BEGIN(heap_size_is_1_for_1_element_heap)
+TEST_F(MinArrayHeapTest, IsNotEmptyFor1ElementHeap) {
     MinArrayHeap<int> heap(4);
     int x = 35;
     heap.insert(&x);
-    ASSERT_EQUALS(heap.size(), 1);
-TEST_END()
+    EXPECT_FALSE(heap.isEmpty());
+}
 
-TEST_BEGIN(heap_size_is_2_for_2_element_heap)
+TEST_F(MinArrayHeapTest, IsNotEmptyFor2ElementHeap) {
     MinArrayHeap<int> heap(4);
     int x = 35;
     int y = -12;
     heap.insert(&x);
     heap.insert(&y);
-    ASSERT_EQUALS(heap.size(), 2);
-TEST_END()
+    EXPECT_FALSE(heap.isEmpty());
+}
 
-TEST_BEGIN(heap_size_is_3_for_3_element_heap)
+TEST_F(MinArrayHeapTest, SizeIs0ForEmptyHeap) {
+    MinArrayHeap<int> heap(4);
+    EXPECT_EQ(heap.size(), 0u);
+}
+
+TEST_F(MinArrayHeapTest, SizeIs1For1ElementHeap) {
+    MinArrayHeap<int> heap(4);
+    int x = 35;
+    heap.insert(&x);
+    EXPECT_EQ(heap.size(), 1u);
+}
+
+TEST_F(MinArrayHeapTest, SizeIs2For2ElementHeap) {
+    MinArrayHeap<int> heap(4);
+    int x = 35;
+    int y = -12;
+    heap.insert(&x);
+    heap.insert(&y);
+    EXPECT_EQ(heap.size(), 2u);
+}
+
+TEST_F(MinArrayHeapTest, SizeIs3For3ElementHeap) {
     MinArrayHeap<int> heap(4);
     int x = 35;
     int y = -12;
@@ -88,10 +87,10 @@ TEST_BEGIN(heap_size_is_3_for_3_element_heap)
     heap.insert(&x);
     heap.insert(&y);
     heap.insert(&z);
-    ASSERT_EQUALS(heap.size(), 3);
-TEST_END()
+    EXPECT_EQ(heap.size(), 3u);
+}
 
-TEST_BEGIN(heap_size_is_4_for_4_element_heap)
+TEST_F(MinArrayHeapTest, SizeIs4For4ElementHeap) {
     MinArrayHeap<int> heap(4);
     int x = 35;
     int y = -12;
@@ -101,63 +100,31 @@ TEST_BEGIN(heap_size_is_4_for_4_element_heap)
     heap.insert(&y);
     heap.insert(&z);
     heap.insert(&a);
-    ASSERT_EQUALS(heap.size(), 4);
-TEST_END()
+    EXPECT_EQ(heap.size(), 4u);
+}
 
-TEST_BEGIN(heap_peeking_gives_nullptr_for_empty_heap)
+TEST_F(MinArrayHeapTest, PeekingGivesNullptrForEmptyHeap) {
     MinArrayHeap<int> heap(4);
-    ASSERT_IS_NULLPTR(heap.peekMin());
-TEST_END()
+    EXPECT_EQ(heap.peekMin(), nullptr);
+}
 
-TEST_BEGIN(heap_peeking_gives_root_element_for_1_element_heap)
-    MinArrayHeap<int> heap(4);
-    int x = 35;
-    heap.insert(&x);
-    ASSERT_EQUALS(heap.peekMin(), &x);
-TEST_END()
-
-TEST_BEGIN(heap_peeking_gives_root_element_for_2_element_heap)
-    MinArrayHeap<int> heap(4);
-    int x = 35;
-    int y = -12;
-    heap.insert(&x);
-    heap.insert(&y);
-    ASSERT_EQUALS(heap.peekMin(), &y);
-TEST_END()
-
-TEST_BEGIN(heap_peeking_gives_root_element_for_3_element_heap)
-    MinArrayHeap<int> heap(4);
-    int x = 35;
-    int y = -12;
-    int z = 0;
-    heap.insert(&x);
-    heap.insert(&y);
-    heap.insert(&z);
-    ASSERT_EQUALS(heap.peekMin(), &y);
-TEST_END()
-
-TEST_BEGIN(heap_removing_gives_nullptr_for_empty_heap)
-    MinArrayHeap<int> heap(4);
-    ASSERT_IS_NULLPTR(heap.removeMin());
-TEST_END()
-
-TEST_BEGIN(heap_removing_gives_root_element_for_1_element_heap)
+TEST_F(MinArrayHeapTest, PeekingGivesRootElementFor1ElementHeap) {
     MinArrayHeap<int> heap(4);
     int x = 35;
     heap.insert(&x);
-    ASSERT_EQUALS(heap.removeMin(), &x);
-TEST_END()
+    EXPECT_EQ(heap.peekMin(), &x);
+}
 
-TEST_BEGIN(heap_removing_gives_root_element_for_2_element_heap)
+TEST_F(MinArrayHeapTest, PeekingGivesRootElementFor2ElementHeap) {
     MinArrayHeap<int> heap(4);
     int x = 35;
     int y = -12;
     heap.insert(&x);
     heap.insert(&y);
-    ASSERT_EQUALS(heap.removeMin(), &y);
-TEST_END()
+    EXPECT_EQ(heap.peekMin(), &y);
+}
 
-TEST_BEGIN(heap_removing_gives_root_element_for_3_element_heap)
+TEST_F(MinArrayHeapTest, PeekingGivesRootElementFor3ElementHeap) {
     MinArrayHeap<int> heap(4);
     int x = 35;
     int y = -12;
@@ -165,10 +132,31 @@ TEST_BEGIN(heap_removing_gives_root_element_for_3_element_heap)
     heap.insert(&x);
     heap.insert(&y);
     heap.insert(&z);
-    ASSERT_EQUALS(heap.removeMin(), &y);
-TEST_END()
+    EXPECT_EQ(heap.peekMin(), &y);
+}
 
-TEST_BEGIN(heap_removing_twice_gives_root_element_for_3_element_heap)
+TEST_F(MinArrayHeapTest, RemovingGivesNullptrForEmptyHeap) {
+    MinArrayHeap<int> heap(4);
+    EXPECT_EQ(heap.removeMin(), nullptr);
+}
+
+TEST_F(MinArrayHeapTest, RemovingGivesRootElementFor1ElementHeap) {
+    MinArrayHeap<int> heap(4);
+    int x = 35;
+    heap.insert(&x);
+    EXPECT_EQ(heap.removeMin(), &x);
+}
+
+TEST_F(MinArrayHeapTest, RemovingGivesRootElementFor2ElementHeap) {
+    MinArrayHeap<int> heap(4);
+    int x = 35;
+    int y = -12;
+    heap.insert(&x);
+    heap.insert(&y);
+    EXPECT_EQ(heap.removeMin(), &y);
+}
+
+TEST_F(MinArrayHeapTest, RemovingGivesRootElementFor3ElementHeap) {
     MinArrayHeap<int> heap(4);
     int x = 35;
     int y = -12;
@@ -176,35 +164,10 @@ TEST_BEGIN(heap_removing_twice_gives_root_element_for_3_element_heap)
     heap.insert(&x);
     heap.insert(&y);
     heap.insert(&z);
-    ASSERT_EQUALS(heap.removeMin(), &y);
-    ASSERT_EQUALS(heap.removeMin(), &z);
-TEST_END()
+    EXPECT_EQ(heap.removeMin(), &y);
+}
 
-TEST_BEGIN(heap_size_is_0_after_removing_from_empty_heap)
-    MinArrayHeap<int> heap(4);
-    heap.removeMin();
-    ASSERT_EQUALS(heap.size(), 0);
-TEST_END()
-
-TEST_BEGIN(heap_size_is_0_after_removing_from_1_element_heap)
-    MinArrayHeap<int> heap(4);
-    int x = 35;
-    heap.insert(&x);
-    heap.removeMin();
-    ASSERT_EQUALS(heap.size(), 0);
-TEST_END()
-
-TEST_BEGIN(heap_size_is_1_after_removing_from_2_element_heap)
-    MinArrayHeap<int> heap(4);
-    int x = 35;
-    int y = -12;
-    heap.insert(&x);
-    heap.insert(&y);
-    heap.removeMin();
-    ASSERT_EQUALS(heap.size(), 1);
-TEST_END()
-
-TEST_BEGIN(heap_size_is_2_after_removing_from_3_element_heap)
+TEST_F(MinArrayHeapTest, RemovingTwiceGivesRootElementFor3ElementHeap) {
     MinArrayHeap<int> heap(4);
     int x = 35;
     int y = -12;
@@ -212,11 +175,35 @@ TEST_BEGIN(heap_size_is_2_after_removing_from_3_element_heap)
     heap.insert(&x);
     heap.insert(&y);
     heap.insert(&z);
-    heap.removeMin();
-    ASSERT_EQUALS(heap.size(), 2);
-TEST_END()
+    EXPECT_EQ(heap.removeMin(), &y);
+    EXPECT_EQ(heap.removeMin(), &z);
+}
 
-TEST_BEGIN(heap_size_is_1_after_removing_twice_from_3_element_heap)
+TEST_F(MinArrayHeapTest, SizeIs0AfterRemovingFromEmptyHeap) {
+    MinArrayHeap<int> heap(4);
+    heap.removeMin();
+    EXPECT_EQ(heap.size(), 0u);
+}
+
+TEST_F(MinArrayHeapTest, SizeIs0AfterRemovingFrom1ElementHeap) {
+    MinArrayHeap<int> heap(4);
+    int x = 35;
+    heap.insert(&x);
+    heap.removeMin();
+    EXPECT_EQ(heap.size(), 0u);
+}
+
+TEST_F(MinArrayHeapTest, SizeIs1AfterRemovingFrom2ElementHeap) {
+    MinArrayHeap<int> heap(4);
+    int x = 35;
+    int y = -12;
+    heap.insert(&x);
+    heap.insert(&y);
+    heap.removeMin();
+    EXPECT_EQ(heap.size(), 1u);
+}
+
+TEST_F(MinArrayHeapTest, SizeIs2AfterRemovingFrom3ElementHeap) {
     MinArrayHeap<int> heap(4);
     int x = 35;
     int y = -12;
@@ -225,26 +212,24 @@ TEST_BEGIN(heap_size_is_1_after_removing_twice_from_3_element_heap)
     heap.insert(&y);
     heap.insert(&z);
     heap.removeMin();
-    ASSERT_EQUALS(heap.size(), 2);
-    heap.removeMin();
-    ASSERT_EQUALS(heap.size(), 1);
-TEST_END()
+    EXPECT_EQ(heap.size(), 2u);
+}
 
-TEST_BEGIN(heap_is_not_empty_for_3_element_heap_removed_and_inserted)
+TEST_F(MinArrayHeapTest, SizeIs1AfterRemovingTwiceFrom3ElementHeap) {
     MinArrayHeap<int> heap(4);
     int x = 35;
     int y = -12;
     int z = 0;
-    int a = -4;
     heap.insert(&x);
     heap.insert(&y);
     heap.insert(&z);
     heap.removeMin();
-    heap.insert(&a);
-    ASSERT_FALSE(heap.isEmpty());
-TEST_END()
+    EXPECT_EQ(heap.size(), 2u);
+    heap.removeMin();
+    EXPECT_EQ(heap.size(), 1u);
+}
 
-TEST_BEGIN(heap_size_is_3_for_3_element_heap_removed_and_inserted)
+TEST_F(MinArrayHeapTest, IsNotEmptyFor3ElementHeapRemovedAndInserted) {
     MinArrayHeap<int> heap(4);
     int x = 35;
     int y = -12;
@@ -255,10 +240,10 @@ TEST_BEGIN(heap_size_is_3_for_3_element_heap_removed_and_inserted)
     heap.insert(&z);
     heap.removeMin();
     heap.insert(&a);
-    ASSERT_EQUALS(heap.size(), 3);
-TEST_END()
+    EXPECT_FALSE(heap.isEmpty());
+}
 
-TEST_BEGIN(heap_peeking_gives_root_element_for_3_element_heap_removed_and_inserted)
+TEST_F(MinArrayHeapTest, SizeIs3For3ElementHeapRemovedAndInserted) {
     MinArrayHeap<int> heap(4);
     int x = 35;
     int y = -12;
@@ -269,10 +254,10 @@ TEST_BEGIN(heap_peeking_gives_root_element_for_3_element_heap_removed_and_insert
     heap.insert(&z);
     heap.removeMin();
     heap.insert(&a);
-    ASSERT_EQUALS(heap.peekMin(), &a);
-TEST_END()
+    EXPECT_EQ(heap.size(), 3u);
+}
 
-TEST_BEGIN(heap_removing_gives_root_element_for_3_element_heap_removed_and_inserted)
+TEST_F(MinArrayHeapTest, PeekingGivesRootElementFor3ElementHeapRemovedAndInserted) {
     MinArrayHeap<int> heap(4);
     int x = 35;
     int y = -12;
@@ -283,10 +268,24 @@ TEST_BEGIN(heap_removing_gives_root_element_for_3_element_heap_removed_and_inser
     heap.insert(&z);
     heap.removeMin();
     heap.insert(&a);
-    ASSERT_EQUALS(heap.removeMin(), &a);
-TEST_END()
+    EXPECT_EQ(heap.peekMin(), &a);
+}
 
-TEST_BEGIN(heap_is_empty_for_4_element_heap_removed_and_inserted)
+TEST_F(MinArrayHeapTest, RemovingGivesRootElementFor3ElementHeapRemovedAndInserted) {
+    MinArrayHeap<int> heap(4);
+    int x = 35;
+    int y = -12;
+    int z = 0;
+    int a = -4;
+    heap.insert(&x);
+    heap.insert(&y);
+    heap.insert(&z);
+    heap.removeMin();
+    heap.insert(&a);
+    EXPECT_EQ(heap.removeMin(), &a);
+}
+
+TEST_F(MinArrayHeapTest, IsEmptyFor4ElementHeapRemovedAndInserted) {
     MinArrayHeap<int> heap(4);
     int x = 35;
     int y = -12;
@@ -300,10 +299,10 @@ TEST_BEGIN(heap_is_empty_for_4_element_heap_removed_and_inserted)
     heap.removeMin();
     heap.removeMin();
     heap.removeMin();
-    ASSERT_TRUE(heap.isEmpty());
-TEST_END()
+    EXPECT_TRUE(heap.isEmpty());
+}
 
-TEST_BEGIN(heap_order_for_4_element_heap)
+TEST_F(MinArrayHeapTest, OrderFor4ElementHeap) {
     MinArrayHeap<int> heap(4);
     int x = 35;
     int y = -12;
@@ -317,36 +316,36 @@ TEST_BEGIN(heap_order_for_4_element_heap)
     int *const data2 = heap.removeMin();
     int *const data3 = heap.removeMin();
     int *const data4 = heap.removeMin();
-    ASSERT_EQUALS(data, &y);
-    ASSERT_EQUALS(data2, &a);
-    ASSERT_EQUALS(data3, &z);
-    ASSERT_EQUALS(data4, &x);
-    ASSERT_TRUE(heap.isEmpty());
-    ASSERT_EQUALS(heap.size(), 0);    
-TEST_END()
+    EXPECT_EQ(data, &y);
+    EXPECT_EQ(data2, &a);
+    EXPECT_EQ(data3, &z);
+    EXPECT_EQ(data4, &x);
+    EXPECT_TRUE(heap.isEmpty());
+    EXPECT_EQ(heap.size(), 0u);    
+}
 
-TEST_BEGIN(heap_is_not_full_for_empty_heap)
+TEST_F(MinArrayHeapTest, IsNotFullForEmptyHeap) {
     MinArrayHeap<int> heap(4);
-    ASSERT_FALSE(heap.isFull());
-TEST_END()
+    EXPECT_FALSE(heap.isFull());
+}
 
-TEST_BEGIN(heap_is_not_full_for_1_element_heap)
+TEST_F(MinArrayHeapTest, IsNotFullFor1ElementHeap) {
     MinArrayHeap<int> heap(4);
     int x = 35;
     heap.insert(&x);
-    ASSERT_FALSE(heap.isFull());
-TEST_END()
+    EXPECT_FALSE(heap.isFull());
+}
 
-TEST_BEGIN(heap_is_not_full_for_2_element_heap)
+TEST_F(MinArrayHeapTest, IsNotFullFor2ElementHeap) {
     MinArrayHeap<int> heap(4);
     int x = 35;
     int y = -12;
     heap.insert(&x);
     heap.insert(&y);
-    ASSERT_FALSE(heap.isFull());
-TEST_END()
+    EXPECT_FALSE(heap.isFull());
+}
 
-TEST_BEGIN(heap_is_not_full_for_3_element_heap)
+TEST_F(MinArrayHeapTest, IsNotFullFor3ElementHeap) {
     MinArrayHeap<int> heap(4);
     int x = 35;
     int y = -12;
@@ -354,10 +353,10 @@ TEST_BEGIN(heap_is_not_full_for_3_element_heap)
     heap.insert(&x);
     heap.insert(&y);
     heap.insert(&z);
-    ASSERT_FALSE(heap.isFull());
-TEST_END()
+    EXPECT_FALSE(heap.isFull());
+}
 
-TEST_BEGIN(heap_is_full_for_4_element_heap)
+TEST_F(MinArrayHeapTest, IsFullFor4ElementHeap) {
     MinArrayHeap<int> heap(4);
     int x = 35;
     int y = -12;
@@ -367,43 +366,5 @@ TEST_BEGIN(heap_is_full_for_4_element_heap)
     heap.insert(&y);
     heap.insert(&z);
     heap.insert(&a);
-    ASSERT_TRUE(heap.isFull());
-TEST_END()
-
-const testfunc_t functions [] = {
-    test_heap_is_empty_for_empty_heap,
-    test_heap_is_not_empty_for_1_element_heap,
-    test_heap_is_not_empty_for_2_element_heap,
-    test_heap_size_is_0_for_empty_heap,
-    test_heap_size_is_1_for_1_element_heap,
-    test_heap_size_is_2_for_2_element_heap,
-    test_heap_size_is_3_for_3_element_heap,
-    test_heap_size_is_4_for_4_element_heap,
-    test_heap_peeking_gives_nullptr_for_empty_heap,
-    test_heap_peeking_gives_root_element_for_1_element_heap,
-    test_heap_peeking_gives_root_element_for_2_element_heap,
-    test_heap_peeking_gives_root_element_for_3_element_heap,
-    test_heap_removing_gives_nullptr_for_empty_heap,
-    test_heap_removing_gives_root_element_for_1_element_heap,
-    test_heap_removing_gives_root_element_for_2_element_heap,
-    test_heap_removing_gives_root_element_for_3_element_heap,
-    test_heap_removing_twice_gives_root_element_for_3_element_heap,
-    test_heap_size_is_0_after_removing_from_empty_heap,
-    test_heap_size_is_0_after_removing_from_1_element_heap,
-    test_heap_size_is_1_after_removing_from_2_element_heap,
-    test_heap_size_is_2_after_removing_from_3_element_heap,
-    test_heap_size_is_1_after_removing_twice_from_3_element_heap,
-    test_heap_is_not_empty_for_3_element_heap_removed_and_inserted,
-    test_heap_size_is_3_for_3_element_heap_removed_and_inserted,
-    test_heap_peeking_gives_root_element_for_3_element_heap_removed_and_inserted,
-    test_heap_removing_gives_root_element_for_3_element_heap_removed_and_inserted,
-    test_heap_is_empty_for_4_element_heap_removed_and_inserted,
-    test_heap_order_for_4_element_heap,
-    test_heap_is_not_full_for_empty_heap,
-    test_heap_is_not_full_for_1_element_heap,
-    test_heap_is_not_full_for_2_element_heap,
-    test_heap_is_not_full_for_3_element_heap,
-    test_heap_is_full_for_4_element_heap,
-};
-
-MAIN();
+    EXPECT_TRUE(heap.isFull());
+}
